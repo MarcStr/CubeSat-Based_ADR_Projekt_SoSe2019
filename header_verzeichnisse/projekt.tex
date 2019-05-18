@@ -19,29 +19,29 @@
   child {node[level 2] (c1) {\tb{AP~1000} \\ Literatur-recherche}}
   child {node[level 2] (c2) {\tb{AP~2000} \\ CubeSat Design}}
   child {node[level 2] (c3) {\tb{AP~3000} \\ Budgetplanung mit QuSad}}
-  child {node[level 2] (c4) {\tb{AP~4000} \\ Missionsplanung mit GMat}}
-  child {node[level 2] (c5) {\tb{AP~5000} \\ Dokumentation \\ $~~$}}
+  child {node[level 2] (c4) {\tb{AP~4000} \\ Missions-planung mit GMat}}
+  child {node[level 2] (c5) {\tb{AP~5000} \\ Dokumentation \\ $~~$}};
 
 % The second level, relatively positioned nodes
 \begin{scope}[every node/.style={level 3}, node distance=6pt]
 \node [below=of c1, xshift=10pt] (c11) {\tb{AP~1100} \\ Weltraumm\"ull-problematik};
 \node [below=of c11] (c12) {\tb{AP~1200} \\ CubeSat Subsysteme};
 \node [below=of c12] (c13) {\tb{AP~1300} \\ Rendezvou und Docking};
-\node [below=of c13] (c14) {\tb{AP~1300} \\ Erforderliche Softwares};
+\node [below=of c13] (c14) {\tb{AP~1400} \\ Erforderliche Softwares};
 
 
 \node [below=of c2, xshift=10pt] (c21) {\tb{AP~2100} \\ CubeSat Datenbank Analyse};
 \node [below=of c21] (c22) {\tb{AP~2200} \\ Ausarbeitung von effizienten Subsystemen};
 \node [below=of c22] (c23) {\tb{AP~2300} \\ Ausarbeitung von CubeSat Konfigurationen};
 
-\node [below=of c3, xshift=10pt] (c31) {\tb{AP~3100} \\ Datenbankerweiterung};
+\node [below=of c3, xshift=10pt] (c31) {\tb{AP~3100} \\ Datenbank-erweiterung};
 \node [below=of c31] (c32) {\tb{AP~3200} \\ Generierung der CubeSat Konfigurationen};
-\node [below=of c32] (c33) {\tb{AP~3300} \\ Budgetkalkulation};
-\node [below=of c33] (c34) {\tb{AP~3300} \\ Gegenüberstellung der Konfigurationen};
+\node [below=of c32] (c33) {\tb{AP~3300} \\ Budget-kalkulation};
+\node [below=of c33] (c34) {\tb{AP~3400} \\ Gegen-überstellung der Konfigurationen};
 
-\node [below=of c4, xshift=10pt] (c41) {\tb{AP~4100} \\ Missionsauslegung};
+\node [below=of c4, xshift=10pt] (c41) {\tb{AP~4100} \\ Missions-auslegung};
 \node [below=of c41] (c42) {\tb{AP~4200} \\ Durchführung der Simulation};
-\node [below=of c42] (c43) {\tb{AP~4200} \\ Auswertung der Simulation};
+\node [below=of c42] (c43) {\tb{AP~4300} \\ Auswertung der Simulation};
 
 \node [below=of c5, xshift=10pt] (c51) {\tb{AP~5100} \\ Textverfassung};
 \node [below=of c51] (c52) {\tb{AP~5200} \\ Überprüfung};
@@ -49,16 +49,16 @@
 \end{scope}
 
 % lines from each level 1 node to every one of its "children"
-\foreach \value in {1,2,3}
+\foreach \value in {1,2,3,4}
   \draw[->] (c1.212) |- (c1\value.west);
 
 \foreach \value in {1,2,3}
   \draw[->] (c2.212) |- (c2\value.west);
 
-\foreach \value in {1,2,3}
+\foreach \value in {1,2,3,4}
   \draw[->] (c3.212) |- (c3\value.west);
 
-\foreach \value in {1,2}
+\foreach \value in {1,2,3}
   \draw[->] (c4.212) |- (c4\value.west);
 
 \foreach \value in {1,2}
