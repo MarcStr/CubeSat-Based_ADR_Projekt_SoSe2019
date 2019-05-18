@@ -16,3 +16,6 @@ Projekt1.log
 *.ps
 *.syg
 *.toc
+header_verzeichnisse/abkverzeichnis1.aux
+header_verzeichnisse/symbolverzeichnis1.aux
+*.log
