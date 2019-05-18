@@ -30,7 +30,8 @@
 \usetikzlibrary{shapes,backgrounds, arrows, positioning, trees, shadows}% Bibliotheken für Tikz
 \usepackage{pgfgantt}																		 % Zum Erstellen eines Gantt-Charts
 
-\graphicspath{{./graphics/}}
+\graphicspath{{./graphics/}}														%greift auf den Unterordner "graphics" zu
+\usepackage{pdfpages}																		%ermöglicht das Einbinden von PDF-Datein
 
 %===============================================================
 %
@@ -121,33 +122,32 @@
 \clubpenalty         = 10000
 \widowpenalty        = 10000
 \displaywidowpenalty = 10000
-%---------------------------------------------------------------------------------------------------
+%===============================================================
+% Hauptfunktion
+%---------------------------------------------------------------
 
-
-\begin{document}
+\begin{document}																								%Erstellung des Schreibdokumentes 
 
   \maketitle[image] 																						%[<plain/image/imagetext>,<logo=left/right>]
 
- \include{./header_first/aufgabenstellung1}
+ \includepdf[pages=-]{./header_first/Aufgabenstellung_PA_SS19.pdf}			%PDF-Datei wird hinzugefügt 
  \include{./header_first/eid1}
  \include{./header_first/abstract1}
 
- \tableofcontents
+ \tableofcontents																												%Erstellung eines Inhaltsverzeichnisses
   \newpage
 	%\newglossarystyle{rhg-altlong4col}{\glossarystyle{altlong4col}
 		\glossarystyle{altlong4col}
 			\setlength{\glsdescwidth}{0.7\textwidth}
-			%\setcounter{chapter}{1}
+	
 	\include{./header_verzeichnisse/symbolverzeichnis1}					
 	\include{./header_verzeichnisse/abkverzeichnis1}
 	
-	\include{./header_hauptteil/einleitung1}
-	\include{./header_hauptteil/grundlagen1}
-	%\include{./header_hauptteil/adrsubsysteme}
-	\include{./header_hauptteil/cubesatdesign1}
-	\include{./header_hauptteil/missiondesign}
-	%\include{./header_hauptteil/ergebnisse1}
-  \include{./header_hauptteil/zusammenfassung1}
+	\include{./header_hauptteil/einleitung1}															%Datei zu Verfassung des Kapitels 'Einleitung'
+	\include{./header_hauptteil/grundlagen1}															% -"- Grundlagen
+	\include{./header_hauptteil/cubesatdesign1}														% -"- CubeSat Design 														
+	\include{./header_hauptteil/missiondesign}														% -"- Mission Design Design 	
+  \include{./header_hauptteil/zusammenfassung1}													
   \include{./header_hauptteil/ausblick1}
 	
 	%===================================================
@@ -195,10 +195,8 @@
   %
   %---------------------------------
 		\begin{appendix}
-			\include{./header_verzeichnisse/projekt}
+			\include{./header_verzeichnisse/projekt}									% WBS und WPD Datei 
 			%\include{WEITERER ANHANG}
 		\end{appendix}
-			
-	
 	
 	\end{document}
