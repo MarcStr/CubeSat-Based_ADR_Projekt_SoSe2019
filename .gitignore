@@ -1,2 +1,18 @@
 
 Projekt1.log
+*.aux
+*.aux
+*.aux
+*.acn
+*.bbl
+*.blg
+*.dvi
+*.glo
+*.glsdefs
+*.ist
+*.lof
+*.lot
+*.out
+*.ps
+*.syg
+*.toc
