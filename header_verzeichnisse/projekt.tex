@@ -36,8 +36,7 @@
 
 \node [below=of c3, xshift=10pt] (c31) {\tb{AP~3100} \\ Datenbank-erweiterung};
 \node [below=of c31] (c32) {\tb{AP~3200} \\ Generierung der CubeSat Konfigurationen};
-\node [below=of c32] (c33) {\tb{AP~3300} \\ Budget-kalkulation};
-\node [below=of c33] (c34) {\tb{AP~3400} \\ Gegen-überstellung der Konfigurationen};
+\node [below=of c32] (c33) {\tb{AP~3300} \\ Budget-kalkulation und Vergleich};
 
 \node [below=of c4, xshift=10pt] (c41) {\tb{AP~4100} \\ Missions-auslegung};
 \node [below=of c41] (c42) {\tb{AP~4200} \\ Durchführung der Simulation};
@@ -55,7 +54,7 @@
 \foreach \value in {1,2,3}
   \draw[->] (c2.212) |- (c2\value.west);
 
-\foreach \value in {1,2,3,4}
+\foreach \value in {1,2,3}
   \draw[->] (c3.212) |- (c3\value.west);
 
 \foreach \value in {1,2,3}
@@ -580,52 +579,6 @@
 
 \clearpage
 
-\begin{table}[!h]
- \begin{center}
-  \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
-   \hline
-   \multicolumn{3}{|l||}{\textbf{}} & \multicolumn{1}{c|}{}\\
-   \multicolumn{3}{|l||}{\textbf{}} & \multicolumn{1}{c|}{\textbf{AP 3400}}\\
-   \multicolumn{3}{|l||}{\textbf{}} & \multicolumn{1}{c|}{}\\
-   \hline\hline
-   \textbf{Titel} & \multicolumn{2}{p{7cm}||}{\textbf{Gegenüberstellung der Konfigurationen}} & \textbf{Seite:} X von Y\\
-   \hline
-   \textbf{Verantwortlicher} & \multicolumn{2}{l||}{Dein Name} & \textbf{Version:} 1.1\\
-   \hline
-   \multicolumn{3}{|l||}{} & \textbf{Datum:} 00.00.2019\\
-   \hline\hline
-   \textbf{Beginn} & \multicolumn{2}{l||}{T$_0$} & \\
-   \hline
-   \textbf{Ende} & \multicolumn{2}{l||}{T$_0$+X Wochen} & \textbf{Dauer}: X Wochen\\
-   \hline\hline
-   \textbf{Bearbeiter} & \multicolumn{3}{l|}{Dein Name}\\
-   \hline\hline
-   \multicolumn{4}{|p{150mm}|}{\textbf{Ziele:}}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ Ziel 1}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ Ziel 2}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ ...}\\
-   \multicolumn{4}{|p{150mm}|}{}\\
-   \multicolumn{4}{|p{150mm}|}{\textbf{Input:}}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ Input 1}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ ...}\\
-   \multicolumn{4}{|p{150mm}|}{}\\
-   \multicolumn{4}{|p{150mm}|}{\textbf{Schnittstellen zu anderen APs:}}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ \textbf{AP XXXX} Beschreibung}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ \textbf{AP ....} ...}\\
-   \multicolumn{4}{|p{150mm}|}{}\\
-   \multicolumn{4}{|p{150mm}|}{\textbf{Aufgaben:}}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ Aufgabe 1}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ ...}\\
-   \multicolumn{4}{|p{150mm}|}{}\\
-   \multicolumn{4}{|p{150mm}|}{\textbf{Ergebnisse:}}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ Ergebnis 1}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ ...}\\
-   \hline
-  \end{tabular}
- \end{center}
-\end{table}
-
-\clearpage
 %AP Missionsplanung
 \begin{table}[!h]
  \begin{center}
