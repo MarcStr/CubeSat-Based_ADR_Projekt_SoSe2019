@@ -1,6 +1,6 @@
 \chapter{Projektmanagement}
 \label{cha:projekt}
-
+%---------------------------------------- WBS beginnt -----------------------------------------------------------
 \section{Work Breakdown Structure}
 \label{sec:wbs}
 
@@ -36,8 +36,7 @@
 
 \node [below=of c3, xshift=10pt] (c31) {\tb{AP~3100} \\ Datenbank-erweiterung};
 \node [below=of c31] (c32) {\tb{AP~3200} \\ Generierung der CubeSat Konfigurationen};
-\node [below=of c32] (c33) {\tb{AP~3300} \\ Budget-kalkulation};
-\node [below=of c33] (c34) {\tb{AP~3400} \\ Gegen-überstellung der Konfigurationen};
+\node [below=of c32] (c33) {\tb{AP~3300} \\ Budget-kalkulation und Vergleich};
 
 \node [below=of c4, xshift=10pt] (c41) {\tb{AP~4100} \\ Missions-auslegung};
 \node [below=of c41] (c42) {\tb{AP~4200} \\ Durchführung der Simulation};
@@ -47,15 +46,15 @@
 \node [below=of c51] (c52) {\tb{AP~5200} \\ Überprüfung};
 
 \end{scope}
-
-% lines from each level 1 node to every one of its "children"
+%--------------------------------------------- Pfeile für das Diagramm vom WBS -------------------------------------
+%-----------------------------------lines from each level 1 node to every one of its "children"--------------------
 \foreach \value in {1,2,3,4}
   \draw[->] (c1.212) |- (c1\value.west);
 
 \foreach \value in {1,2,3}
   \draw[->] (c2.212) |- (c2\value.west);
 
-\foreach \value in {1,2,3,4}
+\foreach \value in {1,2,3}
   \draw[->] (c3.212) |- (c3\value.west);
 
 \foreach \value in {1,2,3}
@@ -69,7 +68,7 @@
 
 \section{Zeitplan}
 \label{sec:zeitplan}
-
+%----------------------------------------------- Ganttchart Diagramm -----------------------------------------------
 \begin{landscape}
 %\noindent\resizebox{\textwidth}{!}{	% Einfügen, falls zu groß
 \begin{ganttchart}[hgrid,
@@ -109,7 +108,8 @@
 \label{sec:wpd}
 
 
-%AP Literaturrecherche
+%--------------------------------------------- AP Literaturrecherche ------------------------------------------
+%-------------------------------------------- Tabelle Weltraummüllproblematik ---------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -147,7 +147,7 @@
 \end{table}
 
 \clearpage
-
+%-------------------------------------------- Tabelle CubeSat Subsysteme ----------------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -184,7 +184,7 @@
 \end{table}
 
 \clearpage
-
+%-------------------------------------------- Tabelle Rendezvous und Docking -------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -224,7 +224,7 @@
 \end{table}
 
 \clearpage
-
+%-------------------------------------------- Tabelle Erforderliche Software ------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -261,7 +261,8 @@
 \end{table}
 
 \clearpage
-%AP Cubesat Design
+%-------------------------------------------- AP Cubesat Design -----------------------------------------------
+%------------------------------------ Tabelle CubeSat Datenbank Analyse ---------------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -308,7 +309,7 @@
 \end{table}
 
 \clearpage
-
+%------------------------------------ Tabelle Ausarbeitung von effizienten Subsystemen -------------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -355,7 +356,7 @@
 \end{table}
 
 \clearpage
-
+%----------------------------------- Tabelle Ausarbeitung von CubeSat Konfigurationen ----------------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -364,7 +365,7 @@
    \multicolumn{3}{|l||}{\textbf{}} & \multicolumn{1}{c|}{\textbf{AP 2300}}\\
    \multicolumn{3}{|l||}{\textbf{}} & \multicolumn{1}{c|}{}\\
    \hline\hline
-   \textbf{Titel} & \multicolumn{2}{p{7cm}||}{\textbf{AUsarbeitung von CubeSat Konfigurationen}} & \textbf{Seite:} X von Y\\
+   \textbf{Titel} & \multicolumn{2}{p{7cm}||}{\textbf{Ausarbeitung von CubeSat Konfigurationen}} & \textbf{Seite:} X von Y\\
    \hline
    \textbf{Verantwortlicher} & \multicolumn{2}{l||}{Dein Name} & \textbf{Version:} 1.1\\
    \hline
@@ -402,7 +403,8 @@
 \end{table}
 
 \clearpage
-%AP Budgetplanung
+%----------------------------------------- AP Budgetplanung mit QuSad -----------------------------------------
+%----------------------------------------- Tabelle Datenbankerweiterung ---------------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -449,7 +451,7 @@
 \end{table}
 
 \clearpage
-
+%--------------------------------------- Tabelle Generierung der CubeSat Konfigurationen -----------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -496,7 +498,7 @@
 \end{table}
 
 \clearpage
-
+%------------------------------------- Tabelle Generierung der CubeSat Konfigurationen---------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -543,54 +545,8 @@
 \end{table}
 
 \clearpage
-
-\begin{table}[!h]
- \begin{center}
-  \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
-   \hline
-   \multicolumn{3}{|l||}{\textbf{}} & \multicolumn{1}{c|}{}\\
-   \multicolumn{3}{|l||}{\textbf{}} & \multicolumn{1}{c|}{\textbf{AP 3400}}\\
-   \multicolumn{3}{|l||}{\textbf{}} & \multicolumn{1}{c|}{}\\
-   \hline\hline
-   \textbf{Titel} & \multicolumn{2}{p{7cm}||}{\textbf{Gegenüberstellung der Konfigurationen}} & \textbf{Seite:} X von Y\\
-   \hline
-   \textbf{Verantwortlicher} & \multicolumn{2}{l||}{Dein Name} & \textbf{Version:} 1.1\\
-   \hline
-   \multicolumn{3}{|l||}{} & \textbf{Datum:} 00.00.2019\\
-   \hline\hline
-   \textbf{Beginn} & \multicolumn{2}{l||}{T$_0$} & \\
-   \hline
-   \textbf{Ende} & \multicolumn{2}{l||}{T$_0$+X Wochen} & \textbf{Dauer}: X Wochen\\
-   \hline\hline
-   \textbf{Bearbeiter} & \multicolumn{3}{l|}{Dein Name}\\
-   \hline\hline
-   \multicolumn{4}{|p{150mm}|}{\textbf{Ziele:}}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ Ziel 1}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ Ziel 2}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ ...}\\
-   \multicolumn{4}{|p{150mm}|}{}\\
-   \multicolumn{4}{|p{150mm}|}{\textbf{Input:}}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ Input 1}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ ...}\\
-   \multicolumn{4}{|p{150mm}|}{}\\
-   \multicolumn{4}{|p{150mm}|}{\textbf{Schnittstellen zu anderen APs:}}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ \textbf{AP XXXX} Beschreibung}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ \textbf{AP ....} ...}\\
-   \multicolumn{4}{|p{150mm}|}{}\\
-   \multicolumn{4}{|p{150mm}|}{\textbf{Aufgaben:}}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ Aufgabe 1}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ ...}\\
-   \multicolumn{4}{|p{150mm}|}{}\\
-   \multicolumn{4}{|p{150mm}|}{\textbf{Ergebnisse:}}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ Ergebnis 1}\\
-   \multicolumn{4}{|p{150mm}|}{$\bullet$ ...}\\
-   \hline
-  \end{tabular}
- \end{center}
-\end{table}
-
-\clearpage
-%AP Missionsplanung
+%----------------------------------------- AP Missionsplanung --------------------------------------------------
+%------------------------------------- Tabelle Missionsauslegung------------------------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -637,7 +593,7 @@
 \end{table}
 
 \clearpage
-
+%------------------------------------------ Tabelle Durchführung der Simulation -------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -684,7 +640,7 @@
 \end{table}
 
 \clearpage
-
+%--------------------------------------- Tabelle Auswertung der Simulation -----------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -732,7 +688,9 @@
 
 \clearpage
 
-%AP Dokumentation
+
+%---------------------------------------------- AP Dokumentation --------------------------------------------------------
+%------------------------------------------- Tabelle Textverfassung -----------------------------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
@@ -779,8 +737,7 @@
 \end{table}
 
 \clearpage
-
-
+%-------------------------------------- Tabelle Überprüfung ----------------------------------------------------------
 \begin{table}[!h]
  \begin{center}
   \begin{tabular}{|p{35mm}||p{55mm}|p{50mm}||p{40mm}|}
