@@ -67,42 +67,8 @@
 \end{landscape}
 
 \section{Zeitplan}
-\label{sec:zeitplan}
 %----------------------------------------------- Ganttchart Diagramm -----------------------------------------------
-\begin{landscape}
-%\noindent\resizebox{\textwidth}{!}{	% Einfügen, falls zu groß
-\begin{ganttchart}[hgrid,
-                   time slot format = isodate, 
-                   x unit=0.28cm,	% Zum komprimieren des Charts in x-Richtung
-                   %y unit chart=0.7cm,
-                   %compress calendar,	% Komprimiert den Chart in der Breite
-                   calendar week text = {Woche~\currentweek},
-                   chart element start border = right,
-                   bar/.append style={fill=blue!40, rounded corners=2pt},
-                   bar incomplete/.append style={fill=blue!10},
-                   bar label node/.append style={align=left, text width=7cm},
-                   group label node/.append style={align=left, text width=8cm},
-                   milestone label node/.append style={align=left, text width=8cm},
-                   bar progress label node/.style={right=2mm},
-                   progress label text = {\pgfmathprintnumber[precision=0, verbatim]{#1}\%},
-                  ]{2013-01-01}{2013-02-23}
-  \gantttitlecalendar{year, month=shortname, week}\\
-  %\gantttitle{2013}{59}\\
-  \ganttgroup{AP 1000: Literaturrecherche}{2013-01-01}{2013-02-01}\\
-  \ganttbar[progress=50]  {AP 1100: Weltraummüllproblematik}{2013-01-01}{2013-01-08}\\
-  \ganttlinkedbar {AP 1200: Beobachtung von Weltraummüll}{2013-01-09}{2013-01-17}\\
-  \ganttlinkedbar {AP 1300: Bahnbestimmung mit optischen Sensoren}{2013-01-17}{2013-02-01}\\
-  %\ganttbar[progress=100]{AP 1300: TEXT}{2013-01-01}{2013-01-30}\\	% Beispiel für Fortschrittsbalken!
-  
-  \ganttgroup{AP 2000: Algorithmuserstellung}{2013-02-02}{2013-02-23}\\
-  \ganttbar  {AP 2100: ...}{2013-02-02}{2013-02-09}\\
-  \ganttbar  {AP 2200: ...}{2013-02-10}{2013-02-19}\\
-  
-  \ganttmilestone{Meilenstein}{2013-02-20}\\
-  
- \end{ganttchart}
-%}
-\end{landscape}
+	\includepdf[pages=-]{./pdf/Mappe1.pdf}			%PDF-Datei wird hinzugefügt Ganttchart
 
 \section{Work Package Description}
 \label{sec:wpd}
