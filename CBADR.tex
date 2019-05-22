@@ -2,7 +2,7 @@
   a4paper,
   oneside,
   nexus,
-  12pt,																									% <10pt, 9pt>
+  11pt,																									% <10pt, 9pt>
 																												%style=screen,
 																												%sender=bottom,
   blue,																									% <orange, green, violet>
@@ -30,8 +30,8 @@
 \usetikzlibrary{shapes,backgrounds, arrows, positioning, trees, shadows}% Bibliotheken für Tikz
 \usepackage{pgfgantt}																		 % Zum Erstellen eines Gantt-Charts
 
-\graphicspath{{./graphics/}}														%greift auf den Unterordner "graphics" zu
-\usepackage{pdfpages}																		%ermöglicht das Einbinden von PDF-Datein
+\graphicspath{{./graphics/}}														 %greift auf den Unterordner "graphics" zu
+\usepackage{pdfpages}																		 %ermöglicht das Einbinden von PDF-Datein
 
 %===============================================================
 %
@@ -105,9 +105,9 @@
 %
 %-------------------------------
 
-\title{\LARGE R XXXX X \newline CubeSat-based active debris removal}
+\title{\LARGE Projektarbeit SS 2019 \newline Analyse einer CubeSat-basierten ADR-Mission}
 \subtitle{Institut f\"ur Raumfahrtsysteme}
-\author{Florian Czorny, Frederik Sch\"afer, \\ Marc Strempel, Oussama Mouhaya, \\ Valentina Dietrich}
+\author{\small Florian Czorny, Frederik Sch\"afer, Marc Strempel, Oussama Mouhaya, Valentina Dietrich}
 
 %---------------------------------------------------------------
 % Titelbilder + IRAS Logo (Deckblatt)
@@ -126,9 +126,9 @@
 % Hauptfunktion
 %---------------------------------------------------------------
 
-\begin{document}																								%Erstellung des Schreibdokumentes 
+\begin{document}																												%Erstellung des Schreibdokumentes 
 
-  \maketitle[image] 																						%[<plain/image/imagetext>,<logo=left/right>]
+  \maketitle[image] 																										%[<plain/image/imagetext>,<logo=left/right>]
 
  \includepdf[pages=-]{./header_first/Aufgabenstellung_PA_SS19.pdf}			%PDF-Datei wird hinzugefügt 
  \include{./header_first/eid1}
@@ -146,7 +146,7 @@
 	\include{./header_hauptteil/einleitung1}															%Datei zu Verfassung des Kapitels 'Einleitung'
 	\include{./header_hauptteil/grundlagen1}															% -"- Grundlagen
 	\include{./header_hauptteil/cubesatdesign1}														% -"- CubeSat Design 														
-	\include{./header_hauptteil/missiondesign}														% -"- Mission Design Design 	
+	\include{./header_hauptteil/missiondesign}														% -"- Mission Design
   \include{./header_hauptteil/zusammenfassung1}													
   \include{./header_hauptteil/ausblick1}
 	
@@ -182,10 +182,10 @@
   % Symbol- und Abkürzungsverzeichnis
   %
   %---------------------------------------------------
- \chapter*{Symbolverzeichnis}																		% Symbolverzeichnis
-   \addcontentsline{toc}{chapter}{Symbolverzeichnis}							% fügt Symbolverzeichnis trotz * in das Inhaltsverzeichnis ein
+ \chapter*{Symbolverzeichnis}																					% Symbolverzeichnis
+   \addcontentsline{toc}{chapter}{Symbolverzeichnis}									% fügt Symbolverzeichnis trotz * in das Inhaltsverzeichnis ein
         \printglossary[type=symbolslist, title=Symbole und Indizes]		% symbols
-   \printglossary[type=acronymlist, title=Abk\"urzungen]								% abbreviations
+   \printglossary[type=acronymlist, title=Abk\"urzungen]							% abbreviations
  \glsaddall 
   \newpage
 	
@@ -195,7 +195,7 @@
   %
   %---------------------------------
 		\begin{appendix}
-			\include{./header_verzeichnisse/projekt}									% WBS und WPD Datei 
+			\include{./header_verzeichnisse/projekt}													% WBS und WPD Datei 
 			%\include{WEITERER ANHANG}
 		\end{appendix}
 	
