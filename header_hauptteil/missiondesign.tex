@@ -1,67 +1,64 @@
 \chapter{Auswertung des CubeSat-based ADR Konzepts}
 
 \section{Bewertungsstrategie}
-	Die Strategie besteht draus mehrere Simulationen per GMAT für untershciedliche Koonfigs durchzuführen. Die Bewertung fokusiertsich auf die Machbarkeit des De-orbiting (seihe TODOS.txt)\\
-
-		\subsection{Kriterien der Bewertung}
-					
+	%Die Strategie besteht draus mehrere Simulationen per GMAT für untershciedliche Koonfigs durchzuführen. Die Bewertung fokusiertsich auf die Machbarkeit des De-orbiting (seihe TODOS.txt)\\
+		\subsection{Kriterien der Bewertung}	
 		\subsection{GMAT}
 
 
 \section{Ergebnisse}
-	
 		\subsection {Generated Data}
-For every considered satellite design (=mainly thruster configuration, 3-4 different designs), generate following data: \\
-
-Deorbit time and spent fuel mass for all:
-\begin{itemize}
-	\item Masses from 50-500 kg\\
-	\item Altitudes from 1400-400? km  (ggf. semi-major axis) \\
-	\item Eccentricities from ~0 to highest recorded eccentricity of debris in <1400 km orbit
-\end{itemize}
-
-Note: Output EVERY relevant simulation parameter (initial orbit and S/C data, burn start/stop angles, start epoch etc.)  at the beginning of every simulation run [discuss with Max]
-	
-			\subsection{Reachability Enveloppe}
-RESULTING DIAGRAMS: \\
-
-\begin{enumerate}
-		\item Visualize the absolute performance of the main design (Max), e = 0 \\
-				\begin{itemize}
-						\item Axes: y = mass, x = SMA \\
-						\item Graph: Use color gradients to display deorbit times (same time = same color)
-				\end{itemize}
-				\item  Visualize the influence of eccentricity on deorbit times using the main design \\
-				\begin{itemize}
-						\item Axes: y = mass, x = SMA \\
-						\item Select a fixed deorbit time (e.g. 2 years) \\
-						\item Graph: Use color gradients to display eccentricities (same ecc = same color)
-				\end{itemize}
-				\item Visually compare the performances of the different designs (Max \& 2-3 group designs), e = 0 
-				\begin{itemize}
-						\item Axes: y = mass, x = SMA \\
-						\item Select 1-2 fixed deorbit times (e.g. 2 years \& 5 years) \\
-						\item Graph: Draw lines of same deorbit time (selected above) for each of the different designs
-				\end{itemize}				
-\end{enumerate}
-Optional for group after 3. (decide if worth it)\\
-4. Repeat 1. with all other chosen designs\\
-
-NOTES: \\
-
-For 1. \& 4.:\\
-(Deorbit time limited to 10 years (15? 20?)) \\
--> <2 years of deorbiting takes 3-4 mins to simulate, amount of data is immense => limit maximum deorbit time? \\
--> At which deorbiting time does a feasible solution become unattractive? If 200 kg in 1000 km orbit is \\
-   deorbitable in 20 years, is it worth it? Better use chemical deorbiting = different mission in this case? \\
----> Agree on a meaningful limit on deorbit time \\
-
-For all graphs/simulations: \\
-Fuel mass limited by design -> if 27U standard is to be kept no matter which thruster configuration is \\
-chosen, then smaller/more lightweight thrusters would result in more available space for fuel \\
----> Agree on a set percentage of margin for all designs (e.g. 50\%) and determine maximum fuel from there? \\
-
--> For Max's design, fuel mass limited to 10 kg (thinking about increasing to 15 kg)\\
+%For every considered satellite design (=mainly thruster configuration, 3-4 different designs), generate following data: \\
+%
+%Deorbit time and spent fuel mass for all:
+%\begin{itemize}
+	%\item Masses from 50-500 kg\\
+	%\item Altitudes from 1400-400? km  (ggf. semi-major axis) \\
+	%\item Eccentricities from ~0 to highest recorded eccentricity of debris in <1400 km orbit
+%\end{itemize}
+%
+%Note: Output EVERY relevant simulation parameter (initial orbit and S/C data, burn start/stop angles, start epoch etc.)  at the beginning of every simulation run [discuss with Max]
+	%
+			%\subsection{Reachability Enveloppe}
+%RESULTING DIAGRAMS: \\
+%
+%\begin{enumerate}
+		%\item Visualize the absolute performance of the main design (Max), e = 0 \\
+				%\begin{itemize}
+						%\item Axes: y = mass, x = SMA \\
+						%\item Graph: Use color gradients to display deorbit times (same time = same color)
+				%\end{itemize}
+				%\item  Visualize the influence of eccentricity on deorbit times using the main design \\
+				%\begin{itemize}
+						%\item Axes: y = mass, x = SMA \\
+						%\item Select a fixed deorbit time (e.g. 2 years) \\
+						%\item Graph: Use color gradients to display eccentricities (same ecc = same color)
+				%\end{itemize}
+				%\item Visually compare the performances of the different designs (Max \& 2-3 group designs), e = 0 
+				%\begin{itemize}
+						%\item Axes: y = mass, x = SMA \\
+						%\item Select 1-2 fixed deorbit times (e.g. 2 years \& 5 years) \\
+						%\item Graph: Draw lines of same deorbit time (selected above) for each of the different designs
+				%\end{itemize}				
+%\end{enumerate}
+%Optional for group after 3. (decide if worth it)\\
+%4. Repeat 1. with all other chosen designs\\
+%
+%NOTES: \\
+%
+%For 1. \& 4.:\\
+%(Deorbit time limited to 10 years (15? 20?)) \\
+%-> <2 years of deorbiting takes 3-4 mins to simulate, amount of data is immense => limit maximum deorbit time? \\
+%-> At which deorbiting time does a feasible solution become unattractive? If 200 kg in 1000 km orbit is \\
+   %deorbitable in 20 years, is it worth it? Better use chemical deorbiting = different mission in this case? \\
+%---> Agree on a meaningful limit on deorbit time \\
+%
+%For all graphs/simulations: \\
+%Fuel mass limited by design -> if 27U standard is to be kept no matter which thruster configuration is \\
+%chosen, then smaller/more lightweight thrusters would result in more available space for fuel \\
+%---> Agree on a set percentage of margin for all designs (e.g. 50\%) and determine maximum fuel from there? \\
+%
+%-> For Max's design, fuel mass limited to 10 kg (thinking about increasing to 15 kg)\\
 			%\subsection{Missionsauslegung}
 					%\textbf{Mögliche CubeSat Konfigurationen}\\
 			%\subsection{Missionssimulation}
