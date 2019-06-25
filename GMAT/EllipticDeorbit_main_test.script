@@ -11,12 +11,12 @@ GMAT TestSat.DateFormat = UTCGregorian;
 GMAT TestSat.Epoch = '01 Jul 2015 11:59:23.000';
 GMAT TestSat.CoordinateSystem = EarthMJ2000Eq;
 GMAT TestSat.DisplayStateType = Keplerian;
-GMAT TestSat.SMA = 7521.000000000001;
-GMAT TestSat.ECC = 0.004999999999999089;
+GMAT TestSat.SMA = 7521.000000000003;
+GMAT TestSat.ECC = 0.004999999999998596;
 GMAT TestSat.INC = 53.00000000000001;
 GMAT TestSat.RAAN = 360;
 GMAT TestSat.AOP = 360;
-GMAT TestSat.TA = 130.0000000000236;
+GMAT TestSat.TA = 130.0000000000263;
 GMAT TestSat.DryMass = 426;
 GMAT TestSat.Cd = 2.2;
 GMAT TestSat.Cr = 1.8;
@@ -668,6 +668,7 @@ GMAT NineNanoTank.FuelMass = 2.07;
 
 
 
+
 %----------------------------------------
 %---------- ForceModels
 %----------------------------------------
@@ -683,6 +684,9 @@ GMAT PD78_Acc11_PMOff_ForceModel.GravityField.Earth.Order = 20;
 GMAT PD78_Acc11_PMOff_ForceModel.GravityField.Earth.StmLimit = 100;
 GMAT PD78_Acc11_PMOff_ForceModel.GravityField.Earth.PotentialFile = 'JGM2.cof';
 GMAT PD78_Acc11_PMOff_ForceModel.GravityField.Earth.TideModel = 'None';
+GMAT PD78_Acc11_PMOff_ForceModel.SRP.Flux = 1367;
+GMAT PD78_Acc11_PMOff_ForceModel.SRP.SRPModel = Spherical;
+GMAT PD78_Acc11_PMOff_ForceModel.SRP.Nominal_Sun = 149597870.691;
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.AtmosphereModel = MSISE90;
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.HistoricWeatherSource = 'CSSISpaceWeatherFile';
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.PredictedWeatherSource = 'SchattenFile';
@@ -693,9 +697,6 @@ GMAT PD78_Acc11_PMOff_ForceModel.Drag.F107A = 150;
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.MagneticIndex = 3;
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.SchattenErrorModel = 'Nominal';
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.SchattenTimingModel = 'NominalCycle';
-GMAT PD78_Acc11_PMOff_ForceModel.SRP.Flux = 1367;
-GMAT PD78_Acc11_PMOff_ForceModel.SRP.SRPModel = Spherical;
-GMAT PD78_Acc11_PMOff_ForceModel.SRP.Nominal_Sun = 149597870.691;
 
 Create ForceModel PD78_Acc10_PMOff_Grav4_ForceModel;
 GMAT PD78_Acc10_PMOff_Grav4_ForceModel.CentralBody = Earth;
@@ -708,6 +709,9 @@ GMAT PD78_Acc10_PMOff_Grav4_ForceModel.GravityField.Earth.Order = 4;
 GMAT PD78_Acc10_PMOff_Grav4_ForceModel.GravityField.Earth.StmLimit = 100;
 GMAT PD78_Acc10_PMOff_Grav4_ForceModel.GravityField.Earth.PotentialFile = 'JGM2.cof';
 GMAT PD78_Acc10_PMOff_Grav4_ForceModel.GravityField.Earth.TideModel = 'None';
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.SRP.Flux = 1367;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.SRP.SRPModel = Spherical;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.SRP.Nominal_Sun = 149597870.691;
 GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.AtmosphereModel = MSISE90;
 GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.HistoricWeatherSource = 'CSSISpaceWeatherFile';
 GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.PredictedWeatherSource = 'SchattenFile';
@@ -718,9 +722,6 @@ GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.F107A = 150;
 GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.MagneticIndex = 3;
 GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.SchattenErrorModel = 'Nominal';
 GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.SchattenTimingModel = 'NominalCycle';
-GMAT PD78_Acc10_PMOff_Grav4_ForceModel.SRP.Flux = 1367;
-GMAT PD78_Acc10_PMOff_Grav4_ForceModel.SRP.SRPModel = Spherical;
-GMAT PD78_Acc10_PMOff_Grav4_ForceModel.SRP.Nominal_Sun = 149597870.691;
 
 %----------------------------------------
 %---------- Propagators
@@ -825,10 +826,12 @@ GMAT EllipticDeorbit.WriteReport = true;
 %----------------------------------------
 %---------- Arrays, Variables, Strings
 %----------------------------------------
-Create Variable TA_start TA_end I;
+Create Variable TA_start TA_end I height;
 GMAT TA_start = 144;
 GMAT TA_end = 216;
 GMAT I = 0;
+GMAT height = 950;
+
 
 
 

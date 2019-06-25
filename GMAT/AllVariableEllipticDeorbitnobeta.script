@@ -12,11 +12,11 @@ GMAT TestSat.Epoch = '01 Jul 2015 11:59:23.000';
 GMAT TestSat.CoordinateSystem = EarthMJ2000Eq;
 GMAT TestSat.DisplayStateType = Keplerian;
 GMAT TestSat.SMA = 7521.000000000003;
-GMAT TestSat.ECC = 0.004999999999998953;
+GMAT TestSat.ECC = 0.00499999999999834;
 GMAT TestSat.INC = 53.00000000000001;
 GMAT TestSat.RAAN = 360;
-GMAT TestSat.AOP = 0;
-GMAT TestSat.TA = 130.0000000000229;
+GMAT TestSat.AOP = 360;
+GMAT TestSat.TA = 130.0000000000287;
 GMAT TestSat.DryMass = 426;
 GMAT TestSat.Cd = 2.2;
 GMAT TestSat.Cr = 1.8;
@@ -672,6 +672,16 @@ GMAT NineNanoTank.FuelMass = 2.07;
 
 
 
+
+
+
+
+
+
+
+
+
+
 %----------------------------------------
 %---------- ForceModels
 %----------------------------------------
@@ -693,7 +703,7 @@ GMAT PD78_Acc11_PMOff_ForceModel.SRP.Nominal_Sun = 149597870.691;
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.AtmosphereModel = MSISE90;
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.HistoricWeatherSource = 'CSSISpaceWeatherFile';
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.PredictedWeatherSource = 'SchattenFile';
-GMAT PD78_Acc11_PMOff_ForceModel.Drag.CSSISpaceWeatherFile = 'E:\Uni\Privatestorage\Projektarbeit\CubeSat-Based_ADR_Projekt_SoSe2019\GMAT\SW-Last5Years.txt';
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.CSSISpaceWeatherFile = 'E:\Uni\Privatestorage\Projektarbeit\CubeSat-Based_ADR_Projekt_SoSe2019\GMAT\SpaceWeather-All-v1.2.txt';
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.SchattenFile = 'SchattenPredict.txt';
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.F107 = 150;
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.F107A = 150;
@@ -810,14 +820,13 @@ GMAT DefaultGroundTrackPlot.CentralBody = Earth;
 GMAT DefaultGroundTrackPlot.TextureMap = 'ModifiedBlueMarble.jpg';
 
 Create ReportFile EllipticDeorbit;
-GMAT EllipticDeorbit.SolverIterations = Current;
-GMAT EllipticDeorbit.UpperLeft = [ 0 0 ];
-GMAT EllipticDeorbit.Size = [ 0.9322493224932249 0.7328519855595668 ];
-GMAT EllipticDeorbit.RelativeZOrder = 108;
+GMAT EllipticDeorbit.SolverIterations = None;
+GMAT EllipticDeorbit.UpperLeft = [ -0.01475107559926245 -0.01363636363636364 ];
+GMAT EllipticDeorbit.Size = [ 0.9698832206515058 0.7738636363636363 ];
+GMAT EllipticDeorbit.RelativeZOrder = 166;
 GMAT EllipticDeorbit.Maximized = false;
-GMAT EllipticDeorbit.Filename = 'EllipticMain.txt';
+GMAT EllipticDeorbit.Filename = '50to550kg_58degree_xkm.txt';
 GMAT EllipticDeorbit.Precision = 10;
-GMAT EllipticDeorbit.Add = {TestSat.Earth.RadApo, TestSat.Earth.RadPer, TestSat.Earth.ECC, TestSat.Earth.OrbitPeriod, TestSat.Earth.BetaAngle, TestSat.ElapsedDays, TestSat.Busek_BHT_200_largetank.FuelMass, TestSat.PD78_Acc11_PMOff_ForceModel.AtmosDensity};
 GMAT EllipticDeorbit.WriteHeaders = true;
 GMAT EllipticDeorbit.LeftJustify = On;
 GMAT EllipticDeorbit.ZeroFill = Off;
@@ -826,18 +835,43 @@ GMAT EllipticDeorbit.Delimiter = ' ';
 GMAT EllipticDeorbit.ColumnWidth = 23;
 GMAT EllipticDeorbit.WriteReport = true;
 
+Create ReportFile AwReport;
+GMAT AwReport.SolverIterations = None;
+GMAT AwReport.UpperLeft = [ -0.01475107559926245 -0.01363636363636364 ];
+GMAT AwReport.Size = [ 0.9698832206515058 0.7738636363636363 ];
+GMAT AwReport.RelativeZOrder = 166;
+GMAT AwReport.Maximized = false;
+GMAT AwReport.Filename = '50to550kg_58degree_xkmAW.txt';
+GMAT AwReport.Precision = 10;
+GMAT AwReport.WriteHeaders = true;
+GMAT AwReport.LeftJustify = On;
+GMAT AwReport.ZeroFill = Off;
+GMAT AwReport.FixedWidth = true;
+GMAT AwReport.Delimiter = ' ';
+GMAT AwReport.ColumnWidth = 23;
+GMAT AwReport.WriteReport = true;
+
 %----------------------------------------
 %---------- Arrays, Variables, Strings
 %----------------------------------------
-Create Variable TA_start TA_end I total_Mass_wo_tank orbit_height target_mass beta CubeSat_mass;
-GMAT TA_start = 144;
-GMAT TA_end = 216;
+Create Variable TA_start TA_end I orbit_height target_mass beta CubeSat_mass;
+GMAT TA_start = 151;
+GMAT TA_end = 209;
 GMAT I = 0;
-GMAT total_Mass_wo_tank = 394;
 GMAT orbit_height = 950;
 GMAT target_mass = 350;
 GMAT beta = 70;
 GMAT CubeSat_mass = 44;
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -865,39 +899,24 @@ GMAT CubeSat_mass = 44;
 %----------------------------------------
 
 BeginMissionSequence;
-Report 'Stats' EllipticDeorbit TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.ECC TestSat.Earth.OrbitPeriod TestSat.Earth.BetaAngle TestSat.ElapsedDays TestSat.Busek_BHT_200_largetank.FuelMass TA_start TA_end TestSat.DragArea TestSat.SRPArea TestSat.TotalMass TestSat.DryMass;
-While 'While h>180km or t<25y or fuel>0kg' TestSat.A1ModJulian < 37251 & TestSat.Busek_BHT_200_largetank.FuelMass > 0.001 & TestSat.Earth.RMAG > 6551 & TestSat.A1ModJulian < 37251
-   Propagate 'PropToBurnStart' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = TA_start, TestSat.Earth.RMAG = 6552, StopTolerance = 1e-005};
-   Report 'PreBurn' EllipticDeorbit TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.ECC TestSat.Earth.OrbitPeriod TestSat.Earth.BetaAngle TestSat.ElapsedDays TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedSecs;
-   BeginFiniteBurn 'BurnStart' FiniteBurn(TestSat);
-   Propagate 'PropToBurnEnd' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = TA_end, TestSat.Earth.RMAG = 6551.5, TestSat.Busek_BHT_200_largetank.FuelMass = 0, StopTolerance = 1e-005};
-   EndFiniteBurn 'BurnEnd' FiniteBurn(TestSat);
-   Report 'PostBurn' EllipticDeorbit TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.ECC TestSat.Earth.OrbitPeriod TestSat.Earth.BetaAngle TestSat.ElapsedDays TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedSecs;
-   Propagate 'PropPeri' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.Periapsis};
-EndWhile;
-Report 'AfterWhile' EllipticDeorbit TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.ECC TestSat.Earth.OrbitPeriod TestSat.Earth.BetaAngle TestSat.ElapsedDays TestSat.Busek_BHT_200_largetank.FuelMass;
-Propagate 'FinalPropPeri' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.Periapsis};
-Report 'EndStats' EllipticDeorbit TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.ECC TestSat.Earth.OrbitPeriod TestSat.Earth.BetaAngle TestSat.ElapsedDays TestSat.Busek_BHT_200_largetank.FuelMass TestSat.A1ModJulian;
-For 'Targetmass' target_mass = 350:10:370;
-   GMAT TestSat.DryMass = target_mass+CubeSat_mass;
-   For 'Orbitheight' orbit_height = 950:50:1050;
-      GMAT 'Set SMA' TestSat.SMA = 6378+(orbit_height/2);
-      For 'Burnangle' beta = 50:10:90;
-         GMAT 'Set TA_start' TA_start = 180-(beta/2);
-         GMAT 'Set TA_end' TA_end = 180+(beta/2);
-         Report 'Stats' EllipticDeorbit TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.ECC TestSat.Earth.OrbitPeriod TestSat.Earth.BetaAngle TestSat.ElapsedDays TestSat.Busek_BHT_200_largetank.FuelMass TA_start TA_end TestSat.DragArea TestSat.SRPArea TestSat.TotalMass TestSat.DryMass;
-         While 'While h>180km or t<25y or fuel>0kg' TestSat.A1ModJulian < 37251 & TestSat.Busek_BHT_200_largetank.FuelMass > 0.001 & TestSat.Earth.RMAG > 6551 & TestSat.A1ModJulian < 37251
-            Propagate 'PropToBurnStart' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = TA_start, TestSat.Earth.RMAG = 6552, StopTolerance = 1e-005};
-            Report 'PreBurn' EllipticDeorbit TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.ECC TestSat.Earth.OrbitPeriod TestSat.Earth.BetaAngle TestSat.ElapsedDays TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedSecs;
-            BeginFiniteBurn 'BurnStart' FiniteBurn(TestSat);
-            Propagate 'PropToBurnEnd' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = TA_end, TestSat.Earth.RMAG = 6551.5, TestSat.Busek_BHT_200_largetank.FuelMass = 0, StopTolerance = 1e-005};
-            EndFiniteBurn 'BurnEnd' FiniteBurn(TestSat);
-            Report 'PostBurn' EllipticDeorbit TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.ECC TestSat.Earth.OrbitPeriod TestSat.Earth.BetaAngle TestSat.ElapsedDays TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedSecs;
-            Propagate 'PropPeri' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.Periapsis};
-         EndWhile;
-         Report 'AfterWhile' EllipticDeorbit TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.ECC TestSat.Earth.OrbitPeriod TestSat.Earth.BetaAngle TestSat.ElapsedDays TestSat.Busek_BHT_200_largetank.FuelMass;
-         Propagate 'FinalPropPeri' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.Periapsis};
-         Report 'EndStats' EllipticDeorbit TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.ECC TestSat.Earth.OrbitPeriod TestSat.Earth.BetaAngle TestSat.ElapsedDays TestSat.Busek_BHT_200_largetank.FuelMass TestSat.A1ModJulian;
-      EndFor;
+For 'Orbitheight' orbit_height = 400:50:650;
+   For 'Targetmass' target_mass = 50:25:550;
+      GMAT 'Set SMA' TestSat.SMA = 6378+orbit_height;
+      GMAT 'Set Dry Mass' TestSat.DryMass = target_mass+CubeSat_mass;
+      GMAT 'Reset Tank Mass' TestSat.Busek_BHT_200_largetank.FuelMass = 10;
+      GMAT 'Reset ECC' TestSat.Earth.ECC = 0.005;
+      GMAT 'Reset Date' TestSat.A1ModJulian = 27204.99998882387;
+      Report 'StartStats' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.ECC TestSat.Earth.RMAG TestSat.Earth.SMA TestSat.TotalMass orbit_height target_mass;
+      While 'While h>180km or t<25y or fuel>0kg' TestSat.A1ModJulian < 37251 & TestSat.Busek_BHT_200_largetank.FuelMass > 0.001 & TestSat.Earth.RMAG > 6551 & TestSat.A1ModJulian < 37251
+         Propagate 'PropToBurnStart' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = TA_start, TestSat.Earth.RMAG = 6552, StopTolerance = 1e-005};
+         BeginFiniteBurn 'BurnStart' FiniteBurn(TestSat);
+         Propagate 'PropToBurnEnd' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = TA_end, TestSat.Earth.RMAG = 6551.5, TestSat.Busek_BHT_200_largetank.FuelMass = 0, StopTolerance = 1e-005};
+         EndFiniteBurn 'BurnEnd' FiniteBurn(TestSat);
+         Propagate 'PropPeri' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.Periapsis};
+         Report 'EndWhile Report' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.ECC TestSat.Earth.RMAG TestSat.Earth.SMA TestSat.TotalMass orbit_height target_mass;
+      EndWhile;
+      Propagate 'FinalPropPeri' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.Periapsis};
+      Report 'EndStats' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.ECC TestSat.Earth.RMAG TestSat.Earth.SMA TestSat.TotalMass orbit_height target_mass;
+      Report 'AWReport' AwReport TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.ECC TestSat.Earth.RMAG TestSat.Earth.SMA TestSat.TotalMass orbit_height target_mass;
    EndFor;
 EndFor;

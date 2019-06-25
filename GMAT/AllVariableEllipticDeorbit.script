@@ -11,12 +11,12 @@ GMAT TestSat.DateFormat = UTCGregorian;
 GMAT TestSat.Epoch = '01 Jul 2015 11:59:23.000';
 GMAT TestSat.CoordinateSystem = EarthMJ2000Eq;
 GMAT TestSat.DisplayStateType = Keplerian;
-GMAT TestSat.SMA = 7521.000000000002;
-GMAT TestSat.ECC = 0.004999999999999142;
+GMAT TestSat.SMA = 7521.000000000003;
+GMAT TestSat.ECC = 0.00499999999999834;
 GMAT TestSat.INC = 53.00000000000001;
 GMAT TestSat.RAAN = 360;
 GMAT TestSat.AOP = 360;
-GMAT TestSat.TA = 130.0000000000231;
+GMAT TestSat.TA = 130.0000000000287;
 GMAT TestSat.DryMass = 426;
 GMAT TestSat.Cd = 2.2;
 GMAT TestSat.Cr = 1.8;
@@ -677,6 +677,7 @@ GMAT NineNanoTank.FuelMass = 2.07;
 
 
 
+
 %----------------------------------------
 %---------- ForceModels
 %----------------------------------------
@@ -698,7 +699,7 @@ GMAT PD78_Acc11_PMOff_ForceModel.SRP.Nominal_Sun = 149597870.691;
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.AtmosphereModel = MSISE90;
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.HistoricWeatherSource = 'CSSISpaceWeatherFile';
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.PredictedWeatherSource = 'SchattenFile';
-GMAT PD78_Acc11_PMOff_ForceModel.Drag.CSSISpaceWeatherFile = 'E:\Uni\Privatestorage\Projektarbeit\CubeSat-Based_ADR_Projekt_SoSe2019\GMAT\SW-Last5Years.txt';
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.CSSISpaceWeatherFile = 'E:\Uni\Privatestorage\Projektarbeit\CubeSat-Based_ADR_Projekt_SoSe2019\GMAT\SpaceWeather-All-v1.2.txt';
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.SchattenFile = 'SchattenPredict.txt';
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.F107 = 150;
 GMAT PD78_Acc11_PMOff_ForceModel.Drag.F107A = 150;
@@ -816,11 +817,11 @@ GMAT DefaultGroundTrackPlot.TextureMap = 'ModifiedBlueMarble.jpg';
 
 Create ReportFile EllipticDeorbit;
 GMAT EllipticDeorbit.SolverIterations = None;
-GMAT EllipticDeorbit.UpperLeft = [ -0.01475107559926245 -0.01363636363636364 ];
-GMAT EllipticDeorbit.Size = [ 0.9698832206515058 0.7738636363636363 ];
-GMAT EllipticDeorbit.RelativeZOrder = 166;
+GMAT EllipticDeorbit.UpperLeft = [ 0.01726427622841965 0.009090909090909091 ];
+GMAT EllipticDeorbit.Size = [ 0.9661354581673307 0.7681818181818182 ];
+GMAT EllipticDeorbit.RelativeZOrder = 226;
 GMAT EllipticDeorbit.Maximized = false;
-GMAT EllipticDeorbit.Filename = '50to550kg_60to90degree_650to800km.txt';
+GMAT EllipticDeorbit.Filename = '50to550kg_58degree_400to650km.txt';
 GMAT EllipticDeorbit.Precision = 10;
 GMAT EllipticDeorbit.WriteHeaders = true;
 GMAT EllipticDeorbit.LeftJustify = On;
@@ -829,6 +830,22 @@ GMAT EllipticDeorbit.FixedWidth = true;
 GMAT EllipticDeorbit.Delimiter = ' ';
 GMAT EllipticDeorbit.ColumnWidth = 23;
 GMAT EllipticDeorbit.WriteReport = true;
+
+Create ReportFile EllipticDeorbitAW;
+GMAT EllipticDeorbitAW.SolverIterations = None;
+GMAT EllipticDeorbitAW.UpperLeft = [ 0.01726427622841965 0.009090909090909091 ];
+GMAT EllipticDeorbitAW.Size = [ 0.9661354581673307 0.7681818181818182 ];
+GMAT EllipticDeorbitAW.RelativeZOrder = 224;
+GMAT EllipticDeorbitAW.Maximized = false;
+GMAT EllipticDeorbitAW.Filename = '50to550kg_58degree_400to650kmAW.txt';
+GMAT EllipticDeorbitAW.Precision = 10;
+GMAT EllipticDeorbitAW.WriteHeaders = true;
+GMAT EllipticDeorbitAW.LeftJustify = On;
+GMAT EllipticDeorbitAW.ZeroFill = Off;
+GMAT EllipticDeorbitAW.FixedWidth = true;
+GMAT EllipticDeorbitAW.Delimiter = ' ';
+GMAT EllipticDeorbitAW.ColumnWidth = 23;
+GMAT EllipticDeorbitAW.WriteReport = true;
 
 %----------------------------------------
 %---------- Arrays, Variables, Strings
@@ -868,21 +885,22 @@ GMAT CubeSat_mass = 44;
 
 
 
+
 %----------------------------------------
 %---------- Mission Sequence
 %----------------------------------------
 
 BeginMissionSequence;
-For 'Targetmass' target_mass = 50:20:550;
+For 'Targetmass' target_mass = 50:25:550;
    GMAT 'Set Dry Mass' TestSat.DryMass = target_mass+CubeSat_mass;
-   For 'Orbitheight' orbit_height = 400:50:600;
+   For 'Orbitheight' orbit_height = 400:50:650;
       GMAT 'Set SMA' TestSat.SMA = 6378+orbit_height;
       For 'Burnangle' beta = 58:1:58;
          GMAT 'Set TA_start' TA_start = 180-(beta/2);
          GMAT 'Set TA_end' TA_end = 180+(beta/2);
          GMAT 'Reset Tank Mass' TestSat.Busek_BHT_200_largetank.FuelMass = 10;
          GMAT 'Reset ECC' TestSat.Earth.ECC = 0.005;
-         GMAT 'Reset Date' TestSat.A1ModJulian = 15182;
+         GMAT 'Reset Date' TestSat.A1ModJulian = 27204.99998882387;
          Report 'StartStats' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.ECC TestSat.Earth.RMAG TestSat.Earth.SMA TestSat.TotalMass beta orbit_height target_mass;
          While 'While h>180km or t<25y or fuel>0kg' TestSat.A1ModJulian < 37251 & TestSat.Busek_BHT_200_largetank.FuelMass > 0.001 & TestSat.Earth.RMAG > 6551 & TestSat.A1ModJulian < 37251
             Propagate 'PropToBurnStart' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = TA_start, TestSat.Earth.RMAG = 6552, StopTolerance = 1e-005};
@@ -894,6 +912,7 @@ For 'Targetmass' target_mass = 50:20:550;
          EndWhile;
          Propagate 'FinalPropPeri' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.Periapsis};
          Report 'EndStats' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.ECC TestSat.Earth.RMAG TestSat.Earth.SMA TestSat.TotalMass beta orbit_height target_mass;
+         Report 'EndStatsAW' EllipticDeorbitAW TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.ECC TestSat.Earth.RMAG TestSat.Earth.SMA TestSat.TotalMass beta orbit_height target_mass;
       EndFor;
    EndFor;
 EndFor;
