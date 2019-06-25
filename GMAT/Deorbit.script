@@ -11,12 +11,12 @@ GMAT TestSat.DateFormat = UTCGregorian;
 GMAT TestSat.Epoch = '01 Jul 2015 11:59:23.000';
 GMAT TestSat.CoordinateSystem = EarthMJ2000Eq;
 GMAT TestSat.DisplayStateType = Keplerian;
-GMAT TestSat.SMA = 7521.000000000003;
-GMAT TestSat.ECC = 0.00499999999999834;
+GMAT TestSat.SMA = 7521.000000000002;
+GMAT TestSat.ECC = 0.004999999999999142;
 GMAT TestSat.INC = 53.00000000000001;
 GMAT TestSat.RAAN = 360;
 GMAT TestSat.AOP = 360;
-GMAT TestSat.TA = 130.0000000000287;
+GMAT TestSat.TA = 130.0000000000231;
 GMAT TestSat.DryMass = 426;
 GMAT TestSat.Cd = 2.2;
 GMAT TestSat.Cr = 1.8;
@@ -685,7 +685,6 @@ GMAT NineNanoTank.FuelMass = 2.07;
 
 
 
-
 %----------------------------------------
 %---------- ForceModels
 %----------------------------------------
@@ -829,29 +828,29 @@ GMAT EllipticDeorbit.UpperLeft = [ -0.01291638341264446 -0.01022727272727273 ];
 GMAT EllipticDeorbit.Size = [ 0.9673691366417403 0.7704545454545455 ];
 GMAT EllipticDeorbit.RelativeZOrder = 62;
 GMAT EllipticDeorbit.Maximized = false;
-GMAT EllipticDeorbit.Filename = '50to550kg_58degree_xtoxkm.txt';
+GMAT EllipticDeorbit.Filename = '50to550kg_58degree_400to550km.csv';
 GMAT EllipticDeorbit.Precision = 10;
 GMAT EllipticDeorbit.WriteHeaders = true;
 GMAT EllipticDeorbit.LeftJustify = On;
 GMAT EllipticDeorbit.ZeroFill = Off;
-GMAT EllipticDeorbit.FixedWidth = true;
-GMAT EllipticDeorbit.Delimiter = ' ';
+GMAT EllipticDeorbit.FixedWidth = false;
+GMAT EllipticDeorbit.Delimiter = ',';
 GMAT EllipticDeorbit.ColumnWidth = 23;
 GMAT EllipticDeorbit.WriteReport = true;
 
 Create ReportFile AwReport;
 GMAT AwReport.SolverIterations = None;
-GMAT AwReport.UpperLeft = [ -0.01427600271923861 -0.0125 ];
-GMAT AwReport.Size = [ 0.9687287559483345 0.7727272727272727 ];
-GMAT AwReport.RelativeZOrder = 26;
+GMAT AwReport.UpperLeft = [ -0.0141017780502759 -0.01136363636363636 ];
+GMAT AwReport.Size = [ 0.9681177191906806 0.7715909090909091 ];
+GMAT AwReport.RelativeZOrder = 65;
 GMAT AwReport.Maximized = false;
-GMAT AwReport.Filename = '50to550kg_58degree_xtoxkmAW.txt';
+GMAT AwReport.Filename = '50to550kg_58degree_400to550kmAW.csv';
 GMAT AwReport.Precision = 10;
 GMAT AwReport.WriteHeaders = true;
 GMAT AwReport.LeftJustify = On;
 GMAT AwReport.ZeroFill = Off;
-GMAT AwReport.FixedWidth = true;
-GMAT AwReport.Delimiter = ' ';
+GMAT AwReport.FixedWidth = false;
+GMAT AwReport.Delimiter = ',';
 GMAT AwReport.ColumnWidth = 23;
 GMAT AwReport.WriteReport = true;
 
@@ -901,13 +900,12 @@ GMAT CubeSat_mass = 44;
 
 
 
-
 %----------------------------------------
 %---------- Mission Sequence
 %----------------------------------------
 
 BeginMissionSequence;
-For 'Orbit Height' orbit_height = 400:50:650;
+For 'Orbit Height' orbit_height = 400:50:450;
    For 'Targetmass' target_mass = 50:25:550;
       GMAT 'Reset INC' TestSat.INC = 53;
       GMAT 'Reset RAAN' TestSat.RAAN = 360;
@@ -933,7 +931,6 @@ For 'Orbit Height' orbit_height = 400:50:650;
       Report 'AWReport' AwReport TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
    EndFor;
 EndFor;
-
 
 
 
