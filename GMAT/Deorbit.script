@@ -11,12 +11,12 @@ GMAT TestSat.DateFormat = UTCGregorian;
 GMAT TestSat.Epoch = '01 Jul 2015 11:59:23.000';
 GMAT TestSat.CoordinateSystem = EarthMJ2000Eq;
 GMAT TestSat.DisplayStateType = Keplerian;
-GMAT TestSat.SMA = 7521.000000000003;
-GMAT TestSat.ECC = 0.00499999999999834;
+GMAT TestSat.SMA = 7521.000000000002;
+GMAT TestSat.ECC = 0.004999999999999142;
 GMAT TestSat.INC = 53.00000000000001;
 GMAT TestSat.RAAN = 360;
 GMAT TestSat.AOP = 360;
-GMAT TestSat.TA = 130.0000000000287;
+GMAT TestSat.TA = 130.0000000000231;
 GMAT TestSat.DryMass = 426;
 GMAT TestSat.Cd = 2.2;
 GMAT TestSat.Cr = 1.8;
@@ -686,6 +686,9 @@ GMAT NineNanoTank.FuelMass = 2.07;
 
 
 
+
+
+
 %----------------------------------------
 %---------- ForceModels
 %----------------------------------------
@@ -829,7 +832,7 @@ GMAT EllipticDeorbit.UpperLeft = [ -0.01291638341264446 -0.01022727272727273 ];
 GMAT EllipticDeorbit.Size = [ 0.9673691366417403 0.7704545454545455 ];
 GMAT EllipticDeorbit.RelativeZOrder = 62;
 GMAT EllipticDeorbit.Maximized = false;
-GMAT EllipticDeorbit.Filename = '350to550kg_58degree_400to550km.csv';
+GMAT EllipticDeorbit.Filename = '50to550kg_58degree_400to550km.csv';
 GMAT EllipticDeorbit.Precision = 10;
 GMAT EllipticDeorbit.WriteHeaders = true;
 GMAT EllipticDeorbit.LeftJustify = On;
@@ -841,11 +844,11 @@ GMAT EllipticDeorbit.WriteReport = true;
 
 Create ReportFile AwReport;
 GMAT AwReport.SolverIterations = None;
-GMAT AwReport.UpperLeft = [ -0.0141017780502759 -0.01136363636363636 ];
-GMAT AwReport.Size = [ 0.9681177191906806 0.7715909090909091 ];
-GMAT AwReport.RelativeZOrder = 65;
+GMAT AwReport.UpperLeft = [ -0.00772626931567329 -60.95547309833024 ];
+GMAT AwReport.Size = [ 0.5805739514348786 0.2597402597402597 ];
+GMAT AwReport.RelativeZOrder = 151;
 GMAT AwReport.Maximized = false;
-GMAT AwReport.Filename = '350to550kg_58degree_400to550kmAW.csv';
+GMAT AwReport.Filename = '50to550kg_58degree_400to550kmAW.csv';
 GMAT AwReport.Precision = 10;
 GMAT AwReport.WriteHeaders = true;
 GMAT AwReport.LeftJustify = On;
@@ -858,7 +861,7 @@ GMAT AwReport.WriteReport = true;
 %----------------------------------------
 %---------- Arrays, Variables, Strings
 %----------------------------------------
-Create Variable TA_start TA_end I orbit_height target_mass beta CubeSat_mass;
+Create Variable TA_start TA_end I orbit_height target_mass beta CubeSat_mass Abbruch;
 GMAT TA_start = 151;
 GMAT TA_end = 209;
 GMAT I = 0;
@@ -866,6 +869,10 @@ GMAT orbit_height = 400;
 GMAT target_mass = 350;
 GMAT beta = 70;
 GMAT CubeSat_mass = 44;
+GMAT Abbruch = 0;
+
+
+
 
 
 
@@ -907,8 +914,9 @@ GMAT CubeSat_mass = 44;
 %----------------------------------------
 
 BeginMissionSequence;
-For 'Orbit Height' orbit_height = 400:50:450;
-   For 'Targetmass' target_mass = 350:25:550;
+For 'Orbit Height' orbit_height = 400:50:550;
+   For 'Targetmass' target_mass = 50:25:550;
+      GMAT 'Abbruch' Abbruch = 0;
       GMAT 'Reset INC' TestSat.INC = 53;
       GMAT 'Reset RAAN' TestSat.RAAN = 360;
       GMAT 'Reset AOP' TestSat.AOP = 0;
@@ -919,7 +927,8 @@ For 'Orbit Height' orbit_height = 400:50:450;
       GMAT 'Reset ECC' TestSat.Earth.ECC = 0.005;
       GMAT 'Reset Date' TestSat.A1ModJulian = 27204.99998882387;
       Report 'StartStats' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
-      While 'While h>180km or t<25y or fuel>0kg' TestSat.A1ModJulian < 37251 & TestSat.Busek_BHT_200_largetank.FuelMass > 0.001 & TestSat.Earth.RMAG >= 6558 & TestSat.A1ModJulian < 37251
+      While 'While h>180km or t<25y or fuel>0kg' TestSat.A1ModJulian < 37251 & TestSat.Busek_BHT_200_largetank.FuelMass > 0.001 & TestSat.Earth.RMAG >= 6558 & Abbruch == 0 & Abbruch == 0
+         %        GMAT 'Abbruch->0' Abbruch = 0;
          Propagate 'PropToBurnStart' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = 151, StopTolerance = 1e-005};
          BeginFiniteBurn 'BurnStart' FiniteBurn(TestSat);
          Propagate 'PropToBurnEnd' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = 209, TestSat.Busek_BHT_200_largetank.FuelMass = 0, TestSat.ElapsedSecs = 1200, StopTolerance = 1e-005};
@@ -927,12 +936,20 @@ For 'Orbit Height' orbit_height = 400:50:450;
          If TestSat.Earth.RadPer >= 6557
             Propagate 'Prop to Periapsis' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.Periapsis};
          EndIf;
+         
+         If TestSat.Earth.RadPer < 6557
+            GMAT 'Abbruch1' Abbruch = 1;
+         EndIf;
+         
          Report 'EndWhile Report' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
       EndWhile;
       Report 'EndStats' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
-      Report 'AWReport' AwReport TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
+      Report 'AWReport' AwReport TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass Abbruch;
    EndFor;
 EndFor;
+
+
+
 
 
 
