@@ -1,0 +1,4 @@
+TestSat.Busek_BHT_200_largetank.FuelMass   TestSat.ElapsedDays       TestSat.Earth.RadApo      TestSat.Earth.RadPer      TestSat.Earth.SMA         TestSat.Earth.ECC         TestSat.TotalMass         orbit_height              target_mass               Abbruch                   
+0.0009500000001,1066.658682,6660.713397,6557.503019,6609.108208,0.007808192503,494.00095,1300,450,1
+0.0009499999993,1538.625188,6580.587198,6556.120105,6568.353652,0.001862498215,519.00095,1300,475,1
+0.0009500000001,1825.036789,7375.066084,6691.772472,7033.419278,0.04857478167,544.00095,1300,500,3
