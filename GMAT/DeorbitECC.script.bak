@@ -787,8 +787,8 @@ GMAT FiniteBurn.ThrottleLogicAlgorithm = 'MaxNumberOfThrusters';
 Create OrbitView DefaultOrbitView;
 GMAT DefaultOrbitView.SolverIterations = Current;
 GMAT DefaultOrbitView.UpperLeft = [ 0 0 ];
-GMAT DefaultOrbitView.Size = [ 0.3372093023255814 0.4738636363636364 ];
-GMAT DefaultOrbitView.RelativeZOrder = 68;
+GMAT DefaultOrbitView.Size = [ 0.5205288796102993 0.575 ];
+GMAT DefaultOrbitView.RelativeZOrder = 177;
 GMAT DefaultOrbitView.Maximized = false;
 GMAT DefaultOrbitView.Add = {TestSat, Earth};
 GMAT DefaultOrbitView.CoordinateSystem = EarthMJ2000Eq;
@@ -837,7 +837,7 @@ GMAT EllipticDeorbit.UpperLeft = [ -0.01291638341264446 -0.01022727272727273 ];
 GMAT EllipticDeorbit.Size = [ 0.9673691366417403 0.7704545454545455 ];
 GMAT EllipticDeorbit.RelativeZOrder = 62;
 GMAT EllipticDeorbit.Maximized = false;
-GMAT EllipticDeorbit.Filename = 'ECC50.csv';
+GMAT EllipticDeorbit.Filename = 'fail1150.csv';
 GMAT EllipticDeorbit.Precision = 10;
 GMAT EllipticDeorbit.WriteHeaders = true;
 GMAT EllipticDeorbit.LeftJustify = On;
@@ -853,7 +853,7 @@ GMAT AwReport.UpperLeft = [ -0.00772626931567329 -60.95547309833024 ];
 GMAT AwReport.Size = [ 0.5805739514348786 0.2597402597402597 ];
 GMAT AwReport.RelativeZOrder = 151;
 GMAT AwReport.Maximized = false;
-GMAT AwReport.Filename = 'ECC50aw.csv';
+GMAT AwReport.Filename = 'fail1150aw.csv';
 GMAT AwReport.Precision = 10;
 GMAT AwReport.WriteHeaders = true;
 GMAT AwReport.LeftJustify = On;
@@ -871,7 +871,7 @@ GMAT TA_start = 151;
 GMAT TA_end = 209;
 GMAT I = 0;
 GMAT orbit_height = 400;
-GMAT target_mass = 50;
+GMAT target_mass = 350;
 GMAT beta = 70;
 GMAT CubeSat_mass = 44;
 GMAT Abbruch = 0;
@@ -952,7 +952,7 @@ For 'Orbit Height' orbit_height = 400:200:1400;
          If TestSat.Earth.RadPer <= 6558
             GMAT 'Abbruch Per' Abbruch = 1;
          EndIf;
-         If TestSat.Earth.ECC < 0.004
+         If TestSat.Earth.ECC < 0.00075
             GMAT 'Abbruch ECC' Abbruch = 2;
          EndIf;
          If TestSat.ElapsedDays >= 1825
@@ -962,7 +962,7 @@ For 'Orbit Height' orbit_height = 400:200:1400;
          Report 'EndWhile Report' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
       EndWhile;
       Report 'EndStats' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
-      Report 'AWReport' AwReport TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass exz Abbruch;
+      Report 'AWReport' AwReport TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass Abbruch;
    EndFor;
 EndFor;
 
