@@ -11,11 +11,11 @@ GMAT TestSat.DateFormat = UTCGregorian;
 GMAT TestSat.Epoch = '01 Jul 2015 11:59:23.000';
 GMAT TestSat.CoordinateSystem = EarthMJ2000Eq;
 GMAT TestSat.DisplayStateType = Keplerian;
-GMAT TestSat.SMA = 9999.999999999995;
+GMAT TestSat.SMA = 10000.00000000002;
 GMAT TestSat.ECC = 0.9049999999999991;
 GMAT TestSat.INC = 53.00000000000001;
 GMAT TestSat.RAAN = 360;
-GMAT TestSat.AOP = 360;
+GMAT TestSat.AOP = 0;
 GMAT TestSat.TA = 130.0000000000225;
 GMAT TestSat.DryMass = 426;
 GMAT TestSat.Cd = 2.2;
@@ -696,6 +696,7 @@ GMAT NineNanoTank.FuelMass = 2.07;
 
 
 
+
 %----------------------------------------
 %---------- ForceModels
 %----------------------------------------
@@ -839,7 +840,7 @@ GMAT EllipticDeorbit.UpperLeft = [ -0.01291638341264446 -0.01022727272727273 ];
 GMAT EllipticDeorbit.Size = [ 0.9673691366417403 0.7704545454545455 ];
 GMAT EllipticDeorbit.RelativeZOrder = 62;
 GMAT EllipticDeorbit.Maximized = false;
-GMAT EllipticDeorbit.Filename = 'ECC50.csv';
+GMAT EllipticDeorbit.Filename = 'ECC375_2.csv';
 GMAT EllipticDeorbit.Precision = 10;
 GMAT EllipticDeorbit.WriteHeaders = true;
 GMAT EllipticDeorbit.LeftJustify = On;
@@ -855,7 +856,7 @@ GMAT AwReport.UpperLeft = [ -0.00772626931567329 -60.95547309833024 ];
 GMAT AwReport.Size = [ 0.5805739514348786 0.2597402597402597 ];
 GMAT AwReport.RelativeZOrder = 151;
 GMAT AwReport.Maximized = false;
-GMAT AwReport.Filename = 'ECC50aw.csv';
+GMAT AwReport.Filename = 'ECC375_2aw.csv';
 GMAT AwReport.Precision = 10;
 GMAT AwReport.WriteHeaders = true;
 GMAT AwReport.LeftJustify = On;
@@ -871,7 +872,7 @@ GMAT ReportFile1.UpperLeft = [ 0 0 ];
 GMAT ReportFile1.Size = [ 0 0 ];
 GMAT ReportFile1.RelativeZOrder = 0;
 GMAT ReportFile1.Maximized = false;
-GMAT ReportFile1.Filename = 'start.csv';
+GMAT ReportFile1.Filename = 'start4.csv';
 GMAT ReportFile1.Precision = 16;
 GMAT ReportFile1.WriteHeaders = true;
 GMAT ReportFile1.LeftJustify = On;
@@ -890,7 +891,7 @@ GMAT TA_start = 151;
 GMAT TA_end = 209;
 GMAT I = 0;
 GMAT orbit_height = 400;
-GMAT target_mass = 50;
+GMAT target_mass = 375;
 GMAT beta = 70;
 GMAT CubeSat_mass = 44;
 GMAT Abbruch = 0;
@@ -945,13 +946,14 @@ GMAT ra = 1;
 
 
 
+
 %----------------------------------------
 %---------- Mission Sequence
 %----------------------------------------
 
 BeginMissionSequence;
-For 'Orbit Height' orbit_height = 400:200:1400;
-   For 'Excentricity' exz = 0.025:0.025:0.3;
+For 'Orbit Height' orbit_height = 1000:200:1400;
+   For 'Excentricity' exz = 0.025:0.025:0.325;
       GMAT 'Abbruch' Abbruch = 0;
       GMAT 'explus' explus = 1+exz;
       GMAT 'exminus' exminus = 1-exz;
@@ -986,7 +988,7 @@ For 'Orbit Height' orbit_height = 400:200:1400;
          If TestSat.Earth.ECC < 0.004
             GMAT 'Abbruch ECC' Abbruch = 2;
          EndIf;
-         If TestSat.ElapsedDays >= 1825
+         If TestSat.ElapsedDays >= 3700
             GMAT Abbruch = 3;
          EndIf;
          
@@ -996,6 +998,7 @@ For 'Orbit Height' orbit_height = 400:200:1400;
       Report 'AWReport' AwReport TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass exz Abbruch;
    EndFor;
 EndFor;
+
 
 
 
