@@ -11,12 +11,12 @@ GMAT TestSat.DateFormat = UTCGregorian;
 GMAT TestSat.Epoch = '01 Jul 2015 11:59:23.000';
 GMAT TestSat.CoordinateSystem = EarthMJ2000Eq;
 GMAT TestSat.DisplayStateType = Keplerian;
-GMAT TestSat.SMA = 7521.000000000003;
-GMAT TestSat.ECC = 0.004999999999999004;
+GMAT TestSat.SMA = 7521.000000000002;
+GMAT TestSat.ECC = 0.004999999999999142;
 GMAT TestSat.INC = 53.00000000000001;
 GMAT TestSat.RAAN = 360;
-GMAT TestSat.AOP = 0;
-GMAT TestSat.TA = 130.0000000000225;
+GMAT TestSat.AOP = 360;
+GMAT TestSat.TA = 130.0000000000231;
 GMAT TestSat.DryMass = 426;
 GMAT TestSat.Cd = 2.2;
 GMAT TestSat.Cr = 1.8;
@@ -692,6 +692,7 @@ GMAT NineNanoTank.FuelMass = 2.07;
 
 
 
+
 %----------------------------------------
 %---------- ForceModels
 %----------------------------------------
@@ -785,8 +786,8 @@ GMAT FiniteBurn.ThrottleLogicAlgorithm = 'MaxNumberOfThrusters';
 Create OrbitView DefaultOrbitView;
 GMAT DefaultOrbitView.SolverIterations = Current;
 GMAT DefaultOrbitView.UpperLeft = [ 0 0 ];
-GMAT DefaultOrbitView.Size = [ 0.7992327365728901 0.8056930693069307 ];
-GMAT DefaultOrbitView.RelativeZOrder = 89;
+GMAT DefaultOrbitView.Size = [ 0.5205288796102993 0.575 ];
+GMAT DefaultOrbitView.RelativeZOrder = 177;
 GMAT DefaultOrbitView.Maximized = false;
 GMAT DefaultOrbitView.Add = {TestSat, Earth};
 GMAT DefaultOrbitView.CoordinateSystem = EarthMJ2000Eq;
@@ -794,7 +795,7 @@ GMAT DefaultOrbitView.DrawObject = [ true true ];
 GMAT DefaultOrbitView.DataCollectFrequency = 2;
 GMAT DefaultOrbitView.UpdatePlotFrequency = 50;
 GMAT DefaultOrbitView.NumPointsToRedraw = 0;
-GMAT DefaultOrbitView.ShowPlot = false;
+GMAT DefaultOrbitView.ShowPlot = true;
 GMAT DefaultOrbitView.MaxPlotPoints = 500;
 GMAT DefaultOrbitView.ShowLabels = true;
 GMAT DefaultOrbitView.ViewPointReference = Earth;
@@ -835,7 +836,7 @@ GMAT EllipticDeorbit.UpperLeft = [ -0.01291638341264446 -0.01022727272727273 ];
 GMAT EllipticDeorbit.Size = [ 0.9673691366417403 0.7704545454545455 ];
 GMAT EllipticDeorbit.RelativeZOrder = 62;
 GMAT EllipticDeorbit.Maximized = false;
-GMAT EllipticDeorbit.Filename = '50to550kg_550km.csv';
+GMAT EllipticDeorbit.Filename = 'fail1150.csv';
 GMAT EllipticDeorbit.Precision = 10;
 GMAT EllipticDeorbit.WriteHeaders = true;
 GMAT EllipticDeorbit.LeftJustify = On;
@@ -851,7 +852,7 @@ GMAT AwReport.UpperLeft = [ -0.00772626931567329 -60.95547309833024 ];
 GMAT AwReport.Size = [ 0.5805739514348786 0.2597402597402597 ];
 GMAT AwReport.RelativeZOrder = 151;
 GMAT AwReport.Maximized = false;
-GMAT AwReport.Filename = '50to550kg_550kmAW.csv';
+GMAT AwReport.Filename = 'fail1150aw.csv';
 GMAT AwReport.Precision = 10;
 GMAT AwReport.WriteHeaders = true;
 GMAT AwReport.LeftJustify = On;
@@ -915,13 +916,14 @@ GMAT Abbruch = 0;
 
 
 
+
 %----------------------------------------
 %---------- Mission Sequence
 %----------------------------------------
 
 BeginMissionSequence;
-For 'Orbit Height' orbit_height = 550:50:550;
-   For 'Targetmass' target_mass = 50:25:550;
+For 'Orbit Height' orbit_height = 1150:50:1150;
+   For 'Targetmass' target_mass = 525:25:550;
       GMAT 'Abbruch' Abbruch = 0;
       GMAT 'Reset INC' TestSat.INC = 53;
       GMAT 'Reset RAAN' TestSat.RAAN = 360;
@@ -933,12 +935,14 @@ For 'Orbit Height' orbit_height = 550:50:550;
       GMAT 'Reset ECC' TestSat.Earth.ECC = 0.005;
       GMAT 'Reset Date' TestSat.A1ModJulian = 27204.99998882387;
       Report 'StartStats' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
-      While 'While h>180km or t<25y or fuel>0kg' TestSat.A1ModJulian < 37251 & TestSat.Busek_BHT_200_largetank.FuelMass > 0.001 & TestSat.Earth.RMAG >= 6558 & Abbruch == 0 & Abbruch == 0
+      While 'While h>180km or t<25y or fuel>0kg' TestSat.A1ModJulian < 37251 & TestSat.Earth.RadPer >= 6558 & Abbruch == 0 & Abbruch == 0 & Abbruch == 0
          %        GMAT 'Abbruch->0' Abbruch = 0;
+         If TestSat.Busek_BHT_200_largetank.FuelMass > 0.001
          Propagate 'PropToBurnStart' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = 151, StopTolerance = 1e-005, OrbitColor = [72 254 46]};
          BeginFiniteBurn 'BurnStart' FiniteBurn(TestSat);
-         Propagate 'PropToBurnEnd' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = 209, TestSat.Busek_BHT_200_largetank.FuelMass = 0, StopTolerance = 1e-005, OrbitColor = [0 236 255]};
+         Propagate 'PropToBurnEnd' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = 209, TestSat.Busek_BHT_200_largetank.FuelMass = 0.00095, StopTolerance = 1e-005, OrbitColor = [0 236 255]};
          EndFiniteBurn 'BurnEnd' FiniteBurn(TestSat);
+         EndIf;
          If TestSat.Earth.RadPer > 6558
             Propagate 'Prop to Periapsis' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.Periapsis};
          EndIf;
@@ -949,6 +953,9 @@ For 'Orbit Height' orbit_height = 550:50:550;
          If TestSat.Earth.ECC < 0.00075
             GMAT 'Abbruch ECC' Abbruch = 2;
          EndIf;
+         If TestSat.ElapsedDays >= 1825
+            GMAT Abbruch = 3;
+         EndIf;
          
          Report 'EndWhile Report' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
       EndWhile;
@@ -956,6 +963,7 @@ For 'Orbit Height' orbit_height = 550:50:550;
       Report 'AWReport' AwReport TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass Abbruch;
    EndFor;
 EndFor;
+
 
 
 
