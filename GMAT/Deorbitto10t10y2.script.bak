@@ -1,0 +1,1006 @@
+%General Mission Analysis Tool(GMAT) Script
+%Created: 2017-05-02 01:23:25
+
+
+%----------------------------------------
+%---------- Spacecraft
+%----------------------------------------
+
+Create Spacecraft TestSat;
+GMAT TestSat.DateFormat = UTCGregorian;
+GMAT TestSat.Epoch = '01 Jul 2015 11:59:23.000';
+GMAT TestSat.CoordinateSystem = EarthMJ2000Eq;
+GMAT TestSat.DisplayStateType = Keplerian;
+GMAT TestSat.SMA = 7521.000000000003;
+GMAT TestSat.ECC = 0.00499999999999834;
+GMAT TestSat.INC = 53.00000000000001;
+GMAT TestSat.RAAN = 360;
+GMAT TestSat.AOP = 360;
+GMAT TestSat.TA = 130.0000000000287;
+GMAT TestSat.DryMass = 426;
+GMAT TestSat.Cd = 2.2;
+GMAT TestSat.Cr = 1.8;
+GMAT TestSat.DragArea = 15.45;
+GMAT TestSat.SRPArea = 14;
+GMAT TestSat.Tanks = {Busek_BHT_200_largetank};
+GMAT TestSat.Thrusters = {Busek_BHT_200};
+GMAT TestSat.PowerSystem = OversizedEternalPower;
+GMAT TestSat.NAIFId = -10006001;
+GMAT TestSat.NAIFIdReferenceFrame = -9006001;
+GMAT TestSat.OrbitColor = Red;
+GMAT TestSat.TargetColor = Teal;
+GMAT TestSat.OrbitErrorCovariance = [ 1e+070 0 0 0 0 0 ; 0 1e+070 0 0 0 0 ; 0 0 1e+070 0 0 0 ; 0 0 0 1e+070 0 0 ; 0 0 0 0 1e+070 0 ; 0 0 0 0 0 1e+070 ];
+GMAT TestSat.CdSigma = 1e+070;
+GMAT TestSat.CrSigma = 1e+070;
+GMAT TestSat.Id = 'SatId';
+GMAT TestSat.Attitude = CoordinateSystemFixed;
+GMAT TestSat.SPADSRPScaleFactor = 1;
+GMAT TestSat.ModelFile = 'aura.3ds';
+GMAT TestSat.ModelOffsetX = 0;
+GMAT TestSat.ModelOffsetY = 0;
+GMAT TestSat.ModelOffsetZ = 0;
+GMAT TestSat.ModelRotationX = 0;
+GMAT TestSat.ModelRotationY = 0;
+GMAT TestSat.ModelRotationZ = 0;
+GMAT TestSat.ModelScale = 1;
+GMAT TestSat.AttitudeDisplayStateType = 'Quaternion';
+GMAT TestSat.AttitudeRateDisplayStateType = 'AngularVelocity';
+GMAT TestSat.AttitudeCoordinateSystem = EarthMJ2000Eq;
+GMAT TestSat.EulerAngleSequence = '321';
+
+%----------------------------------------
+%---------- Hardware Components
+%----------------------------------------
+
+Create ElectricThruster AccionTile;
+GMAT AccionTile.CoordinateSystem = Local;
+GMAT AccionTile.Origin = Earth;
+GMAT AccionTile.Axes = VNB;
+GMAT AccionTile.ThrustDirection1 = -1;
+GMAT AccionTile.ThrustDirection2 = 0;
+GMAT AccionTile.ThrustDirection3 = 0;
+GMAT AccionTile.DutyCycle = 1;
+GMAT AccionTile.ThrustScaleFactor = 1;
+GMAT AccionTile.DecrementMass = true;
+GMAT AccionTile.Tank = {AccionTileTank};
+GMAT AccionTile.MixRatio = [ 1 ];
+GMAT AccionTile.GravitationalAccel = 9.810000000000001;
+GMAT AccionTile.ThrustModel = ConstantThrustAndIsp;
+GMAT AccionTile.MaximumUsablePower = 0.035;
+GMAT AccionTile.MinimumUsablePower = 0.001;
+GMAT AccionTile.ThrustCoeff1 = -5.19082;
+GMAT AccionTile.ThrustCoeff2 = 2.96519;
+GMAT AccionTile.ThrustCoeff3 = -14.4789;
+GMAT AccionTile.ThrustCoeff4 = 54.05382;
+GMAT AccionTile.ThrustCoeff5 = -0.00100092;
+GMAT AccionTile.MassFlowCoeff1 = -0.004776;
+GMAT AccionTile.MassFlowCoeff2 = 0.05717;
+GMAT AccionTile.MassFlowCoeff3 = -0.09956;
+GMAT AccionTile.MassFlowCoeff4 = 0.03211;
+GMAT AccionTile.MassFlowCoeff5 = 2.13781;
+GMAT AccionTile.FixedEfficiency = 0.7;
+GMAT AccionTile.Isp = 1500;
+GMAT AccionTile.ConstantThrust = 0.0018;
+
+Create ElectricTank AccionTileTank;
+GMAT AccionTileTank.AllowNegativeFuelMass = true;
+GMAT AccionTileTank.FuelMass = 0.324;
+
+Create SolarPowerSystem OversizedEternalPower;
+GMAT OversizedEternalPower.EpochFormat = 'A1ModJulian';
+GMAT OversizedEternalPower.InitialEpoch = '21545.00000039794';
+GMAT OversizedEternalPower.InitialMaxPower = 2;
+GMAT OversizedEternalPower.AnnualDecayRate = 0;
+GMAT OversizedEternalPower.Margin = 5;
+GMAT OversizedEternalPower.BusCoeff1 = 0.3;
+GMAT OversizedEternalPower.BusCoeff2 = 0;
+GMAT OversizedEternalPower.BusCoeff3 = 0;
+GMAT OversizedEternalPower.ShadowModel = 'DualCone';
+GMAT OversizedEternalPower.ShadowBodies = {'Earth'};
+GMAT OversizedEternalPower.SolarCoeff1 = 1.32077;
+GMAT OversizedEternalPower.SolarCoeff2 = -0.10848;
+GMAT OversizedEternalPower.SolarCoeff3 = -0.11665;
+GMAT OversizedEternalPower.SolarCoeff4 = 0.10843;
+GMAT OversizedEternalPower.SolarCoeff5 = -0.01279;
+
+Create ElectricThruster NineAccionTiles;
+GMAT NineAccionTiles.CoordinateSystem = Local;
+GMAT NineAccionTiles.Origin = Earth;
+GMAT NineAccionTiles.Axes = VNB;
+GMAT NineAccionTiles.ThrustDirection1 = -1;
+GMAT NineAccionTiles.ThrustDirection2 = 0;
+GMAT NineAccionTiles.ThrustDirection3 = 0;
+GMAT NineAccionTiles.DutyCycle = 1;
+GMAT NineAccionTiles.ThrustScaleFactor = 1;
+GMAT NineAccionTiles.DecrementMass = true;
+GMAT NineAccionTiles.Tank = {NineAccionTileTanks};
+GMAT NineAccionTiles.MixRatio = [ 1 ];
+GMAT NineAccionTiles.GravitationalAccel = 9.810000000000001;
+GMAT NineAccionTiles.ThrustModel = ConstantThrustAndIsp;
+GMAT NineAccionTiles.MaximumUsablePower = 0.315;
+GMAT NineAccionTiles.MinimumUsablePower = 0.008999999999999999;
+GMAT NineAccionTiles.ThrustCoeff1 = -5.19082;
+GMAT NineAccionTiles.ThrustCoeff2 = 2.96519;
+GMAT NineAccionTiles.ThrustCoeff3 = -14.4789;
+GMAT NineAccionTiles.ThrustCoeff4 = 54.05382;
+GMAT NineAccionTiles.ThrustCoeff5 = -0.00100092;
+GMAT NineAccionTiles.MassFlowCoeff1 = -0.004776;
+GMAT NineAccionTiles.MassFlowCoeff2 = 0.05717;
+GMAT NineAccionTiles.MassFlowCoeff3 = -0.09956;
+GMAT NineAccionTiles.MassFlowCoeff4 = 0.03211;
+GMAT NineAccionTiles.MassFlowCoeff5 = 2.13781;
+GMAT NineAccionTiles.FixedEfficiency = 0.7;
+GMAT NineAccionTiles.Isp = 1500;
+GMAT NineAccionTiles.ConstantThrust = 0.0162;
+
+Create ElectricTank NineAccionTileTanks;
+GMAT NineAccionTileTanks.AllowNegativeFuelMass = true;
+GMAT NineAccionTileTanks.FuelMass = 2.916;
+
+Create ChemicalThruster Aerojet_MPS_120_2U;
+GMAT Aerojet_MPS_120_2U.CoordinateSystem = Local;
+GMAT Aerojet_MPS_120_2U.Origin = Earth;
+GMAT Aerojet_MPS_120_2U.Axes = VNB;
+GMAT Aerojet_MPS_120_2U.ThrustDirection1 = -1;
+GMAT Aerojet_MPS_120_2U.ThrustDirection2 = 0;
+GMAT Aerojet_MPS_120_2U.ThrustDirection3 = 0;
+GMAT Aerojet_MPS_120_2U.DutyCycle = 1;
+GMAT Aerojet_MPS_120_2U.ThrustScaleFactor = 1;
+GMAT Aerojet_MPS_120_2U.DecrementMass = true;
+GMAT Aerojet_MPS_120_2U.Tank = {Aerojet_MPS_120_2U_tank};
+GMAT Aerojet_MPS_120_2U.MixRatio = [ 1 ];
+GMAT Aerojet_MPS_120_2U.GravitationalAccel = 9.810000000000001;
+GMAT Aerojet_MPS_120_2U.C1 = 5;
+GMAT Aerojet_MPS_120_2U.C2 = 0;
+GMAT Aerojet_MPS_120_2U.C3 = 0;
+GMAT Aerojet_MPS_120_2U.C4 = 0;
+GMAT Aerojet_MPS_120_2U.C5 = 0;
+GMAT Aerojet_MPS_120_2U.C6 = 0;
+GMAT Aerojet_MPS_120_2U.C7 = 0;
+GMAT Aerojet_MPS_120_2U.C8 = 0;
+GMAT Aerojet_MPS_120_2U.C9 = 0;
+GMAT Aerojet_MPS_120_2U.C10 = 0;
+GMAT Aerojet_MPS_120_2U.C11 = 0;
+GMAT Aerojet_MPS_120_2U.C12 = 0;
+GMAT Aerojet_MPS_120_2U.C13 = 0;
+GMAT Aerojet_MPS_120_2U.C14 = 0;
+GMAT Aerojet_MPS_120_2U.C15 = 0;
+GMAT Aerojet_MPS_120_2U.C16 = 0;
+GMAT Aerojet_MPS_120_2U.K1 = 210;
+GMAT Aerojet_MPS_120_2U.K2 = 0;
+GMAT Aerojet_MPS_120_2U.K3 = 0;
+GMAT Aerojet_MPS_120_2U.K4 = 0;
+GMAT Aerojet_MPS_120_2U.K5 = 0;
+GMAT Aerojet_MPS_120_2U.K6 = 0;
+GMAT Aerojet_MPS_120_2U.K7 = 0;
+GMAT Aerojet_MPS_120_2U.K8 = 0;
+GMAT Aerojet_MPS_120_2U.K9 = 0;
+GMAT Aerojet_MPS_120_2U.K10 = 0;
+GMAT Aerojet_MPS_120_2U.K11 = 0;
+GMAT Aerojet_MPS_120_2U.K12 = 0;
+GMAT Aerojet_MPS_120_2U.K13 = 0;
+GMAT Aerojet_MPS_120_2U.K14 = 0;
+GMAT Aerojet_MPS_120_2U.K15 = 0;
+GMAT Aerojet_MPS_120_2U.K16 = 0;
+
+Create ChemicalTank Aerojet_MPS_120_2U_tank;
+GMAT Aerojet_MPS_120_2U_tank.AllowNegativeFuelMass = true;
+GMAT Aerojet_MPS_120_2U_tank.FuelMass = 1.02;
+GMAT Aerojet_MPS_120_2U_tank.Pressure = 1500;
+GMAT Aerojet_MPS_120_2U_tank.Temperature = 20;
+GMAT Aerojet_MPS_120_2U_tank.RefTemperature = 20;
+GMAT Aerojet_MPS_120_2U_tank.Volume = 0.75;
+GMAT Aerojet_MPS_120_2U_tank.FuelDensity = 1260;
+GMAT Aerojet_MPS_120_2U_tank.PressureModel = BlowDown;
+
+Create ChemicalThruster ThreeAerojet_MPS_120_2U;
+GMAT ThreeAerojet_MPS_120_2U.CoordinateSystem = Local;
+GMAT ThreeAerojet_MPS_120_2U.Origin = Earth;
+GMAT ThreeAerojet_MPS_120_2U.Axes = VNB;
+GMAT ThreeAerojet_MPS_120_2U.ThrustDirection1 = -1;
+GMAT ThreeAerojet_MPS_120_2U.ThrustDirection2 = 0;
+GMAT ThreeAerojet_MPS_120_2U.ThrustDirection3 = 0;
+GMAT ThreeAerojet_MPS_120_2U.DutyCycle = 1;
+GMAT ThreeAerojet_MPS_120_2U.ThrustScaleFactor = 1;
+GMAT ThreeAerojet_MPS_120_2U.DecrementMass = true;
+GMAT ThreeAerojet_MPS_120_2U.Tank = {ThreeAerojet_MPS_120_2U_tanks};
+GMAT ThreeAerojet_MPS_120_2U.MixRatio = [ 1 ];
+GMAT ThreeAerojet_MPS_120_2U.GravitationalAccel = 9.810000000000001;
+GMAT ThreeAerojet_MPS_120_2U.C1 = 15;
+GMAT ThreeAerojet_MPS_120_2U.C2 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C3 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C4 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C5 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C6 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C7 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C8 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C9 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C10 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C11 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C12 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C13 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C14 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C15 = 0;
+GMAT ThreeAerojet_MPS_120_2U.C16 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K1 = 210;
+GMAT ThreeAerojet_MPS_120_2U.K2 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K3 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K4 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K5 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K6 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K7 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K8 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K9 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K10 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K11 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K12 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K13 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K14 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K15 = 0;
+GMAT ThreeAerojet_MPS_120_2U.K16 = 0;
+
+Create ChemicalTank ThreeAerojet_MPS_120_2U_tanks;
+GMAT ThreeAerojet_MPS_120_2U_tanks.AllowNegativeFuelMass = true;
+GMAT ThreeAerojet_MPS_120_2U_tanks.FuelMass = 3.06;
+GMAT ThreeAerojet_MPS_120_2U_tanks.Pressure = 1500;
+GMAT ThreeAerojet_MPS_120_2U_tanks.Temperature = 20;
+GMAT ThreeAerojet_MPS_120_2U_tanks.RefTemperature = 20;
+GMAT ThreeAerojet_MPS_120_2U_tanks.Volume = 0.75;
+GMAT ThreeAerojet_MPS_120_2U_tanks.FuelDensity = 1260;
+GMAT ThreeAerojet_MPS_120_2U_tanks.PressureModel = BlowDown;
+
+Create ChemicalThruster ThreeAerojet_MPS_130_2U;
+GMAT ThreeAerojet_MPS_130_2U.CoordinateSystem = Local;
+GMAT ThreeAerojet_MPS_130_2U.Origin = Earth;
+GMAT ThreeAerojet_MPS_130_2U.Axes = VNB;
+GMAT ThreeAerojet_MPS_130_2U.ThrustDirection1 = -1;
+GMAT ThreeAerojet_MPS_130_2U.ThrustDirection2 = 0;
+GMAT ThreeAerojet_MPS_130_2U.ThrustDirection3 = 0;
+GMAT ThreeAerojet_MPS_130_2U.DutyCycle = 1;
+GMAT ThreeAerojet_MPS_130_2U.ThrustScaleFactor = 1;
+GMAT ThreeAerojet_MPS_130_2U.DecrementMass = true;
+GMAT ThreeAerojet_MPS_130_2U.Tank = {ThreeAerojet_MPS_130_2U_tanks};
+GMAT ThreeAerojet_MPS_130_2U.MixRatio = [ 1 ];
+GMAT ThreeAerojet_MPS_130_2U.GravitationalAccel = 9.810000000000001;
+GMAT ThreeAerojet_MPS_130_2U.C1 = 15;
+GMAT ThreeAerojet_MPS_130_2U.C2 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C3 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C4 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C5 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C6 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C7 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C8 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C9 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C10 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C11 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C12 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C13 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C14 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C15 = 0;
+GMAT ThreeAerojet_MPS_130_2U.C16 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K1 = 220;
+GMAT ThreeAerojet_MPS_130_2U.K2 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K3 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K4 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K5 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K6 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K7 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K8 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K9 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K10 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K11 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K12 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K13 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K14 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K15 = 0;
+GMAT ThreeAerojet_MPS_130_2U.K16 = 0;
+
+Create ChemicalTank ThreeAerojet_MPS_130_2U_tanks;
+GMAT ThreeAerojet_MPS_130_2U_tanks.AllowNegativeFuelMass = true;
+GMAT ThreeAerojet_MPS_130_2U_tanks.FuelMass = 4.2;
+GMAT ThreeAerojet_MPS_130_2U_tanks.Pressure = 1500;
+GMAT ThreeAerojet_MPS_130_2U_tanks.Temperature = 20;
+GMAT ThreeAerojet_MPS_130_2U_tanks.RefTemperature = 20;
+GMAT ThreeAerojet_MPS_130_2U_tanks.Volume = 0.75;
+GMAT ThreeAerojet_MPS_130_2U_tanks.FuelDensity = 1260;
+GMAT ThreeAerojet_MPS_130_2U_tanks.PressureModel = BlowDown;
+
+Create ElectricThruster ElectricReference;
+GMAT ElectricReference.CoordinateSystem = Local;
+GMAT ElectricReference.Origin = Earth;
+GMAT ElectricReference.Axes = VNB;
+GMAT ElectricReference.ThrustDirection1 = -1;
+GMAT ElectricReference.ThrustDirection2 = 0;
+GMAT ElectricReference.ThrustDirection3 = 0;
+GMAT ElectricReference.DutyCycle = 1;
+GMAT ElectricReference.ThrustScaleFactor = 1;
+GMAT ElectricReference.DecrementMass = true;
+GMAT ElectricReference.Tank = {ElectricReference_tank};
+GMAT ElectricReference.MixRatio = [ 1 ];
+GMAT ElectricReference.GravitationalAccel = 9.810000000000001;
+GMAT ElectricReference.ThrustModel = ConstantThrustAndIsp;
+GMAT ElectricReference.MaximumUsablePower = 7.266;
+GMAT ElectricReference.MinimumUsablePower = 0.001;
+GMAT ElectricReference.ThrustCoeff1 = -5.19082;
+GMAT ElectricReference.ThrustCoeff2 = 2.96519;
+GMAT ElectricReference.ThrustCoeff3 = -14.4789;
+GMAT ElectricReference.ThrustCoeff4 = 54.05382;
+GMAT ElectricReference.ThrustCoeff5 = -0.00100092;
+GMAT ElectricReference.MassFlowCoeff1 = -0.004776;
+GMAT ElectricReference.MassFlowCoeff2 = 0.05717;
+GMAT ElectricReference.MassFlowCoeff3 = -0.09956;
+GMAT ElectricReference.MassFlowCoeff4 = 0.03211;
+GMAT ElectricReference.MassFlowCoeff5 = 2.13781;
+GMAT ElectricReference.FixedEfficiency = 0.7;
+GMAT ElectricReference.Isp = 220;
+GMAT ElectricReference.ConstantThrust = 15;
+
+Create ElectricTank ElectricReference_tank;
+GMAT ElectricReference_tank.AllowNegativeFuelMass = true;
+GMAT ElectricReference_tank.FuelMass = 4.2;
+
+Create ElectricThruster AirbusRITuX;
+GMAT AirbusRITuX.CoordinateSystem = Local;
+GMAT AirbusRITuX.Origin = Earth;
+GMAT AirbusRITuX.Axes = VNB;
+GMAT AirbusRITuX.ThrustDirection1 = -1;
+GMAT AirbusRITuX.ThrustDirection2 = 0;
+GMAT AirbusRITuX.ThrustDirection3 = 0;
+GMAT AirbusRITuX.DutyCycle = 1;
+GMAT AirbusRITuX.ThrustScaleFactor = 1;
+GMAT AirbusRITuX.DecrementMass = true;
+GMAT AirbusRITuX.Tank = {AirbusRITuX_tank};
+GMAT AirbusRITuX.MixRatio = [ 1 ];
+GMAT AirbusRITuX.GravitationalAccel = 9.810000000000001;
+GMAT AirbusRITuX.ThrustModel = ConstantThrustAndIsp;
+GMAT AirbusRITuX.MaximumUsablePower = 0.04;
+GMAT AirbusRITuX.MinimumUsablePower = 0.001;
+GMAT AirbusRITuX.ThrustCoeff1 = -5.19082;
+GMAT AirbusRITuX.ThrustCoeff2 = 2.96519;
+GMAT AirbusRITuX.ThrustCoeff3 = -14.4789;
+GMAT AirbusRITuX.ThrustCoeff4 = 54.05382;
+GMAT AirbusRITuX.ThrustCoeff5 = -0.00100092;
+GMAT AirbusRITuX.MassFlowCoeff1 = -0.004776;
+GMAT AirbusRITuX.MassFlowCoeff2 = 0.05717;
+GMAT AirbusRITuX.MassFlowCoeff3 = -0.09956;
+GMAT AirbusRITuX.MassFlowCoeff4 = 0.03211;
+GMAT AirbusRITuX.MassFlowCoeff5 = 2.13781;
+GMAT AirbusRITuX.FixedEfficiency = 0.7;
+GMAT AirbusRITuX.Isp = 3000;
+GMAT AirbusRITuX.ConstantThrust = 0.0005;
+
+Create ElectricTank AirbusRITuX_tank;
+GMAT AirbusRITuX_tank.AllowNegativeFuelMass = true;
+GMAT AirbusRITuX_tank.FuelMass = 0.5;
+
+Create ElectricThruster Busek_1mN_Electrospray;
+GMAT Busek_1mN_Electrospray.CoordinateSystem = Local;
+GMAT Busek_1mN_Electrospray.Origin = Earth;
+GMAT Busek_1mN_Electrospray.Axes = VNB;
+GMAT Busek_1mN_Electrospray.ThrustDirection1 = -1;
+GMAT Busek_1mN_Electrospray.ThrustDirection2 = 0;
+GMAT Busek_1mN_Electrospray.ThrustDirection3 = 0;
+GMAT Busek_1mN_Electrospray.DutyCycle = 1;
+GMAT Busek_1mN_Electrospray.ThrustScaleFactor = 1;
+GMAT Busek_1mN_Electrospray.DecrementMass = true;
+GMAT Busek_1mN_Electrospray.Tank = {Busek_1mN_Electrospray_tank};
+GMAT Busek_1mN_Electrospray.MixRatio = [ 1 ];
+GMAT Busek_1mN_Electrospray.GravitationalAccel = 9.810000000000001;
+GMAT Busek_1mN_Electrospray.ThrustModel = ConstantThrustAndIsp;
+GMAT Busek_1mN_Electrospray.MaximumUsablePower = 0.015;
+GMAT Busek_1mN_Electrospray.MinimumUsablePower = 0.001;
+GMAT Busek_1mN_Electrospray.ThrustCoeff1 = -5.19082;
+GMAT Busek_1mN_Electrospray.ThrustCoeff2 = 2.96519;
+GMAT Busek_1mN_Electrospray.ThrustCoeff3 = -14.4789;
+GMAT Busek_1mN_Electrospray.ThrustCoeff4 = 54.05382;
+GMAT Busek_1mN_Electrospray.ThrustCoeff5 = -0.00100092;
+GMAT Busek_1mN_Electrospray.MassFlowCoeff1 = -0.004776;
+GMAT Busek_1mN_Electrospray.MassFlowCoeff2 = 0.05717;
+GMAT Busek_1mN_Electrospray.MassFlowCoeff3 = -0.09956;
+GMAT Busek_1mN_Electrospray.MassFlowCoeff4 = 0.03211;
+GMAT Busek_1mN_Electrospray.MassFlowCoeff5 = 2.13781;
+GMAT Busek_1mN_Electrospray.FixedEfficiency = 0.7;
+GMAT Busek_1mN_Electrospray.Isp = 800;
+GMAT Busek_1mN_Electrospray.ConstantThrust = 0.0007;
+
+Create ElectricTank Busek_1mN_Electrospray_tank;
+GMAT Busek_1mN_Electrospray_tank.AllowNegativeFuelMass = true;
+GMAT Busek_1mN_Electrospray_tank.FuelMass = 0.1;
+
+Create ElectricThruster Busek_BHT_200;
+GMAT Busek_BHT_200.CoordinateSystem = Local;
+GMAT Busek_BHT_200.Origin = Earth;
+GMAT Busek_BHT_200.Axes = VNB;
+GMAT Busek_BHT_200.ThrustDirection1 = -1;
+GMAT Busek_BHT_200.ThrustDirection2 = 0;
+GMAT Busek_BHT_200.ThrustDirection3 = 0;
+GMAT Busek_BHT_200.DutyCycle = 1;
+GMAT Busek_BHT_200.ThrustScaleFactor = 1;
+GMAT Busek_BHT_200.DecrementMass = true;
+GMAT Busek_BHT_200.Tank = {Busek_BHT_200_largetank};
+GMAT Busek_BHT_200.MixRatio = [ 1 ];
+GMAT Busek_BHT_200.GravitationalAccel = 9.810000000000001;
+GMAT Busek_BHT_200.ThrustModel = ConstantThrustAndIsp;
+GMAT Busek_BHT_200.MaximumUsablePower = 0.2;
+GMAT Busek_BHT_200.MinimumUsablePower = 0.001;
+GMAT Busek_BHT_200.ThrustCoeff1 = -5.19082;
+GMAT Busek_BHT_200.ThrustCoeff2 = 2.96519;
+GMAT Busek_BHT_200.ThrustCoeff3 = -14.4789;
+GMAT Busek_BHT_200.ThrustCoeff4 = 54.05382;
+GMAT Busek_BHT_200.ThrustCoeff5 = -0.00100092;
+GMAT Busek_BHT_200.MassFlowCoeff1 = -0.004776;
+GMAT Busek_BHT_200.MassFlowCoeff2 = 0.05717;
+GMAT Busek_BHT_200.MassFlowCoeff3 = -0.09956;
+GMAT Busek_BHT_200.MassFlowCoeff4 = 0.03211;
+GMAT Busek_BHT_200.MassFlowCoeff5 = 2.13781;
+GMAT Busek_BHT_200.FixedEfficiency = 0.7;
+GMAT Busek_BHT_200.Isp = 1375;
+GMAT Busek_BHT_200.ConstantThrust = 0.013;
+
+Create ElectricTank Busek_BHT_200_tank;
+GMAT Busek_BHT_200_tank.AllowNegativeFuelMass = true;
+GMAT Busek_BHT_200_tank.FuelMass = 0.5;
+
+Create ElectricTank Busek_BHT_200_largetank;
+GMAT Busek_BHT_200_largetank.AllowNegativeFuelMass = true;
+GMAT Busek_BHT_200_largetank.FuelMass = 10;
+
+Create ChemicalThruster DSSP_CDM_1;
+GMAT DSSP_CDM_1.CoordinateSystem = Local;
+GMAT DSSP_CDM_1.Origin = Earth;
+GMAT DSSP_CDM_1.Axes = VNB;
+GMAT DSSP_CDM_1.ThrustDirection1 = -1;
+GMAT DSSP_CDM_1.ThrustDirection2 = 0;
+GMAT DSSP_CDM_1.ThrustDirection3 = 0;
+GMAT DSSP_CDM_1.DutyCycle = 1;
+GMAT DSSP_CDM_1.ThrustScaleFactor = 1;
+GMAT DSSP_CDM_1.DecrementMass = true;
+GMAT DSSP_CDM_1.Tank = {DSSP_CDM_1_tank};
+GMAT DSSP_CDM_1.MixRatio = [ 1 ];
+GMAT DSSP_CDM_1.GravitationalAccel = 9.810000000000001;
+GMAT DSSP_CDM_1.C1 = 76.5;
+GMAT DSSP_CDM_1.C2 = 0;
+GMAT DSSP_CDM_1.C3 = 0;
+GMAT DSSP_CDM_1.C4 = 0;
+GMAT DSSP_CDM_1.C5 = 0;
+GMAT DSSP_CDM_1.C6 = 0;
+GMAT DSSP_CDM_1.C7 = 0;
+GMAT DSSP_CDM_1.C8 = 0;
+GMAT DSSP_CDM_1.C9 = 0;
+GMAT DSSP_CDM_1.C10 = 0;
+GMAT DSSP_CDM_1.C11 = 0;
+GMAT DSSP_CDM_1.C12 = 0;
+GMAT DSSP_CDM_1.C13 = 0;
+GMAT DSSP_CDM_1.C14 = 0;
+GMAT DSSP_CDM_1.C15 = 0;
+GMAT DSSP_CDM_1.C16 = 0;
+GMAT DSSP_CDM_1.K1 = 235;
+GMAT DSSP_CDM_1.K2 = 0;
+GMAT DSSP_CDM_1.K3 = 0;
+GMAT DSSP_CDM_1.K4 = 0;
+GMAT DSSP_CDM_1.K5 = 0;
+GMAT DSSP_CDM_1.K6 = 0;
+GMAT DSSP_CDM_1.K7 = 0;
+GMAT DSSP_CDM_1.K8 = 0;
+GMAT DSSP_CDM_1.K9 = 0;
+GMAT DSSP_CDM_1.K10 = 0;
+GMAT DSSP_CDM_1.K11 = 0;
+GMAT DSSP_CDM_1.K12 = 0;
+GMAT DSSP_CDM_1.K13 = 0;
+GMAT DSSP_CDM_1.K14 = 0;
+GMAT DSSP_CDM_1.K15 = 0;
+GMAT DSSP_CDM_1.K16 = 0;
+
+Create ChemicalTank DSSP_CDM_1_tank;
+GMAT DSSP_CDM_1_tank.AllowNegativeFuelMass = true;
+GMAT DSSP_CDM_1_tank.FuelMass = 0.096;
+GMAT DSSP_CDM_1_tank.Pressure = 1500;
+GMAT DSSP_CDM_1_tank.Temperature = 20;
+GMAT DSSP_CDM_1_tank.RefTemperature = 20;
+GMAT DSSP_CDM_1_tank.Volume = 0.75;
+GMAT DSSP_CDM_1_tank.FuelDensity = 1260;
+GMAT DSSP_CDM_1_tank.PressureModel = PressureRegulated;
+
+Create ElectricThruster AMR_IFM_Nano_Thruster;
+GMAT AMR_IFM_Nano_Thruster.CoordinateSystem = Local;
+GMAT AMR_IFM_Nano_Thruster.Origin = Earth;
+GMAT AMR_IFM_Nano_Thruster.Axes = VNB;
+GMAT AMR_IFM_Nano_Thruster.ThrustDirection1 = -1;
+GMAT AMR_IFM_Nano_Thruster.ThrustDirection2 = 0;
+GMAT AMR_IFM_Nano_Thruster.ThrustDirection3 = 0;
+GMAT AMR_IFM_Nano_Thruster.DutyCycle = 1;
+GMAT AMR_IFM_Nano_Thruster.ThrustScaleFactor = 1;
+GMAT AMR_IFM_Nano_Thruster.DecrementMass = true;
+GMAT AMR_IFM_Nano_Thruster.Tank = {AMR_IFM_Nano_Thruster_tank};
+GMAT AMR_IFM_Nano_Thruster.MixRatio = [ 1 ];
+GMAT AMR_IFM_Nano_Thruster.GravitationalAccel = 9.810000000000001;
+GMAT AMR_IFM_Nano_Thruster.ThrustModel = ConstantThrustAndIsp;
+GMAT AMR_IFM_Nano_Thruster.MaximumUsablePower = 0.04;
+GMAT AMR_IFM_Nano_Thruster.MinimumUsablePower = 0.001;
+GMAT AMR_IFM_Nano_Thruster.ThrustCoeff1 = -5.19082;
+GMAT AMR_IFM_Nano_Thruster.ThrustCoeff2 = 2.96519;
+GMAT AMR_IFM_Nano_Thruster.ThrustCoeff3 = -14.4789;
+GMAT AMR_IFM_Nano_Thruster.ThrustCoeff4 = 54.05382;
+GMAT AMR_IFM_Nano_Thruster.ThrustCoeff5 = -0.00100092;
+GMAT AMR_IFM_Nano_Thruster.MassFlowCoeff1 = -0.004776;
+GMAT AMR_IFM_Nano_Thruster.MassFlowCoeff2 = 0.05717;
+GMAT AMR_IFM_Nano_Thruster.MassFlowCoeff3 = -0.09956;
+GMAT AMR_IFM_Nano_Thruster.MassFlowCoeff4 = 0.03211;
+GMAT AMR_IFM_Nano_Thruster.MassFlowCoeff5 = 2.13781;
+GMAT AMR_IFM_Nano_Thruster.FixedEfficiency = 0.7;
+GMAT AMR_IFM_Nano_Thruster.Isp = 4000;
+GMAT AMR_IFM_Nano_Thruster.ConstantThrust = 0.045;
+
+Create ElectricTank AMR_IFM_Nano_Thruster_tank;
+GMAT AMR_IFM_Nano_Thruster_tank.AllowNegativeFuelMass = true;
+GMAT AMR_IFM_Nano_Thruster_tank.FuelMass = 0.25;
+
+Create ElectricThruster ThreeAMR_IFM_Nano_Thrusters;
+GMAT ThreeAMR_IFM_Nano_Thrusters.CoordinateSystem = Local;
+GMAT ThreeAMR_IFM_Nano_Thrusters.Origin = Earth;
+GMAT ThreeAMR_IFM_Nano_Thrusters.Axes = VNB;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ThrustDirection1 = -1;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ThrustDirection2 = 0;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ThrustDirection3 = 0;
+GMAT ThreeAMR_IFM_Nano_Thrusters.DutyCycle = 1;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ThrustScaleFactor = 1;
+GMAT ThreeAMR_IFM_Nano_Thrusters.DecrementMass = true;
+GMAT ThreeAMR_IFM_Nano_Thrusters.Tank = {ThreeAMR_IFM_Nano_Thruster_tanks};
+GMAT ThreeAMR_IFM_Nano_Thrusters.MixRatio = [ 1 ];
+GMAT ThreeAMR_IFM_Nano_Thrusters.GravitationalAccel = 9.810000000000001;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ThrustModel = ConstantThrustAndIsp;
+GMAT ThreeAMR_IFM_Nano_Thrusters.MaximumUsablePower = 0.12;
+GMAT ThreeAMR_IFM_Nano_Thrusters.MinimumUsablePower = 0.001;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ThrustCoeff1 = -5.19082;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ThrustCoeff2 = 2.96519;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ThrustCoeff3 = -14.4789;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ThrustCoeff4 = 54.05382;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ThrustCoeff5 = -0.00100092;
+GMAT ThreeAMR_IFM_Nano_Thrusters.MassFlowCoeff1 = -0.004776;
+GMAT ThreeAMR_IFM_Nano_Thrusters.MassFlowCoeff2 = 0.05717;
+GMAT ThreeAMR_IFM_Nano_Thrusters.MassFlowCoeff3 = -0.09956;
+GMAT ThreeAMR_IFM_Nano_Thrusters.MassFlowCoeff4 = 0.03211;
+GMAT ThreeAMR_IFM_Nano_Thrusters.MassFlowCoeff5 = 2.13781;
+GMAT ThreeAMR_IFM_Nano_Thrusters.FixedEfficiency = 0.7;
+GMAT ThreeAMR_IFM_Nano_Thrusters.Isp = 4000;
+GMAT ThreeAMR_IFM_Nano_Thrusters.ConstantThrust = 0.00135;
+
+Create ElectricTank ThreeAMR_IFM_Nano_Thruster_tanks;
+GMAT ThreeAMR_IFM_Nano_Thruster_tanks.AllowNegativeFuelMass = true;
+GMAT ThreeAMR_IFM_Nano_Thruster_tanks.FuelMass = 0.75;
+
+Create ElectricThruster Busek_BIT_3;
+GMAT Busek_BIT_3.CoordinateSystem = Local;
+GMAT Busek_BIT_3.Origin = Earth;
+GMAT Busek_BIT_3.Axes = VNB;
+GMAT Busek_BIT_3.ThrustDirection1 = -1;
+GMAT Busek_BIT_3.ThrustDirection2 = 0;
+GMAT Busek_BIT_3.ThrustDirection3 = 0;
+GMAT Busek_BIT_3.DutyCycle = 1;
+GMAT Busek_BIT_3.ThrustScaleFactor = 1;
+GMAT Busek_BIT_3.DecrementMass = true;
+GMAT Busek_BIT_3.Tank = {Busek_BIT_3_tank};
+GMAT Busek_BIT_3.MixRatio = [ 1 ];
+GMAT Busek_BIT_3.GravitationalAccel = 9.810000000000001;
+GMAT Busek_BIT_3.ThrustModel = ConstantThrustAndIsp;
+GMAT Busek_BIT_3.MaximumUsablePower = 0.075;
+GMAT Busek_BIT_3.MinimumUsablePower = 0.001;
+GMAT Busek_BIT_3.ThrustCoeff1 = -5.19082;
+GMAT Busek_BIT_3.ThrustCoeff2 = 2.96519;
+GMAT Busek_BIT_3.ThrustCoeff3 = -14.4789;
+GMAT Busek_BIT_3.ThrustCoeff4 = 54.05382;
+GMAT Busek_BIT_3.ThrustCoeff5 = -0.00100092;
+GMAT Busek_BIT_3.MassFlowCoeff1 = -0.004776;
+GMAT Busek_BIT_3.MassFlowCoeff2 = 0.05717;
+GMAT Busek_BIT_3.MassFlowCoeff3 = -0.09956;
+GMAT Busek_BIT_3.MassFlowCoeff4 = 0.03211;
+GMAT Busek_BIT_3.MassFlowCoeff5 = 2.13781;
+GMAT Busek_BIT_3.FixedEfficiency = 0.7;
+GMAT Busek_BIT_3.Isp = 2100;
+GMAT Busek_BIT_3.ConstantThrust = 0.0015;
+
+Create ElectricTank Busek_BIT_3_tank;
+GMAT Busek_BIT_3_tank.AllowNegativeFuelMass = true;
+GMAT Busek_BIT_3_tank.FuelMass = 1.5;
+
+Create NuclearPowerSystem NuclearPowerSystem1;
+GMAT NuclearPowerSystem1.EpochFormat = 'UTCGregorian';
+GMAT NuclearPowerSystem1.InitialEpoch = ''01 Jan 2000 11:59:28.000'';
+GMAT NuclearPowerSystem1.InitialMaxPower = 50;
+GMAT NuclearPowerSystem1.AnnualDecayRate = 0;
+GMAT NuclearPowerSystem1.Margin = 5;
+GMAT NuclearPowerSystem1.BusCoeff1 = 0.3;
+GMAT NuclearPowerSystem1.BusCoeff2 = 0;
+GMAT NuclearPowerSystem1.BusCoeff3 = 0;
+
+Create ElectricThruster NineNano;
+GMAT NineNano.CoordinateSystem = Local;
+GMAT NineNano.Origin = Earth;
+GMAT NineNano.Axes = VNB;
+GMAT NineNano.ThrustDirection1 = -1;
+GMAT NineNano.ThrustDirection2 = 0;
+GMAT NineNano.ThrustDirection3 = 0;
+GMAT NineNano.DutyCycle = 1;
+GMAT NineNano.ThrustScaleFactor = 1;
+GMAT NineNano.DecrementMass = true;
+GMAT NineNano.Tank = {NineNanoTank};
+GMAT NineNano.MixRatio = [ 1 ];
+GMAT NineNano.GravitationalAccel = 9.810000000000001;
+GMAT NineNano.ThrustModel = ConstantThrustAndIsp;
+GMAT NineNano.MaximumUsablePower = 0.12;
+GMAT NineNano.MinimumUsablePower = 0.001;
+GMAT NineNano.ThrustCoeff1 = -5.19082;
+GMAT NineNano.ThrustCoeff2 = 2.96519;
+GMAT NineNano.ThrustCoeff3 = -14.4789;
+GMAT NineNano.ThrustCoeff4 = 54.05382;
+GMAT NineNano.ThrustCoeff5 = -0.00100092;
+GMAT NineNano.MassFlowCoeff1 = -0.004776;
+GMAT NineNano.MassFlowCoeff2 = 0.05717;
+GMAT NineNano.MassFlowCoeff3 = -0.09956;
+GMAT NineNano.MassFlowCoeff4 = 0.03211;
+GMAT NineNano.MassFlowCoeff5 = 2.13781;
+GMAT NineNano.FixedEfficiency = 0.7;
+GMAT NineNano.Isp = 3200;
+GMAT NineNano.ConstantThrust = 0.00378;
+
+Create ElectricTank NineNanoTank;
+GMAT NineNanoTank.AllowNegativeFuelMass = true;
+GMAT NineNanoTank.FuelMass = 2.07;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------
+%---------- ForceModels
+%----------------------------------------
+
+Create ForceModel PD78_Acc11_PMOff_ForceModel;
+GMAT PD78_Acc11_PMOff_ForceModel.CentralBody = Earth;
+GMAT PD78_Acc11_PMOff_ForceModel.PrimaryBodies = {Earth};
+GMAT PD78_Acc11_PMOff_ForceModel.SRP = On;
+GMAT PD78_Acc11_PMOff_ForceModel.RelativisticCorrection = Off;
+GMAT PD78_Acc11_PMOff_ForceModel.ErrorControl = RSSStep;
+GMAT PD78_Acc11_PMOff_ForceModel.GravityField.Earth.Degree = 20;
+GMAT PD78_Acc11_PMOff_ForceModel.GravityField.Earth.Order = 20;
+GMAT PD78_Acc11_PMOff_ForceModel.GravityField.Earth.StmLimit = 100;
+GMAT PD78_Acc11_PMOff_ForceModel.GravityField.Earth.PotentialFile = 'JGM2.cof';
+GMAT PD78_Acc11_PMOff_ForceModel.GravityField.Earth.TideModel = 'None';
+GMAT PD78_Acc11_PMOff_ForceModel.SRP.Flux = 1367;
+GMAT PD78_Acc11_PMOff_ForceModel.SRP.SRPModel = Spherical;
+GMAT PD78_Acc11_PMOff_ForceModel.SRP.Nominal_Sun = 149597870.691;
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.AtmosphereModel = MSISE90;
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.HistoricWeatherSource = 'CSSISpaceWeatherFile';
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.PredictedWeatherSource = 'SchattenFile';
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.CSSISpaceWeatherFile = 'D:\Users\Frederik\Documents\GitHub\CubeSat-Based_ADR_Projekt_SoSe2019\GMAT\SpaceWeather-All-v1.2.txt';
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.SchattenFile = 'SchattenPredict.txt';
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.F107 = 150;
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.F107A = 150;
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.MagneticIndex = 3;
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.SchattenErrorModel = 'Nominal';
+GMAT PD78_Acc11_PMOff_ForceModel.Drag.SchattenTimingModel = 'NominalCycle';
+
+Create ForceModel PD78_Acc10_PMOff_Grav4_ForceModel;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.CentralBody = Earth;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.PrimaryBodies = {Earth};
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.SRP = On;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.RelativisticCorrection = Off;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.ErrorControl = RSSStep;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.GravityField.Earth.Degree = 4;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.GravityField.Earth.Order = 4;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.GravityField.Earth.StmLimit = 100;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.GravityField.Earth.PotentialFile = 'JGM2.cof';
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.GravityField.Earth.TideModel = 'None';
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.SRP.Flux = 1367;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.SRP.SRPModel = Spherical;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.SRP.Nominal_Sun = 149597870.691;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.AtmosphereModel = MSISE90;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.HistoricWeatherSource = 'CSSISpaceWeatherFile';
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.PredictedWeatherSource = 'SchattenFile';
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.CSSISpaceWeatherFile = 'C:\Users\frede\AppData\Local\GMAT\R2018a\data\atmosphere\earth\SW-Last5Years.txt';
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.SchattenFile = 'SchattenPredict.txt';
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.F107 = 150;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.F107A = 150;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.MagneticIndex = 3;
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.SchattenErrorModel = 'Nominal';
+GMAT PD78_Acc10_PMOff_Grav4_ForceModel.Drag.SchattenTimingModel = 'NominalCycle';
+
+%----------------------------------------
+%---------- Propagators
+%----------------------------------------
+
+Create Propagator PD78_Acc11_PMOff;
+GMAT PD78_Acc11_PMOff.FM = PD78_Acc11_PMOff_ForceModel;
+GMAT PD78_Acc11_PMOff.Type = PrinceDormand78;
+GMAT PD78_Acc11_PMOff.InitialStepSize = 60;
+GMAT PD78_Acc11_PMOff.Accuracy = 9.999999999999999e-011;
+GMAT PD78_Acc11_PMOff.MinStep = 0;
+GMAT PD78_Acc11_PMOff.MaxStep = 5000;
+GMAT PD78_Acc11_PMOff.MaxStepAttempts = 10000;
+GMAT PD78_Acc11_PMOff.StopIfAccuracyIsViolated = false;
+
+Create Propagator PD78_Acc10_PMOff_Grav4;
+GMAT PD78_Acc10_PMOff_Grav4.FM = PD78_Acc10_PMOff_Grav4_ForceModel;
+GMAT PD78_Acc10_PMOff_Grav4.Type = PrinceDormand78;
+GMAT PD78_Acc10_PMOff_Grav4.InitialStepSize = 60;
+GMAT PD78_Acc10_PMOff_Grav4.Accuracy = 9.999999999999999e-010;
+GMAT PD78_Acc10_PMOff_Grav4.MinStep = 0;
+GMAT PD78_Acc10_PMOff_Grav4.MaxStep = 5000;
+GMAT PD78_Acc10_PMOff_Grav4.MaxStepAttempts = 10000;
+GMAT PD78_Acc10_PMOff_Grav4.StopIfAccuracyIsViolated = false;
+
+%----------------------------------------
+%---------- Burns
+%----------------------------------------
+
+Create FiniteBurn FiniteBurn;
+GMAT FiniteBurn.Thrusters = {Busek_BHT_200};
+GMAT FiniteBurn.ThrottleLogicAlgorithm = 'MaxNumberOfThrusters';
+
+%----------------------------------------
+%---------- Subscribers
+%----------------------------------------
+
+Create OrbitView DefaultOrbitView;
+GMAT DefaultOrbitView.SolverIterations = Current;
+GMAT DefaultOrbitView.UpperLeft = [ 0 0 ];
+GMAT DefaultOrbitView.Size = [ 0.9121212121212121 0.9950617283950617 ];
+GMAT DefaultOrbitView.RelativeZOrder = 153;
+GMAT DefaultOrbitView.Maximized = false;
+GMAT DefaultOrbitView.Add = {TestSat, Earth};
+GMAT DefaultOrbitView.CoordinateSystem = EarthMJ2000Eq;
+GMAT DefaultOrbitView.DrawObject = [ true true ];
+GMAT DefaultOrbitView.DataCollectFrequency = 1;
+GMAT DefaultOrbitView.UpdatePlotFrequency = 50;
+GMAT DefaultOrbitView.NumPointsToRedraw = 0;
+GMAT DefaultOrbitView.ShowPlot = true;
+GMAT DefaultOrbitView.MaxPlotPoints = 500;
+GMAT DefaultOrbitView.ShowLabels = true;
+GMAT DefaultOrbitView.ViewPointReference = Earth;
+GMAT DefaultOrbitView.ViewPointVector = [ 30000 0 0 ];
+GMAT DefaultOrbitView.ViewDirection = Earth;
+GMAT DefaultOrbitView.ViewScaleFactor = 1;
+GMAT DefaultOrbitView.ViewUpCoordinateSystem = EarthMJ2000Eq;
+GMAT DefaultOrbitView.ViewUpAxis = Z;
+GMAT DefaultOrbitView.EclipticPlane = Off;
+GMAT DefaultOrbitView.XYPlane = Off;
+GMAT DefaultOrbitView.WireFrame = Off;
+GMAT DefaultOrbitView.Axes = On;
+GMAT DefaultOrbitView.Grid = Off;
+GMAT DefaultOrbitView.SunLine = Off;
+GMAT DefaultOrbitView.UseInitialView = On;
+GMAT DefaultOrbitView.StarCount = 7000;
+GMAT DefaultOrbitView.EnableStars = Off;
+GMAT DefaultOrbitView.EnableConstellations = On;
+
+Create GroundTrackPlot DefaultGroundTrackPlot;
+GMAT DefaultGroundTrackPlot.SolverIterations = Current;
+GMAT DefaultGroundTrackPlot.UpperLeft = [ 0 0 ];
+GMAT DefaultGroundTrackPlot.Size = [ 0 0 ];
+GMAT DefaultGroundTrackPlot.RelativeZOrder = 0;
+GMAT DefaultGroundTrackPlot.Maximized = false;
+GMAT DefaultGroundTrackPlot.Add = {TestSat};
+GMAT DefaultGroundTrackPlot.DataCollectFrequency = 1;
+GMAT DefaultGroundTrackPlot.UpdatePlotFrequency = 50;
+GMAT DefaultGroundTrackPlot.NumPointsToRedraw = 0;
+GMAT DefaultGroundTrackPlot.ShowPlot = false;
+GMAT DefaultGroundTrackPlot.MaxPlotPoints = 20000;
+GMAT DefaultGroundTrackPlot.CentralBody = Earth;
+GMAT DefaultGroundTrackPlot.TextureMap = 'ModifiedBlueMarble.jpg';
+
+Create ReportFile EllipticDeorbit;
+GMAT EllipticDeorbit.SolverIterations = None;
+GMAT EllipticDeorbit.UpperLeft = [ -0.01291638341264446 -0.01022727272727273 ];
+GMAT EllipticDeorbit.Size = [ 0.9673691366417403 0.7704545454545455 ];
+GMAT EllipticDeorbit.RelativeZOrder = 62;
+GMAT EllipticDeorbit.Maximized = false;
+GMAT EllipticDeorbit.Filename = '600_10000kg800_1400km.csv';
+GMAT EllipticDeorbit.Precision = 10;
+GMAT EllipticDeorbit.WriteHeaders = true;
+GMAT EllipticDeorbit.LeftJustify = On;
+GMAT EllipticDeorbit.ZeroFill = Off;
+GMAT EllipticDeorbit.FixedWidth = false;
+GMAT EllipticDeorbit.Delimiter = ',';
+GMAT EllipticDeorbit.ColumnWidth = 23;
+GMAT EllipticDeorbit.WriteReport = false;
+
+Create ReportFile AwReport;
+GMAT AwReport.SolverIterations = None;
+GMAT AwReport.UpperLeft = [ -0.00772626931567329 -60.95547309833024 ];
+GMAT AwReport.Size = [ 0.5805739514348786 0.2597402597402597 ];
+GMAT AwReport.RelativeZOrder = 151;
+GMAT AwReport.Maximized = false;
+GMAT AwReport.Filename = '600_10000kg800_1400kmaw.csv';
+GMAT AwReport.Precision = 10;
+GMAT AwReport.WriteHeaders = false;
+GMAT AwReport.LeftJustify = On;
+GMAT AwReport.ZeroFill = Off;
+GMAT AwReport.FixedWidth = false;
+GMAT AwReport.Delimiter = ',';
+GMAT AwReport.ColumnWidth = 23;
+GMAT AwReport.WriteReport = true;
+
+%----------------------------------------
+%---------- Arrays, Variables, Strings
+%----------------------------------------
+Create Variable TA_start TA_end I orbit_height target_mass CubeSat_mass Abbruch end_mass start_mass end_height;
+GMAT TA_start = 151;
+GMAT TA_end = 209;
+GMAT I = 0;
+GMAT orbit_height = 400;
+GMAT target_mass = 350;
+GMAT CubeSat_mass = 44;
+GMAT Abbruch = 0;
+GMAT end_mass = 15000;
+GMAT start_mass = 600;
+GMAT end_height = 1400;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------
+%---------- Mission Sequence
+%----------------------------------------
+
+BeginMissionSequence;
+GMAT 'Initial Orbitheight' orbit_height = 400;
+
+While 'Orbit Height' orbit_height <= end_height
+   GMAT 'Initial Mass set (each height)' target_mass = start_mass;
+   While 'Targetmass' target_mass <= end_mass;
+      GMAT 'Abbruch' Abbruch = 0;
+      GMAT 'Reset INC' TestSat.INC = 53;
+      GMAT 'Reset RAAN' TestSat.RAAN = 360;
+      GMAT 'Reset AOP' TestSat.AOP = 0;
+      GMAT 'Reset TA' TestSat.TA = 130;
+      GMAT 'Set SMA' TestSat.SMA = 6378+orbit_height;
+      GMAT 'Set Dry Mass' TestSat.DryMass = target_mass+CubeSat_mass;
+      GMAT 'Reset Tank Mass' TestSat.Busek_BHT_200_largetank.FuelMass = 10;
+      GMAT 'Reset ECC' TestSat.Earth.ECC = 0.005;
+      GMAT 'Reset Date' TestSat.A1ModJulian = 27204.99998882387;
+      Report 'StartStats' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
+      While 'While h>180, t<10y' TestSat.A1ModJulian < 37251 & TestSat.Earth.RadPer >= 6558 & Abbruch == 0 & Abbruch == 0 & Abbruch == 0
+         %        GMAT 'Abbruch->0' Abbruch = 0;
+         If TestSat.Busek_BHT_200_largetank.FuelMass > 0.001
+            Propagate 'PropToBurnStart' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = 151, StopTolerance = 1e-005, OrbitColor = [72 254 46]};
+            BeginFiniteBurn 'BurnStart' FiniteBurn(TestSat);
+            Propagate 'PropToBurnEnd' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.TA = 209, TestSat.Busek_BHT_200_largetank.FuelMass = 0.00095, StopTolerance = 1e-005, OrbitColor = [0 236 255]};
+            EndFiniteBurn 'BurnEnd' FiniteBurn(TestSat);
+         EndIf;
+         If TestSat.Earth.RadPer > 6558
+            Propagate 'Prop to Periapsis' PD78_Acc11_PMOff(TestSat) {TestSat.Earth.Periapsis};
+         EndIf;
+         
+         If TestSat.Earth.RadPer <= 6558
+            GMAT 'Abbruch Per' Abbruch = 1;
+         EndIf;
+         If TestSat.Earth.ECC < 0.0025
+            GMAT 'Abbruch ECC' Abbruch = 2;
+         EndIf;
+         If TestSat.ElapsedDays >= 3700
+            GMAT 'Abbruch 10y' Abbruch = 3;
+         EndIf;
+         
+         Report 'EndWhile Report' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
+      EndWhile;
+      Report 'EndStats' EllipticDeorbit TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass;
+      Report 'AWReport' AwReport TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass Abbruch;
+      If Abbruch == 3
+         
+         If target_mass == start_mass
+            GMAT 'End Height' orbit_height = end_height + 50;
+         EndIf;
+         GMAT 'End Mass' target_mass = end_mass + 50;
+      EndIf;
+      GMAT 'Inkrement mass' target_mass = target_mass + 100;
+   EndWhile;
+   GMAT 'Inkrement height' orbit_height = orbit_height + 50;
+EndWhile;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
