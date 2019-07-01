@@ -790,8 +790,8 @@ GMAT FiniteBurn.ThrottleLogicAlgorithm = 'MaxNumberOfThrusters';
 Create OrbitView DefaultOrbitView;
 GMAT DefaultOrbitView.SolverIterations = Current;
 GMAT DefaultOrbitView.UpperLeft = [ 0 0 ];
-GMAT DefaultOrbitView.Size = [ 0.9123269611074489 0.9954545454545455 ];
-GMAT DefaultOrbitView.RelativeZOrder = 72;
+GMAT DefaultOrbitView.Size = [ 0.9121212121212121 0.9950617283950617 ];
+GMAT DefaultOrbitView.RelativeZOrder = 153;
 GMAT DefaultOrbitView.Maximized = false;
 GMAT DefaultOrbitView.Add = {TestSat, Earth};
 GMAT DefaultOrbitView.CoordinateSystem = EarthMJ2000Eq;
@@ -869,16 +869,17 @@ GMAT AwReport.WriteReport = true;
 %----------------------------------------
 %---------- Arrays, Variables, Strings
 %----------------------------------------
-Create Variable TA_start TA_end I orbit_height target_mass beta CubeSat_mass Abbruch end_mass;
+Create Variable TA_start TA_end I orbit_height target_mass CubeSat_mass Abbruch end_mass start_mass end_height;
 GMAT TA_start = 151;
 GMAT TA_end = 209;
 GMAT I = 0;
 GMAT orbit_height = 400;
 GMAT target_mass = 350;
-GMAT beta = 70;
 GMAT CubeSat_mass = 44;
 GMAT Abbruch = 0;
 GMAT end_mass = 15000;
+GMAT start_mass = 600;
+GMAT end_height = 1400;
 
 
 
@@ -931,8 +932,8 @@ GMAT end_mass = 15000;
 %----------------------------------------
 
 BeginMissionSequence;
-For 'Orbit Height' orbit_height = 800:50:1400;
-   For 'Targetmass' target_mass = 600:100:end_mass;
+For 'Orbit Height' orbit_height = 800:50:end_height;
+   For 'Targetmass' target_mass = start_mass:100:end_mass;
       GMAT 'Abbruch' Abbruch = 0;
       GMAT 'Reset INC' TestSat.INC = 53;
       GMAT 'Reset RAAN' TestSat.RAAN = 360;
@@ -972,6 +973,9 @@ For 'Orbit Height' orbit_height = 800:50:1400;
       Report 'AWReport' AwReport TestSat.Busek_BHT_200_largetank.FuelMass TestSat.ElapsedDays TestSat.Earth.RadApo TestSat.Earth.RadPer TestSat.Earth.SMA TestSat.Earth.ECC TestSat.TotalMass orbit_height target_mass Abbruch;
       If Abbruch == 3
          GMAT 'End Massfor' target_mass = end_mass;
+         If target_mass == start_mass
+            GMAT orbit_height = end_height;
+         EndIf;
       EndIf;
    EndFor;
 EndFor;
