@@ -4,6 +4,52 @@
 	%Die Strategie besteht draus mehrere Simulationen per GMAT für untershciedliche Koonfigs durchzuführen. Die Bewertung fokusiertsich auf die Machbarkeit des De-orbiting (seihe TODOS.txt)\\
 		\subsection{Kriterien der Bewertung}	
 		\subsection{GMAT}
+		\subsubsection*{Beschreibung der Software}
+		Der GMAT Mission Planner ist ein Open Source Programm, welches von der NASA entwickelt wird. Das Programm ist dazu da um Trajektorien von Satelliten zu berechnen und optimieren. Der Missionsraum umfasst das gesamte Sonnensystem und erlaubt es die Gravitationseinflüsse von allen größeren Himmelskörpern in die Berechnungen mit einfließen zu lassen. 
+Die Eingabe der gewünschten Parameter erfolgt über ein GUI oder ein benutzerdefiniertes Skript. Die Skriptsprache von GMAT lehnt an der von MathWorks MATLAB(R) an.
+Das GUI beinhalted einen 3D Plot und einen 2D Plot. Der 3D Plot zeigt die Position und Trajektorie des Satellitens im dreidimensionalen Raum während der 2D Plot eine Projektion der Trajektorie auf die Oberfläche eines gewählten Himmelskörpers zeigt.
+
+\begin{figure}[!h]
+	\centering
+		\includegraphics[width=1.00\textwidth]{graphics/GMAT_OrbitView2.PNG}
+	\caption{3D Plot eines Satelliten in einer exzentrischen Umlaufbahn um die Erde}
+	\label{fig:OrbitView2}
+\end{figure}
+
+
+Im GUI finden sich drei Tabs: ’Resources’, ’Mission’ und ’Output’.\\
+In dem Resources Tab werden alle Ressourcen die für die Mission benötigt werden eingestellt. Dazu gehören die Schubdüsen, Tanks, Startumlaufbahn des Satelliten und andere dinge die während der Mission im Hintergrund wichtig sind.\\
+Im Missionstab werden nacheinander die auszuführenden Befehle aufgelistet. Diese können auch mit Logikoperatoren wie While oder For Schleifen wiederholt werden.\\
+Im Output Tab finden sich nach dem Missionsdurchlauf die Ausgaben die im Laufe der Mission erfasst worden sind wieder. 
+
+\subsubsection*{Missionsskript 1}
+
+In dem erstem Missionsskript geht es darum, ausgehend von einer kreisförmigen Erdumlaufbahn, zu testen wie lange es dauert mit der in (verweis) gewählten Konfiguration Trümmerteile von 50 bis 5000kg zu deorbiten. Die gewählten Starthöhen liefen von 400 bis 1400km.\\
+
+\begin{figure}[!h]
+	\centering
+		\includegraphics[width=0.35\textwidth]{graphics/GMAT_Skript3.PNG}
+	\caption{Deorbitskript - kreisförmiger Startorbit}
+	\label{fig:GMAT_Skript3}
+\end{figure}
+\\
+
+
+Bevor die Mission in die Schleifen geht wird die Starthöhe über $Initial Orbitheight$ festgelegt. Danach geht es in die $Orbit Height$-Schleife und die Startmasse wird festgelegt.
+Die nächste Schleife durchläuft alle Massen. Die Endwerte für beide Schleifen werden in $End\_mass$ und $End\_height$ festgelegt. Das Inkrement erfolgt am Ende jeder Schleife in $Inkrement mass$ bzw $Inkrement height$.\\
+Im Kern diesen Skriptes steht die Whileschleife:\\
+Nach einer Überprüfung des Treibstoffstands wird der Satellit mit dem ersten Propagator Befehl bis auf eine wahre Anomalie von 151 Grad vorangebracht. 
+Danach wird der Schubbefehl gestartet und der Propagator $ProptoBurnEnd$ lässt den Satelliten, während dieser Schub gibt, bis zu einer wahren Anomalie von 209° vorlaufen. Sollte der Treibstoff zuvor auf 0 fallen wird dieser Vorgang abgebrochen.
+Danach wird der Schub beendet.\\
+Aufgrund einiger Fehler die während des Testens dieses Skripts aufgetreten sind folgen jetzt einige If Abfragen, die als Abbruchbedingungen gelten.
+Die erste überprüft ob das Perigäum des Satelliten größer als 6558 ist. Ist dies der Fall wird der Fortlauf bis zum Perigäum durchgeführt. Die Zweite If Abfrage überprüft das Gegenteil, also ob das Perigäum kleiner oder gleich 6558 ist. Ist dies der Fall wird die Variable “Abbruch” auf 1 gesetzt. Der Grund für diese beiden If Abfragen liegt darin, dass die While Schleife bei einigen Simulationen nicht auf einen zu niedrige Wert reagiert hat. Außerdem kam es vor, dass die Simulation immer langsamer wurde, wenn der Satellit bei einer kleinen Großen Halbachse zum Perigäum navigiert ist. Das wurde dadurch umgangen, dass nur zum Perigäum navigiert wird, wenn diese über 6558 ist. \\
+Die nächste If Abfrage überprüft ob die Exzentrizität niedriger als 0.0025 ist. Ist dies der Fall wird der Wert “Abbruch” auf 2 gesetzt. Mit dieser If-Abfrage wird ein Fehler umgangen, der bei den niedrigen Zielhöhen häufiger aufgetreten ist. Ab einem gewissen Punkt in der Simulation von geringen Höhen verringert sich die Exzentrizität wieder, da durch atmosphärischen Drag das Apogäum schneller sinkt als Das Perigäum durch den Schub. Dies hatte aus unerfindlichen Gründen einen Error zur Folge, zu dem kein fix gefunden wurde. \\
+Die letzte Abbruchbedingung ist die 10 Jahresmarke. Hier wird abgefragt, ob die Tage seit dem Start der Whileschleife größer als 3700 Tage sind. Ist dies der Fall wird die Variable Abbruch auf 3 gesetzt.\\
+Der letzte Befehl in der Kernschleife ist der EndWhile Report. Hier wird dem Programm gesagt, dass er die gewünschten Daten in eine Datei speichern soll. Diese Datei dient lediglich dazu ungeklärte Abbrüche und Abstürze zu ermitteln und war für die Auswertung irrelevant.\\
+Die While Schleife läuft solange, bis das Abbruchkriterium $\neq 0$ ist.\\
+Danach werden noch zwei Reports angefertigt, wobei der AWReport in eine separate Datei, die zur Auswertung genutzt wurde, schreibt.\\
+Nach der Hauptschleife wird überprüft ob das Abbruchkriterium 3 war. Ist dies der Fall bedeutet das, dass die Nachfolgenden Masseschritte auch nicht in unter 3700 Tagen geschafft werden können. An dieser Stelle wird die Aktuelle Masse auf einen Wert der höher ist als die gewählte Endmasse und die Masseschleife wird abgebrochen um Zeitzusparen. Die letzte If Abfrage ist eine weitere Maßnahme um Zeit zu sparen. Hier wird abgefragt, ob die Aktuelle Masse gleich der gewählten Startmasse ist. Ist dies der Fall wird die äußerste Whileschleife beendet und die Mission ist fertig simuliert.\\
+Vor der Kernschleife stehen noch einige Equation Befehle, welche unter Anderem den Orbit und das Datum zurücksetzen. Außerdem wird der “Abbruch”-Wert auf 0 zurückgesetzt.
 
 
 \section{Ergebnisse}
