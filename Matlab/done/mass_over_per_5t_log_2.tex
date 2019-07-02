@@ -51,9 +51,9 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=5.581in,
-height=5.289in,
-at={(0.936in,0.714in)},
+width=7.874in,
+height=6.868in,
+at={(1.321in,0.927in)},
 scale only axis,
 point meta min=13.00999016,
 point meta max=3698.20109844586,
@@ -64,14 +64,18 @@ xlabel={Height of Perigee [km]},
 ymode=log,
 ymin=50,
 ymax=5000,
-ytick={100,200,300,400,500,1000,2000,3000,4000,5000},
-yticklabels={{100},{200},{300},{400},{500},{1000},{2000},{3000},{4000},{5000}},
+ytick={100,500,1000,5000},
+yticklabels={{100},{500},{1000},{5000}},
 yminorticks=true,
 ylabel style={font=\color{white!15!black}},
 ylabel={Targetmass [kg]},
 axis background/.style={fill=white},
 title style={font=\bfseries},
 title={Targetmass (up to 5t) over Height of Perigee},
+ymajorgrids,
+yminorgrids,
+grid style={black, opacity=0.4},
+minor grid style={black, opacity=0.8},
 legend style={legend cell align=left, align=left, draw=white!15!black},
 colormap/jet,
 colorbar
@@ -140674,8 +140678,8 @@ x	y\\
 \end{axis}
 
 \begin{axis}[%
-width=7.969in,
-height=6.49in,
+width=10.927in,
+height=8.427in,
 at={(0in,0in)},
 scale only axis,
 point meta min=0,

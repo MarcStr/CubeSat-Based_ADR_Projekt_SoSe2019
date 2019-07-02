@@ -1,17 +1,19 @@
-\chapter{Auswertung des CubeSat-based ADR Konzepts}
+\chapter{Missionsdesign und Simulation}
 
 \section{Bewertungsstrategie}
 	%Die Strategie besteht draus mehrere Simulationen per GMAT für untershciedliche Koonfigs durchzuführen. Die Bewertung fokusiertsich auf die Machbarkeit des De-orbiting (seihe TODOS.txt)\\
-		\subsection{Kriterien der Bewertung}	
-		\subsection{GMAT}
-		\subsubsection*{Beschreibung der Software}
+		\subsection{Kriterien der Bewertung}
+			
+%-------------------------------------------------------------GMAT
+		\section{GMAT}
+		\subsection{Beschreibung der Software}
 		Der GMAT Mission Planner ist ein Open Source Programm, welches von der NASA entwickelt wird. Das Programm ist dazu da um Trajektorien von Satelliten zu berechnen und optimieren. Der Missionsraum umfasst das gesamte Sonnensystem und erlaubt es die Gravitationseinflüsse von allen größeren Himmelskörpern in die Berechnungen mit einfließen zu lassen. 
 Die Eingabe der gewünschten Parameter erfolgt über ein GUI oder ein benutzerdefiniertes Skript. Die Skriptsprache von GMAT lehnt an der von MathWorks MATLAB(R) an.
 Das GUI beinhalted einen 3D Plot und einen 2D Plot. Der 3D Plot zeigt die Position und Trajektorie des Satellitens im dreidimensionalen Raum während der 2D Plot eine Projektion der Trajektorie auf die Oberfläche eines gewählten Himmelskörpers zeigt.
 
 \begin{figure}[!h]
 	\centering
-		\includegraphics[width=1.00\textwidth]{graphics/GMAT_OrbitView2.PNG}
+		\includegraphics[width=1.00\textwidth]{graphics/GMAT/GMAT_OrbitView2.PNG}
 	\caption{3D Plot eines Satelliten in einer exzentrischen Umlaufbahn um die Erde}
 	\label{fig:OrbitView2}
 \end{figure}
@@ -22,17 +24,19 @@ In dem Resources Tab werden alle Ressourcen die für die Mission benötigt werde
 Im Missionstab werden nacheinander die auszuführenden Befehle aufgelistet. Diese können auch mit Logikoperatoren wie While oder For Schleifen wiederholt werden.\\
 Im Output Tab finden sich nach dem Missionsdurchlauf die Ausgaben die im Laufe der Mission erfasst worden sind wieder. 
 
-\subsubsection*{Missionsskript 1}
+
+%-------------------------------------------------------------Kreisorbitskript
+
+\subsection{Missionsskript 1}
 
 In dem erstem Missionsskript geht es darum, ausgehend von einer kreisförmigen Erdumlaufbahn, zu testen wie lange es dauert mit der in (verweis) gewählten Konfiguration Trümmerteile von 50 bis 5000kg zu deorbiten. Die gewählten Starthöhen liefen von 400 bis 1400km.\\
 
 \begin{figure}[!h]
 	\centering
-		\includegraphics[width=0.35\textwidth]{graphics/GMAT_Skript3.PNG}
+		\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript3.PNG}
 	\caption{Deorbitskript - kreisförmiger Startorbit}
 	\label{fig:GMAT_Skript3}
 \end{figure}
-
 
 
 Bevor die Mission in die Schleifen geht wird die Starthöhe über $Initial Orbitheight$ festgelegt. Danach geht es in die $Orbit Height$-Schleife und die Startmasse wird festgelegt.
@@ -52,7 +56,57 @@ Nach der Hauptschleife wird überprüft ob das Abbruchkriterium 3 war. Ist dies 
 Vor der Kernschleife stehen noch einige Equation Befehle, welche unter Anderem den Orbit und das Datum zurücksetzen. Außerdem wird der “Abbruch”-Wert auf 0 zurückgesetzt.
 
 
+
+%-------------------------------------------------------------Exzen.Skript
+
+\subsection{Missionsskript 2}
+
+Für die zweite Untersuchung wurde das Skript so modifiziert, dass es die Exzentrizitäten von 0.025 bis 0.3 durchläuft.
+Der Aufbau der Kernschleife ist gleich geblieben. Die erste Schleife um die Kernschleife ist eine For Schleife,, die die Exzentrizität in 0.025er Schritten Inkrementiert. Innerhalb dieser Schleife wird zu Beginn das Perigäum auf die Starthöhe gesetzt und das Apogäum mit der Exzentrizität über
+\begin{equation}
+r_A = \frac{1+e}{1-e}\cdot r_P
+\label{apoapsis}
+\end{equation}
+berechnet.\\
+In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Massen, in unregelmäßigen Abständen, berechnet worden sind. Die äußerste For Schleife ist für die Höhe zuständig und läuft mit einem Inkrement von 100km von 400 bis 1400km durch.
+
+%-------------------------------------------------------------Ergebnisse
+
+
 \section{Ergebnisse}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.00\textwidth]{./graphics/GMAT/GMAT_Mass_over_Height.png}
+\label{fig:mass_over_height}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/GMAT_Mass_over_Height_550.png}
+	\label{fig:GMAT_Mass_over_Height_550}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_50kg.png}
+	\label{fig:GMAT_ecc_50}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_375kg.png}
+	\label{fig:GMAT_ecc_375}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_550kg.png}
+	\label{fig:GMAT_ecc_550}
+\end{figure}
+
+
+
 		\subsection {Generated Data}
 %For every considered satellite design (=mainly thruster configuration, 3-4 different designs), generate following data: \\
 %
