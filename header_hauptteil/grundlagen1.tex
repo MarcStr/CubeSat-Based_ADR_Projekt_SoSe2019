@@ -31,11 +31,24 @@ Im Wesentlichen lassen sich die Antriebsarten in chemische und elektrische Antri
 Für genaue Untersuchung und den Vergleich der verschiedenen Triebwerkstypen wird auf [Literatur] verwiesen. Miniaturisierte Versionen von erprobten Triebwerken werden stetig weiterentwickelt und getestet. Es wurden bereits mehrere Miniaturisierte Triebwerke in CubeSatmissionen erfolgreich eingesetzt. In Zukunft sollte es eine wachsende Auswahl an geeigneten Triebwerken für CubeSatmissionen geben. 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Stromversorgungssystem - Electrical Power System (EPS)}%----------------------------------------------------------------------------------------------------
-		Das EPS ist für die Erzeugung-, Speicherung- und Verteilung von elektrischer Energie verantwortlich. 
-Für die Stromerzeugung werden in der Raumfahrt hauptsächlich Solarpanele verwendet, welche auch für CubeSats die sinnvollste Lösung darstellen. 
-Für die meisten Anwendungen können Produkte verschiedener Anbieter COTS erworben werden. CubeSats mit geringem Leistungsbedarf nutzen oft nur ihre eigene Oberfläche um mit Solarzellen Strom zu generieren. Wenn mehr Leistung benötigt wird werden faltbare Solarmodule genutzt. So kann die nutzbare Oberfläche 2-4 mal größer sein, als die benötigte Fläche auf dem Satelliten.\\
-Während der Satellit sich im Schatten der Erde befindet wird Energie aus einem internen Speicher genutzt. Dieser besteht in der Regel aus Lithium basierten Akkus, welche eine hohe Energiedichte von bis zu 240 $Wh/kg$ aufweisen. Sie können sowohl als einzelne Zellen, als auch in vorgefertigten Paketen COTS erworben werden.\\
-	Für die Verteilung des Stroms an die Subsysteme gibt es zwei unterschiedliche Ansätze. Dezentralisierte Verteilungssysteme erlauben ein modulares und flexibles Design, das für verschiedene Satelliten angepasst werden kann. Es arbeitet mit nur einer Ausgansspannung, die erst von den angeschlossenen Komponenten zu deren jeweiligen Eingangsspannung umgewandelt wird. Zentralisierte Systeme haben den Vorteil eines geringeren Volumens. Spannungsregler für alle benötigten Ausgangspannungen sind mit mehreren Subsystemen gleichzeitig verbunden und müssen deshalb für eine große Maximallast ausgelegt werden. Zentralisierte Systeme sind im Aufbau einfacher gestaltet als dezentrale, jedoch aufgrund der hohen Maximallastauslegung weniger effizient. [Analysis of CS EPS syst. architecture]
+Für die meisten Anwendungen können Produkte verschiedener Anbieter COTS erworben werden. CubeSats mit geringem Leistungsbedarf nutzen oft nur ihre eigene Oberfläche um mit Solarzellen Strom zu generieren. Wenn mehr Leistung benötigt wird werden faltbare Solarmodule genutzt. So kann die nutzbare Oberfläche zwei bis vier mal größer sein, als die benötigte Fläche auf dem Satelliten.\cite{Lettau.}\\
+Während der Satellit sich im Schatten der Erde befindet wird Energie aus einem internen Speicher genutzt. Dieser besteht in der Regel aus Lithium basierten Akkus, welche eine hohe Energiedichte von bis zu 240 Wh/kg aufweisen. Sie können sowohl als einzelne Zellen, als auch in vorgefertigten Paketen COTS erworben werden.\cite{Lettau., Abaker.2017}\\
+	Für die Verteilung des Stroms an die Subsysteme gibt es zwei unterschiedliche Ansätze. Zum Einen sind es dezentralisierte Verteilungssysteme, die ein modulares und flexibles Design erlauben. Dieses kann für verschiedene Satelliten angepasst werden. Es arbeitet mit nur einer Ausgangsspannung, die dann für jedes angeschlossene Subsystem einzeln umgewandelt wird.\\
+\begin{figure}[!h]
+	\centering
+		\includegraphics[width=0.50\textwidth]{./graphics/Distributed_EPS.PNG}
+	\caption{Dezentralisiertes EPS \cite{Abaker.2017}}
+\end{figure}
+
+ Die zweite Variante sind zentralisierte Verteilungssysteme. Diese werden häufiger verwendet, da sie den Vorteil eines geringen Volumens bieten und weniger Spannungsregler benötigen. Das wird erreicht, indem alle Subsysteme mit gleicher Spannung am selben Regler angeschlossen werden. Nachteilig ist, dass dieser Regler auf die maximale Gesamtlast aller Subsysteme ausgelegt werden muss. Das führt dazu, dass zentralisierte Systeme zwar im Aufbau einfacher ausfallen, jedoch aufgrund der Maximallastauslegung weniger effizient sind.\cite{Abaker.2017}
+\begin{figure}[!h]
+	\centering
+		\includegraphics[width=0.50\textwidth]{./graphics/Centralized_EPS.PNG}
+	\caption{Zentralisiertes EPS \cite{Abaker.2017}}
+\end{figure}
+
+
+\newpage
 
 		%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Guidance, navigation and control -GNC ADCS}%------------------------------------------------------------------------------------------------------------------
