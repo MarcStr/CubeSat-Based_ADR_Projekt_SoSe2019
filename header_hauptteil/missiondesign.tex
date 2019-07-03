@@ -23,8 +23,8 @@ Das GUI beinhalted einen 3D Plot und einen 2D Plot. Der 3D Plot zeigt die Positi
 \begin{figure}[!h]
 	\centering
 		\includegraphics[width=1.00\textwidth]{graphics/GMAT/GMAT_OrbitView2.PNG}
-	\caption{3D Plot eines Satelliten in einer exzentrischen Umlaufbahn um die Erde}
-	\label{fig:OrbitView2}
+		\caption{3D Plot eines Satelliten in einer exzentrischen Umlaufbahn um die Erde}
+			\label{fig:OrbitView2}
 \end{figure}
 
 
@@ -43,8 +43,8 @@ In dem erstem Missionsskript geht es darum, ausgehend von einer kreisförmigen E
 \begin{figure}[!h]
 	\centering
 		\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript_Kreis.PNG}
-	\caption{Deorbitskript - kreisförmiger Startorbit}
-	\label{fig:GMAT_Skript_Kreis}
+		\caption{Deorbitskript - kreisförmiger Startorbit}
+			\label{fig:GMAT_Skript_Kreis}
 \end{figure}
 
 
@@ -81,8 +81,8 @@ In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Ma
 \begin{figure}[!h]
 	\centering
 		\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript_ECC.PNG}
-	\caption{Deorbitskript - Variation der Exzentrizität}
-	\label{fig:GMAT_Skript_ECC}
+		\caption{Deorbitskript - Variation der Exzentrizität}
+			\label{fig:GMAT_Skript_ECC}
 \end{figure}
 
 
@@ -95,11 +95,12 @@ Im Folgenden werden die Ergebnisse der zwei durchgeführten Simulationsarten pr�
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.00\textwidth]{./graphics/GMAT/GMAT_Mass_over_Height.png}
+\caption{Simulationsergebnisse 50-5000kg, Kreisorbit}
 \label{fig:GMAT_Mass_over_Height}
 \end{figure}
 
 \subsection{Beschreibung Mission 1}
-In \abb{fig:GMAT_Mass_over_Height} sind die zugehörigen Deorbitzeiten farblich in Abhängigkeit von Masse und Starthöhe abgetragen. Die Zeitskala ist logarithmisch von 0 bis 10 Jahre an der Seite aufgeführt.  
+In Abb. \ref{fig:GMAT_Mass_over_Height} sind die zugehörigen Deorbitzeiten farblich in Abhängigkeit von Masse und Starthöhe abgetragen. Die Zeitskala ist logarithmisch von 0 bis 10 Jahre an der Seite aufgeführt.  
 Es ist klar zu erkennen, dass je niedriger die Masse, desto größer ist die Reichweite der Zielmassen, die innerhalb von zehn Jahren aus der Erdumlaufbahn entfernt werden kann.
 
 
@@ -108,6 +109,7 @@ Eine detaillierte Ansicht der Massen von 50 bis 550kg bietet \abb{fig:GMAT_Mass_
 \begin{figure}[h!]
 	\centering
 		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/GMAT_Mass_over_Height_550.png}
+		\caption{Simulationsergebnisse 50-550kg, Kreisorbit}
 	\label{fig:GMAT_Mass_over_Height_550}
 \end{figure}
 
@@ -122,29 +124,32 @@ Bei großen Höhen ist die maximale Masse limitiert, jedoch ist der Aerodynamisc
 
 \subsection{Beschreibung Mission 2}
 
-Die Abbildungen \ref{fig:GMAT_ecc_50}, \ref{fig:GMAT_ecc_375} und \ref{fig:GMAT_ecc_550} repräsentieren die Ergebnisse für die ausgewählten Massen 50, 375 und 550 kg. Die benötigte Missionszeit wird hier in Abhängigkeit von Exzentrizität und Starthöhe des Perigäums dargestellt. Die Zeitskala ist wieder logarithmisch von 0 bis zehn Jahre an der Seite aufgeführt.
+Die Abbildungen \ref{fig:GMAT_ecc_a}, \ref{fig:GMAT_ecc_b} und \ref{fig:GMAT_ecc_c} repräsentieren die Ergebnisse für die ausgewählten Massen 50, 375 und 550 kg. Die benötigte Missionszeit wird hier in Abhängigkeit von Exzentrizität und Starthöhe des Perigäums dargestellt. Die Zeitskala ist wieder logarithmisch von 0 bis zehn Jahre an der Seite aufgeführt.
 
 
 \begin{figure}[h!]
 	\centering
 		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_50kg.png}
-	\label{fig:GMAT_ecc_50}
+		\caption{Simulationsergebnisse Variation der Exzentrizität 50 kg}
+	\label{fig:GMAT_ecc_a}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_375kg.png}
-	\label{fig:GMAT_ecc_375}
+		\caption{Simulationsergebnisse Variation der Exzentrizität 375 kg}
+	\label{fig:GMAT_ecc_b}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_550kg.png}
-	\label{fig:GMAT_ecc_550}
+		\caption{Simulationsergebnisse Variation der Exzentrizität 550 kg}
+	\label{fig:GMAT_ecc_c}
 \end{figure}
 
 
-Auffallend ist die Tatsache, dass eine höhere Exzentrizität eine geringere Missionszeit zur Folge hat. Der Grund hier für ist unter Anderem, dass bei hohen Exzentrizitäten der CubeSat länger innerhalb der 58° um das Apogäum ist und das Triebwerk somit länger brennen lassen kann. Im Fall von 550 kg zeigt Abb. \abb{fig:GMAT_ecc_550}, dass obwohl es über alle Höhenstufen zu einer verkürzung der Mission kommt, dies für 1400 km trotzdem über 10 Jahre dauert.
+Auffallend ist die Tatsache, dass eine höhere Exzentrizität eine geringere Missionszeit zur Folge hat. Der Grund hier für ist unter Anderem, dass bei hohen Exzentrizitäten der CubeSat länger innerhalb der 58° um das Apogäum ist und das Triebwerk somit länger brennen lassen kann. Im Fall von 550 kg zeigt \abb{fig:GMAT_ecc_550}, dass obwohl es über alle Höhenstufen zu einer verkürzung der Mission kommt, dies für 1400 km trotzdem über 10 Jahre dauert.
 
 
 
