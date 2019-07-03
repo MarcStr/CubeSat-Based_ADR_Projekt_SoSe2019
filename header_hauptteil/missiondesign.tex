@@ -7,6 +7,13 @@
 
 \section{Missionsbeschreibung}
 
+Ziel der Mission ist es defekte, nicht kooperative Satelliten von Megakonstellationen (z.B.: Starlink) abzubremsen, sodass sie in der Erdatmosphäre verglühen und das Kollisionsrisiko minimiert wird. Das Höhen- und Gewichtsintervall wurden auf 400-1400km, bzw. 50-5000kg festgelegt, da alle Satelliten bisher geplanter Megakonstellationen innerhalb dieser Intervalle befinden.
+Es wird angenommen, dass sich der CubeSat und das Ziel zu Beginn in derselben Umlaufbahn befinden und nur wenige Kilometer voneinander entfernt sind. Das Haupttriebwerk wird für RDV und Docking nicht verwendet, sodass für den Deorbit Vorgang die gesamte Kraftstoffmenge zur Verfügung steht. Sobald beide Satelliten miteinander Verbunden sind richten sie sich so aus, dass das Haupttriebwerk des CubeSats entgegen der Bewegungsrichtung wirkt. Als nächstes beginnt der eigentliche Deorbit Vorgang. Hier fängt auch die jeweilige Simulation an. Da die Solarzellen den Antrieb nicht dauerhaft versorgen können, wird ein Brennintervall von 58° um den höchsten Punkt festgelegt. Jeder Brennvorgang verringert die Geschwindigkeit und senkt somit das Perigäum ab. Die Mission ist erfolgreich, wenn das Perigäum eine Höhe von 180 km erreicht hat. Die Simulation wird nach zehn Jahren abgebrochen, wenn die Mission bis dahin nicht erfolgreich war. 
+Zuerst wird eine Mission simuliert, die eine kreisförmige Umlaufbahn annimmt und das Höhenintervall in 50km Schritten erhöht. Die Masse wird von 50 bis 550kg in 25kg und von 600 bis 5000kg in 100kg Schritten erhöht.
+Mit der zweiten Mission wird betrachtet, wie sich die Deorbitzeit für ausgewählte Massen verhält, wenn die Exzentrizität verändert wird. Das Höhenintervall beschreibt hierbei die Höhe des Perigäums und die Exzentrizität wird von 0.025 bis 0.3 betrachtet.
+
+
+
 	\subsection{Kriterien der Bewertung}
 
 	
@@ -40,9 +47,9 @@ In dem erstem Missionsskript geht es darum, ausgehend von einer kreisförmigen E
 
 \begin{figure}[!h]
 	\centering
-		\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript3.PNG}
+		\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript_Kreis.PNG}
 	\caption{Deorbitskript - kreisförmiger Startorbit}
-	\label{fig:GMAT_Skript3}
+	\label{fig:GMAT_Skript_Kreis}
 \end{figure}
 
 
@@ -76,17 +83,27 @@ r_A = \frac{1+e}{1-e}\cdot r_P
 \end{equation}
 berechnet.\\
 In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Massen, in unregelmäßigen Abständen, berechnet worden sind. Die äußerste For Schleife ist für die Höhe zuständig und läuft mit einem Inkrement von 100km von 400 bis 1400km durch.
+\begin{figure}[!h]
+	\centering
+		\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript_ECC.PNG}
+	\caption{Deorbitskript - Variation der Exzentrizität}
+	\label{fig:GMAT_Skript_ECC}
+\end{figure}
+
+
 
 %-------------------------------------------------------------Ergebnisse
-
+\newpage
 
 \section{Ergebnisse}
-
-\begin{figure}
+Im Folgenden werden die Ergebnisse der zwei durchgeführten Simulationsarten präsentiert.
+\begin{figure}[h]
 \centering
 \includegraphics[width=1.00\textwidth]{./graphics/GMAT/GMAT_Mass_over_Height.png}
-\label{fig:mass_over_height}
+\label{fig:Mass_over_Height}
 \end{figure}
+
+
 
 \begin{figure}[h!]
 	\centering
