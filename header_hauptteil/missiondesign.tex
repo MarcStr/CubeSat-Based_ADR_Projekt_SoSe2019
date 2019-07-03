@@ -19,9 +19,9 @@ Das GUI beinhalted einen 3D Plot und einen 2D Plot. Der 3D Plot zeigt die Positi
 \end{figure}
 
 
-Im GUI finden sich drei Tabs: ’Resources’, ’Mission’ und ’Output’.\\
-In dem Resources Tab werden alle Ressourcen die für die Mission benötigt werden eingestellt. Dazu gehören die Schubdüsen, Tanks, Startumlaufbahn des Satelliten und andere dinge die während der Mission im Hintergrund wichtig sind.\\
-Im Missionstab werden nacheinander die auszuführenden Befehle aufgelistet. Diese können auch mit Logikoperatoren wie While oder For Schleifen wiederholt werden.\\
+Im GUI finden sich drei Reiter: ’Resources’, ’Mission’ und ’Output’.\\
+In dem Resources Reiter werden alle Ressourcen die für die Mission benötigt werden eingestellt. Dazu gehören die Schubdüsen, Tanks, Startumlaufbahn des Satelliten und andere Dinge, die während der Mission im Hintergrund wichtig sind.\\
+Im Missions Reiter werden nacheinander die auszuführenden Befehle aufgelistet. Diese können auch mit Logikoperatoren wie While oder For Schleifen wiederholt werden.\\
 Im Output Tab finden sich nach dem Missionsdurchlauf die Ausgaben die im Laufe der Mission erfasst worden sind wieder. 
 
 
@@ -45,7 +45,7 @@ Im Kern diesen Skriptes steht die Whileschleife:\\
 Nach einer Überprüfung des Treibstoffstands wird der Satellit mit dem ersten Propagator Befehl bis auf eine wahre Anomalie von 151 Grad vorangebracht. 
 Danach wird der Schubbefehl gestartet und der Propagator $ProptoBurnEnd$ lässt den Satelliten, während dieser Schub gibt, bis zu einer wahren Anomalie von 209° vorlaufen. Sollte der Treibstoff zuvor auf 0 fallen wird dieser Vorgang abgebrochen.
 Danach wird der Schub beendet.\\
-Aufgrund einiger Fehler die während des Testens dieses Skripts aufgetreten sind folgen jetzt einige If Abfragen, die als Abbruchbedingungen gelten.
+Aufgrund einiger Fehler, die während des Testens dieses Skripts aufgetreten sind, folgen jetzt einige If Abfragen, die als Abbruchbedingungen der Kernschleife dienen.
 Die erste überprüft ob das Perigäum des Satelliten größer als 6558 ist. Ist dies der Fall wird der Fortlauf bis zum Perigäum durchgeführt. Die Zweite If Abfrage überprüft das Gegenteil, also ob das Perigäum kleiner oder gleich 6558 ist. Ist dies der Fall wird die Variable “Abbruch” auf 1 gesetzt. Der Grund für diese beiden If Abfragen liegt darin, dass die While Schleife bei einigen Simulationen nicht auf einen zu niedrige Wert reagiert hat. Außerdem kam es vor, dass die Simulation immer langsamer wurde, wenn der Satellit bei einer kleinen Großen Halbachse zum Perigäum navigiert ist. Das wurde dadurch umgangen, dass nur zum Perigäum navigiert wird, wenn diese über 6558 ist. \\
 Die nächste If Abfrage überprüft ob die Exzentrizität niedriger als 0.0025 ist. Ist dies der Fall wird der Wert “Abbruch” auf 2 gesetzt. Mit dieser If-Abfrage wird ein Fehler umgangen, der bei den niedrigen Zielhöhen häufiger aufgetreten ist. Ab einem gewissen Punkt in der Simulation von geringen Höhen verringert sich die Exzentrizität wieder, da durch atmosphärischen Drag das Apogäum schneller sinkt als Das Perigäum durch den Schub. Dies hatte aus unerfindlichen Gründen einen Error zur Folge, zu dem kein fix gefunden wurde. \\
 Die letzte Abbruchbedingung ist die 10 Jahresmarke. Hier wird abgefragt, ob die Tage seit dem Start der Whileschleife größer als 3700 Tage sind. Ist dies der Fall wird die Variable Abbruch auf 3 gesetzt.\\
@@ -104,6 +104,7 @@ In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Ma
 		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_550kg.png}
 	\label{fig:GMAT_ecc_550}
 \end{figure}
+
 
 
 
