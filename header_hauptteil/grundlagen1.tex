@@ -16,7 +16,7 @@ Die Fortschritte in der modernen Technologie unterstützen die Entwicklung der m
 	\subsection{Gestaltungsrichtlinien}%-------------------------------------------------------------------------------------------------------------------------------------------
 Für die Gestaltung von CubeSats gelten eine Reihe von Richtlinien. Als kleinste Einheit (1U) wird ein Würfel mit einer Kantenlänge von 10cm und einer zulässigen Masse von maximal 1,33 kg vorgegeben. Für größere Volumen und Massen können mehrere Einheiten von CubeSats verbunden werden. Satelliten mit 1U, 1.5U, 2U, oder 3U können von dem einheitlichen Startmechanismus (P-Pod) in die Erdumlaufbahn ausgelassen werden. Die Kosten von CubeSat Missionen können gering gehalten werden, indem diese als sekundäre Nutzlast bei Raketenstarts mitfliegen. Für größere Satelliten (6U, 12U, 27U) werden andere Startmechanismen benötigt. Die zugelassene Masse wird auf 2 kg/U angehoben. Weitere Vorschriften gelten für die Folgenden Kriterien:
 		\begin{itemize}
-			\item \textit{Materialien:} 	\\ Alle bei der Konstruktion verwendeten Materialien müssen den Richtlinien der Air Force Space Command Manual entsprechen. Außerdem darf der Masseverlust des Satelliten durch verflüchtigende Materialien maximal 1\% betragen.\cite{.c, CaliforniaPolytechnicStateUniversity.2014}
+			\item \textit{Materialien:} 	\\ Alle bei der Konstruktion verwendeten Materialien müssen den Richtlinien der Air Force Space Command Manual entsprechen. Außerdem darf der Masseverlust des Satelliten durch verflüchtigende Materialien maximal 1\% betragen.\cite{AFSC.c, CaliforniaPolytechnicStateUniversity.2014}
 			\item \textit{Energiespeicher:} \\ Der chemische Energiespeicher darf eine Größe von 100 Wh nicht überschreiten.\cite{CaliforniaPolytechnicStateUniversity.2014} 
 			\item \textit{Aktivierungszeitpunkt:} \\ Während der CubeSat im P-POD verstaut ist müssen alle Systeme ausgeschaltet bleiben. Beim Verlassen der Trägerrakete wird der Satellit aktiviert. Erst 30 Minuten später dürfen Bauteile (z.B. Solarpanele, Antennen, etc...) ausgefahren werden. Bevor die ersten Signale generiert oder gesendet werden müssen mindestens 45 Minuten vergangen sein.\cite{Hevner.2011} 
 		\end{itemize}
@@ -116,21 +116,21 @@ Es gibt einige Herausforderungen, welch unabhängig von der Removal Methode sind
 				\begin{figure}[h]
 			\centering
 					\includegraphics[width=0.80\textwidth]{./graphics/ADR/collective_method.PNG}
-				\caption{Missionsaufbau für Collective Method}
-				\label{fig:Sammelmethoden}
+				\caption{Missionsaufbau für Collective Method \cite{Peters.2016}}
+				\label{fig:Sammelmethoden }
 			\end{figure}
 	
-Die Abbildung zeigt den grundlegenden aufbau eine ADR mission welche auf einer kollektiven Methode beruht. Dabei wird ein Satellit mit Deorbiting Kits ausgestattet, welcher die verschieden Ziele anfliegt und diese anbringt. Ein großer Vorteil ist, dass nur ein Trägersatellit mit anspruchsvoller Technik für die Navigation, Positionsbestimmung , Dockingmechnismen und Energieversorgung ausgestattet werden muss. Da der Trägersatellit mehrer Ziele anfliegt, muss dieser über ein sehr großes Tankvolumen verfügen, da mehrer Orbithöhe anhebungen durchgeführt werden müssen. Neben der Orbithöhe muss vermutlich auch eine änderung der Inklination und exzentrizität durchgeführt werden. Dies kann auch bei kleinen Unterschieden der Variablen zu einem sehr hohen Treibstoffverbrauch führen. Außerdem wird bei jedem Zielobjekt ein Rendezvous Manöver sowie docking durchgeführt, welche das Potential haben durch eine Kollision weiter Trümmer zu erzeugen. Aktuell wird an der Validierung dieser Methode anf der Erde geforscht.
+Die Abbildung zeigt den grundlegenden Aufbau eine ADR Mission welche auf ein Sammelverfahren beruht. Dabei wird ein Satellit mit Deorbiting Kits ausgestattet, welcher die verschieden Ziele anfliegt und diese anbringt. Ein großer Vorteil ist, dass nur ein Trägersatellit mit anspruchsvoller Technik für die Navigation, Positionsbestimmung, Dockingmechnismen und Energieversorgung ausgestattet werden muss. Da der Trägersatellit mehrere Ziele anfliegt, muss dieser über ein sehr großes Tankvolumen verfügen, da möglicherweise mehrere Orbithöhenanpassungen  durchgeführt werden müssen. Neben der Orbithöhe muss vermutlich auch eine Änderung der Inklination und Exzentrizität durchgeführt werden. Dies kann auch bei kleinen Unterschieden der Variablen zu einem sehr hohen Treibstoffverbrauch führen. Außerdem wird bei jedem Zielobjekt ein Rendezvous Manöver sowie Docking durchgeführt, welche das Potential haben durch eine Kollision weiter Trümmer zu erzeugen \cite{Peters.2016} \cite{Mark.2019}.
 
 %------------------------------------------------------------------------------------------------------------------------
 			\subsubsection{Laser-based Method}
 %-----------------------------------------------------------------------------------------------------------------------
-Wie der Name es bereit sagt beruht diese Methode auf Laser , welcher sich auf der Erde befindet. Es wird ein hochenergetischer Laser benötigt, welcher in einer geringen Zeit das Objekt befeuert. dadurch entsteht ein Plasmastrahl, welcher den Satelliten bremst und dadurch eine Verringerung der Orbithöhe resultiert. Dieses System kann dazu verwendet werden um sowohl große als auch kleine Objekte zu entfernen, sowie dessen kosteneffizient. Das größte Problem bei dieser Methode, ist die Zielfindung und Verfolgung. Damit das deorbiting funktioniert muss der Laser für ein bestimmtes Zeitinkrement auf das Ziel gerichtet sein, was eine genau Berechnung der Zielposition in Abhängigkeit der Dauer von Start des Laserstrahls und erreichen des Ziels.
+Wie der Name es bereit sagt beruht diese Methode auf Laser , welcher sich auf der Erde befindet. Es wird ein hochenergetischer Laser benötigt, welcher in einer geringen Zeit das Objekt befeuert. dadurch entsteht ein Plasmastrahl, welcher den Satelliten bremst und dadurch eine Verringerung der Orbithöhe resultiert. Dieses System kann dazu verwendet werden um sowohl große als auch kleine Objekte zu entfernen, sowie dessen kosteneffizient. Das größte Problem bei dieser Methode, ist die Zielfindung und Verfolgung. Damit das deorbiting funktioniert muss der Laser für ein bestimmtes Zeitinkrement auf das Ziel gerichtet sein, was eine genau Berechnung der Zielposition in Abhängigkeit der Dauer von Start des Laserstrahls und erreichen des Ziels.\cite{Phipps.2012,Mark.2019}
 	
 	\begin{figure}[h]
 			\centering
 					\includegraphics[width=0.80\textwidth]{./graphics/ADR/Laser-beam.PNG}
-				\caption{Funktionsweise des ADR mittels Laser}
+				\caption{Funktionsweise des ADR mittels Laser \cite{Phipps.2012}}
 				\label{fig:Laser}
 			\end{figure}
 
@@ -140,16 +140,16 @@ Wie der Name es bereit sagt beruht diese Methode auf Laser , welcher sich auf de
 	\begin{figure}[h]
 			\centering
 					\includegraphics[width=0.80\textwidth]{./graphics/ADR/Shepherd.PNG}
-				\caption{Funktionsweise des ADR mittels Laser}
+				\caption{Funktionsweise des ADR mittels Laser \cite{Bombardelli.2011}}
 				\label{fig:Laser}
 			\end{figure}
 
-Die Abbildung  zeigt den schematischen Aufbau einer ADR Mission nach Ion Based Shepherd Methode. Der Chaser Fliegt vor dem Zielobjekt und bremst diesen durch ein Ionenstrahl aus dem zum Objekt gerichteten Triebwerk. Besonders zu beachten ist die Streuung des Ionenstrahl und die genaue Positionierung des Chasers vor dem Zielobjekt.
+Die Abbildung  zeigt den schematischen Aufbau einer ADR Mission nach Ion Based Shepherd Methode. Der Chaser Fliegt vor dem Zielobjekt und bremst diesen durch ein Ionenstrahl aus dem zum Objekt gerichteten Triebwerk. Besonders zu beachten ist die Streuung des Ionenstrahl und die genaue Positionierung des Chasers vor dem Zielobjekt \cite{Mark.2019}.
 
 %---------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Tether Based Methode}
 %----------------------------------------------------------------------------------------------------------------------------
-Diese Methode des deorbiting beruht auf dem fangen/ festhalten von Objekten. Betrachtet werden dabei primär Fangnetze und Harpunen. Problematisch ist bei beiden Systemen die Simulation der dynamischen Bewegungen im Orbit. Es wurden bereits Experimente diesbezüglich durchgeführt. Die Kontrolle des Fangmeschnismusses und des Zielobjekts sind aktuelle Themen der Forschung. Bei Harpunen ist ein weiterer Risikofaktor der Einschlag. Es besteht die Möglichkeit der Beschädigung des Satelliten und dadurch resultierend eine Zerstörung.
+Diese Methode des deorbiting beruht auf dem fangen/ festhalten von Objekten. Betrachtet werden dabei primär Fangnetze und Harpunen. Problematisch ist bei beiden Systemen die Simulation der dynamischen Bewegungen im Orbit. Es wurden bereits Experimente diesbezüglich durchgeführt. Die Kontrolle des Fangmeschnismusses und des Zielobjekts sind aktuelle Themen der Forschung. Bei Harpunen ist ein weiterer Risikofaktor der Einschlag. Es besteht die Möglichkeit der Beschädigung des Satelliten und dadurch resultierend eine Zerstörung \cite{Mark.2019}.
 
 	\begin{figure}[h]
 			\centering
@@ -157,7 +157,7 @@ Diese Methode des deorbiting beruht auf dem fangen/ festhalten von Objekten. Bet
 				\caption{Satellit mit Fangnetz}
 				\label{fig:Netz}
 			\end{figure}
-
+		% http://www.esa.int/spaceinimages/Images/2013/09/Netting_a_derelict_satellite ist die Quelle für das Bild, konnte ich bei Citavi nicht einfügen
 %--------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Sail based Method}
 %--------------------------------------------------------------------------------------------------------------------------------------
@@ -165,21 +165,21 @@ Diese Methode des deorbiting beruht auf dem fangen/ festhalten von Objekten. Bet
 	\begin{figure}[h]
 			\centering
 					\includegraphics[width=0.80\textwidth]{./graphics/ADR/Sonnensegel.PNG}
-				\caption{Satellit mit Fangnetz}
+				\caption{Satellit mit Sonnensegel \cite{Romagnoli.2012}}
 				\label{fig:Segel}
 			\end{figure}
 
-Wie in der Abbildung zu erkenne, wird ein Sonnensegel verwendet um den Nötigen Schub zu erzeugen. Unschwer zu erkennen, ist das ein Sonnensegel im Verhältnis zu dem Satelliten sehr groß ist. Diese Fläche ist Notwendig, um einen Solarenstrahlungsdruck zu generieren welcher eine Veränderung der Geschwindigkeit herbeiführt. Eine Hauptaufgabe beim Entwickeln dieses Systems ist die Größe und die Auslegung des Segels, und damit zusammenhängend der komplexe Faltmechanismus. Des weiteren ist diese Art des Deorbiting langsam und Unkontrolliert. Da die Geschwindigkeitsänderung über den Strahlungsdruck der Sonne generiert wird, muss kein weiteres Gewicht inform von einem Antrieb oder Zusatztreibstoff für das deorbiting mitgenommen werden.\newpage
+Wie in der Abbildung zu erkenne, wird ein Sonnensegel verwendet um den Nötigen Schub zu erzeugen. Unschwer zu erkennen, ist das ein Sonnensegel im Verhältnis zu dem Satelliten sehr groß ist. Diese Fläche ist Notwendig, um einen Solarenstrahlungsdruck zu generieren welcher eine Veränderung der Geschwindigkeit herbeiführt. Eine Hauptaufgabe beim Entwickeln dieses Systems ist die Größe und die Auslegung des Segels, und damit zusammenhängend der komplexe Faltmechanismus. Des weiteren ist diese Art des Deorbiting langsam und Unkontrolliert. Da die Geschwindigkeitsänderung über den Strahlungsdruck der Sonne generiert wird, muss kein weiteres Gewicht inform von einem Antrieb oder Zusatztreibstoff für das deorbiting mitgenommen werden \cite{Romagnoli.2012,Mark.2019}.\newpage
 
 %----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Satellite based Method}
 %----------------------------------------------------------------------------------------------------------------------------------------
-Die bereits genannten Methoden beruhen teilweise auf Satelliten. Ziel bei dieser Methode ist nicht die Entwicklung eines neuen ADR- Systems, sondern die Optimierung und Miniaturisierung der bereits angesprochen Methoden. Dies ist ein großer Vorteil, da auf basis eines Satelliten verschiedene Methoden getestet und durchgeführt werden könne. Die Spanne der Einsatzmöglichkeiten geht hierbei von der Collective Methode mit dem Warehouse-system bis hin zu einmal Satelliten. Jedoch ist ein Satellit im Vergleich zu anderen Systemen komplex und die Leistung muss gesteigert werden. Obwohl diese Art von Satelliten nicht mit einer eigenen Rakete gestartet werden ist es sehr kostspielig einen Satelliten in den Orbit zu befördern. Diese Art des Deorbiting erfordert ein hohen Autonomiegrad, da sowohl das Rendezvous als auch das Docking Autonom erfolgen muss.
+Die bereits genannten Methoden beruhen teilweise auf Satelliten. Ziel bei dieser Methode ist nicht die Entwicklung eines neuen ADR- Systems, sondern die Optimierung und Miniaturisierung der bereits angesprochen Methoden. Dies ist ein großer Vorteil, da auf basis eines Satelliten verschiedene Methoden getestet und durchgeführt werden könne. Die Spanne der Einsatzmöglichkeiten geht hierbei von der Collective Methode mit dem Warehouse-system bis hin zu einmal Satelliten. Jedoch ist ein Satellit im Vergleich zu anderen Systemen komplex und die Leistung muss gesteigert werden. Obwohl diese Art von Satelliten nicht mit einer eigenen Rakete gestartet werden ist es sehr kostspielig einen Satelliten in den Orbit zu befördern. Diese Art des Deorbiting erfordert ein hohen Autonomiegrad, da sowohl das Rendezvous als auch das Docking Autonom erfolgen muss \cite{Mark.2019}.
 
 	\begin{figure}[h]
 			\centering
 					\includegraphics[width=0.80\textwidth]{./graphics/ADR/Sattelit_Methode.PNG}
-				\caption{Satellit mit Roboterarm}
+				\caption{Satellit mit Roboterarm \cite{Nishida.2011}}
 				\label{fig:Satellit}
 			\end{figure}
 			\newpage
@@ -187,12 +187,12 @@ Die bereits genannten Methoden beruhen teilweise auf Satelliten. Ziel bei dieser
 %-------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Unconventional	Method}
 %-------------------------------------------------------------------------------------------------------------------------------------------
-Diese Methoden sind von Grundlegenden Konzept keine der Kategorien zuzuordnen sind. Beispielhaft zu nennen ist die Erzeugung eines Magnetfeldes welches von dem Objekt generiert wird und durch die Interaktion mit dem Erdmagnetfeld eine Reduzierung der Orbithöhe zufolge hat. Diese Methoden sind unkonventionell und liefern neue Ideen für ADR-Missionen. In der Theorie sind diese sehr effektiv, aber nicht Umsetzbar.
+Diese Methoden sind von Grundlegenden Konzept keine der Kategorien zuzuordnen sind. Beispielhaft zu nennen ist die Erzeugung eines Magnetfeldes welches von dem Objekt generiert wird und durch die Interaktion mit dem Erdmagnetfeld eine Reduzierung der Orbithöhe zufolge hat. Diese Methoden sind unkonventionell und liefern neue Ideen für ADR-Missionen. In der Theorie sind diese sehr effektiv, aber nicht Umsetzbar \cite{Mark.2019}.
 
 	\begin{figure}[h]
 			\centering
 					\includegraphics[width=0.80\textwidth]{./graphics/ADR/Magnet.PNG}
-				\caption{Aufbau deorbiting mit dem Magnetfeld}
+				\caption{Aufbau deorbiting mit dem Magnetfeld \cite{Chopra.05282018}}
 				\label{fig:Magnet}
 			\end{figure}
 			\newpage
@@ -212,12 +212,12 @@ Text kommt noch
 	\begin{figure}[h]
 			\centering
 					\includegraphics[width=0.80\textwidth]{./graphics/ADR/Rendezvous.PNG}
-				\caption{Rendezvous Phasen}
+				\caption{Rendezvous Phasen\cite{Castronuovo.2011}}
 				\label{fig:Rendezvous}
 			\end{figure}
 				
 
-Rendezvous ist ein kritischer Missionsabschnitt bei einer ADR Mission. Wie in der Abbildung zu erkennen, ist dieser Missonsabschnitt wiederum in verschiedene Phasen unterteilt. In der ersten Phase, dem Free Flight, wird wenn notwendig ein Orbittransfer durchgeführt. Dabei nähert sich der Chaser dem Zielorbit und synchronisiert sich mit dessen Inklination. Die Orbithöhe des Chasers ist unterhalb der Zielhöhe, um eine Annäherung zu gewährleisten, da Satelliten mit einer niedrigeren Orbithöhe eine höhere Geschwindigkeit haben[Raumfahrttechnische Grundlagen]. Bei der Orbit Phase wird die Höhendifferenz reduziert, bis der Chaser ca. 5km hinter und 1km unterhalb des Ziels ist. Ab diesem Punkt beginnt die Far Range Rendezvous Phase. In dieser Phase wird die relative Navigation verwendet, welche auf Sensoren und Aktuatoren zurückgreift die in Kapitel 2.2 beschrieben worden sind. Besonders LIDAR und Kamera-Systeme werden in dieser Phase benötigt, da die absolute Navigationssysteme nicht die nötige Genauigkeit liefert und eine Kollision dem Ziel der Mission widerspricht und zu einer Verschlimmerung der Problematik führt. Diese Phase endet bei ca. 100m Entfernung zwischen Ziel und Chaser. Nun beginnt das Close Range Rendezvous, welches die Closing Phase und den Final Approach beinhaltet. Vor der Closing Phase wird das Objekt genau betrachtet, es werden alle relevanten Informationen Über das Ziel gesammelt und verglichen, dies beinhaltet auch die genaue Taumelbewegug und deren Beschreibung. Dabei wird darauf geachtet ob eine Rotationsachse vorhanden ist und wie die Beschaffenheit der Oberfläche ist. Sollte eine Taumelbewegung vorhanden sein, wird der Chaser mit dieser Synchronisiert. Nach der Synchronisierung findet das Closing und der Final Approach statt, in dem die Distanz weiter reduziert wird und schlussendlich das Docking durchgeführt wird. 
+Rendezvous ist ein kritischer Missionsabschnitt bei einer ADR Mission. Wie in der Abbildung zu erkennen, ist dieser Missonsabschnitt wiederum in verschiedene Phasen unterteilt. In der ersten Phase, dem Free Flight, wird wenn notwendig ein Orbittransfer durchgeführt. Dabei nähert sich der Chaser dem Zielorbit und synchronisiert sich mit dessen Inklination. Die Orbithöhe des Chasers ist unterhalb der Zielhöhe, um eine Annäherung zu gewährleisten, da Satelliten mit einer niedrigeren Orbithöhe eine höhere Geschwindigkeit haben[Raumfahrttechnische Grundlagen]. Bei der Orbit Phase wird die Höhendifferenz reduziert, bis der Chaser ca. 5km hinter und 1km unterhalb des Ziels ist. Ab diesem Punkt beginnt die Far Range Rendezvous Phase. In dieser Phase wird die relative Navigation verwendet, welche auf Sensoren und Aktuatoren zurückgreift die in Kapitel 2.2 beschrieben worden sind. Besonders LIDAR und Kamera-Systeme werden in dieser Phase benötigt, da die absolute Navigationssysteme nicht die nötige Genauigkeit liefert und eine Kollision dem Ziel der Mission widerspricht und zu einer Verschlimmerung der Problematik führt. Diese Phase endet bei ca. 100m Entfernung zwischen Ziel und Chaser. Nun beginnt das Close Range Rendezvous, welches die Closing Phase und den Final Approach beinhaltet. Vor der Closing Phase wird das Objekt genau betrachtet, es werden alle relevanten Informationen Über das Ziel gesammelt und verglichen, dies beinhaltet auch die genaue Taumelbewegug und deren Beschreibung. Dabei wird darauf geachtet ob eine Rotationsachse vorhanden ist und wie die Beschaffenheit der Oberfläche ist. Sollte eine Taumelbewegung vorhanden sein, wird der Chaser mit dieser Synchronisiert. Nach der Synchronisierung findet das Closing und der Final Approach statt, in dem die Distanz weiter reduziert wird und schlussendlich das Docking durchgeführt wird \cite{Castronuovo.2011}. 
 
 %------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Docking Strategien}
