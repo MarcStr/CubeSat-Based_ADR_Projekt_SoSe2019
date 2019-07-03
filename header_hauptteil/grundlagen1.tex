@@ -83,9 +83,66 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 
 %------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Struktur}%-------------------------------------------------------------------------------------------------------------------------------------------
+<<<<<<< HEAD
+		Die Strukturen werden in Primär- und Sekundärestrukturen unterteilt. Die Primärstruktur ist thermischen und dynamischen Beeinflussungen ausgesetzt, denen sie entgegenwirken muss. Des Weiteren sorgt es für Lastübertragung während des Starts und des Einsatzes. Elektromagnetische Strahlungen, Drücke und innere Wärmeleitungen sind weitere Faktoren die einen großen Einfluss auf das Gehäuse haben und deshalb mit einbezogen werden müssen. Die Begrenzungen bei der Oberfläche und bei dem Volumen sorgen für Einschränkungen. Infolgedessen sollte sie effizient ausgelegt werden. Komponenten die nur sich selbst tragen müssen, wie Sonnenkollektoren, zählen zu den Sekundärstrukturen auf die nicht näher eingegangen wird, da sie bei einem Ausfall die Integrität des Raumfahrzeugs nicht beeinträchtigt. Die Primärstrukturen werden als COTS-Strukturen und kundenspezifisch bearbeitet oder gedruckte Komponenten auf dem Markt angeboten. Generell besteht das Gehäuse aus metallischen und nichtmetallischen Materialien und wird von der Betriebsumgebung des Satelliten bestimmt [Literatur: NASA Sota].
+
+%------------------------------------------------------------------------------------------------------------------------------		
+	\section{ADR Methoden}
+%------------------------------------------------------------------------------------------------------------------------------	
+Für eine ADR Mission gibt es verschieden Methoden um diese durchzuführen. Die Grafik zeigt unterschiedliche Cluster von ADR Methoden, welche unterschiedliche Vor-und Nachteile, sowie TRL haben. Im Folgenden wird auf jedes Cluster eingegangen, beschrieben und den aktuellen Status erläutert.
+	
+				\begin{figure}[h]
+				\centering
+					\includegraphics[width=0.80\textwidth]{./graphics/ADR/ADR_methods.PNG}
+				\caption{Überblick über die ADR Methoden}
+				\label{fig:ARD Methoden}
+			\end{figure}
+Es gibt einige Herausforderungen, welch unabhängig von der Removal Methode sind und für jede Mission individuell gelöst werden muss. Dazu gehört die Klassifizierung der zu entfernenden Objekte, sowie dessen genaue Positionsanalyse. Sollen während einer Mission mehrere Objekte entfernt werden, so muss zu beginn definiert werden in welcher Reihenfolge dies geschehen soll. 
+
+%---------------------------------------------------------------------------------------------------------------------
+	\subsection{Collective Method}
+%----------------------------------------------------------------------------------------------------------------------	
+	
+				\begin{figure}[h]
+			\centering
+					\includegraphics[width=0.80\textwidth]{./graphics/ADR/collective_method.PNG}
+				\caption{Missionsaufbau für Collective Method}
+				\label{fig:Sammelmethoden}
+			\end{figure}
+	
+Die abbildung zeigt den grundlegenden aufbau eine ADR mission welche auf einer kollektiven Methode beruht. Dabei wird ein Satellit mit Deorbiting Kits ausgestattet, welcher die verschieden Ziele anfliegt und diese anbringt. Ein großer Vorteil ist, dass nur ein Trägersatellit mit anspruchsvoller Technik für die Navigation, Positionsbestimmung , Dockingmechnismen und Energieversorgung ausgestattet werden muss. Da der Trägersatellit mehrer Ziele anfliegt, muss dieser über ein sehr großes Tankvolumen verfügen, da mehrer Orbithöhe anhebungen durchgeführt werden müssen. Neben der Orbithöhe muss vermutlich auch eine änderung der Inklination und exzentrizität durchgeführt werden. Dies kann auch bei kleinen Unterschieden der Variablen zu einem sehr hohen Treibstoffverbrauch führen. Außerdem wird bei jedem Zielobjekt ein Rendezvous Manöver sowie docking durchgeführt, welche das Potential haben durch eine Kollision weiter Trümmer zu erzeugen. Aktuell wird an der Validierung dieser Methode anf der Erde geforscht.
+
+%------------------------------------------------------------------------------------------------------------------------
+			\subsection{Laser-based Method}
+%-----------------------------------------------------------------------------------------------------------------------
+Wie der Name es bereit sagt beruht diese Methode auf Laser , welcher sich auf der Erde befindet. Es wird ein hochenergetischer Laser benötigt, welcher in einer geringen Zeit das Objekt befeuert. dadurch entsteht ein Plasmastrahl, welcher den Satelliten bremst und dadurch eine Verringerung der Orbithöhe resultiert. Dieses System kann dazu verwendet werden um sowohl große als auch kleine Objekte zu entfernen, sowie dessen kosteneffizient. Das größte Problem bei dieser Methode, ist die Zielfindung und Verfolgung. Damit das deorbiting funktioniert muss der Laser für ein bestimmtes Zeitinkrement auf das Ziel gerichtet sein, was eine genau Berechnung der Zielposition in Abhängigkeit der Dauer von Start des Laserstrahls und erreichen des Ziels.
+	
+	\begin{figure}[h]
+			\centering
+					\includegraphics[width=0.80\textwidth]{./graphics/ADR/Laser-beam.PNG}
+				\caption{Funktionsweise des ADR mittels Laser}
+				\label{fig:Laser}
+			\end{figure}
+
+%-------------------------------------------------------------------------------------------------------------------------
+\subsection{Ion beam shepherd-based Method}
+
+	\begin{figure}[h]
+			\centering
+					\includegraphics[width=0.80\textwidth]{./graphics/ADR/Shepherd.PNG}
+				\caption{Funktionsweise des ADR mittels Laser}
+				\label{fig:Laser}
+			\end{figure}
+
+Die Abbildung  zeigt den schematischen Aufbau einer ADR Mission nach Ion Based Shepherd Methode. Der Chaser Fliegt vor dem Zielobjekt und bremst diesen durch ein Ionenstrahl aus dem zum Objekt gerichteten Triebwerk. Besonders zu beachten ist die Streuung des Ionenstrahl und die genaue Positionierung des Chasers vor dem Zielobjekt.
+
+%------------------------------------------------------------------------------------------------------------------------------		
+=======
 		Die Strukturen werden in Primär- und Sekundärestrukturen unterteilt. Die Primärstruktur ist thermischen und dynamischen Beeinflussungen ausgesetzt, denen sie entgegenwirken muss. Des Weiteren sorgt es für Lastübertragung während des Starts und des Einsatzes. Elektromagnetische Strahlungen, Drücke und innere Wärmeleitungen sind weitere Faktoren die einen großen Einfluss auf das Gehäuse haben und deshalb mit einbezogen werden müssen. Die Begrenzungen bei der Oberfläche und bei dem Volumen sorgen für Einschränkungen. Infolgedessen sollte sie effizient ausgelegt werden. Komponenten die nur sich selbst tragen müssen, wie Sonnenkollektoren, zählen zu den Sekundärstrukturen auf die nicht näher eingegangen wird, da sie bei einem Ausfall die Integrität des Raumfahrzeugs nicht beeinträchtigt. Die Primärstrukturen werden als COTS-Strukturen und kundenspezifisch bearbeitet oder gedruckte Komponenten auf dem Markt angeboten. Generell besteht das Gehäuse aus metallischen und nichtmetallischen Materialien und wird von der Betriebsumgebung des Satelliten bestimmt.  \cite[S. 96 - 108]{NASA.Sota.2018}
 				
+>>>>>>> master
 	\section{RDVDO Mechanismen} das kann ausführlich sein
+%------------------------------------------------------------------------------------------------------------------------------	
 		\subsection{Docking Strategien}
 						\textbf{Roboterarm}
 						\textbf{Fangnetz}
