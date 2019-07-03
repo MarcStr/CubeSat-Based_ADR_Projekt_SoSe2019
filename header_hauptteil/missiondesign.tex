@@ -1,13 +1,20 @@
 \chapter{Missionsdesign und Simulation}
 
-\section{Bewertungsstrategie}
+%\section{Bewertungsstrategie}
 	%Die Strategie besteht draus mehrere Simulationen per GMAT für untershciedliche Koonfigs durchzuführen. Die Bewertung fokusiertsich auf die Machbarkeit des De-orbiting (seihe TODOS.txt)\\
-		\subsection{Kriterien der Bewertung}
+	%	\subsection{Kriterien der Bewertung}
+%-------------------------------------------------------------Missionsbeschreibung
+
+\section{Missionsbeschreibung}
+
+	\subsection{Kriterien der Bewertung}
+
+	
 			
 %-------------------------------------------------------------GMAT
-		\section{GMAT}
+\section{GMAT}
 		\subsection{Beschreibung der Software}
-		Der GMAT Mission Planner ist ein Open Source Programm, welches von der NASA entwickelt wird. Das Programm ist dazu da um Trajektorien von Satelliten zu berechnen und optimieren. Der Missionsraum umfasst das gesamte Sonnensystem und erlaubt es die Gravitationseinflüsse von allen größeren Himmelskörpern in die Berechnungen mit einfließen zu lassen. 
+		Der GMAT Mission Planner ist ein Open Source Programm, welches von der NASA entwickelt wird \cite{GMAT}. Das Programm ist dazu da um Trajektorien von Satelliten zu berechnen und optimieren. Der Missionsraum umfasst das gesamte Sonnensystem und erlaubt es die Gravitationseinflüsse von allen größeren Himmelskörpern in die Berechnungen mit einfließen zu lassen. 
 Die Eingabe der gewünschten Parameter erfolgt über ein GUI oder ein benutzerdefiniertes Skript. Die Skriptsprache von GMAT lehnt an der von MathWorks MATLAB(R) an.
 Das GUI beinhalted einen 3D Plot und einen 2D Plot. Der 3D Plot zeigt die Position und Trajektorie des Satellitens im dreidimensionalen Raum während der 2D Plot eine Projektion der Trajektorie auf die Oberfläche eines gewählten Himmelskörpers zeigt.
 
@@ -81,25 +88,25 @@ In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Ma
 \label{fig:mass_over_height}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/GMAT_Mass_over_Height_550.png}
 	\label{fig:GMAT_Mass_over_Height_550}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_50kg.png}
 	\label{fig:GMAT_ecc_50}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_375kg.png}
 	\label{fig:GMAT_ecc_375}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_550kg.png}
 	\label{fig:GMAT_ecc_550}
