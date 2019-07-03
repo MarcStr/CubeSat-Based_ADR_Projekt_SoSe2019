@@ -10,6 +10,35 @@ Für ein vertieftes Verständnis der Software wird auf das QuSAD-Handbuch \cite{
 			Die Datenbankerweiterung und Budgeterstellung führte zu einigen Schwierigkeiten. Bei dem Laden der Datenbank über den SQL Server traten Fehlermeldungen bei MatLab auf, die nicht behoben werden konnten. Die Ursache könnte an der Inkompatibilität zwischen den neuen MatLab Versionen und MySQL liegen, da QuSAD mit der MatLab Version R2014 erstellt wurde. Im QuSAD Handbuch wird auf dieses Problem hingewiesen. Infolgedessen wurde die Datenbank über MySQL importiert und Lokal darauf zugegriffen. Die Datenbank wird in Mat-File Dateien gespeichert und kann über MatLab aufgerufen werden. Anschließend können die Komponenten in die gespeicherte Datenbank eingepflegt und als Workspace gesichert werden. Durch das Exportieren der neuen Datenbank über MySQL wird der Zugriff künftig bereitgestellt. Besonders problematisch gestaltete sich das einpflegen der Komponenten in die Datenbank. Im Handbuch, sowie den weiteren Dokumenten zur Datenbank wurde der Vorgang nicht hinreichend genau beschrieben. Des Weiteren gab es viele unbekannte Angaben über die hinzugefügten Komponenten. Diese mussten einzeln recherchiert und in seltenen fällen abgeschätzt werden. In der bereitgestellten Datenbank vom Institut fehlten an wichtigen Daten für die Budgets in den meisten fällen nur die Preise. Außerdem wurde festgestellt, dass einige URLs nicht mehr Gültig sind.
 		\section{CubeSat- Designanalyse}
 				\subsection{Angenommenes Design}
+				
+				\begin{table}[]
+\begin{tabular}{|l|l|c|}
+\hline
+\multicolumn{1}{|c|}{Subsystem} & \multicolumn{1}{c|}{Produkt}    	            & Anzahl \\ \hline
+Antenne                         & IQW S-Band Dual Patch Antenna                 & 2      \\ \hline
+                                & SkyFox Labs piPATCH-MAX (GNSS)                & 2      \\ \hline
+Kontroll Board                  & SSTL OBC750 LEO Flight Computer               & 1      \\ \hline
+EPS                             & NanoAvionics EPS                              & 1      \\ \hline
+Nutzlast \& Verschiedenes       & Vision-based LiDAR Sensor                     & 1      \\ \hline
+                                & Crystalspace CAM1U 5 MP (RNS)                 & 2      \\ \hline
+                                & Gecko based                                   & 1      \\ \hline
+Antrieb                         & Iodine tank                                   & 1      \\ \hline
+                                & Nitrogen tank                                 & 1      \\ \hline
+                                & Busek BHT-200 Thruster (electric)             & 1      \\ \hline
+                                & Marotta Micro-Thruster (chemical)             & 24     \\ \hline
+Solar Panel                     & Top/Bottom BCT 9U                             & 1      \\ \hline
+                                & BCT 9U Tripple Wing Solar Array Custom (Side) & 1      \\ \hline
+                                & BCT SADA Gimbal System                        & 1      \\ \hline
+Transceiver                     & IQW Slink-Phy S-Band Transceiver              & 1      \\ \hline
+Struktur                        & 27U NanoAvionics Standard Structure (s)       & 1      \\ \hline
+Tracker \& Sensor               & TY-Space PST3                                 & 2      \\ \hline
+                                & NSS Fine Sun Sensor NFSS-411                  & 4      \\ \hline
+                                & Sensonor STIM300                              & 1      \\ \hline
+                                & SSTL SGR-Ligo                                 & 1      \\ \hline
+\end{tabular}
+\caption{Angenommenes Design}
+\label{tab:cubesatdesign}
+\end{table}
 						%Hier die Varainte von Max nehmen und kurz beschreiben
 				\subsection{Budgetplanung}
 				
@@ -17,7 +46,7 @@ Für ein vertieftes Verständnis der Software wird auf das QuSAD-Handbuch \cite{
 								
 										\begin{figure}[h]
 											\centering
-												\includegraphics[width=0.60\textwidth]{masse}
+												\includegraphics[width=0.90\textwidth]{masse}
 											\caption{Massenbudget für das angenommene Design}
 											\label{fig:masse}
 										\end{figure}
@@ -26,7 +55,7 @@ Für ein vertieftes Verständnis der Software wird auf das QuSAD-Handbuch \cite{
 								
 										\begin{figure}[h]
 											\centering
-												\includegraphics[width=0.60\textwidth]{volume}
+												\includegraphics[width=0.90\textwidth]{volume}
 											\caption{Volumenbudget für das angenommene Design}
 											\label{fig:volume}
 										\end{figure}
@@ -35,9 +64,9 @@ Für ein vertieftes Verständnis der Software wird auf das QuSAD-Handbuch \cite{
 				
 										\begin{figure}[h]
 											\centering
-												\includegraphics[width=0.60\textwidth]{power}
+												\includegraphics[width=0.90\textwidth]{power}
 											\caption{Energiebudget für das angenommene Design}
-											\label{fig:volume}
+											\label{fig:power}
 										\end{figure}
 										
 			\section{Auswertung und Optimierung des Designs}
