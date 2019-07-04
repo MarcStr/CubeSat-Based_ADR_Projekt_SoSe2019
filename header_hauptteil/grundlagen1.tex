@@ -73,7 +73,7 @@ Für die meisten Anwendungen können Produkte verschiedener Anbieter COTS erworb
 
 
 		%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		\subsection{Guidance, navigation and control -GNC ADCS}%------------------------------------------------------------------------------------------------------------------
+		\subsection{Guidance, Navigation and Control}%------------------------------------------------------------------------------------------------------------------
 		
 		Guidance, Navigation and Control (GNC) Subsysteme sind neben den in Kapitel [2.2] genannten Systemen unabdingbar für ADR Missionen, da diese die Positionsbestimmung als auch die Lagebestimmung und Regelung beinhaltet. Dieses System kann in zwei Hauptbereiche unterteilt werden: der Lage- und Positionsbestimmung, sowie der Lageregelung.
 Bei der Lage und Positionsbestimmung kann auf verschiedene Sensoren zurückgegriffen werden. Die absolute Positionsbestimmung erfolgt über eine Bodenstation, welche auch zur Kommunikation mit dem Satelliten verwendet wird. Bei dieser Art der Positionsbestimmung ist es notwendig zu wissen, welchen geplante Erdumlaufbahn der Satellit hat. Diese Methode bezieht sich auf der Zeitdifferenz zwischen Sende- und Empfangszeitpunkt. Deswegen ist die Positionsbestimmung via Bodenradar nicht sehr genau \cite{.d}. Seit der erfolgreichen Miniaturisierung  von GPS Empfängern werden auch diese zur Positionsbestimmung verwendet. Dies funktioniert solange die GPS Satelliten die Einsatzhöhe von CubeSats überschreiten. Die Lagebestimmung über Startracker erfolgt in dem ein Bild des Himmels mit einem Katalog abgeglichen wird. Dadurch kann die Lage bei bekannter Position bestimmt werden. Weitere Möglichkeiten sind Sonnen-, Erd- Magnetfeldsensoren, sowie Kreiselinsturmente. Bei Kreiseln wird die Verdrehung im Vergleich zu einem aufgeprägten Inertialsystem gemessen, wodurch die Lage genau bestimmt werden kann. 
@@ -110,18 +110,18 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 \subsection{ADR Methoden}
 %------------------------------------------------------------------------------------------------------------------------------
 	
-	Für eine ADR Mission gibt es verschieden Methoden um diese durchzuführen. Die Grafik \ref{fig:ADR Methoden} zeigt unterschiedliche Cluster von ADR Methoden, welche unterschiedliche Vor-und Nachteile, sowie TRL haben. Im Folgenden wird auf jedes Cluster eingegangen, beschrieben und den aktuellen Status erläutert.
+	Für eine ADR Mission gibt es verschieden Methoden um diese durchzuführen. Die Grafik \ref{fig:ADR_Methoden} zeigt unterschiedliche Cluster von ADR Methoden, welche unterschiedliche Vor-und Nachteile, sowie TRL haben. Im Folgenden wird auf jedes Cluster eingegangen, beschrieben und den aktuellen Status erläutert.
 	
 				\begin{figure}[h]
 				\centering
 					\includegraphics[width=0.80\textwidth]{./graphics/ADR/ADR_methods.PNG}
 				\caption{Überblick über die ADR Methoden \cite{Mark.2019}}
-				\label{fig:ARD Methoden} 
+				\label{fig:ADR_Methoden} 
 			\end{figure}
 			
 	
 Es gibt einige Herausforderungen, welch unabhängig von der Removal Methode sind und für jede Mission individuell gelöst werden muss. Dazu gehört die Klassifizierung der zu entfernenden Objekte, sowie dessen genaue Positionsanalyse. Sollen während einer Mission mehrere Objekte entfernt werden, so muss zu beginn definiert werden in welcher Reihenfolge dies geschehen soll. 
-
+\newpage
 %---------------------------------------------------------------------------------------------------------------------
 	\subsubsection{Collective Method}
 %----------------------------------------------------------------------------------------------------------------------	
@@ -130,7 +130,7 @@ Es gibt einige Herausforderungen, welch unabhängig von der Removal Methode sind
 			\centering
 					\includegraphics[width=0.80\textwidth]{./graphics/ADR/collective_method.PNG}
 				\caption{Missionsaufbau für Collective Method \cite{Peters.2016}}
-				\label{fig:Sammelmethoden }
+				\label{fig:Sammelmethoden}
 			\end{figure}
 	
 	
