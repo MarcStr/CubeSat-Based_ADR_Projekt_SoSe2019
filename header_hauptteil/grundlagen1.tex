@@ -222,10 +222,17 @@ Rendezvous ist ein kritischer Missionsabschnitt bei einer ADR Mission. Wie in de
 %------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Docking Strategien}
 %------------------------------------------------------------------------------------------------------------------------------		
-						\textbf{Roboterarm}
-						\textbf{Fangnetz}
-						\textbf{Adhäsiv Docken}
-						%Übersichtstabelle/Graphik: sihe die Quellen die ich am 15.05.2019 gezeigt habe
+
+\textbf{Roboterarm}\newline
+Die Docking Strategien sind meist die Grundlage für die bereits beschrieben ADR Konzepte.	Da ein Dockingmanöver nur bei  Missionen durchgeführt wird, bei denen das Satellitenbsierte ADR Konzept verwendet wird notwendig ist, wird hier nur auf spezielle Systeme eingegangen. Eines der ersten Strategien ist der Roboterarm, dabei wird wie erwähnt ein Roboterarm an einen Satelliten montiert. Dises System ist nicht nur auf einen beschränkt, sondern kann mit beliebig vielen weiten Modulen Versehen werden. Limitieren sind hierbei nur das Volumen und die benötigte Energie. Zu beachten ist, dass mit steigender Anzahl an Modulen auch die Anforderungen an das RCS-System sowie des Messsensorik. Das Docking erfolgt wie in \ref{fig:Satellit} gezeigt. Der Roboterarm wird nach dem Final Approach an dem Zielobjekt befestigt, wodurch eine Verbindung zwischen Zielobjekt und Chaser hergestellt wird. Diese Form des Docking ist etwas weniger Risikoreich als es beim Adhäsivem Docking ist, da kein direkter Kontakt zwischen beiden Satelliten besteht. Jedoch macht dies auch eine Aufwendige Steuerung für den Roboterarm notwendig \cite{Castronuovo.2011}.\newline
+
+\textbf{Fangnetz}\newline
+Ein Docking mit Fangnetzen ist technisch aufwendig, da die Bewegung nicht mit absoluter Sicherheit berechnet werden kann und es besteht die Gefahr des Verknotens. Des weiten ist die Regelung eines so dynamischen Systems sehr komplex und die Manövrierfähigkeit ist eingeschränkt. Da das System keine feste Verbindung hat, sind unkontrollierte Bewegungen möglich welche die Struktur den Netzes, des Zielobjekts und des Satteliren beschädigen können. Auch wenn bereits Konzepte mit Netzen bei Parabelflügen getestet wurden, sind weiterführende  Forschungen notwendig, um das Potential dieser Methode zu erhöhen
+\newline
+
+\textbf{Adhäsiv Docken}\newline
+Das adhäsive Docking beruht auf dem System einer Klebverbindung. Dafür unerlässlich ist der Kontakt zwischen zwei Flächen sowie ein Phänomen welches diese Verbindung aufrecht erhält. Eines dieser Phänomene wird im Kapitel Bionische Materialien beschrieben. Durch diese Verbindung wird die Regelung eines Solchen System nicht viel komplexer als zuvor, da nur eine Verschiebung des Messeschwerpunkt zu betrachten ist. Durch die Betrachtung als einheitliches System vereinfacht sich die Simulation dessen Bewegungen, sowie die Planung von Manövern.     
+						
 		\newpage
 		
 	%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
