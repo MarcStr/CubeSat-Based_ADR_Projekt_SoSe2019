@@ -8,9 +8,9 @@
 \section{Missionsbeschreibung}
 
 	Ziel der Mission ist es defekte, nicht kooperative Satelliten von Megakonstellationen (z.B.: Starlink) abzubremsen, sodass sie in der Erdatmosphäre verglühen und das Kollisionsrisiko minimiert wird. Das Höhen- und Gewichtsintervall wurden auf 400-1400 $km$, bzw. 50-5000 $kg$ festgelegt, da alle Satelliten bisher geplanter Megakonstellationen innerhalb dieser Intervalle befinden.
-Es wird angenommen, dass sich der CubeSat und das Ziel zu Beginn in derselben Umlaufbahn befinden und nur wenige Kilometer voneinander entfernt sind. Das Haupttriebwerk wird für RDV und Docking nicht verwendet, sodass für den Deorbit Vorgang die gesamte Kraftstoffmenge zur Verfügung steht. Sobald beide Satelliten miteinander Verbunden sind richten sie sich so aus, dass das Haupttriebwerk des CubeSats entgegen der Bewegungsrichtung wirkt. Als nächstes beginnt der eigentliche Deorbit Vorgang. Hier fängt auch die jeweilige Simulation an. Da die Solarzellen den Antrieb nicht dauerhaft versorgen können, wird ein Brennintervall von 58° um den höchsten Punkt festgelegt. Jeder Brennvorgang verringert die Geschwindigkeit und senkt somit das Perigäum ab. Die Mission ist erfolgreich, wenn das Perigäum eine Höhe von 180 $km$ erreicht hat. Die Simulation wird nach zehn Jahren abgebrochen, wenn die Mission bis dahin nicht erfolgreich war. 
-Zuerst wird eine Mission simuliert, die eine kreisförmige Umlaufbahn annimmt und das Höhenintervall in 50 $km$ Schritten erhöht. Die Masse wird von 50 bis 550 $kg$ in 25 $kg$ und von 600 bis 5000 $kg$ in 100 $kg$ Schritten erhöht.
-Mit der zweiten Mission wird betrachtet, wie sich die Deorbitzeit für ausgewählte Massen verhält, wenn die Exzentrizität verändert wird. Das Höhenintervall beschreibt hierbei die Höhe des Perigäums und die Exzentrizität wird von 0.025 bis 0.3 betrachtet.
+Es wird angenommen, dass sich der CubeSat und das Ziel zu Beginn in derselben Umlaufbahn befinden und nur wenige Kilometer voneinander entfernt sind. Das Haupttriebwerk wird für RDV und Docking nicht verwendet, sodass für den Wiedereintrittsvorgang die gesamte Kraftstoffmenge zur Verfügung steht. Sobald beide Satelliten miteinander Verbunden sind richten sie sich so aus, dass das Haupttriebwerk des CubeSats entgegen der Bewegungsrichtung wirkt. Als nächstes beginnt der eigentliche Deorbit Vorgang. Hier fängt auch die jeweilige Simulation an. Da die Solarzellen den Antrieb nicht dauerhaft versorgen können, wird ein Brennintervall von 58° um den höchsten Punkt festgelegt. Jeder Brennvorgang verringert die Geschwindigkeit und senkt somit das Perigäum ab. Die Mission ist erfolgreich, wenn das Perigäum eine Höhe von 180 $km$ erreicht hat. Die Simulation wird nach zehn Jahren abgebrochen, wenn die Mission bis dahin nicht erfolgreich war. 
+Zuerst wird eine \textbf{erste Mission} simuliert, die eine kreisförmige Umlaufbahn annimmt und das Höhenintervall in 50 $km$ Schritten erhöht. Die Masse wird von 50 bis 550 $kg$ in 25 $kg$ und von 600 bis 5000 $kg$ in 100 $kg$ Schritten erhöht.
+Mit der \textbf{zweiten Mission} wird betrachtet, wie sich die Deorbitzeit für ausgewählte Massen verhält, wenn die Exzentrizität verändert wird. Das Höhenintervall beschreibt hierbei die Höhe des Perigäums und die Exzentrizität wird von 0.025 bis 0.3 betrachtet.
 	
 			
 %-------------------------------------------------------------GMAT
@@ -79,7 +79,7 @@ r_A = \frac{1+e}{1-e}\cdot r_P
 \end{equation}
 berechnet.\\
 
-	In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Massen, in unregelmäßigen Abständen, berechnet worden sind. Die äußerste For Schleife ist für die Höhe zuständig und läuft mit einem Inkrement von 100 $km$ von 400 bis 1400 $km$ durch.
+	In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Massen, in unregelmäßigen Abständen, berechnet worden sind. Die äußerste For Schleife ist für die Höhe zuständig und läuft mit einem Inkrement von 100 $km$ von 400 bis 1400 $km$ durch. \newpage
 \begin{figure}[!h]
 	\centering
 		\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript_ECC.PNG}
@@ -104,7 +104,7 @@ berechnet.\\
 
 \subsection{Beschreibung Mission 1}
 
-	In Abb. \ref{fig:GMAT_Mass_over_Height} sind die zugehörigen Deorbitzeiten farblich in Abhängigkeit von Masse und Starthöhe abgetragen. Die Zeitskala ist logarithmisch von 0 bis 10 Jahre an der Seite aufgeführt.  
+	In Abb. \ref{fig:GMAT_Mass_over_Height} sind die zugehörigen Wiedereintrittszeiten farblich in Abhängigkeit von Masse und Starthöhe abgetragen. Die Zeitskala ist logarithmisch von 0 bis 10 Jahre an der Seite aufgeführt.  
 Es ist klar zu erkennen, dass niedrigere die Massen auch aus vergleichsweise großen Höhen entfernt werden können. Die maximale Höhe des Zielsatelliten nimmt jedoch mit zunehmender Masse stark ab, wenn die Zeitvorgabe von maximal 10 Jahren eingehalten werden soll.
 
 	Eine detaillierte Ansicht der Massen von 50 bis 550 $kg$ bietet \abb{fig:GMAT_Mass_over_Height_550}, da diese mit einer viermal höheren Auflösung (25 $kg$ Schritte) simuliert worden ist. Hier wird es deutlicher, dass die Zielmasse bei 1400 $km$ maximal 500 $kg$ betragen darf, um das Limit von zehn Jahren nicht zu überschreiten.
@@ -119,41 +119,41 @@ Es ist klar zu erkennen, dass niedrigere die Massen auch aus vergleichsweise gro
 
 	Durch die logarithmische Skala der Zeit ist klar erkennbar wie sehr die benötigte Zeit für die Mission ansteigt, nach dem der Treibstoff aufgebraucht worden ist. Dies geschieht im Bereich um drei Jahre. Je höher die Starthöhe, desto länger brennt das Triebwerk pro Umlauf, da die 58° Brennwinkel mehr Zeit benötigen um durchlaufen zu werden. 
 
-\subsection{Ergebnis Mission 1}
+\subsubsection{Ergebnis Mission 1}
 
 	Die gewählte Konfigurationen kann Satelliten mit einem Gewicht von 375 $kg$ (Starlink) und einer Erdumlaufbahn von 1400 $km$ innerhalb von 2 Jahren  aktiv zum Wiedereintritt verhelfen. Für niedrigere Höhen wird dieser Vorgang schon früher abgeschlossen. 
 
 	Bei großen Höhen ist die maximale Masse limitiert, jedoch ist der Aerodynamische Widerstand in geringen Höhen so stark, dass Trümmerteile bis zu zwei Tonnen innerhalb eines Jahres aus ihrer Umlaufbahn entfernt werden können. 
-
+\newpage
 \subsection{Beschreibung Mission 2}
 
 	Die Abbildungen \ref{fig:GMAT_ecc_a}, \ref{fig:GMAT_ecc_b} und \ref{fig:GMAT_ecc_c} repräsentieren die Ergebnisse für die ausgewählten Massen 50, 375 und 550 $kg$. Die benötigte Missionszeit wird hier in Abhängigkeit von Exzentrizität und Starthöhe des Perigäums dargestellt. Die Zeitskala ist wieder logarithmisch von 0 bis 10 Jahre an der Seite aufgeführt.
 
 
-\begin{figure}[h!]
+\begin{figure}[t]
 	\centering
-		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_50kg.png}
+		\includegraphics[width=0.50\textwidth]{./graphics/GMAT/ecc_perigee_50kg.png}
 		\caption{Simulationsergebnisse Variation der Exzentrizität 50 kg}
 	\label{fig:GMAT_ecc_a}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[h]
 	\centering
-		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_375kg.png}
+		\includegraphics[width=0.50\textwidth]{./graphics/GMAT/ecc_perigee_375kg.png}
 		\caption{Simulationsergebnisse Variation der Exzentrizität 375 kg}
 	\label{fig:GMAT_ecc_b}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[b]
 	\centering
-		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/ecc_perigee_550kg.png}
+		\includegraphics[width=0.50\textwidth]{./graphics/GMAT/ecc_perigee_550kg.png}
 		\caption{Simulationsergebnisse Variation der Exzentrizität 550 kg}
 	\label{fig:GMAT_ecc_c}
 \end{figure}
 
 
-	Auffallend ist die Tatsache, dass eine höhere Exzentrizität eine geringere Missionszeit zur Folge hat. Der Grund hierfür ist unter Anderem, dass bei hohen Exzentrizitäten der CubeSat länger innerhalb der 58° um das Apogäum ist und das Triebwerk somit länger brennt. Im Fall von 550 $kg$ zeigt \abb{fig:GMAT_ecc_550}, dass obwohl es über alle Höhenstufen zu einer Verkürzung der Mission kommt, dies für 1400 $km$ trotzdem über 10 Jahre dauert.
-
+	Auffallend ist die Tatsache, dass eine höhere Exzentrizität eine geringere Missionszeit zur Folge hat. Der Grund hierfür ist unter Anderem, dass bei hohen Exzentrizitäten der CubeSat länger innerhalb der 58° um das Apogäum ist und das Triebwerk somit länger brennt. Im Fall von 550 $kg$ zeigt \abb{fig:GMAT_ecc_c}, dass obwohl es über alle Höhenstufen zu einer Verkürzung der Mission kommt, dies für 1400 $km$ trotzdem über 10 Jahre dauert.
+\subsubsection{Ergebnis Mission 2}
 
 
 %For every considered satellite design (=mainly thruster configuration, 3-4 different designs), generate following data: \\
