@@ -75,8 +75,8 @@ Für die meisten Anwendungen können Produkte verschiedener Anbieter COTS erworb
 		%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Guidance, navigation and control -GNC ADCS}%------------------------------------------------------------------------------------------------------------------
 		
-		Guidance, Navigation and Control (GNC) Subsysteme sind neben den in Kapitel [...] genannten Systemen unabdingbar für ADR Missionen, da diese die Positionsbestimmung als auch die Lagebestimmung und Regelung beinhaltet. Dieses System kann in zwei Hauptbereiche unterteilt werden: der Lage- und Positionsbestimmung, sowie der Lageregelung.
-Bei der Lage und Positionsbestimmung kann auf verschiedene Sensoren zurückgegriffen werden. Die absolute Positionsbestimmung erfolgt über eine Bodenstation, welche auch zur Kommunikation mit dem Satelliten verwendet wird. Bei dieser Art der Positionsbestimmung ist es notwendig zu wissen, welchen geplante Erdumlaufbahn der Satellit hat. Diese Methode bezieht sich auf der Zeitdifferenz zwischen Sende- und Empfangszeitpunkt. Deswegen ist die Positionsbestimmung via Bodenradar nicht sehr genau[quelle]. Seit der erfolgreichen Miniaturisierung  von GPS Empfängern werden auch diese zur Positionsbestimmung verwendet. Dies funktioniert solange die GPS Satelliten die Einsatzhöhe von CubeSats überschreiten. Die Lagebestimmung über Startracker erfolgt in dem ein Bild des Himmels mit einem Katalog abgeglichen wird.. Dadurch kann die Lage bei bekannter Position bestimmt werden. Weitere Möglichkeiten sind Sonnen-, Erd- Magnetfeldsensoren, sowie Kreiselinsturmente. Bei Kreiseln wird die Verdrehung im Vergleich zu einem aufgeprägten Inertialsystem gemessen, wodurch die Lage genau bestimmt werden kann. 
+		Guidance, Navigation and Control (GNC) Subsysteme sind neben den in Kapitel [2.2] genannten Systemen unabdingbar für ADR Missionen, da diese die Positionsbestimmung als auch die Lagebestimmung und Regelung beinhaltet. Dieses System kann in zwei Hauptbereiche unterteilt werden: der Lage- und Positionsbestimmung, sowie der Lageregelung.
+Bei der Lage und Positionsbestimmung kann auf verschiedene Sensoren zurückgegriffen werden. Die absolute Positionsbestimmung erfolgt über eine Bodenstation, welche auch zur Kommunikation mit dem Satelliten verwendet wird. Bei dieser Art der Positionsbestimmung ist es notwendig zu wissen, welchen geplante Erdumlaufbahn der Satellit hat. Diese Methode bezieht sich auf der Zeitdifferenz zwischen Sende- und Empfangszeitpunkt. Deswegen ist die Positionsbestimmung via Bodenradar nicht sehr genau \cite{.d}. Seit der erfolgreichen Miniaturisierung  von GPS Empfängern werden auch diese zur Positionsbestimmung verwendet. Dies funktioniert solange die GPS Satelliten die Einsatzhöhe von CubeSats überschreiten. Die Lagebestimmung über Startracker erfolgt in dem ein Bild des Himmels mit einem Katalog abgeglichen wird. Dadurch kann die Lage bei bekannter Position bestimmt werden. Weitere Möglichkeiten sind Sonnen-, Erd- Magnetfeldsensoren, sowie Kreiselinsturmente. Bei Kreiseln wird die Verdrehung im Vergleich zu einem aufgeprägten Inertialsystem gemessen, wodurch die Lage genau bestimmt werden kann. 
 Die Regelung  der Lage kann über unterschiedliche Methoden erfolgen. Die einfachste ist eine Drehbewegung um eine der Hauptachsen. Dies führt zu einer Stabilisierung des Satelliten, ist jedoch für eine CubeSat, dessen Aufgabe das Docking und deorbiting beinhaltet, nicht sinnvoll. Dementsprechend kann eine 3 achs-Stabilisierung durchgeführt werden, welche durch Triebwerke und Reaktionsräder durchgeführt werden kann. Diese Art der Lageregelung benötigt ein Reaction Control System (RCS) um unkontrollierte bewegungen zu vermeiden. Die Regelung mittels RCS-Triebwerken geschieht indem Schubimpulse in die jeweilige Richtung gegeben werden. An allen drei Hauptachsen sind Schwungräder montiert. Durch den Antrieb der Räder wird ein Moment erzeugt welches den Satelliten in die gewünschte Lage bringt. Da ein 3-achs System nicht nur Stabilisiert, sondern auch die gewünschte Lage herbeiführen kann, ist dieses System für den viele Fälle optimal.\cite{Lettau.}
 
 %------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 \subsection{ADR Methoden}
 %------------------------------------------------------------------------------------------------------------------------------
 	
-	Für eine ADR Mission gibt es verschieden Methoden um diese durchzuführen. Die Grafik zeigt unterschiedliche Cluster von ADR Methoden, welche unterschiedliche Vor-und Nachteile, sowie TRL haben. Im Folgenden wird auf jedes Cluster eingegangen, beschrieben und den aktuellen Status erläutert.
+	Für eine ADR Mission gibt es verschieden Methoden um diese durchzuführen. Die Grafik \ref{fig:ADR Methoden} zeigt unterschiedliche Cluster von ADR Methoden, welche unterschiedliche Vor-und Nachteile, sowie TRL haben. Im Folgenden wird auf jedes Cluster eingegangen, beschrieben und den aktuellen Status erläutert.
 	
 				\begin{figure}[h]
 				\centering
@@ -120,7 +120,7 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 			\end{figure}
 			
 	
-	Es gibt einige Herausforderungen, welch unabhängig von der Removal Methode sind und für jede Mission individuell gelöst werden muss. Dazu gehört die Klassifizierung der zu entfernenden Objekte, sowie dessen genaue Positionsanalyse. Sollen während einer Mission mehrere Objekte entfernt werden, so muss zu beginn definiert werden in welcher Reihenfolge dies geschehen soll. 
+Es gibt einige Herausforderungen, welch unabhängig von der Removal Methode sind und für jede Mission individuell gelöst werden muss. Dazu gehört die Klassifizierung der zu entfernenden Objekte, sowie dessen genaue Positionsanalyse. Sollen während einer Mission mehrere Objekte entfernt werden, so muss zu beginn definiert werden in welcher Reihenfolge dies geschehen soll. 
 
 %---------------------------------------------------------------------------------------------------------------------
 	\subsubsection{Collective Method}
@@ -134,7 +134,7 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 			\end{figure}
 	
 	
-	Die Abbildung zeigt den grundlegenden Aufbau eine ADR Mission welche auf ein Sammelverfahren beruht. Dabei wird ein Satellit mit Deorbiting Kits ausgestattet, welcher die verschieden Ziele anfliegt und diese anbringt. Ein großer Vorteil ist, dass nur ein Trägersatellit mit anspruchsvoller Technik für die Navigation, Positionsbestimmung, Dockingmechnismen und Energieversorgung ausgestattet werden muss. Da der Trägersatellit mehrere Ziele anfliegt, muss dieser über ein sehr großes Tankvolumen verfügen, da möglicherweise mehrere Orbithöhenanpassungen  durchgeführt werden müssen. Neben der Orbithöhe muss vermutlich auch eine Änderung der Inklination und Exzentrizität durchgeführt werden. Dies kann auch bei kleinen Unterschieden der Variablen zu einem sehr hohen Treibstoffverbrauch führen. Außerdem wird bei jedem Zielobjekt ein Rendezvous Manöver sowie Docking durchgeführt, welche das Potential haben durch eine Kollision weiter Trümmer zu erzeugen \cite{Peters.2016} \cite{Mark.2019}.
+Die Abbildung \ref{fig:Sammelmethoden} zeigt den grundlegenden Aufbau eine ADR Mission welche auf ein Sammelverfahren beruht. Dabei wird ein Satellit mit Deorbiting Kits ausgestattet, welcher die verschieden Ziele anfliegt und diese anbringt. Ein großer Vorteil ist, dass nur ein Trägersatellit mit anspruchsvoller Technik für die Navigation, Positionsbestimmung, Dockingmechnismen und Energieversorgung ausgestattet werden muss. Da der Trägersatellit mehrere Ziele anfliegt, muss dieser über ein sehr großes Tankvolumen verfügen, da möglicherweise mehrere Orbithöhenanpassungen  durchgeführt werden müssen. Neben der Orbithöhe muss vermutlich auch eine Änderung der Inklination und Exzentrizität durchgeführt werden. Dies kann auch bei kleinen Unterschieden der Variablen zu einem sehr hohen Treibstoffverbrauch führen. Außerdem wird bei jedem Zielobjekt ein Rendezvous Manöver sowie Docking durchgeführt, welche das Potential haben durch eine Kollision weiter Trümmer zu erzeugen \cite{Peters.2016, Mark.2019}.
 
 %------------------------------------------------------------------------------------------------------------------------
 			\subsubsection{Laser-based Method}
@@ -160,7 +160,7 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 			\end{figure}
 
 	
-	Die Abbildung  zeigt den schematischen Aufbau einer ADR Mission nach Ion Based Shepherd Methode. Der Chaser Fliegt vor dem Zielobjekt und bremst diesen durch ein Ionenstrahl aus dem zum Objekt gerichteten Triebwerk. Besonders zu beachten ist die Streuung des Ionenstrahl und die genaue Positionierung des Chasers vor dem Zielobjekt \cite{Mark.2019}.
+Die Abbildung \ref{fig:Laser} zeigt den schematischen Aufbau einer ADR Mission nach Ion Based Shepherd Methode. Der Chaser Fliegt vor dem Zielobjekt und bremst diesen durch ein Ionenstrahl aus dem zum Objekt gerichteten Triebwerk. Besonders zu beachten ist die Streuung des Ionenstrahl und die genaue Positionierung des Chasers vor dem Zielobjekt \cite{Mark.2019}.
 
 %---------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Tether Based Methode}
@@ -171,10 +171,10 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 	\begin{figure}[h]
 			\centering
 					\includegraphics[width=0.80\textwidth]{./graphics/ADR/Netz.PNG}
-				\caption{Satellit mit Fangnetz}
+				\caption{Satellit mit Fangnetz \cite{.b}}
 				\label{fig:Netz}
 			\end{figure}
-		% http://www.esa.int/spaceinimages/Images/2013/09/Netting_a_derelict_satellite ist die Quelle für das Bild, konnte ich bei Citavi nicht einfügen
+
 %--------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Sail based Method}
 %--------------------------------------------------------------------------------------------------------------------------------------
@@ -187,7 +187,7 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 			\end{figure}
 
 	
-	Wie in der Abbildung zu erkenne, wird ein Sonnensegel verwendet um den Nötigen Schub zu erzeugen. Unschwer zu erkennen, ist das ein Sonnensegel im Verhältnis zu dem Satelliten sehr groß ist. Diese Fläche ist Notwendig, um einen Solarenstrahlungsdruck zu generieren welcher eine Veränderung der Geschwindigkeit herbeiführt. Eine Hauptaufgabe beim Entwickeln dieses Systems ist die Größe und die Auslegung des Segels, und damit zusammenhängend der komplexe Faltmechanismus. Des weiteren ist diese Art des Deorbiting langsam und Unkontrolliert. Da die Geschwindigkeitsänderung über den Strahlungsdruck der Sonne generiert wird, muss kein weiteres Gewicht inform von einem Antrieb oder Zusatztreibstoff für das deorbiting mitgenommen werden \cite{Romagnoli.2012,Mark.2019}.\newpage
+Wie in der Abbildung \ref{fig:Segel} zu erkenne, wird ein Sonnensegel verwendet um den Nötigen Schub zu erzeugen. Unschwer zu erkennen, ist das ein Sonnensegel im Verhältnis zu dem Satelliten sehr groß ist. Diese Fläche ist Notwendig, um einen Solarenstrahlungsdruck zu generieren welcher eine Veränderung der Geschwindigkeit herbeiführt. Eine Hauptaufgabe beim Entwickeln dieses Systems ist die Größe und die Auslegung des Segels, und damit zusammenhängend der komplexe Faltmechanismus. Des weiteren ist diese Art des Deorbiting langsam und Unkontrolliert. Da die Geschwindigkeitsänderung über den Strahlungsdruck der Sonne generiert wird, muss kein weiteres Gewicht inform von einem Antrieb oder Zusatztreibstoff für das deorbiting mitgenommen werden \cite{Romagnoli.2012,Mark.2019}.\newpage
 
 %----------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Satellite based Method}
@@ -216,13 +216,6 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 				\label{fig:Magnet}
 			\end{figure}
 			\newpage
-		
-				
-%----------------------------------------------------------------------------------------------------------------------------------------------
-\subsubsection{Dynamical Systems-based}
-%----------------------------------------------------------------------------------------------------------------------------------------------
-Text kommt noch
-\newpage
 
 					
 %------------------------------------------------------------------------------------------------------------------------------		
@@ -237,7 +230,7 @@ Text kommt noch
 			\end{figure}
 			
 	
-	Rendezvous ist ein kritischer Missionsabschnitt bei einer ADR Mission. Wie in der Abbildung zu erkennen, ist dieser Missonsabschnitt wiederum in verschiedene Phasen unterteilt. In der ersten Phase, dem Free Flight, wird wenn notwendig ein Orbittransfer durchgeführt. Dabei nähert sich der Chaser dem Zielorbit und synchronisiert sich mit dessen Inklination. Die Orbithöhe des Chasers ist unterhalb der Zielhöhe, um eine Annäherung zu gewährleisten, da Satelliten mit einer niedrigeren Orbithöhe eine höhere Geschwindigkeit haben[Raumfahrttechnische Grundlagen]. Bei der Orbit Phase wird die Höhendifferenz reduziert, bis der Chaser ca. 5km hinter und 1km unterhalb des Ziels ist. Ab diesem Punkt beginnt die Far Range Rendezvous Phase. In dieser Phase wird die relative Navigation verwendet, welche auf Sensoren und Aktuatoren zurückgreift die in Kapitel 2.2 beschrieben worden sind. Besonders LIDAR und Kamera-Systeme werden in dieser Phase benötigt, da die absolute Navigationssysteme nicht die nötige Genauigkeit liefert und eine Kollision dem Ziel der Mission widerspricht und zu einer Verschlimmerung der Problematik führt. Diese Phase endet bei ca. 100m Entfernung zwischen Ziel und Chaser. Nun beginnt das Close Range Rendezvous, welches die Closing Phase und den Final Approach beinhaltet. Vor der Closing Phase wird das Objekt genau betrachtet, es werden alle relevanten Informationen Über das Ziel gesammelt und verglichen, dies beinhaltet auch die genaue Taumelbewegug und deren Beschreibung. Dabei wird darauf geachtet ob eine Rotationsachse vorhanden ist und wie die Beschaffenheit der Oberfläche ist. Sollte eine Taumelbewegung vorhanden sein, wird der Chaser mit dieser Synchronisiert. Nach der Synchronisierung findet das Closing und der Final Approach statt, in dem die Distanz weiter reduziert wird und schlussendlich das Docking durchgeführt wird \cite{Castronuovo.2011}. 
+	Rendezvous ist ein kritischer Missionsabschnitt bei einer ADR Mission. Wie in der Abbildung \ref{fig:Rendezvous} zu erkennen, ist dieser Missonsabschnitt wiederum in verschiedene Phasen unterteilt. In der ersten Phase, dem Free Flight, wird wenn notwendig ein Orbittransfer durchgeführt. Dabei nähert sich der Chaser dem Zielorbit und synchronisiert sich mit dessen Inklination. Die Orbithöhe des Chasers ist unterhalb der Zielhöhe, um eine Annäherung zu gewährleisten, da Satelliten mit einer niedrigeren Orbithöhe eine höhere Geschwindigkeit haben. Bei der Orbit Phase wird die Höhendifferenz reduziert, bis der Chaser ca. 5 km hinter und 1 km unterhalb des Ziels ist. Ab diesem Punkt beginnt die Far Range Rendezvous Phase. In dieser Phase wird die relative Navigation verwendet, welche auf Sensoren und Aktuatoren zurückgreift die in Kapitel 2.2 beschrieben worden sind. Besonders LIDAR und Kamera-Systeme werden in dieser Phase benötigt, da die absolute Navigationssysteme nicht die nötige Genauigkeit liefert und eine Kollision dem Ziel der Mission widerspricht und zu einer Verschlimmerung der Problematik führt. Diese Phase endet bei ca. 100 m Entfernung zwischen Ziel und Chaser. Nun beginnt das Close Range Rendezvous, welches die Closing Phase und den Final Approach beinhaltet. Vor der Closing Phase wird das Objekt genau betrachtet, es werden alle relevanten Informationen Über das Ziel gesammelt und verglichen, dies beinhaltet auch die genaue Taumelbewegug und deren Beschreibung. Dabei wird darauf geachtet ob eine Rotationsachse vorhanden ist und wie die Beschaffenheit der Oberfläche ist. Sollte eine Taumelbewegung vorhanden sein, wird der Chaser mit dieser Synchronisiert. Nach der Synchronisierung findet das Closing und der Final Approach statt, in dem die Distanz weiter reduziert wird und schlussendlich das Docking durchgeführt wird \cite{Castronuovo.2011}. 
 
 %------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Docking Strategien}
