@@ -88,7 +88,19 @@ Tracker und Sensor               & TY-Space PST3                                
 					\label{fig:27U}
 				\end{figure}
 
-	Das Hauptantriebssystem ist der BHT-200 und wird mit dem Treibstoff Iod betrieben. Hier handelt es sich um einen elektrischen Antrieb mit einem TRL-Wert von 8 und einem guten leistungspezifischen Schub von 65 ${\mu N}{W}$. Durch das geringe Volumen von 3 U und der Verwendung von leichten Materialen für die Tankwände bewährt sich Jod als Treibstoff. Bei der Annahme eines Neigungswinkels von 58\textdegree ergibt sich beim BHT-200 eine Betriebsdauert von 16,1 \%. Als weiteres Triebwerk wird das chemische Triebwerk Marotta verwendet. Dies dient zur Ausführung von Manövern während des Anfahrens und für die Demontage und Stabilisierung beim Deorbiten mit hohen Stapelmassen. Durch die Auslegung der Kaltgaspakete für sehr kleine Satelliten (< 6U) weisen sie sehr geringe Schübe auf und erreichen nicht die 0,23 $N$. Desto Trotz werden 24 Marotta Triebwerke verwendet, um eine 6-DoF-Manövrierfähigkeit zu ermöglichen. Sie weisen im Vergleich zu anderen Kaltgastriebwerken einen hohen $I_{sp}$ Wert auf (siehe \tab{tab:Marotta}). Eine Anordnung der 24 Marotta Triebwerken befindet sich in der \abb{fig:marotta}. Dieses Triebwerk wird mit Stickstoff betrieben und benötigt zuzüglich von 40 \% Sicherheit und der Annahme einer Stabilisierung von einer Sekunde alle 10 Orbits  eine Gesamttreibstoffmasse von 2,12 $kg$.
+	
+	Das Hauptantriebssystem ist der BHT-200 und wird mit dem Treibstoff Iod betrieben. Hier handelt es sich um einen elektrischen Antrieb mit einem TRL-Wert von 8 und einem guten leistungspezifischen Schub von 65 ${\mu N}{W}$. Durch das geringe Volumen von 3 U und der Verwendung von leichten Materialen für die Tankwände bewährt sich Jod als Treibstoff. Bei der Annahme eines Neigungswinkels von 58\textdegree ergibt sich beim BHT-200 eine Betriebsdauert von 16,1\%. 
+	\begin{table}[!h]
+\begin{tabular}{|l|c|c|}
+\hline
+\multicolumn{1}{|c|}{Komponente} & max. Schub {[}N{]} & $I\_sp {[}s{]}$ \\ \hline
+Marotta                          & 2,36               & 65            \\ \hline
+\end{tabular}
+\caption{Maximaler Schub und spezifische Leistung des RCS Triebwerks \cite{Lettau.}}
+\label{tab:marotta}
+\end{table}
+	Als weiteres Triebwerk wird das chemische Triebwerk Marotta verwendet. Dies dient zur Ausführung von Manövern während des Anfahrens und für die Demontage und Stabilisierung beim Deorbiten mit hohen Stapelmassen. Durch die Auslegung der Kaltgaspakete für sehr kleine Satelliten (< 6U) weisen sie sehr geringe Schübe auf und erreichen nicht die 0,23 $N$. Desto Trotz werden 24 Marotta Triebwerke verwendet, um eine 6-DoF-Manövrierfähigkeit zu ermöglichen. Sie weisen im Vergleich zu anderen Kaltgastriebwerken einen hohen $I_{sp}$ Wert auf (siehe \tab{tab:marotta}). Eine Anordnung der 24 Marotta Triebwerken befindet sich in der \abb{fig:marotta}. Dieses Triebwerk wird mit Stickstoff betrieben und benötigt zuzüglich von 40\% Sicherheit und der Annahme einer Stabilisierung von einer Sekunde alle 10 Orbits  eine Gesamttreibstoffmasse von 2,12 $kg$.
+
 \begin{figure}[!h]
 \centering
 	\includegraphics[width=0.30\textwidth]{Marotta}
