@@ -1,5 +1,59 @@
 \chapter*{Anhang}
-  %\begin{appendix}
-   % \include{projekt}
-    %\include{WEITERER ANHANG}
-  %\end{appendix}
+\label{chap:anhang}
+ 
+%----------------------------------- QuSAD Tabelle ---------------------------------------------------------------------------------------------------------------------
+\begin{landscape}
+\begin{table}
+\centering
+
+\begin{tabular}{|l|l|c|c|c|c|c|} 
+\multicolumn{1}{|c|}{Category} & \multicolumn{1}{c|}{Name}                     & Mass(g) & Volume(mm³) & max. Power Consumption(W) & Capacity(Wh) & On-Time (\%)  \\ 
+\hline
+Antenna                        & IQW S-Band Dual Patch Antenna                 & 49      & 150000      & 2                         & -            & 100           \\ 
+\hline
+Antenna                        & SkyFox Labs piPATCH-MAX (GNSS)                & 200     & 150000      & 0.15                      & -            & 100           \\ 
+\hline
+Battery                        & NanoAvionics EPS included battery             & 0       & 0           & -                         & 161          & 100           \\ 
+\hline
+Control Boards                 & SSTL OBC750 LEO Flight Computer               & 1500    & 1500000     & 10                        & -            & 100           \\ 
+\hline
+EPS Board                      & NanoAvionics EPS                              & 1500    & 1500000     & 0.15                      & -            & 100           \\ 
+\hline
+Miscellaneous\&Payload         & Vision-based LiDAR Sensor~                    & 1800    & 1500000     & 5.2                       & -            & 100           \\ 
+\hline
+Miscellaneous\&Payload         & Crystalspace CAM1U 5 MP (RNS)                 & 150     & 125000      & 0.85                      & -            & 100           \\ 
+\hline
+Miscellaneous\&Payload         & Gecko based                                   & 2000    & 2000000     & -                         & -            & 100           \\ 
+\hline
+Propulsion                     & Iodine tank                                   & 10000   & 3000000     & -                         & -            & 100           \\ 
+\hline
+Propulsion                     & Nitrogen tank                                 & 2120    & 4300000     & -                         & -            & 100           \\ 
+\hline
+Propulsion                     & Marotta Micro-Thruster (chemical)             & 60      & 140000      & 5                         & -            & 0.001         \\ 
+\hline
+Propulsion                     & Busek BHT-200 Thruster (electric)             & 2000    & 3000000     & 200                       & -            & 16.1          \\ 
+\hline
+Solar Panel Deployable         & Top/Bottom BCT 9U Solar Panel                 & 285.71  & 400000      & -                         & -            & 100           \\ 
+\hline
+Solar Panel Deployable         & BCT 9U Tripple Wing Solar Array Custom (Side) & 1714.29 & 2500000     & -                         & -            & 100           \\ 
+\hline
+Solar Panel Deployable         & BCT SADA Gimbal System                        & 500     & 1000000     & 0.35                      & -            & 100           \\ 
+\hline
+Structure                      & 27U NanoAvionics Standard Structure (s)       & 2000    & -           & -                         & -            & 100           \\ 
+\hline
+Tracker\&Sensors               & TY-Space PST3                                 & 100     & 450000      & 1.2                       & -            & 100           \\ 
+\hline
+Tracker\&Sensors               & NSS Fine Sun Sensor NFSS-411                  & 35      & 25000       & 0.2                       & -            & 100           \\ 
+\hline
+Tracker\&Sensors               & Sensonor STIM300                              & 60      & 50000       & 1.5                       & -            & 100           \\ 
+\hline
+Tracker\&Sensors               & SSTL SGR-Ligo                                 & 100     & 100000      & 0.5                       & -            & 100           \\ 
+\hline
+Transceiver                    & IQW Slink-Phy S-Band Transceiver              & 200     & 250000      & -                         & -            & 100           \\ 
+\hline
+Sum                            & \multicolumn{1}{c|}{-}                        & 28208   & 26185000    & 183.6*                    & 161          & 100           \\
+\end{tabular}
+\caption{Komponenten des angenommenen Designs in QuSAD}
+\label{qusadwerte}
+\end{table}
+\end{landscape}
