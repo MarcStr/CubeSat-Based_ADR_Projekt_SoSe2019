@@ -109,7 +109,7 @@ Tracker und Sensor               & TY-Space PST3                                
 						%Hier die Varainte von Max nehmen und kurz beschreiben
 				\subsection{Budgetplanung}
 Im folgenden Kapitel wird auf die mittels QuSAD erstellten Budgets für Masse, Volumen und Leistung eingegangen. In QuSAD werden Komponenten in Kategorien eingeteilt. Die Budgets werden mit diesen Kategorien erstellt. Eine Tabelle mit allen Kategorien und den dazugehörigen Komponenten ist im Anhang in \tab{} zu finden. Die Batterie ist im EPS Board integriert und taucht darum im Massen- und Volumenbudget nicht auf. Da QuSAD in der Kategorie EPS keinen Eintrag über speicherbare Energie zulässt, wurde die Batterie nur für das Leistungsbudget hinzugefügt. Des weiteren ist zu beachten, dass die Komponenten in den unterschiedlichen Budgets keine einheitliche Farbgebung aufweisen. Einbauvorrichtungen wurden in QuSAD nicht bereücksichtigt. Die Abweichungen in den Budgets durch das  zusätzliche Gewicht und Volumen sind davon abhängig inwiefern die Herstellerangaben den Einbau berücksichtigen.\\
-
+\newpage
 						\subsubsection{Massenbudget}
 Das Massenbudget \abb{fig:masse} zeigt die aktuelle Massenverteilung des Designs an. Die maximal verfügbare Masse ist über eine Angabe in der Strukturkomponente begrenzt. Diese beinhaltet einen Wert für die maximale Gesamtmasse. Die maximale Gesamtmasse des CubeSats wurde mit 50 kg angenommen. Das aktuelle Design beansprucht circa 57 \% der möglichen Gesamtmasse (28,5 kg). Den größten Teil macht dabei die Antriebsanlage aus. Es gilt zu beachten, dass dieses Budget die Startmasse des CubeSats widerspiegelt. Nach Beginn der Mission ändert sich die Massenverteilung aufgrund des Treibstoffverbrauchs.\\
 										\begin{figure}[!h]
@@ -118,7 +118,7 @@ Das Massenbudget \abb{fig:masse} zeigt die aktuelle Massenverteilung des Designs
 											\caption{Massenbudget für das angenommene Design}
 											\label{fig:masse}
 										\end{figure}
-								
+\newpage								
 						\subsubsection{Volumenbudget}
 Das Volumenbudget \abb{fig:volume} gibt einen strukturierten Überblick über die aktuelle Volumenverteilung der ausgewählten Konfiguration, beziehungsweise des Profils in QuSAD. Das maximale verfügbare Volumen bemisst sich an der im Profil befindlichen Strukturkomponente, die über eine Volumenangabe verfügt. Das verfügbare Gesamtvolumen ist im Gegensatz zur Masse jedoch zu circa 97 \% ausgelastet. Es fällt auf, dass nahezu alle Kategorien einen größeren Volumenanteil als Massenanteil aufweisen. Das größte Volumen nimmt, ähnlich wie beim Massenbudget die Antriebsanlage ein. Sie macht jedoch aufgrund der Treibstofftanks über die Hälfte des Gesamtvolumens aus. Es sollte beachtet werden, dass aufgrund des geringen Freiraums kaum Sicherheiten möglich sind.\\
 								
@@ -128,7 +128,7 @@ Das Volumenbudget \abb{fig:volume} gibt einen strukturierten Überblick über di
 											\caption{Volumenbudget für das angenommene Design}
 											\label{fig:volume}
 										\end{figure}
-								
+\newpage								
 						\subsubsection{Leistungsbudget}
 Das Leistungsbudget \abb{fig:power} gibt einen Überblick über den Verbrauch der verschiedenen Komponenten. Es gibt die Entladung der Batterie auf der Schattenseite der Erde wieder (Req. Battery Power) und wie in den anderen Budgets die Spanne zur Systemuntauglichkeit (Margin). Der Antrieb nimmt mit 32 \% insgesamt den größten Anteil des Energieverbrauchs ein.\\
 				
@@ -138,14 +138,14 @@ Das Leistungsbudget \abb{fig:power} gibt einen Überblick über den Verbrauch de
 											\caption{Energiebudget für das angenommene Design}
 											\label{fig:power}
 										\end{figure}
-Um das Leistungsbudget zu erstellen muss die Höhe der Umlaufbahn und der Orbit $\beta$ Winkel angegeben werden \abb{fig:power1}. diese wurden mit 1150 m und 0 \textdegree{} angenommen \tab:{cubesatdesign}.\\
+Um das Leistungsbudget zu erstellen muss die Höhe der Umlaufbahn und der Orbit $\beta$ Winkel angegeben werden \abb{fig:power1}. diese wurden mit 1150 km und 0\textdegree{} angenommen (\tab{tab:cubesatdesign}).\\
 \begin{figure}[!h]
 	\centering
 		\includegraphics[width=0.70\textwidth]{graphics/power1.png}
 	\caption{QuSAD: Orbit Charakteristik Eingabewerte}
 	\label{fig:power1}
 \end{figure}
-Mit den eingegebenen Werten werden automatisch weitere Größen berechnet. Nach der Zuordnung der verschiedenen Solarpanele an die vorgesehene Position des CubeSats und der Eingabe der maximalen Missionsdauer (\abb{fig:power2})kann die Energieerzeugung während einer Erdumrundung kalkuliert werden (\abb{fig:power3} und \abb{fig:power4}).\\										
+Mit den eingegebenen Werten werden automatisch weitere Größen berechnet. Nach der Zuordnung der verschiedenen Solarpanele an die vorgesehene Position des CubeSats und der Eingabe der maximalen Missionsdauer (\abb{fig:power2}) kann die Energieerzeugung während einer Erdumrundung kalkuliert werden (\abb{fig:power3} und \abb{fig:power4}).\\										
 
 		 \begin{figure}[!h]
 				\centering
@@ -167,7 +167,7 @@ Mit den eingegebenen Werten werden automatisch weitere Größen berechnet. Nach 
 				\caption{QuSAD: Energieerzeugung pro Orbit 2}
 				\label{fig:power4}
 			\end{figure}
-Da das Haupttriebwerk und das RCS-System nicht dauerhaft betrieben werden, muss für diese Komponenten eine Prozentuale Brenndauer angegeben werden. Die mit den getroffenen Annahmen über die Brenndauer veränderten Werte  \tab:{cubesatdesign} können manuell geändert werden. Der Energieverbrauch der einzelnen Komponenten pro Orbit wird direkt angezeigt (\abb{fig:power5}).\\
+Da das Haupttriebwerk und das RCS-System nicht dauerhaft betrieben werden, muss für diese Komponenten eine Prozentuale Brenndauer angegeben werden. Die mit den getroffenen Annahmen über die Brenndauer veränderten Werte  (\tab{tab:cubesatdesign}) können manuell geändert werden. Der Energieverbrauch der einzelnen Komponenten pro Orbit wird direkt angezeigt (\abb{fig:power5}).\\
 			
 			\begin{figure}[!h]
 				\centering
