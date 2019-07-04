@@ -32,7 +32,7 @@
 					\item Transceiver
 					\item Struktur
 				\end{itemize}
-eingeordnet. Dies orientiert sich an der Struktur der QuSAD Datenbank. In der \tab{tab:cubesatdesign} sind alle Komponenten in der entsprechenden Kategorie und der Mengenangabe aufgelistet. Zusätzlich befindet sich im Anhang die \tab{tab:qusadwerte} mit allen relevanten Werten der einzelnen Komponenten, auf die in diesem Kapitel eingegangen wird.
+eingeordnet. Dies orientiert sich an der Struktur der QuSAD Datenbank. In der \tab{tab:cubesatdesign} sind alle Komponenten in der entsprechenden Kategorie und der Mengenangabe aufgelistet. Zusätzlich befindet sich im Anhang die \tab{qusadwerte} mit allen relevanten Werten der einzelnen Komponenten, auf die in diesem Kapitel eingegangen wird.
 				\begin{table}[!h]
 				\centering
 \begin{tabular}{|l|l|c|}
@@ -79,18 +79,24 @@ Tracker und Sensor               & TY-Space PST3                                
 	\label{tab:parameter}
 \end{table}
 
-	
-	Als Primärstruktur ist ein 27U CubeSat mit einer zugelassen maximalen Masse von 50 kg und eine Gesamtabmessung von 34 x 35 x 36 cm verwendet (siehe \abb{fig:27U}). 				
-				\begin{figure}[!h]
+					\begin{figure}[!h]
 					\centering
 						\includegraphics[width=0.60\textwidth]{27U}
 					\caption{CubeSat-Größen gemäß der Planetary Systems Corporation \cite{Lettau.}}
 					\label{fig:27U}
 				\end{figure}
-
-	
+	Als Primärstruktur ist ein 27U CubeSat mit einer zugelassen maximalen Masse von 50 kg und eine Gesamtabmessung von 34 x 35 x 36 cm verwendet (siehe \abb{fig:27U}). 					
 	Das Hauptantriebssystem ist der BHT-200 und wird mit dem Treibstoff Iod betrieben. Hier handelt es sich um einen elektrischen Antrieb mit einem TRL-Wert von 8 und einem guten leistungspezifischen Schub von 65 ${\mu N}{W}$. Durch das geringe Volumen von 3 U und der Verwendung von leichten Materialen für die Tankwände bewährt sich Jod als Treibstoff. Bei der Annahme eines Neigungswinkels von 58\textdegree ergibt sich beim BHT-200 eine Betriebsdauert von 16,1\%. 
-	\begin{table}[!h]
+	\begin{figure}[!h]
+\centering
+	\includegraphics[width=0.30\textwidth]{Marotta}
+	\caption{Anordnung der RCS-Triebwerke \cite{Lettau.}}
+	\label{fig:marotta}
+\end{figure}
+
+	Als weiteres Triebwerk wird das chemische Triebwerk Marotta verwendet. Dies dient zur Ausführung von Manövern während des Anfahrens und für die Demontage und Stabilisierung beim Deorbiten mit hohen Stapelmassen. Durch die Auslegung der Kaltgaspakete für sehr kleine Satelliten (< 6U) weisen sie sehr geringe Schübe auf und erreichen nicht die 0,23 $N$. Desto Trotz werden 24 Marotta Triebwerke verwendet, um eine 6-DoF-Manövrierfähigkeit zu ermöglichen. Sie weisen im Vergleich zu anderen Kaltgastriebwerken einen hohen $I_{sp}$ Wert auf (siehe \tab{tab:marotta}). Eine Anordnung der 24 Marotta Triebwerken befindet sich in der \abb{fig:marotta}. Dieses Triebwerk wird mit Stickstoff betrieben und benötigt zuzüglich von 40\% Sicherheit und der Annahme einer Stabilisierung von einer Sekunde alle 10 Orbits  eine Gesamttreibstoffmasse von 2,12 $kg$.
+\begin{table}[!h]
+	\centering
 \begin{tabular}{|l|c|c|}
 \hline
 \multicolumn{1}{|c|}{Komponente} & max. Schub {[}N{]} & $I\_sp {[}s{]}$ \\ \hline
@@ -99,28 +105,19 @@ Marotta                          & 2,36               & 65            \\ \hline
 \caption{Maximaler Schub und spezifische Leistung des RCS Triebwerks \cite{Lettau.}}
 \label{tab:marotta}
 \end{table}
-	Als weiteres Triebwerk wird das chemische Triebwerk Marotta verwendet. Dies dient zur Ausführung von Manövern während des Anfahrens und für die Demontage und Stabilisierung beim Deorbiten mit hohen Stapelmassen. Durch die Auslegung der Kaltgaspakete für sehr kleine Satelliten (< 6U) weisen sie sehr geringe Schübe auf und erreichen nicht die 0,23 $N$. Desto Trotz werden 24 Marotta Triebwerke verwendet, um eine 6-DoF-Manövrierfähigkeit zu ermöglichen. Sie weisen im Vergleich zu anderen Kaltgastriebwerken einen hohen $I_{sp}$ Wert auf (siehe \tab{tab:marotta}). Eine Anordnung der 24 Marotta Triebwerken befindet sich in der \abb{fig:marotta}. Dieses Triebwerk wird mit Stickstoff betrieben und benötigt zuzüglich von 40\% Sicherheit und der Annahme einer Stabilisierung von einer Sekunde alle 10 Orbits  eine Gesamttreibstoffmasse von 2,12 $kg$.
-
-\begin{figure}[!h]
-\centering
-	\includegraphics[width=0.30\textwidth]{Marotta}
-	\caption{Anordnung der RCS-Triebwerke \cite{Lettau.}}
-	\label{fig:marotta}
-\end{figure}
 
 	Viele Unternehmen bieten kundenspezifische Lösungen an. Dies wird auch von dem Unternehmen Blue Canyon Technologies für das Solarmodul 6U-H triple deployable solar array angeboten. Da es sich um eine zweiflügelige Konfiguration mit einer Grundfläche von 6U pro Flügel handelt, wird sie auf eine Grundfläche von 9U hoch skaliert, sodass sie auf  den 27U CubeSat angewendet werden kann. Des Weiteren wird von einer dreiflügeligen Konstellation ausgegangen. Die Vergrößerung der Solaranlage sorgt für eine Steigerung der Nennleistung um 50 \%. Weiterhin wird ein Solarpanel auf die obere Grundfläche des CubeSats platziert. Mit allen sieben Solarpanelen erreicht der CubeSat eine Nennleistung von 202 W. In der \abb{fig:solarpanel} ist eine vereinfachte CAD Darstellung von der Solaranlage zu sehen. 
-\begin{figure}[!h]
+	Bei dem Power Management and Distribution System (PMAD-System) ist das NanoAvionics EPS, mit einem TRL von 9, dass geeignetste PMAD-System. Bei dieser Variante ist das besondere, dass ein externes Batteriepack mitgeliefert wird. Die EPS Variante kann eine Leistung von 175 W und eine Kapazität von 161 Wh liefern. Des Weiteren kann die Batterie skaliert werden, um die Leistungsabgabe zu erhöhen. Unter der Annahme, dass eine relative Navigation von ca. 5 km bis zum Andocken erforderlich ist und ein einziger Sensor dies nicht abdecken kann, sind mehrere miteinander kompatible Sensoren notwendig. Als Referenz wird die Mission e.Deorbit-Mission aufgerund von Ähnlichkeiten des Missionsprofils gewählt, aufgrund von Ähnlichkeiten des Missionsprofils. Für detaillierte Angaben bezüglich Tracker und Sensors, Transceiver und Antennen wird auf die Ausarbeitung \cite{Lettau.} verwiesen.
+	\begin{figure}[!h]
 \centering
 	\includegraphics[width=0.60\textwidth]{graphics/Solarpanel.PNG}
 	\caption{CAD Darstellung von der Solarkonfiguration \cite{Lettau.}}
 	\label{fig:solarpanel}
 \end{figure}
-
-	Bei dem Power Management and Distribution System (PMAD-System) ist das NanoAvionics EPS, mit einem TRL von 9, dass geeignetste PMAD-System. Bei dieser Variante ist das besondere, dass ein externes Batteriepack mitgeliefert wird. Die EPS Variante kann eine Leistung von 175 W und eine Kapazität von 161 Wh liefern. Des Weiteren kann die Batterie skaliert werden, um die Leistungsabgabe zu erhöhen. Unter der Annahme, dass eine relative Navigation von ca. 5 km bis zum Andocken erforderlich ist und ein einziger Sensor dies nicht abdecken kann, sind mehrere miteinander kompatible Sensoren notwendig. Als Referenz wird die Mission e.Deorbit-Mission aufgerund von Ähnlichkeiten des Missionsprofils gewählt, aufgrund von Ähnlichkeiten des Missionsprofils. Für detaillierte Angaben bezüglich Tracker und Sensors, Transceiver und Antennen wird auf die Ausarbeitung \cite{Lettau.} verwiesen.
-	
+	\newpage
 						%Hier die Varainte von Max nehmen und kurz beschreiben
 				\subsection{Budgetplanung}
-Im folgenden Kapitel wird auf die mittels QuSAD erstellten Budgets für Masse, Volumen und Leistung eingegangen. In QuSAD werden Komponenten in Kategorien eingeteilt. Die Budgets werden mit diesen Kategorien erstellt. Eine Tabelle mit allen Kategorien und den dazugehörigen Komponenten ist im Anhang in \tab{tab:cubesatdesign} zu finden. Die Batterie ist im EPS Board integriert und taucht deshalb im Massen- und Volumenbudget nicht auf. Da QuSAD in der Kategorie EPS keinen Eintrag über speicherbare Energie zulässt, wurde die Batterie nur für das Leistungsbudget hinzugefügt. Des weiteren ist zu beachten, dass die Komponenten in den unterschiedlichen Budgets keine einheitliche Farbgebung aufweisen. Einbauvorrichtungen wurden in QuSAD nicht berücksichtigt. Die Abweichungen in den Budgets durch das  zusätzliche Gewicht und Volumen sind davon abhängig, inwiefern die Herstellerangaben den Einbau berücksichtigen.\\
+Im folgenden Kapitel wird auf die mittels QuSAD erstellten Budgets für Masse, Volumen und Leistung eingegangen. In QuSAD werden Komponenten in Kategorien eingeteilt. Die Budgets werden mit diesen Kategorien erstellt. Eine Tabelle mit allen Kategorien und den dazugehörigen Komponenten ist in der \tab{tab:cubesatdesign} zu finden. Die Batterie ist im EPS Board integriert und taucht deshalb im Massen- und Volumenbudget nicht auf. Da QuSAD in der Kategorie EPS keinen Eintrag über speicherbare Energie zulässt, wurde die Batterie nur für das Leistungsbudget hinzugefügt. Des weiteren ist zu beachten, dass die Komponenten in den unterschiedlichen Budgets keine einheitliche Farbgebung aufweisen. Einbauvorrichtungen wurden in QuSAD nicht berücksichtigt. Die Abweichungen in den Budgets durch das  zusätzliche Gewicht und Volumen sind davon abhängig, inwiefern die Herstellerangaben den Einbau berücksichtigen.\\
 
 						\subsubsection{Massenbudget}
 Das Massenbudget \abb{fig:masse} zeigt die aktuelle Massenverteilung des Designs an. Die maximal verfügbare Masse ist über eine Angabe in der Strukturkomponente begrenzt. Diese beinhaltet einen Wert für die maximale Gesamtmasse. Die maximale Gesamtmasse des CubeSats wurde mit 50 kg angenommen. Das aktuelle Design beansprucht circa 57 \% der möglichen Gesamtmasse (28,5 kg). Den größten Teil macht dabei die Antriebsanlage aus. Es gilt zu beachten, dass dieses Budget die Startmasse des CubeSats widerspiegelt. Nach Beginn der Mission ändert sich die Massenverteilung aufgrund des Treibstoffverbrauchs.\\
@@ -180,7 +177,7 @@ Mit den eingegebenen Werten werden automatisch weitere Größen berechnet. Nach 
 				\label{fig:power4}
 			\end{figure}
 Da das Haupttriebwerk und das RCS-System nicht dauerhaft betrieben werden, muss für diese Komponenten eine Prozentuale Brenndauer angegeben werden. Die mit den getroffenen Annahmen über die Brenndauer veränderten Werte  (\tab{tab:cubesatdesign}) können manuell geändert werden. Der Energieverbrauch der einzelnen Komponenten pro Orbit wird direkt angezeigt (\abb{fig:power5}).\\
-			
+			\newpage
 			\begin{figure}[!h]
 				\centering
 					\includegraphics[width=0.70\textwidth]{graphics/power5.png}
@@ -198,5 +195,6 @@ Die von QuSAD angenommenen Werte zur bestimmung des Energieüberschusses sind in
 Zur Berechnung des Budgets wird eine Batterieeffizienz von 90 \% angenommen. Außerdem wird mit einer Verschlechterung der Energieerzeugung von 3 \% pro Missionsjahr gerechnet. Der Wert “Power margin” gibt den Energieüberschuss eines Orbits in Wh an (\abb{fig:power6}). Das Budget in \abb{fig:power} stellt den Zustand des CubeSats nach der angegebenen Missionsdauer in \abb{fig:power2} dar. Die Energieproduktion pro Orbit sinkt mit dem Fortlaufen der  Mission. Somit ist der Energieüberschuss bei Missionsstart deutlich höher. 			
 			
 			\newpage
+			
 			\section{Auswertung und Optimierung des Designs}
 			Das ausgewählte Design (\tab{tab:cubesatdesign}) und die berechneten Budgets liefern ein gutes Ergebnis. Das Massenbudget würde eine Massensteigerung von 21,5 $kg$ gemäß QuSAD zulassen. Bei dem Volumen hingegen sind lediglich 3 \% des Gesamtvolumens ungenutzt. Die Software berücksichtigt keine Einbauvorrichtung, dadurch könnte es zu Konflikten kommen. Das geringe zur Verfügung stehende Volumen gibt wenig Spielraum, obwohl die Masse des CubeSat eine Spanne von 43 \% gewährt. Des Weiteren muss beachtet werden, dass bei vielen Komponenten keine genauen Angaben bezüglich der Masse und des Volumens gegeben waren und dementsprechend durch Vergleich mit näherungsweise ähnlichen Systemen oder Aufwärtsskalierung die Werte bestimmt wurden. Dies könnte dazu führen, dass sich bei dem Volumen die Spanne eventuell vergrößern könnte. Im Leistungsbudget wird der erhöhte Verbrauch während des RDVDO nicht berücksichtigt. Es wird jedoch auch eine Missionsdauer von 10 Jahren angenommen, wodurch das Budget deutlich schlechter ausfällt als zu Missionsbeginn. Somit sollte zum RDVDO am Anfang der Mission genug Energie verfügbar sein. Der aktuelle Stand des Designs liefert trotz einiger vernachlässigter Aspekte ein gutes Design und erfordert bislang keine Optimierung. Dies könnte nach der Missionsanalyse erfolgen, da durch die Simulation   einige Änderungen in betracht gezogen werden könnten.
