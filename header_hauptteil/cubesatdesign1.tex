@@ -94,9 +94,12 @@ Bei dem Power Management and Distribution System (PMAD-System) ist das NanoAvion
 
 						%Hier die Varainte von Max nehmen und kurz beschreiben
 				\subsection{Budgetplanung}
-				
+Im folgenden Kapitel wird auf die mittels QuSAD erstellten Budgets für Masse, Volumen und Leistung eingegangen. In QuSAD werden Komponenten in Kategorien eingeteilt. Die Budgets werden mit diesen Kategorien erstellt. Eine Tabelle mit allen Kategorien und den dazugehörigen Komponenten ist im Kapitel 3.2 zu finden [Tabelle Kap. 3.2]
+
+Die Batterie ist im EPS Board integriert und taucht darum im Massen- und Volumenbudget nicht auf. Da QuSAD in der Kategorie EPS keinen Eintrag über speicherbare Energie zulässt, wurde die Batterie nur für das Leistungsbudget hinzugefügt. Des weiteren ist zu beachten, dass die Komponenten in den unterschiedlichen Budgets keine einheitliche Farbgebung aufweisen. Einbauvorrichtungen wurden in QuSAD nicht bereücksichtigt. Die Abweichungen in den Budgets durch das  zusätzliche Gewicht und Volumen sind davon abhängig inwiefern die Herstellerangaben den Einbau berücksichtigen.
+
 						\subsubsection{Massenbudget}
-								
+Das Massenbudget \abb{fig:masse} zeigt die aktuelle Massenverteilung des Designs an. Die maximal verfügbare Masse ist über eine Angabe in der Strukturkomponente begrenzt. Diese beinhaltet einen Wert für die maximale Gesamtmasse. Die maximale Gesamtmasse des CubeSats wurde mit 50 kg angenommen. Das aktuelle Design beansprucht circa 57 \% der möglichen Gesamtmasse (28,5 kg). Den größten Teil macht dabei die Antriebsanlage aus. Es gilt zu beachten, dass dieses Budget die Startmasse des CubeSats widerspiegelt. Nach Beginn der Mission ändert sich die Massenverteilung aufgrund des Treibstoffverbrauchs.
 										\begin{figure}[!h]
 											\centering
 												\includegraphics[width=0.90\textwidth]{masse}
@@ -105,6 +108,7 @@ Bei dem Power Management and Distribution System (PMAD-System) ist das NanoAvion
 										\end{figure}
 										
 						\subsubsection{Volumenbudget}
+Das Volumenbudget \abb{fig:volume} gibt einen strukturierten Überblick über die aktuelle Volumenverteilung der ausgewählten Konfiguration, beziehungsweise des Profils in QuSAD. Das maximale verfügbare Volumen bemisst sich an der im Profil befindlichen Strukturkomponente, die über eine Volumenangabe verfügt. Das verfügbare Gesamtvolumen ist im Gegensatz zur Masse jedoch zu circa 97 \% ausgelastet. Es fällt auf, dass nahezu alle Kategorien einen größeren Volumenanteil als Massenanteil aufweisen. Das größte Volumen nimmt, ähnlich wie beim Massenbudget die Antriebsanlage ein. Sie macht jedoch aufgrund der Treibstofftanks über die Hälfte des Gesamtvolumens aus. Es sollte beachtet werden, dass aufgrund des geringen Freiraums kaum Sicherheiten möglich sind. 
 								
 										\begin{figure}[!h]
 											\centering
@@ -114,6 +118,7 @@ Bei dem Power Management and Distribution System (PMAD-System) ist das NanoAvion
 										\end{figure}
 								
 						\subsubsection{Leistungsbudget}
+Das Leistungsbudget \abb{fig:power} gibt einen Überblick über den Verbrauch der verschiedenen Komponenten. Es gibt die Entladung der Batterie auf der Schattenseite der Erde wieder (Req. Battery Power) und wie in den anderen Budgets die Spanne zur Systemuntauglichkeit (Margin). Der Antrieb nimmt mit 32 \% insgesamt den größten Anteil des Energieverbrauchs ein.
 				
 										\begin{figure}[!h]
 											\centering
@@ -121,7 +126,54 @@ Bei dem Power Management and Distribution System (PMAD-System) ist das NanoAvion
 											\caption{Energiebudget für das angenommene Design}
 											\label{fig:power}
 										\end{figure}
-										
+Um das Leistungsbudget zu erstellen muss die Höhe der Umlaufbahn und der Orbit $\beta$ Winkel angegeben werden \abb{fig:power1}. diese wurden mit 1150 m und 0 \textdegree{} angenommen \tab:{cubesatdesign}.
+\begin{figure}[!h]
+	\centering
+		\includegraphics[width=0.70\textwidth]{graphics/power1.png}
+	\caption{QuSAD: Orbit Charakteristik Eingabewerte}
+	\label{fig:power1}
+\end{figure}
+Mit den eingegebenen Werten werden automatisch weitere Größen berechnet. Nach der Zuordnung der verschiedenen Solarpanele an die vorgesehene Position des CubeSats und der Eingabe der maximalen Missionsdauer (\abb{fig:power2})kann die Energieerzeugung während einer Erdumrundung kalkuliert werden (\abb{fig:power3} und \abb{fig:power4}).										
+
+		 \begin{figure}[!h]
+				\centering
+					\includegraphics[width=0.70\textwidth]{graphics/power2.PNG}
+				\caption{QuSAD: Auswahl der Solarpanele und der Missionsdauer}
+				\label{fig:power2}
+			\end{figure}
+			
+			\begin{figure}[!h]
+				\centering
+					\includegraphics[width=0.70\textwidth]{graphics/power3.png}
+				\caption{QuSAD: Energieerzeugung pro Orbit 1}
+				\label{fig:power3}
+			\end{figure}
+			
+			\begin{figure}[!h]
+				\centering
+					\includegraphics[width=0.70\textwidth]{graphics/power4.PNG}
+				\caption{QuSAD: Energieerzeugung pro Orbit 2}
+				\label{fig:power4}
+			\end{figure}
+Da das Haupttriebwerk und das RCS-System nicht dauerhaft betrieben werden, muss für diese Komponenten eine Prozentuale Brenndauer angegeben werden. Die mit den getroffenen Annahmen über die Brenndauer veränderten Werte  \tab:{cubesatdesign} können manuell geändert werden. Der Energieverbrauch der einzelnen Komponenten pro Orbit wird direkt angezeigt (\abb{fig:power5}). 
+			
+			\begin{figure}[!h]
+				\centering
+					\includegraphics[width=0.70\textwidth]{graphics/power5.png}
+				\caption{QuSAD: Energieverbrauch pro Orbit}
+				\label{fig:power5}
+			\end{figure}
+Die von QuSAD angenommenen Werte zur bestimmung des Energieüberschusses sind in  \abb{fig:power6} zusammengefasst. 
+			
+			\begin{figure}[!h]
+				\centering
+					\includegraphics[width=0.70\textwidth]{graphics/power6.png}
+				\caption{QuSAD: Überblick Energieüberschuss}
+				\label{fig:power6}
+			\end{figure}
+Zur Berechnung des Budgets wird eine Batterieeffizienz von 90 \% angenommen. Außerdem wird mit einer Verschlechterung der Energieerzeugung von 3 \% pro Missionsjahr gerechnet. Der Wert “Power margin” gibt den Energieüberschuss eines Orbits in Wh an (\abb{fig:power6}). Das Budget in \abb{fig:power} stellt den Zustand des CubeSats nach der angegebenen Missionsdauer in \abb{power2} dar. Die Energieproduktion pro Orbit sinkt mit dem Fortlaufen der  Mission. Somit ist der Energieüberschuss bei Missionsstart deutlich höher. 			
+			
+			
 			\section{Auswertung und Optimierung des Designs}
 
 				
