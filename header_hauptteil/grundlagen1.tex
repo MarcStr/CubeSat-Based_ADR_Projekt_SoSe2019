@@ -12,7 +12,7 @@
 				\label{fig:NanosatsTypes}
 			\end{figure}
 
-	\newpage
+	
 	%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	\subsection{Gestaltungsrichtlinien}%-------------------------------------------------------------------------------------------------------------------------------------------
 	
@@ -24,7 +24,7 @@
 		\end{itemize}
 		
 		Falls ein Entwurf nicht den Vorschriften entspricht, kann bei dem Betreiber der Trägerrakete eine Sondergenehmigung angefragt werden. Nach einer Reihe von Tests entscheidet dieser ob er die Abweichungen akzeptiert, Änderungen vorgenommen werden müssen, oder ein anderer Anbieter gefunden werden muss. \cite{CaliforniaPolytechnicStateUniversity.2014} 
-\newpage
+
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	\section{Cubesat Subsysteme}%-------------------------------------------------------------------------------------------------------------------------------------------
 	%hier Hauptsächlich das Fazit von max kompakt darstellen und refernzieren
@@ -68,7 +68,6 @@ Für die meisten Anwendungen können Produkte verschiedener Anbieter COTS erworb
 	\caption{Zentralisiertes EPS \cite{Abaker.2017}}
 \end{figure}
 
-\newpage
 
 
 		%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -120,7 +119,7 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 			
 	
 Es gibt einige Herausforderungen, welch unabhängig von der Removal Methode sind und für jede Mission individuell gelöst werden muss. Dazu gehört die Klassifizierung der zu entfernenden Objekte, sowie dessen genaue Positionsanalyse. Sollen während einer Mission mehrere Objekte entfernt werden, so muss zu beginn definiert werden in welcher Reihenfolge dies geschehen soll. 
-\newpage
+
 %---------------------------------------------------------------------------------------------------------------------
 	\subsubsection{Collective Method}
 %----------------------------------------------------------------------------------------------------------------------	
@@ -200,7 +199,7 @@ Wie in der Abbildung \ref{fig:Segel} zu erkenne, wird ein Sonnensegel verwendet 
 				\caption{Satellit mit Roboterarm \cite{Nishida.2011}}
 				\label{fig:Satellit}
 			\end{figure}
-			\newpage
+			
 	
 %-------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Unconventional	Method}
@@ -214,7 +213,7 @@ Wie in der Abbildung \ref{fig:Segel} zu erkenne, wird ein Sonnensegel verwendet 
 				\caption{Aufbau deorbiting mit dem Magnetfeld \cite{Chopra.05282018}}
 				\label{fig:Magnet}
 			\end{figure}
-			\newpage
+			
 
 					
 %------------------------------------------------------------------------------------------------------------------------------		
@@ -230,7 +229,7 @@ Wie in der Abbildung \ref{fig:Segel} zu erkenne, wird ein Sonnensegel verwendet 
 			
 	
 	Rendezvous ist ein kritischer Missionsabschnitt bei einer ADR Mission. Wie in der Abbildung \ref{fig:Rendezvous} zu erkennen, ist dieser Missonsabschnitt wiederum in verschiedene Phasen unterteilt. In der ersten Phase, dem Free Flight, wird wenn notwendig ein Orbittransfer durchgeführt. Dabei nähert sich der Chaser dem Zielorbit und synchronisiert sich mit dessen Inklination. Die Orbithöhe des Chasers ist unterhalb der Zielhöhe, um eine Annäherung zu gewährleisten, da Satelliten mit einer niedrigeren Orbithöhe eine höhere Geschwindigkeit haben. Bei der Orbit Phase wird die Höhendifferenz reduziert, bis der Chaser ca. 5 km hinter und 1 km unterhalb des Ziels ist. Ab diesem Punkt beginnt die Far Range Rendezvous Phase. In dieser Phase wird die relative Navigation verwendet, welche auf Sensoren und Aktuatoren zurückgreift die in Kapitel 2.2 beschrieben worden sind. Besonders LIDAR und Kamera-Systeme werden in dieser Phase benötigt, da die absolute Navigationssysteme nicht die nötige Genauigkeit liefert und eine Kollision dem Ziel der Mission widerspricht und zu einer Verschlimmerung der Problematik führt. Diese Phase endet bei ca. 100 m Entfernung zwischen Ziel und Chaser. Nun beginnt das Close Range Rendezvous, welches die Closing Phase und den Final Approach beinhaltet. Vor der Closing Phase wird das Objekt genau betrachtet, es werden alle relevanten Informationen Über das Ziel gesammelt und verglichen, dies beinhaltet auch die genaue Taumelbewegug und deren Beschreibung. Dabei wird darauf geachtet ob eine Rotationsachse vorhanden ist und wie die Beschaffenheit der Oberfläche ist. Sollte eine Taumelbewegung vorhanden sein, wird der Chaser mit dieser Synchronisiert. Nach der Synchronisierung findet das Closing und der Final Approach statt, in dem die Distanz weiter reduziert wird und schlussendlich das Docking durchgeführt wird \cite{Castronuovo.2011}. 
- \newpage
+ 
 %------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Docking Strategien}
 %------------------------------------------------------------------------------------------------------------------------------		
@@ -248,7 +247,7 @@ Wie in der Abbildung \ref{fig:Segel} zu erkenne, wird ein Sonnensegel verwendet 
 
 	Das adhäsive Docking beruht auf dem System einer Klebverbindung. Dafür unerlässlich ist der Kontakt zwischen zwei Flächen sowie ein Phänomen welches diese Verbindung aufrecht erhält. Eines dieser Phänomene wird im Kapitel Bionische Materialien beschrieben. Durch diese Verbindung wird die Regelung eines Solchen System nicht viel komplexer als zuvor, da nur eine Verschiebung des Messeschwerpunkt zu betrachten ist. Durch die Betrachtung als einheitliches System vereinfacht sich die Simulation dessen Bewegungen, sowie die Planung von Manövern.     
 						
-		\newpage
+		
 		
 	%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Bionische Materialien}%-------------------------------------------------------------------------------------------------------------------------------------------
@@ -294,7 +293,7 @@ Es existiert bereits ein Andockmechanismus (\abb{fig:Gecko3}) dessen Gecko-Mikro
 
 	Durch einen Versteifungsmodus und die aktive Lastverteilung wird eine möglichst gute Verteilung der herrschenden Kräfte erzielt \cite{ChristopherTrentlage.2018}.
 Für die folgende Abschätzung der maximal wirkenden Kräfte auf die Mirkohaftstruktur wurde der Aufbau des Prototypen (\abb{fig:Gecko_Rechnung1}) vorausgesetzt. Bei den Berechnungen wird von den ungünstigsten Lastfällen ausgegangen.
-In den Abbildungen \ref{fig:Gecko_Rechnung1}, \ref{fig:Gecko_Rechnung2} und \ref{fig:Gecko_Rechnung3} werden die der Berechnung zugrundeliegenden Annahmen gezeigt. Die belasteten Verbindungen der Mikrohaftstrukturen zum Zielobjekt werden als feste Lager A und B angenommen. Es wird davon ausgegangen, dass die Vorspannkraft beim Andocken ideal aufgebracht wurde. Außerdem bleibt die Kombination aus kritischen Normal- und Scherkräften unberücksichtigt. Der zusätzliche Anpressdruck des Haupttriebwerks wurde ebenfalls nicht berücksichtigt.\newpage
+In den Abbildungen \ref{fig:Gecko_Rechnung1}, \ref{fig:Gecko_Rechnung2} und \ref{fig:Gecko_Rechnung3} werden die der Berechnung zugrundeliegenden Annahmen gezeigt. Die belasteten Verbindungen der Mikrohaftstrukturen zum Zielobjekt werden als feste Lager A und B angenommen. Es wird davon ausgegangen, dass die Vorspannkraft beim Andocken ideal aufgebracht wurde. Außerdem bleibt die Kombination aus kritischen Normal- und Scherkräften unberücksichtigt. Der zusätzliche Anpressdruck des Haupttriebwerks wurde ebenfalls nicht berücksichtigt.
 
 \begin{figure}[!h]
 	\centering
