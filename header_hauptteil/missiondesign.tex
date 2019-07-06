@@ -61,7 +61,7 @@ Die nächste If-Abfrage überprüft ob die Exzentrizität niedriger als \num{0.0
 Die letzte Abbruchbedingung ist die \num{10}-Jahre Marke. Hier wird abgefragt, ob die Tage seit dem Start der Whileschleife größer als \num{3700} Tage sind. Ist dies der Fall wird die Variable Abbruch auf \num{3} gesetzt.\\
 Der letzte Befehl in der Kernschleife ist der EndWhile Report. Hier wird dem Programm gesagt, dass er die gewünschten Daten in eine Datei speichern soll. Diese Datei dient lediglich dazu ungeklärte Abbrüche und Abstürze zu ermitteln und war für die Auswertung irrelevant.\\
 Die Whileschleife läuft solange, bis das Abbruchkriterium $\neq 0$ ist.\\
-Danach werden noch zwei Reports angefertigt, wobei der AWReport in eine separate Datei, die zur Auswertung genutzt wurde, schreibt.\\
+Danach werden noch zwei Reports angefertigt, wobei der AW-Report in eine separate Datei, die zur Auswertung genutzt wurde, schreibt.\\
 Nach der Kernschleife wird überprüft ob das Abbruchkriterium \num{3} war. Ist dies der Fall bedeutet das, dass die Nachfolgenden Masseschritte auch nicht in unter \num{3700} Tagen geschafft werden können. An dieser Stelle wird die Aktuelle Masse auf einen Wert der höher ist als die gewählte Endmasse und die Masseschleife wird abgebrochen um Zeit zu sparen. Die letzte If-Abfrage ist eine weitere Maßnahme um Zeit zu sparen. Hier wird abgefragt, ob die Aktuelle Masse gleich der gewählten Startmasse ist. Ist dies der Fall wird die äußerste Whileschleife beendet und die Mission ist fertig simuliert.\\
 Vor der Kernschleife stehen noch einige Equation Befehle, welche unter Anderem den Orbit und das Datum zurücksetzen. Außerdem wird der “Abbruch”-Wert auf \num{0} zurückgesetzt.
 
