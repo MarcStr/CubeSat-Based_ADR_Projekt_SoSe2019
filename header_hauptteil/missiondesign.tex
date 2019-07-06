@@ -40,31 +40,99 @@ Im Output Reiter finden sich nach dem Missionsdurchlauf die Ausgaben die im Lauf
 
 \subsection{Missionsskript 1}
 
-	In dem erstem Missionsskript geht es darum, ausgehend von einer kreisförmigen Erdumlaufbahn, zu testen wie lange es dauert mit der in \tab{tab:cubesatdesign} gewählten Konfiguration Trümmerteile von \num{50} bis \SI{5000}{\kilo\gram} zu deorbiten. Die gewählten Starthöhen liefen von \num{400} bis \SI{1400}{\kilo\metre}.
 
-\begin{figure}[!h]
-	\centering
-		\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript_Kreis.PNG}
-		\caption{Deorbitskript - kreisförmiger Startorbit}
-			\label{fig:GMAT_Skript_Kreis}
-\end{figure}
+Im Folgenden ist das Skript für die erste Simulation beschrieben. Die Wahl viel auf eine Whileschleife, da Forschleifen in GMAT nicht abbrechen, wenn der Wert innerhalb der Schleife verändert wird.
+Das ist für dieses Skript jedoch benötigt, da die beiden letzten if-Abfragen dafür sorgen, dass die benötigte Simulationszeit minimiert wird.
+Die erste if-Abfrage ist notwendig, da bei einigen Simulationen die Treibstoffmasse ins negative ging.
+Die zweite und dritte if-Abfrage könnten in einer if - else if -Abfrage kombiniert werden, aber diese Logik ist in GMAT nicht enthalten.
+Alle if-Abfragen, die den Abbruchwert verändern sind dazu da ermitteln zu können warum die innere Whileschleife beendet worden ist. \\ 
+
+\begin{algorithmic}
+
+\STATE Setze die aktuelle Kreisbahnhöhe auf die erwünschte Starthöhe
+\WHILE{Aktuelle Kreisbahnhöhe <= Gewählte Endhöhe}
+\STATE Setze aktuelle Zielmasse auf die erwünschte Startmasse
+\WHILE{Aktuelle Zielmasse <= Gewählte Endmasse}
+\STATE Setze Abbruch auf 0
+\STATE Setze Start Orbitparameter zurück
+\STATE Setze Tankmasse zurück
+\RETURN Report bei Start neuer Höhen- und Massekombination
+
+\WHILE{Abbruch == 0}
+
+\IF{Treibstoffmasse > 0.001} 
+\STATE Fortbewegen zu einer wahren Anomalie von 151°
+\STATE Triebwerk einschalten
+\STATE Fortbewegen bis zu einer wahren Anomalie von 209° oder Treibstoffmasse von 0.00095 
+\STATE Triebwerk ausschalten
+\ENDIF
+
+\IF{Aktuelle Höhe des Perigäums > 6558}
+\STATE Fortbewegen zum Perigäum
+\ENDIF
+
+\IF{Aktuelle Höhe des Perigäums <= 6558}
+\STATE Setze Abbruch auf 1
+\ENDIF
+
+\IF{Aktuelle Exzentrizität < 0.0025}
+\STATE Setze Abbruch auf 2
+\ENDIF
+
+\IF{Vergangene Zeit in Tage >= 3700}
+\STATE Setze Abbruch auf 3
+\ENDIF
+
+\RETURN Report am Ende von jedem Durchlauf der Whileschleife
+\ENDWHILE
+
+\RETURN Report nach Abschluss jeder Whileschleife
+
+\IF{Abbruch == 3}
+
+\IF{Aktuelle Zielmasse == gewählte Startmasse}
+\STATE Setze aktuelle Kreisbahnhöhe auf Wert größer als Endhöhe 
+\ENDIF
+
+\STATE Setze aktuelle Zielmasse auf Wert größer als Endmasse
+\ENDIF
+
+\STATE Inkrementiere Masse um gewählten Wert
+\ENDWHILE
+
+\STATE Inkrementiere Höhe um gewählten Wert
+\ENDWHILE
+
+\end{algorithmic}
+
+Die Abbruchwerte erklären sich wie folgt:\\
+\begin{center}
+\begin{tabular}{c| c{5cm}}
+Abbruchwert & Erklärung \\
+\hline
+1 &  \multicolumn{2}{p{4cm}|}{\raggedright Bricht die Whileschleife ab, wenn das Perigäum unter \SI{180}{\km} ist. Die Mission ist erfolgreich verlaufen}\\
+2 &  \multicolumn{2}{p{4cm}|}{\raggedright Bricht die Whileschleife ab, wenn die Exzentrizität unter 0.0025 ist. Wird die Exzentrizität zu gering, gibt GMAT einen Fehler aus}\\
+3 &  \multicolumn{2}{p{4cm}|}{\raggedright Bricht die Whileschleife ab, wenn die vergangene Zeit 3700 Tage überschreitet. Die Mission ist nicht erfolgreich verlaufen}\\
+\end{tabular}
+\end{center}
 
 
-	Bevor die Mission in die Schleifen geht wird die Starthöhe über $Initial Orbitheight$ festgelegt. Danach geht es in die $Orbit Height$-Schleife und die Startmasse wird festgelegt.
-Die nächste Schleife durchläuft alle Massen. Die Endwerte für beide Schleifen werden in $End\_mass$ und $End\_height$ festgelegt. Das Inkrement erfolgt am Ende jeder Schleife in $Inkrement mass$ bzw $Inkrement height$.\\
-Im Kern diesen Skriptes steht die Whileschleife.\\
-Nach einer Überprüfung des Treibstoffstands wird der Satellit mit dem ersten Propagator Befehl bis auf eine wahre Anomalie von \num{151}° vorangebracht. 
-Danach wird der Schubbefehl gestartet und der Propagator $PropToBurnEnd$ lässt den Satelliten, während dieser Schub gibt, bis zu einer wahren Anomalie von \num{209}° vorlaufen. Sollte der Treibstoff zuvor auf \SI{0}{\kilogram} fallen wird dieser Vorgang abgebrochen. Danach wird der Schub beendet.
+%	Bevor die Mission in die Schleifen geht wird die Starthöhe über $Initial Orbitheight$ festgelegt. Danach geht es in die $Orbit Height$-Schleife und die Startmasse wird festgelegt.
+%Die nächste Schleife durchläuft alle Massen. Die Endwerte für beide Schleifen werden in $End\_mass$ und $End\_height$ festgelegt. Das Inkrement erfolgt am Ende jeder Schleife in $Inkrement mass$ bzw $Inkrement height$.\\
+%Im Kern diesen Skriptes steht die Whileschleife.\\
+%Nach einer Überprüfung des Treibstoffstands wird der Satellit mit dem ersten Propagator Befehl bis auf eine wahre Anomalie von 151° vorangebracht. 
+%Danach wird der Schubbefehl gestartet und der Propagator $PropToBurnEnd$ lässt den Satelliten, während dieser Schub gibt, bis zu einer wahren Anomalie von 209° vorlaufen. Sollte der Treibstoff zuvor auf 0 fallen wird dieser Vorgang abgebrochen. Danach wird der Schub beendet.
 
-Aufgrund einiger Fehler, die während des Testens dieses Skripts aufgetreten sind, folgen jetzt einige If-Abfragen, die als Abbruchbedingungen der Kernschleife dienen.
-Die erste überprüft ob das Perigäum des Satelliten größer als \num{6558} ist. Ist dies der Fall wird der Fortlauf bis zum Perigäum durchgeführt. Die Zweite If-Abfrage überprüft das Gegenteil, also ob das Perigäum kleiner oder gleich \num{6558} ist. Ist dies der Fall wird die Variable “Abbruch” auf \num{1} gesetzt. Der Grund für diese beiden If-Abfragen liegt darin, dass die Whileschleife bei einigen Simulationen nicht auf einen zu niedrige Wert reagiert hat. Außerdem kam es vor, dass die Simulation immer langsamer wurde, wenn der Satellit bei einer kleinen Großen Halbachse zum Perigäum navigiert ist. Das wurde dadurch umgangen, dass nur zum Perigäum navigiert wird, wenn diese über \num{6558} ist. \\
-Die nächste If-Abfrage überprüft ob die Exzentrizität niedriger als \num{0.0025} ist. Ist dies der Fall wird der Wert “Abbruch” auf \num{2} gesetzt. Mit dieser If-Abfrage wird ein Fehler umgangen, der bei den niedrigen Zielhöhen häufiger aufgetreten ist. Ab einem gewissen Punkt in der Simulation von geringen Höhen verringert sich die Exzentrizität wieder, da durch atmosphärischen Drag das Apogäum schneller sinkt als Das Perigäum durch den Schub. Dies hatte aus unerfindlichen Gründen einen Error zur Folge, zu dem kein fix gefunden wurde. \\
-Die letzte Abbruchbedingung ist die \num{10}-Jahre Marke. Hier wird abgefragt, ob die Tage seit dem Start der Whileschleife größer als \num{3700} Tage sind. Ist dies der Fall wird die Variable Abbruch auf \num{3} gesetzt.\\
-Der letzte Befehl in der Kernschleife ist der EndWhile Report. Hier wird dem Programm gesagt, dass er die gewünschten Daten in eine Datei speichern soll. Diese Datei dient lediglich dazu ungeklärte Abbrüche und Abstürze zu ermitteln und war für die Auswertung irrelevant.\\
-Die Whileschleife läuft solange, bis das Abbruchkriterium $\neq 0$ ist.\\
-Danach werden noch zwei Reports angefertigt, wobei der AW-Report in eine separate Datei, die zur Auswertung genutzt wurde, schreibt.\\
-Nach der Kernschleife wird überprüft ob das Abbruchkriterium \num{3} war. Ist dies der Fall bedeutet das, dass die Nachfolgenden Masseschritte auch nicht in unter \num{3700} Tagen geschafft werden können. An dieser Stelle wird die Aktuelle Masse auf einen Wert der höher ist als die gewählte Endmasse und die Masseschleife wird abgebrochen um Zeit zu sparen. Die letzte If-Abfrage ist eine weitere Maßnahme um Zeit zu sparen. Hier wird abgefragt, ob die Aktuelle Masse gleich der gewählten Startmasse ist. Ist dies der Fall wird die äußerste Whileschleife beendet und die Mission ist fertig simuliert.\\
-Vor der Kernschleife stehen noch einige Equation Befehle, welche unter Anderem den Orbit und das Datum zurücksetzen. Außerdem wird der “Abbruch”-Wert auf \num{0} zurückgesetzt.
+%Aufgrund einiger Fehler, die während des Testens dieses Skripts aufgetreten sind, folgen jetzt einige If-Abfragen, die als Abbruchbedingungen der Kernschleife dienen.
+%Die erste überprüft ob das Perigäum des Satelliten größer als 6558 ist. Ist dies der Fall wird der Fortlauf bis zum Perigäum durchgeführt. Die Zweite If-Abfrage überprüft das Gegenteil, also ob das Perigäum kleiner oder gleich 6558 ist. Ist dies der Fall wird die Variable “Abbruch” auf 1 gesetzt. Der Grund für diese beiden If-Abfragen liegt darin, dass die Whileschleife bei einigen Simulationen nicht auf einen zu niedrige Wert reagiert hat. Außerdem kam es vor, dass die Simulation immer langsamer wurde, wenn der Satellit bei einer kleinen Großen Halbachse zum Perigäum navigiert ist. Das wurde dadurch umgangen, dass nur zum Perigäum navigiert wird, wenn diese über 6558 ist. \\
+%Die nächste If-Abfrage überprüft ob die Exzentrizität niedriger als 0.0025 ist. Ist dies der Fall wird der Wert “Abbruch” auf 2 gesetzt. Mit dieser If-Abfrage wird ein Fehler umgangen, der bei den niedrigen Zielhöhen häufiger aufgetreten ist. Ab einem gewissen Punkt in der Simulation von geringen Höhen verringert sich die Exzentrizität wieder, da durch atmosphärischen Drag das Apogäum schneller sinkt als Das Perigäum durch den Schub. Dies hatte aus unerfindlichen Gründen einen Error zur Folge, zu dem kein fix gefunden wurde. \\
+%Die letzte Abbruchbedingung ist die 10 Jahresmarke. Hier wird abgefragt, ob die Tage seit dem Start der Whileschleife größer als 3700 Tage sind. Ist dies der Fall wird die Variable Abbruch auf 3 gesetzt.\\
+%Der letzte Befehl in der Kernschleife ist der EndWhile Report. Hier wird dem Programm gesagt, dass er die gewünschten Daten in eine Datei speichern soll. Diese Datei dient lediglich dazu ungeklärte Abbrüche und Abstürze zu ermitteln und war für die Auswertung irrelevant.\\
+%Die Whileschleife läuft solange, bis das Abbruchkriterium $\neq 0$ ist.\\
+%Danach werden noch zwei Reports angefertigt, wobei der AWReport in eine separate Datei, die zur Auswertung genutzt wurde, schreibt.\\
+%Nach der Kernschleife wird überprüft ob das Abbruchkriterium 3 war. Ist dies der Fall bedeutet das, dass die Nachfolgenden Masseschritte auch nicht in unter 3700 Tagen geschafft werden können. An dieser Stelle wird die Aktuelle Masse auf einen Wert der höher ist als die gewählte Endmasse und die Masseschleife wird abgebrochen um Zeit zu sparen. Die letzte If-Abfrage ist eine weitere Maßnahme um Zeit zu sparen. Hier wird abgefragt, ob die Aktuelle Masse gleich der gewählten Startmasse ist. Ist dies der Fall wird die äußerste Whileschleife beendet und die Mission ist fertig simuliert.\\
+%Vor der Kernschleife stehen noch einige Equation Befehle, welche unter Anderem den Orbit und das Datum zurücksetzen. Außerdem wird der “Abbruch”-Wert auf 0 zurückgesetzt.
+
 
 
 
