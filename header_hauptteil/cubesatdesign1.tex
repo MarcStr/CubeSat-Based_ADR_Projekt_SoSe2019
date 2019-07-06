@@ -6,49 +6,60 @@
 			
 			\subsection{Einführung in die Software}
 	\hfill\emph{(Valentina Dietrich)}\\
-	Die Software QuSAD (SQL-Based CubeSat Analyse and Design Tool) besteht aus einem SQL-Segment und einem MatLab Segment. Die SQL-Datenbank ist die Haupteingabequelle für das Entwerfen eines CubeSats und kategorisiert die CubeSat-Komponenten. Durch die wissenschaftliche Version können die COTS-Komponenten mit vordefinierten Parametern eingepflegt werden. Des Weiteren können auch individuelle Komponenten mit veränderbaren Parametern mittels der praxis Version hinzugefügt werden. Für das Abrufen der Komponententabelle aus der SQL-Datenbank wird MatLab verwendet. Dies wird durch mehrere grafische Benutzeroberflächen (GUI) realisiert und ermöglicht dem Benutzer eigene Satellitenzusammenstellungen. Neben dem CubeSat Design können Budget-Analysen von Masse, Volumen, Energie, Preis und Verlinkung durch zur Verfügung stehenden Werkzeuge erstellt werden, um folglich eine Optimierung des Entwurfs zu ermöglichen. Für ein vertieftes Verständnis der Software wird auf das QuSAD-Handbuch \cite{Farahvashi.2016} verwiesen. Das Anwendungsspektrum von QuSAD umfasst das erstellen eines Satelliten, sowie eine Bereitstellung einer Datenbank von Subsystemen für wissenschaftliche und auch lehrende Aspekte. Lehrende Aspekte umfassen den Einsatz der praktischen Version an Universitäten zur Unterstützung und Visualisierung \cite{Farahvashi.2016b}. 
+	
+		Die Software QuSAD (SQL-Based CubeSat Analyse and Design Tool) besteht aus einem SQL-Segment und einem MatLab Segment. Die SQL-Datenbank ist die Haupteingabequelle für das Entwerfen eines CubeSats und kategorisiert die CubeSat-Komponenten. Durch die wissenschaftliche Version können die COTS-Komponenten mit vordefinierten Parametern eingepflegt werden. Des Weiteren können auch individuelle Komponenten mit veränderbaren Parametern mittels der praxis Version hinzugefügt werden. Für das Abrufen der Komponententabelle aus der SQL-Datenbank wird MatLab verwendet. Dies wird durch mehrere grafische Benutzeroberflächen (GUI) realisiert und ermöglicht dem Benutzer eigene Satellitenzusammenstellungen. Neben dem CubeSat Design können Budget-Analysen von Masse, Volumen, Energie, Preis und Verlinkung durch zur Verfügung stehenden Werkzeuge erstellt werden, um folglich eine Optimierung des Entwurfs zu ermöglichen. Für ein vertieftes Verständnis der Software wird auf das QuSAD-Handbuch \cite{Farahvashi.2016} verwiesen. Das Anwendungsspektrum von QuSAD umfasst das erstellen eines Satelliten, sowie eine Bereitstellung einer Datenbank von Subsystemen für wissenschaftliche und auch lehrende Aspekte. Lehrende Aspekte umfassen den Einsatz der praktischen Version an Universitäten zur Unterstützung und Visualisierung \cite{Farahvashi.2016b}. 
 			
 			\subsection{Datenbankerweiterung}
 			\hfill\emph{(Florian Czorny und Valentina Dietrich)}\\
-			Zur Erweiterung der Datenbank wird anfänglich die Auswahl der CubeSat-Komponenten einer ausgewählten Systemzusammenstellung verwendet \tab{tab:qusadwerte}. Zu den besagten Komponenten werden alle bekannten Werte der Datenbank hinzugefügt. Zudem müssen Recherchen bezüglich weiterer Herstellerangaben durchgeführt werden. Im Fokus liegen dabei alle Parameter die für die Budgetplanungen benötigt werden. Nach der Budgetanalyse des zusammengestellten Satelliten wird gegebenenfalls eine Optimierung einiger Komponenten vorgenommen und infolgedessen wird die Datenbank um diese Systeme zusätzlich erweitert. Zur Unterstützung der Ergänzungen wird eine  Datenbank, die von Mitarbeitern des Institutes Raumfahrtsysteme der Technischen Universität Braunschweig erstellt worden ist, verwendet. Überwiegend sind die aufgelisteten Systeme mit einem TRL Wert hinterlegt. Da in vielen Fällen nur erprobte Systeme zum Einsatz kommen, werden Komponenten mit einem TRL Wert von 9 mit in die Datenbank hinzugefügt. Zusätzlich sind Internet-Quellenverweise (URL - Uniform Resource Locator) zu den meisten Einträgen vorhanden, über die man häufig direkt oder indirekt auf Datenblätter weitergeleitet wird und an weitere Informationen bezüglich des Subsystems gelangt.
+			
+			Zur Erweiterung der Datenbank wird anfänglich die Auswahl der CubeSat-Komponenten einer ausgewählten Systemzusammenstellung verwendet (siehe \tab{qusadwerte}). Zu den besagten Komponenten werden alle bekannten Werte der Datenbank hinzugefügt. Zudem müssen Recherchen bezüglich weiterer Herstellerangaben durchgeführt werden. Im Fokus liegen dabei alle Parameter die für die Budgetplanungen benötigt werden. Nach der Budgetanalyse des zusammengestellten Satelliten wird gegebenenfalls eine Optimierung einiger Komponenten vorgenommen und infolgedessen wird die Datenbank um diese Systeme zusätzlich erweitert. Zur Unterstützung der Ergänzungen wird eine  Datenbank, die von Mitarbeitern des Institutes Raumfahrtsysteme der Technischen Universität Braunschweig erstellt worden ist, verwendet. Überwiegend sind die aufgelisteten Systeme mit einem TRL Wert hinterlegt. Da in vielen Fällen nur erprobte Systeme zum Einsatz kommen, werden Komponenten mit einem TRL Wert von 9 mit in die Datenbank hinzugefügt. Zusätzlich sind Internet-Quellenverweise (URL - Uniform Resource Locator) zu den meisten Einträgen vorhanden, über die man häufig direkt oder indirekt auf Datenblätter weitergeleitet wird und an weitere Informationen bezüglich des Subsystems gelangt.
 		
 		\section{CubeSat Designanalyse}
 				
 				\subsection{Angenommenes Design}
 				\label{cap:AngenommenesDesign}
 				\hfill\emph{(Valentina Dietrich)}\\
-				Diese CubeSat Konfiguration orientiert sich an einem entwickelten Design \cite{Lettau.}. Hier wird ein ausführlicher Vergleich und anschließend eine Auswertung der in betracht gezogenen Subsysteme durchgeführt. Durch den Schwerpunkt auf das GNC-Design erfolgt eine vertiefte Ausarbeitung der Subsysteme Antriebe, Leistung und relative Navigation. Die weiteren Systeme werden stark vereinfacht und nur in Bezug auf ihren Beitrag zum Gesamtbudget weitgehend abgedeckt \cite{Lettau.}. Daran angeknüpft wird vorweg auf die betrachteten Anforderungen, die beim Entwicklungsprozess entscheidend sind, eingegangen. Anschließend wird ein Ausblick auf die Struktur, den Antrieb, das Power Management and Distribution System (PMAD-System) und das Solarpanel gegeben. Für ein vertieften Einblick in die weiteren Subsysteme wird auf die Masterarbeit von Max Lettau verwiesen \cite{Lettau.}.
+				
+				Diese CubeSat Konfiguration orientiert sich an einem entwickelten Design \cite{Lettau.}. Hier wird ein ausführlicher Vergleich und anschließend eine Auswertung der in betracht gezogenen Subsysteme durchgeführt. Durch den Schwerpunkt auf das GNC-Design erfolgt eine vertiefte Ausarbeitung der Subsysteme Antriebe, Leistung und relative Navigation. Die weiteren Systeme werden stark vereinfacht und nur in Bezug auf ihren Beitrag zum Gesamtbudget weitgehend abgedeckt \cite{Lettau.}. 
+				
+				Daran angeknüpft wird vorweg auf die betrachteten Anforderungen, die beim Entwicklungsprozess entscheidend sind, eingegangen. Anschließend wird ein Ausblick auf die Struktur, den Antrieb, das Power Management and Distribution System (PMAD-System) und das Solarpanel gegeben. Für ein vertieften Einblick in die weiteren Subsysteme wird auf die Masterarbeit von Max Lettau verwiesen \cite{Lettau.}.
 
 				
-				Bei den Anforderungen an die Mission knüpft die Konzeptplanung an der SpaceX-Starlink-Konstellation an. Davon abgeleitet wird für die Umlaufbahnparamter wie folgt ausgegangen. Es wird der für die Mission ungünstigste Fall betrachtet, der bei einem Beta-Winkel $\beta$ von 0\textdegree, einer Bahnhöhe von 1150 km und einer Missionsdauer von 10 Jahren liegt. Darauf aufbauend wurde das CubeSat Design entwickelt \cite{Lettau.}.
+				Bei den Anforderungen an die Mission knüpft die Konzeptplanung an der SpaceX-Starlink Konstellation an. Davon abgeleitet wird für die Umlaufbahnparamter wie folgt ausgegangen. Es wird der für die Mission ungünstigste Fall betrachtet, der bei einem Beta-Winkel $\beta$ von 0\textdegree, einer Bahnhöhe von \SI{1150}{\kilo\metre} und einer Missionsdauer von 10 Jahren liegt. Darauf aufbauend wurde das CubeSat Design entwickelt \cite{Lettau.}.
 				
-				Bei der Primärstruktur wird von einem 27U CubeSat mit einer zugelassen maximalen Masse von 50 kg und einer Gesamtabmessung von 34 x 35 x 36 cm ausgegangen (siehe Abbildung 3.1) \cite{Lettau.}. 
-					\begin{figure}[!ht]
+				Bei der Primärstruktur wird von einem \SI{27}{\unit} CubeSat mit einer zugelassen maximalen Masse von \SI{50}{\kilogram} und einer Gesamtabmessung von 34 x 35 x 36 cm ausgegangen (siehe \abb{fig:27U}) \cite{Lettau.}. 
+				
+				\begin{figure}[H]
 					\centering
 						\includegraphics[width=0.60\textwidth]{27U}
 					\caption{CubeSat-Größen gemäß der Planetary Systems Corporation \cite{Lettau.}}
 					\label{fig:27U}
 				\end{figure}
 				
-				Das Hauptantriebssystem ist der BHT-200 und wird mit dem Treibstoff Iod betrieben. Hier handelt es sich um einen elektrischen Antrieb mit einem TRL-Wert von 8 und einem guten leistungspezifischen Schub von 65 ${\mu N}{W}$. Durch das geringe Volumen von 3U und der Verwendung von leichten Materialen für die Tankwände bewährt sich Iod als Treibstoff. Als weiteres Triebwerk wird das chemische Triebwerk Marotta verwendet. Dies dient zur Ausführung von Rendevouz und Docking. Durch die Auslegung der Kaltgaspakete für sehr kleine Satelliten (< 6U) weisen sie sehr geringe Schübe auf und erreichen nicht die 0,23 $N$. Desto Trotz werden 24 Marotta Triebwerke verwendet, um eine 6-DoF-Manövrierfähigkeit zu ermöglichen. Sie weisen im Vergleich zu anderen Kaltgastriebwerken einen hohen $I_{sp}$ Wert auf (siehe \tab{tab:marotta}). Eine Anordnung der 24 Marotta Triebwerken befindet sich in der \abb{fig:marotta}. Dieses Triebwerk wird mit Stickstoff betrieben und benötigt zuzüglich von 40\% Sicherheit und der Annahme einer Stabilisierung von einer Sekunde alle 10 Orbits  eine Gesamttreibstoffmasse von 2,12 $kg$ \cite{Lettau.}.
-				\begin{figure}[!h]
+				Das Hauptantriebssystem ist der BHT-200 und wird mit dem Treibstoff Iod betrieben. Hier handelt es sich um einen elektrischen Antrieb mit einem TRL-Wert von 8 und einem guten leistungspezifischen Schub von 65 ${\mu N}{W}$. Durch das geringe Volumen von \SI{3}{\unit} und der Verwendung von leichten Materialen für die Tankwände bewährt sich Iod als Treibstoff. 
+				
+				Als weiteres Triebwerk wird das chemische Triebwerk Marotta verwendet. Dies dient zur Ausführung von Rendevouz und Docking. Durch die Auslegung der Kaltgaspakete für sehr kleine Satelliten (< \SI{6}{\unit}) weisen sie sehr geringe Schübe auf und erreichen nicht die 0,23 $N$. Desto Trotz werden 24 Marotta Triebwerke verwendet, um eine 6-DoF-Manövrierfähigkeit zu ermöglichen. Sie weisen im Vergleich zu anderen Kaltgastriebwerken einen hohen $I_{sp}$ Wert von 65 auf. Eine Anordnung der 24 Marotta Triebwerken befindet sich in der \abb{fig:marotta}. Dieses Triebwerk wird mit Stickstoff betrieben und benötigt zuzüglich von \num{40} \% Sicherheit und der Annahme einer Stabilisierung von einer Sekunde alle 10 Orbits eine Gesamttreibstoffmasse von 2,12kg \cite{Lettau.}.
+				
+				\begin{figure}[H]
 					\centering
 						\includegraphics[width=0.30\textwidth]{Marotta}
 						\caption{Anordnung der RCS-Triebwerke \cite{Lettau.}}
 						\label{fig:marotta}
 				\end{figure}
 				
-				Viele Unternehmen bieten kundenspezifische Lösungen an. Dies wird auch von dem Unternehmen Blue Canyon Technologies für das Solarmodul 6U-H triple deployable solar array angeboten. Da es sich um eine zweiflügelige Konfiguration mit einer Grundfläche von 6U pro Flügel handelt, wird sie auf eine Grundfläche von 9U hoch skaliert, sodass sie auf  den 27U CubeSat angewendet werden kann. Des Weiteren wird von einer dreiflügeligen Konstellation ausgegangen. Die Vergrößerung der Solaranlage sorgt für eine Steigerung der Nennleistung um 50 \%. Weiterhin wird ein Solarpanel auf die obere Grundfläche des CubeSats platziert. Mit allen sieben Solarpanelen erreicht der CubeSat eine Nennleistung von 202 W. In der \abb{fig:solarpanel} ist eine vereinfachte CAD Darstellung von der Solaranlage zu sehen \cite{Lettau.}.
-				\begin{figure}[!h]
+				Viele Unternehmen bieten kundenspezifische Lösungen an. Dies wird auch von dem Unternehmen Blue Canyon Technologies für das Solarmodul \SI{6}{\unit}-H triple deployable solar array angeboten. Da es sich um eine zweiflügelige Konfiguration mit einer Grundfläche von \SI{6}{\unit} pro Flügel handelt, wird sie auf eine Grundfläche von \SI{9}{\unit} hoch skaliert, sodass sie auf den \SI{27}{\unit} CubeSat angewendet werden kann. Des Weiteren wird von einer dreiflügeligen Konstellation ausgegangen. Die Vergrößerung der Solaranlage sorgt für eine Steigerung der Nennleistung um \num{50} \%. Weiterhin wird ein Solarpanel auf die obere Grundfläche des CubeSats platziert. Mit allen sieben Solarpanelen erreicht der CubeSat eine Nennleistung von 202 W. In der \abb{fig:solarpanel} ist eine vereinfachte CAD Darstellung von der Solaranlage zu sehen \cite{Lettau.}.
+				
+				\begin{figure}[H]
 					\centering
 						\includegraphics[width=0.60\textwidth]{graphics/Solarpanel.PNG}
 						\caption{CAD Darstellung von der Solarkonfiguration \cite{Lettau.}}
 						\label{fig:solarpanel}
 				\end{figure}
-				Bei dem Power Management and Distribution System (PMAD-System) ist das NanoAvionics EPS, mit einem TRL von 9, dass geeignetste PMAD-System. Bei dieser Variante ist das besondere, dass ein externes Batteriepack mitgeliefert wird. Die EPS Variante liefert eine Leistung von 175 W und eine Kapazität von 161 Wh. Des Weiteren kann die Batterie skaliert werden, um die Leistungsabgabe zu erhöhen. Unter der Annahme, dass eine relative Navigation von ca. 5 km bis zum Andocken erforderlich ist und ein einziger Sensor dies nicht abdecken kann, sind mehrere miteinander kompatible Sensoren notwendig. Als Referenz wird die Mission e.Deorbit-Mission aufgrund von Ähnlichkeiten des Missionsprofils gewählt \cite{Lettau.}.  
 				
+				Bei dem Power Management and Distribution System (PMAD-System) ist das NanoAvionics EPS, mit einem TRL von 9, dass geeignetste PMAD-System. Bei dieser Variante ist das besondere, dass ein externes Batteriepack mitgeliefert wird. Die EPS Variante liefert eine Leistung von 175 W und eine Kapazität von 161 Wh. Des Weiteren kann die Batterie skaliert werden, um die Leistungsabgabe zu erhöhen. Unter der Annahme, dass eine relative Navigation von ca. \SI{5}{\kilo\metre} bis zum Andocken erforderlich ist und ein einziger Sensor dies nicht abdecken kann, sind mehrere miteinander kompatible Sensoren notwendig. Als Referenz wird die Mission e.Deorbit-Mission aufgrund von Ähnlichkeiten des Missionsprofils gewählt \cite{Lettau.}.  
+
 				Einen Übersicht über die Komponenten des angenommen Designs ist in der \tab{tab:cubesatdesign} zusehen. Hier werden die Subsysteme mit den dazugehörigen Produkten und deren Mengenangabe aufgelistet. Dies Einordnung orientiert sich an der Struktur der QuSAD Datenbank.
-				\begin{table}[!ht]
+				\begin{table}[H]
 				\centering
 \begin{tabular}{|l|l|c|}
 \hline
@@ -83,8 +94,8 @@ Tracker und Sensor               & TY-Space PST3                                
 Im folgenden Kapitel wird auf die mittels QuSAD erstellten Budgets für Masse, Volumen und Leistung eingegangen. In QuSAD werden Komponenten in Kategorien eingeteilt. Die Budgets werden mit diesen Kategorien erstellt. Eine Tabelle mit allen Kategorien und den dazugehörigen Komponenten ist in der \tab{tab:cubesatdesign} zu finden. Die Batterie ist im EPS Board integriert und taucht deshalb im Massen- und Volumenbudget nicht auf. Da QuSAD in der Kategorie EPS keinen Eintrag über speicherbare Energie zulässt, wurde die Batterie nur für das Leistungsbudget hinzugefügt. Des weiteren ist zu beachten, dass die Komponenten in den unterschiedlichen Budgets keine einheitliche Farbgebung aufweisen. Einbauvorrichtungen wurden in QuSAD nicht berücksichtigt. Die Abweichungen in den Budgets durch das  zusätzliche Gewicht und Volumen sind davon abhängig, inwiefern die Herstellerangaben den Einbau berücksichtigen.
 
 						\subsubsection{Massenbudget}
-Das Massenbudget \abb{fig:masse} zeigt die aktuelle Massenverteilung des Designs an. Die maximal verfügbare Masse ist über eine Angabe in der Strukturkomponente begrenzt. Diese beinhaltet einen Wert für die maximale Gesamtmasse. Die maximale Gesamtmasse des CubeSats wurde mit 50 kg angenommen. Das aktuelle Design beansprucht circa 57 \% der möglichen Gesamtmasse (28,5 kg). Den größten Teil macht dabei die Antriebsanlage aus. Es gilt zu beachten, dass dieses Budget die Startmasse des CubeSats widerspiegelt. Nach Beginn der Mission ändert sich die Massenverteilung aufgrund des Treibstoffverbrauchs.
-										\begin{figure}[!h]
+Das Massenbudget \abb{fig:masse} zeigt die aktuelle Massenverteilung des Designs an. Die maximal verfügbare Masse ist über eine Angabe in der Strukturkomponente begrenzt. Diese beinhaltet einen Wert für die maximale Gesamtmasse. Die maximale Gesamtmasse des CubeSats wurde mit \SI{50}{\kilogram} angenommen. Das aktuelle Design beansprucht circa \num{57} \% der möglichen Gesamtmasse (\SI{28,5}{\kilogram}). Den größten Teil macht dabei die Antriebsanlage aus. Es gilt zu beachten, dass dieses Budget die Startmasse des CubeSats widerspiegelt. Nach Beginn der Mission ändert sich die Massenverteilung aufgrund des Treibstoffverbrauchs.
+										\begin{figure}[H]
 											\centering
 												\includegraphics[width=0.90\textwidth]{masse}
 											\caption{Massenbudget für das angenommene Design}
@@ -92,9 +103,9 @@ Das Massenbudget \abb{fig:masse} zeigt die aktuelle Massenverteilung des Designs
 										\end{figure}
 								
 						\subsubsection{Volumenbudget}
-Das Volumenbudget \abb{fig:volume} gibt einen strukturierten Überblick über die aktuelle Volumenverteilung der ausgewählten Konfiguration, beziehungsweise des Profils in QuSAD. Das maximale verfügbare Volumen bemisst sich an der im Profil befindlichen Strukturkomponente, die über eine Volumenangabe verfügt. Das verfügbare Gesamtvolumen ist im Gegensatz zur Masse jedoch zu circa 97 \% ausgelastet. Es fällt auf, dass nahezu alle Kategorien einen größeren Volumenanteil als Massenanteil aufweisen. Das größte Volumen nimmt, ähnlich wie beim Massenbudget die Antriebsanlage ein. Sie macht jedoch aufgrund der Treibstofftanks über die Hälfte des Gesamtvolumens aus. Es sollte beachtet werden, dass aufgrund des geringen Freiraums kaum Sicherheiten möglich sind.
-								
-										\begin{figure}[!h]
+Das Volumenbudget \abb{fig:volume} gibt einen strukturierten Überblick über die aktuelle Volumenverteilung der ausgewählten Konfiguration, beziehungsweise des Profils in QuSAD. Das maximale verfügbare Volumen bemisst sich an der im Profil befindlichen Strukturkomponente, die über eine Volumenangabe verfügt. Das verfügbare Gesamtvolumen ist im Gegensatz zur Masse jedoch zu circa \num{97} \% ausgelastet. Es fällt auf, dass nahezu alle Kategorien einen größeren Volumenanteil als Massenanteil aufweisen. Das größte Volumen nimmt, ähnlich wie beim Massenbudget die Antriebsanlage ein. Sie macht jedoch aufgrund der Treibstofftanks über die Hälfte des Gesamtvolumens aus. Es sollte beachtet werden, dass aufgrund des geringen Freiraums kaum Sicherheiten möglich sind.
+		
+										\begin{figure}[H]
 											\centering
 												\includegraphics[width=0.90\textwidth]{volume}
 											\caption{Volumenbudget für das angenommene Design}
@@ -102,16 +113,16 @@ Das Volumenbudget \abb{fig:volume} gibt einen strukturierten Überblick über di
 										\end{figure}
 								
 						\subsubsection{Leistungsbudget}
-Das Leistungsbudget \abb{fig:power} gibt einen Überblick über den Verbrauch der verschiedenen Komponenten. Es gibt die Entladung der Batterie auf der Schattenseite der Erde wieder (Req. Battery Power) und wie in den anderen Budgets die Spanne zur Systemuntauglichkeit (Margin). Der Antrieb nimmt mit 32 \% insgesamt den größten Anteil des Energieverbrauchs ein.
+Das Leistungsbudget \abb{fig:power} gibt einen Überblick über den Verbrauch der verschiedenen Komponenten. Es gibt die Entladung der Batterie auf der Schattenseite der Erde wieder (Req. Battery Power) und wie in den anderen Budgets die Spanne zur Systemuntauglichkeit (Margin). Der Antrieb nimmt mit \num{32} \% insgesamt den größten Anteil des Energieverbrauchs ein.
 				
-										\begin{figure}[!h]
+										\begin{figure}[H]
 											\centering
 												\includegraphics[width=0.90\textwidth]{power}
 											\caption{Energiebudget für das angenommene Design}
 											\label{fig:power}
 										\end{figure}
 Um das Leistungsbudget zu erstellen, muss die Höhe der Umlaufbahn und der Brennwinkel $\beta$ angegeben werden (\abb{fig:power1}). Diese wurden mit 1150 km und 0\textdegree{} angenommen (\tab{tab:cubesatdesign}).
-\begin{figure}[!h]
+\begin{figure}[H]
 	\centering
 		\includegraphics[width=0.70\textwidth]{graphics/power1.png}
 	\caption{QuSAD: Orbit Charakteristik Eingabewerte}
@@ -119,21 +130,21 @@ Um das Leistungsbudget zu erstellen, muss die Höhe der Umlaufbahn und der Brenn
 \end{figure}
 Mit den eingegebenen Werten werden automatisch weitere Größen berechnet. Nach der Zuordnung der verschiedenen Solarpanele an die vorgesehene Position des CubeSats und der Eingabe der maximalen Missionsdauer (\abb{fig:power2}) kann die Energieerzeugung während einer Erdumrundung kalkuliert werden (\abb{fig:power3} und \abb{fig:power4}).										
 
-		 \begin{figure}[!h]
+		 \begin{figure}[H]
 				\centering
 					\includegraphics[width=0.70\textwidth]{graphics/power2.PNG}
 				\caption{QuSAD: Auswahl der Solarpanele und der Missionsdauer}
 				\label{fig:power2}
 			\end{figure}
 			
-			\begin{figure}[!h]
+			\begin{figure}[H]
 				\centering
 					\includegraphics[width=0.70\textwidth]{graphics/power3.png}
 				\caption{QuSAD: Energieerzeugung pro Orbit 1}
 				\label{fig:power3}
 			\end{figure}
 			
-			\begin{figure}[!h]
+			\begin{figure}[H]
 				\centering
 					\includegraphics[width=0.70\textwidth]{graphics/power4.PNG}
 				\caption{QuSAD: Energieerzeugung pro Orbit 2}
@@ -141,7 +152,7 @@ Mit den eingegebenen Werten werden automatisch weitere Größen berechnet. Nach 
 			\end{figure}
 Da das Haupttriebwerk und das RCS-System nicht dauerhaft betrieben werden, muss für diese Komponenten eine Prozentuale Brenndauer angegeben werden. Die mit den getroffenen Annahmen über die Brenndauer veränderten Werte  (\tab{tab:cubesatdesign}) können manuell geändert werden. Der Energieverbrauch der einzelnen Komponenten pro Orbit wird direkt angezeigt (\abb{fig:power5}).
 			
-			\begin{figure}[!h]
+			\begin{figure}[H]
 				\centering
 					\includegraphics[width=0.70\textwidth]{graphics/power5.png}
 				\caption{QuSAD: Energieverbrauch pro Orbit}
@@ -149,15 +160,15 @@ Da das Haupttriebwerk und das RCS-System nicht dauerhaft betrieben werden, muss 
 			\end{figure}
 Die von QuSAD angenommenen Werte zur bestimmung des Energieüberschusses sind in  \abb{fig:power6} zusammengefasst.
 			
-			\begin{figure}[!h]
+			\begin{figure}[H]
 				\centering
 					\includegraphics[width=0.45\textwidth]{graphics/power6.png}
 				\caption{QuSAD: Überblick Energieüberschuss}
 				\label{fig:power6}
 			\end{figure}
-Zur Berechnung des Budgets wird eine Batterieeffizienz von 90 \% angenommen. Außerdem wird mit einer Verschlechterung der Energieerzeugung von 3 \% pro Missionsjahr gerechnet. Der Wert “Power margin” gibt den Energieüberschuss eines Orbits in Wh an (\abb{fig:power6}). Das Budget in \abb{fig:power} stellt den Zustand des CubeSats nach der angegebenen Missionsdauer in \abb{fig:power2} dar. Die Energieproduktion pro Orbit sinkt mit dem Fortlaufen der  Mission. Somit ist der Energieüberschuss bei Missionsstart deutlich höher. 			
+Zur Berechnung des Budgets wird eine Batterieeffizienz von \num{90} \% angenommen. Außerdem wird mit einer Verschlechterung der Energieerzeugung von \num{3} \% pro Missionsjahr gerechnet. Der Wert “Power margin” gibt den Energieüberschuss eines Orbits in Wh an (\abb{fig:power6}). Das Budget in \abb{fig:power} stellt den Zustand des CubeSats nach der angegebenen Missionsdauer in \abb{fig:power2} dar. Die Energieproduktion pro Orbit sinkt mit dem Fortlaufen der  Mission. Somit ist der Energieüberschuss bei Missionsstart deutlich höher. 			
 			
 			
 			
 			\section{Auswertung und Optimierung des Designs}
-			Das ausgewählte Design (\tab{tab:cubesatdesign}) und die berechneten Budgets liefern ein gutes Ergebnis. Das Massenbudget würde eine Massensteigerung von 21,5 $kg$ gemäß QuSAD zulassen. Bei dem Volumen hingegen sind lediglich 3 \% des Gesamtvolumens ungenutzt. Die Software berücksichtigt keine Einbauvorrichtung, dadurch könnte es zu Konflikten kommen. Das geringe zur Verfügung stehende Volumen gibt wenig Spielraum, obwohl die Masse des CubeSat eine Spanne von 43 \% gewährt. Des Weiteren muss beachtet werden, dass bei vielen Komponenten keine genauen Angaben bezüglich der Masse und des Volumens gegeben waren und dementsprechend durch Vergleich mit näherungsweise ähnlichen Systemen oder Aufwärtsskalierung die Werte bestimmt wurden. Dies könnte dazu führen, dass sich bei dem Volumen die Spanne eventuell vergrößern könnte. Im Leistungsbudget wird der erhöhte Verbrauch während des RDVDO nicht berücksichtigt. Es wird jedoch auch eine Missionsdauer von 10 Jahren angenommen, wodurch das Budget deutlich schlechter ausfällt als zu Missionsbeginn. Somit sollte zum RDVDO am Anfang der Mission genug Energie verfügbar sein. Der aktuelle Stand des Designs liefert trotz einiger vernachlässigter Aspekte ein gutes Design und erfordert bislang keine Optimierung. Dies könnte nach der Missionsanalyse erfolgen, da durch die Simulation   einige Änderungen in betracht gezogen werden könnten.
+			Das ausgewählte Design (\tab{tab:cubesatdesign}) und die berechneten Budgets liefern ein gutes Ergebnis. Das Massenbudget würde eine Massensteigerung von \SI{21,5}{\kilogram} gemäß QuSAD zulassen. Bei dem Volumen hingegen sind lediglich \num{3} \% des Gesamtvolumens ungenutzt. Die Software berücksichtigt keine Einbauvorrichtung, dadurch könnte es zu Konflikten kommen. Das geringe zur Verfügung stehende Volumen gibt wenig Spielraum, obwohl die Masse des CubeSat eine Spanne von \num{43} \% gewährt. Des Weiteren muss beachtet werden, dass bei vielen Komponenten keine genauen Angaben bezüglich der Masse und des Volumens gegeben waren und dementsprechend durch Vergleich mit näherungsweise ähnlichen Systemen oder Aufwärtsskalierung die Werte bestimmt wurden. Dies könnte dazu führen, dass sich bei dem Volumen die Spanne eventuell vergrößern könnte. Im Leistungsbudget wird der erhöhte Verbrauch während des RDVDO nicht berücksichtigt. Es wird jedoch auch eine Missionsdauer von 10 Jahren angenommen, wodurch das Budget deutlich schlechter ausfällt als zu Missionsbeginn. Somit sollte zum RDVDO am Anfang der Mission genug Energie verfügbar sein. Der aktuelle Stand des Designs liefert trotz einiger vernachlässigter Aspekte ein gutes Design und erfordert bislang keine Optimierung. Dies könnte nach der Missionsanalyse erfolgen, da durch die Simulation   einige Änderungen in betracht gezogen werden könnten.
