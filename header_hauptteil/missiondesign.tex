@@ -105,16 +105,18 @@ Alle if-Abfragen, die den Abbruchwert verändern sind dazu da ermitteln zu könn
 
 \end{algorithmic}
 
-Die Abbruchwerte erklären sich wie folgt:\\
+\\
 \begin{center}
 \begin{tabular}{c| c{5cm}}
+\label{Abbruchkrit}
 Abbruchwert & Erklärung \\
-\hline
-1 &  \multicolumn{2}{p{4cm}|}{\raggedright Bricht die Whileschleife ab, wenn das Perigäum unter \SI{180}{\km} ist. Die Mission ist erfolgreich verlaufen}\\
-2 &  \multicolumn{2}{p{4cm}|}{\raggedright Bricht die Whileschleife ab, wenn die Exzentrizität unter 0.0025 ist. Wird die Exzentrizität zu gering, gibt GMAT einen Fehler aus}\\
-3 &  \multicolumn{2}{p{4cm}|}{\raggedright Bricht die Whileschleife ab, wenn die vergangene Zeit 3700 Tage überschreitet. Die Mission ist nicht erfolgreich verlaufen}\\
+\hline \hline
+1 &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn das Perigäum unter \SI{180}{\km} ist. Die Mission ist erfolgreich verlaufen}\\ \hline
+2 &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn die Exzentrizität unter 0.0025 ist. Wird die Exzentrizität zu gering, gibt GMAT einen Fehler aus}\\  \hline
+3 &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn die vergangene Zeit 3700 Tage überschreitet. Die Mission ist nicht erfolgreich verlaufen}\\  
 \end{tabular}
 \end{center}
+
 
 
 %	Bevor die Mission in die Schleifen geht wird die Starthöhe über $Initial Orbitheight$ festgelegt. Danach geht es in die $Orbit Height$-Schleife und die Startmasse wird festgelegt.
