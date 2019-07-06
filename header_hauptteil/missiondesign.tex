@@ -43,10 +43,11 @@ Im Output Reiter finden sich nach dem Missionsdurchlauf die Ausgaben die im Lauf
 
 Im Folgenden ist das Skript für die erste Simulation beschrieben. Die Wahl viel auf eine Whileschleife, da Forschleifen in GMAT nicht abbrechen, wenn der Wert innerhalb der Schleife verändert wird.
 Das ist für dieses Skript jedoch benötigt, da die beiden letzten if-Abfragen dafür sorgen, dass die benötigte Simulationszeit minimiert wird.
-Die erste if-Abfrage ist notwendig, da bei einigen Simulationen die Treibstoffmasse ins negative ging.
-Die zweite und dritte if-Abfrage könnten in einer if - else if -Abfrage kombiniert werden, aber diese Logik ist in GMAT nicht enthalten.
-Alle if-Abfragen, die den Abbruchwert verändern sind dazu da ermitteln zu können warum die innere Whileschleife beendet worden ist. \\ 
+Die erste if-Abfrage ist notwendig, da bei einigen Simulationen die Treibstoffmasse ins negative ging. Der Wert \num{6558} ergibt sich aus dem Erdradius \SI{6378}{\km} und der Höhe \SI{180}{\km}. Die zweite und dritte if-Abfrage könnten in einer if - else if -Abfrage kombiniert werden, aber diese Logik ist in GMAT nicht enthalten.
+Alle if-Abfragen, die den Abbruchwert verändern sind dazu da ermitteln zu können warum die innere Whileschleife beendet worden ist.\\
 
+
+\newpage
 \begin{algorithmic}
 
 \STATE Setze die aktuelle Kreisbahnhöhe auf die erwünschte Starthöhe
@@ -103,17 +104,19 @@ Alle if-Abfragen, die den Abbruchwert verändern sind dazu da ermitteln zu könn
 \STATE Inkrementiere Höhe um gewählten Wert
 \ENDWHILE
 
-\end{algorithmic}
 
+\end{algorithmic}
+\newpage
 \\
+
 \begin{center}
 \begin{table}
 \begin{tabular}{c| c{5cm}}
 Abbruchwert & Erklärung \\
 \hline \hline
-1 &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn das Perigäum unter \SI{180}{\km} ist. Die Mission ist erfolgreich verlaufen}\\ \hline
-2 &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn die Exzentrizität unter 0.0025 ist. Wird die Exzentrizität zu gering, gibt GMAT einen Fehler aus}\\  \hline
-3 &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn die vergangene Zeit 3700 Tage überschreitet. Die Mission ist nicht erfolgreich verlaufen}\\  
+\num{1} &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn das Perigäum unter \SI{180}{\km} ist. Die Mission ist erfolgreich verlaufen}\\ \hline
+\num{2} &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn die Exzentrizität unter \num{0.0025} ist. Wird die Exzentrizität zu gering, gibt GMAT einen Fehler aus}\\  \hline
+\num{3} &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn die vergangene Zeit \num{3700} Tage überschreitet. Die Mission ist nicht erfolgreich verlaufen}\\  
 \end{tabular}
 \caption{Abbruchkriterien}
 \label{Abbruchkrit}
@@ -121,9 +124,10 @@ Abbruchwert & Erklärung \\
 \end{center}
 
 In Tabelle \eqref{Abbruchkrit} werden den jeweiligen Abbruchkriterien der inneren Whileschleife erklärt. Zu Abbruchkriterium 2 ist noch zu erwähnen, dass dies nur ein Workaround ist. 
-Der in Abbildung \eqref{ECC_Fehler} abgebildete Fehler erschien häufiger bei niedrigen Orbithöhen und Exzentrizitäten nahe 0. Um dies zu Umgehen wurde das Abbruchkriterium 2 in das Skript eingefügt. Hierbei ist zu beachten, dass die Höhe des Perigäums beim Abbruch ein paar Kilometer über der Zielhöhe ist und die Mission als nicht erfolgreich angesehen werden müsste. Jedoch ist der Satellit zu diesem Zeitpunkt bereits so weit in der Atmosphäre, dass ein passives Wiedereintreten nicht viel länger dauern würde. Außerdem ist bei keinem Fall, in dem das Abbruchkriterium 2 Anwendung gefunden hat, der Treibstoff leer und der Wiedereintritt ist weiterhin aktiv unterstützt.
+Der in Abbildung \eqref{ECC_Fehler} abgebildete Fehler erschien häufiger bei niedrigen Orbithöhen und Exzentrizitäten nahe 0. Um dies zu Umgehen wurde das Abbruchkriterium 2 in das Skript eingefügt.\\
+Hierbei ist zu beachten, dass die Höhe des Perigäums beim Abbruch ein paar Kilometer über der Zielhöhe ist und die Mission als nicht erfolgreich angesehen werden müsste. Jedoch ist der Satellit zu diesem Zeitpunkt bereits so weit in der Atmosphäre, dass ein passives Wiedereintreten nicht viel länger dauern würde. Außerdem ist bei keinem Fall, in dem das Abbruchkriterium 2 Anwendung gefunden hat, der Treibstoff leer und der Wiedereintritt ist weiterhin aktiv unterstützt.
 
-\begin{figure}
+\begin{figure}[h!]
 \includegraphics{./graphics/GMAT/ECC_Fehler.png}
 \caption{Fehler bei niedrigen Exzentrizitäten}
 \label{ECC_Fehler}
