@@ -6,11 +6,11 @@
 %-------------------------------------------------------------Missionsbeschreibung
 
 \section{Missionsbeschreibung}
-
-	Ziel der Mission ist es defekte, nicht kooperative Satelliten von Megakonstellationen (z.B.: Starlink) abzubremsen, sodass sie in der Erdatmosphäre verglühen und das Kollisionsrisiko minimiert wird. Das Höhen- und Gewichtsintervall wurden auf 400-1400 $km$, bzw. 50-5000 $kg$ festgelegt, da alle Satelliten bisher geplanter Megakonstellationen innerhalb dieser Intervalle befinden.
-Es wird angenommen, dass sich der CubeSat und das Ziel zu Beginn in derselben Umlaufbahn befinden und nur wenige Kilometer voneinander entfernt sind. Das Haupttriebwerk wird für RDV und Docking nicht verwendet, sodass für den Wiedereintrittsvorgang die gesamte Kraftstoffmenge zur Verfügung steht. Sobald beide Satelliten miteinander Verbunden sind richten sie sich so aus, dass das Haupttriebwerk des CubeSats entgegen der Bewegungsrichtung wirkt. Als nächstes beginnt der eigentliche Deorbit Vorgang. Hier fängt auch die jeweilige Simulation an. Da die Solarzellen den Antrieb nicht dauerhaft versorgen können, wird ein Brennwinkel von 58° um den höchsten Punkt festgelegt. Jeder Brennvorgang verringert die Geschwindigkeit und senkt somit das Perigäum ab. Die Mission ist erfolgreich, wenn das Perigäum eine Höhe von 180 $km$ erreicht hat. Die Simulation wird nach zehn Jahren abgebrochen, wenn die Mission bis dahin nicht erfolgreich war. 
-Zuerst wird eine \textbf{erste Mission} simuliert, die eine kreisförmige Umlaufbahn annimmt und das Höhenintervall in 50 $km$ Schritten erhöht. Die Masse wird von 50 bis 550 $kg$ in 25 $kg$ und von 600 bis 5000 $kg$ in 100 $kg$ Schritten erhöht.
-Mit der \textbf{zweiten Mission} wird betrachtet, wie sich die Deorbitzeit für ausgewählte Massen verhält, wenn die Exzentrizität verändert wird. Das Höhenintervall beschreibt hierbei die Höhe des Perigäums und die Exzentrizität wird von 0.025 bis 0.3 betrachtet.
+\hfill\emph{(Frederik Schäfer)}\\	
+	Ziel der Mission ist es defekte, nicht kooperative Satelliten von Megakonstellationen (z.B.: Starlink) abzubremsen, sodass sie in der Erdatmosphäre verglühen und das Kollisionsrisiko minimiert wird. Das Höhen- und Gewichtsintervall wurden auf \num{400}-\SI{1400}{\kilo\metre}, bzw. \num{50}-\SI{5000}{\kilogram} festgelegt, da alle Satelliten bisher geplanter Megakonstellationen innerhalb dieser Intervalle befinden.
+Es wird angenommen, dass sich der CubeSat und das Ziel zu Beginn in derselben Umlaufbahn befinden und nur wenige Kilometer voneinander entfernt sind. Das Haupttriebwerk wird für RDV und Docking nicht verwendet, sodass für den Wiedereintrittsvorgang die gesamte Kraftstoffmenge zur Verfügung steht. Sobald beide Satelliten miteinander Verbunden sind richten sie sich so aus, dass das Haupttriebwerk des CubeSats entgegen der Bewegungsrichtung wirkt. Als nächstes beginnt der eigentliche Deorbit Vorgang. Hier fängt auch die jeweilige Simulation an. Da die Solarzellen den Antrieb nicht dauerhaft versorgen können, wird ein Brennwinkel von \num{58}° um den höchsten Punkt festgelegt. Jeder Brennvorgang verringert die Geschwindigkeit und senkt somit das Perigäum ab. Die Mission ist erfolgreich, wenn das Perigäum eine Höhe von \SI{180}{\kilo\metre} erreicht hat. Die Simulation wird nach zehn Jahren abgebrochen, wenn die Mission bis dahin nicht erfolgreich war. 
+Zuerst wird eine \textbf{erste Mission} simuliert, die eine kreisförmige Umlaufbahn annimmt und das Höhenintervall in \SI{50}{\kilo\metre} Schritten erhöht. Die Masse wird von \num{50} bis \SI{550}{\kilogram} in \SI{25}{\kilogram} und von \num{600} bis \SI{5000}{\kilogram} in \SI{100}{\kilogram} Schritten erhöht.
+Mit der \textbf{zweiten Mission} wird betrachtet, wie sich die Deorbitzeit für ausgewählte Massen verhält, wenn die Exzentrizität verändert wird. Das Höhenintervall beschreibt hierbei die Höhe des Perigäums und die Exzentrizität wird von \num{0.025} bis \num{0.3} betrachtet.
 	
 			
 %-------------------------------------------------------------GMAT
@@ -39,7 +39,7 @@ Im Output Reiter finden sich nach dem Missionsdurchlauf die Ausgaben die im Lauf
 
 \subsection{Missionsskript 1}
 
-	In dem erstem Missionsskript geht es darum, ausgehend von einer kreisförmigen Erdumlaufbahn, zu testen wie lange es dauert mit der in \tab{tab:cubesatdesign} gewählten Konfiguration Trümmerteile von 50 bis 5000 $kg$ zu deorbiten. Die gewählten Starthöhen liefen von 400 bis 1400 $km$.
+	In dem erstem Missionsskript geht es darum, ausgehend von einer kreisförmigen Erdumlaufbahn, zu testen wie lange es dauert mit der in \tab{tab:cubesatdesign} gewählten Konfiguration Trümmerteile von \num{50} bis \SI{5000}{\kilo\gram} zu deorbiten. Die gewählten Starthöhen liefen von \num{400} bis \SI{1400}{\kilo\metre}.
 
 \begin{figure}[!h]
 	\centering
@@ -52,18 +52,18 @@ Im Output Reiter finden sich nach dem Missionsdurchlauf die Ausgaben die im Lauf
 	Bevor die Mission in die Schleifen geht wird die Starthöhe über $Initial Orbitheight$ festgelegt. Danach geht es in die $Orbit Height$-Schleife und die Startmasse wird festgelegt.
 Die nächste Schleife durchläuft alle Massen. Die Endwerte für beide Schleifen werden in $End\_mass$ und $End\_height$ festgelegt. Das Inkrement erfolgt am Ende jeder Schleife in $Inkrement mass$ bzw $Inkrement height$.\\
 Im Kern diesen Skriptes steht die Whileschleife.\\
-Nach einer Überprüfung des Treibstoffstands wird der Satellit mit dem ersten Propagator Befehl bis auf eine wahre Anomalie von 151° vorangebracht. 
-Danach wird der Schubbefehl gestartet und der Propagator $PropToBurnEnd$ lässt den Satelliten, während dieser Schub gibt, bis zu einer wahren Anomalie von 209° vorlaufen. Sollte der Treibstoff zuvor auf 0 fallen wird dieser Vorgang abgebrochen. Danach wird der Schub beendet.
+Nach einer Überprüfung des Treibstoffstands wird der Satellit mit dem ersten Propagator Befehl bis auf eine wahre Anomalie von \num{151}° vorangebracht. 
+Danach wird der Schubbefehl gestartet und der Propagator $PropToBurnEnd$ lässt den Satelliten, während dieser Schub gibt, bis zu einer wahren Anomalie von \num{209}° vorlaufen. Sollte der Treibstoff zuvor auf \SI{0}{\kilogram} fallen wird dieser Vorgang abgebrochen. Danach wird der Schub beendet.
 
 Aufgrund einiger Fehler, die während des Testens dieses Skripts aufgetreten sind, folgen jetzt einige If-Abfragen, die als Abbruchbedingungen der Kernschleife dienen.
-Die erste überprüft ob das Perigäum des Satelliten größer als 6558 ist. Ist dies der Fall wird der Fortlauf bis zum Perigäum durchgeführt. Die Zweite If-Abfrage überprüft das Gegenteil, also ob das Perigäum kleiner oder gleich 6558 ist. Ist dies der Fall wird die Variable “Abbruch” auf 1 gesetzt. Der Grund für diese beiden If-Abfragen liegt darin, dass die Whileschleife bei einigen Simulationen nicht auf einen zu niedrige Wert reagiert hat. Außerdem kam es vor, dass die Simulation immer langsamer wurde, wenn der Satellit bei einer kleinen Großen Halbachse zum Perigäum navigiert ist. Das wurde dadurch umgangen, dass nur zum Perigäum navigiert wird, wenn diese über 6558 ist. \\
-Die nächste If-Abfrage überprüft ob die Exzentrizität niedriger als 0.0025 ist. Ist dies der Fall wird der Wert “Abbruch” auf 2 gesetzt. Mit dieser If-Abfrage wird ein Fehler umgangen, der bei den niedrigen Zielhöhen häufiger aufgetreten ist. Ab einem gewissen Punkt in der Simulation von geringen Höhen verringert sich die Exzentrizität wieder, da durch atmosphärischen Drag das Apogäum schneller sinkt als Das Perigäum durch den Schub. Dies hatte aus unerfindlichen Gründen einen Error zur Folge, zu dem kein fix gefunden wurde. \\
-Die letzte Abbruchbedingung ist die 10 Jahresmarke. Hier wird abgefragt, ob die Tage seit dem Start der Whileschleife größer als 3700 Tage sind. Ist dies der Fall wird die Variable Abbruch auf 3 gesetzt.\\
+Die erste überprüft ob das Perigäum des Satelliten größer als \num{6558} ist. Ist dies der Fall wird der Fortlauf bis zum Perigäum durchgeführt. Die Zweite If-Abfrage überprüft das Gegenteil, also ob das Perigäum kleiner oder gleich \num{6558} ist. Ist dies der Fall wird die Variable “Abbruch” auf \num{1} gesetzt. Der Grund für diese beiden If-Abfragen liegt darin, dass die Whileschleife bei einigen Simulationen nicht auf einen zu niedrige Wert reagiert hat. Außerdem kam es vor, dass die Simulation immer langsamer wurde, wenn der Satellit bei einer kleinen Großen Halbachse zum Perigäum navigiert ist. Das wurde dadurch umgangen, dass nur zum Perigäum navigiert wird, wenn diese über \num{6558} ist. \\
+Die nächste If-Abfrage überprüft ob die Exzentrizität niedriger als \num{0.0025} ist. Ist dies der Fall wird der Wert “Abbruch” auf \num{2} gesetzt. Mit dieser If-Abfrage wird ein Fehler umgangen, der bei den niedrigen Zielhöhen häufiger aufgetreten ist. Ab einem gewissen Punkt in der Simulation von geringen Höhen verringert sich die Exzentrizität wieder, da durch atmosphärischen Drag das Apogäum schneller sinkt als Das Perigäum durch den Schub. Dies hatte aus unerfindlichen Gründen einen Error zur Folge, zu dem kein fix gefunden wurde. \\
+Die letzte Abbruchbedingung ist die \num{10}-Jahre Marke. Hier wird abgefragt, ob die Tage seit dem Start der Whileschleife größer als \num{3700} Tage sind. Ist dies der Fall wird die Variable Abbruch auf \num{3} gesetzt.\\
 Der letzte Befehl in der Kernschleife ist der EndWhile Report. Hier wird dem Programm gesagt, dass er die gewünschten Daten in eine Datei speichern soll. Diese Datei dient lediglich dazu ungeklärte Abbrüche und Abstürze zu ermitteln und war für die Auswertung irrelevant.\\
 Die Whileschleife läuft solange, bis das Abbruchkriterium $\neq 0$ ist.\\
 Danach werden noch zwei Reports angefertigt, wobei der AWReport in eine separate Datei, die zur Auswertung genutzt wurde, schreibt.\\
-Nach der Kernschleife wird überprüft ob das Abbruchkriterium 3 war. Ist dies der Fall bedeutet das, dass die Nachfolgenden Masseschritte auch nicht in unter 3700 Tagen geschafft werden können. An dieser Stelle wird die Aktuelle Masse auf einen Wert der höher ist als die gewählte Endmasse und die Masseschleife wird abgebrochen um Zeit zu sparen. Die letzte If-Abfrage ist eine weitere Maßnahme um Zeit zu sparen. Hier wird abgefragt, ob die Aktuelle Masse gleich der gewählten Startmasse ist. Ist dies der Fall wird die äußerste Whileschleife beendet und die Mission ist fertig simuliert.\\
-Vor der Kernschleife stehen noch einige Equation Befehle, welche unter Anderem den Orbit und das Datum zurücksetzen. Außerdem wird der “Abbruch”-Wert auf 0 zurückgesetzt.
+Nach der Kernschleife wird überprüft ob das Abbruchkriterium \num{3} war. Ist dies der Fall bedeutet das, dass die Nachfolgenden Masseschritte auch nicht in unter \num{3700} Tagen geschafft werden können. An dieser Stelle wird die Aktuelle Masse auf einen Wert der höher ist als die gewählte Endmasse und die Masseschleife wird abgebrochen um Zeit zu sparen. Die letzte If-Abfrage ist eine weitere Maßnahme um Zeit zu sparen. Hier wird abgefragt, ob die Aktuelle Masse gleich der gewählten Startmasse ist. Ist dies der Fall wird die äußerste Whileschleife beendet und die Mission ist fertig simuliert.\\
+Vor der Kernschleife stehen noch einige Equation Befehle, welche unter Anderem den Orbit und das Datum zurücksetzen. Außerdem wird der “Abbruch”-Wert auf \num{0} zurückgesetzt.
 
 
 
@@ -71,15 +71,15 @@ Vor der Kernschleife stehen noch einige Equation Befehle, welche unter Anderem d
 
 \subsection{Missionsskript 2}
 
-	Für die zweite Untersuchung wurde das Skript so modifiziert, dass es die Exzentrizitäten von 0.025 bis 0.3 durchläuft.
-Der Aufbau der Kernschleife ist gleich geblieben. Die erste Schleife um die Kernschleife ist eine Forschleife,, die die Exzentrizität in 0.025er Schritten Inkrementiert. Innerhalb dieser Schleife wird zu Beginn das Perigäum auf die Starthöhe gesetzt und das Apogäum mit der Exzentrizität über
+	Für die zweite Untersuchung wurde das Skript so modifiziert, dass es die Exzentrizitäten von \num{0.025} bis \num{0.3} durchläuft.
+Der Aufbau der Kernschleife ist gleich geblieben. Die erste Schleife um die Kernschleife ist eine Forschleife,, die die Exzentrizität in \num{0.025}er Schritten Inkrementiert. Innerhalb dieser Schleife wird zu Beginn das Perigäum auf die Starthöhe gesetzt und das Apogäum mit der Exzentrizität über
 \begin{equation}
 r_A = \frac{1+e}{1-e}\cdot r_P
 \label{apoapsis}
 \end{equation}
 berechnet.\\
 
-	In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Massen, in unregelmäßigen Abständen, berechnet worden sind. Die äußerste Forschleife ist für die Höhe zuständig und läuft mit einem Inkrement von 100 $km$ von 400 bis 1400 $km$ durch. 
+	In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Massen, in unregelmäßigen Abständen, berechnet worden sind. Die äußerste Forschleife ist für die Höhe zuständig und läuft mit einem Inkrement von \SI{100}{\kilo\metre} von \num{400} bis \SI{1400}{\kilo\metre} durch. 
 \begin{figure}[!h]
 	\centering
 		\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript_ECC.PNG}
@@ -104,10 +104,10 @@ berechnet.\\
 
 \subsection{Mission 1}
 
-	In Abb. \ref{fig:GMAT_Mass_over_Height} sind die zugehörigen Wiedereintrittszeiten farblich in Abhängigkeit von Masse und Starthöhe abgetragen. Die Zeitskala ist logarithmisch von 0 bis 10 Jahre an der Seite aufgeführt.  
-Es ist klar zu erkennen, dass niedrigere die Massen auch aus vergleichsweise großen Höhen entfernt werden können. Die maximale Höhe des Zielsatelliten nimmt jedoch mit zunehmender Masse stark ab, wenn die Zeitvorgabe von maximal 10 Jahren eingehalten werden soll.
+	In Abb. \ref{fig:GMAT_Mass_over_Height} sind die zugehörigen Wiedereintrittszeiten farblich in Abhängigkeit von Masse und Starthöhe abgetragen. Die Zeitskala ist logarithmisch von \num{0} bis \num{10} Jahre an der Seite aufgeführt.  
+Es ist klar zu erkennen, dass niedrigere die Massen auch aus vergleichsweise großen Höhen entfernt werden können. Die maximale Höhe des Zielsatelliten nimmt jedoch mit zunehmender Masse stark ab, wenn die Zeitvorgabe von maximal \num{10} Jahren eingehalten werden soll.
 
-	Eine detaillierte Ansicht der Massen von 50 bis 550 $kg$ bietet \abb{fig:GMAT_Mass_over_Height_550}, da diese mit einer viermal höheren Auflösung (25 $kg$ Schritte) simuliert worden ist. Hier wird es deutlicher, dass die Zielmasse bei 1400 $km$ maximal 500 $kg$ betragen darf, um das Limit von zehn Jahren nicht zu überschreiten.
+	Eine detaillierte Ansicht der Massen von \num{50} bis \SI{550}{\kilogram} bietet \abb{fig:GMAT_Mass_over_Height_550}, da diese mit einer viermal höheren Auflösung (\SI{25}{\kilogram} Schritte) simuliert worden ist. Hier wird es deutlicher, dass die Zielmasse bei \SI{1400}{\kilo\metre} maximal \SI{500}{\kilogram} betragen darf, um das Limit von zehn Jahren nicht zu überschreiten.
 
 \begin{figure}[h!]
 	\centering
@@ -117,17 +117,17 @@ Es ist klar zu erkennen, dass niedrigere die Massen auch aus vergleichsweise gro
 \end{figure}
 
 
-	Durch die logarithmische Skala der Zeit ist klar erkennbar wie sehr die benötigte Zeit für die Mission ansteigt, nach dem der Treibstoff aufgebraucht worden ist. Dies geschieht im Bereich um drei Jahre. Je höher die Starthöhe, desto länger brennt das Triebwerk pro Umlauf, da die 58° Brennwinkel mehr Zeit benötigen um durchlaufen zu werden. 
+	Durch die logarithmische Skala der Zeit ist klar erkennbar wie sehr die benötigte Zeit für die Mission ansteigt, nach dem der Treibstoff aufgebraucht worden ist. Dies geschieht im Bereich um drei Jahre. Je höher die Starthöhe, desto länger brennt das Triebwerk pro Umlauf, da die \num{58}° Brennwinkel mehr Zeit benötigen um durchlaufen zu werden. 
 
 \subsubsection{Ergebnis Mission 1}
 
-	Die gewählte Konfigurationen kann Satelliten mit einem Gewicht von 375 $kg$ (Starlink) und einer Erdumlaufbahn von 1400 $km$ innerhalb von 2 Jahren  aktiv zum Wiedereintritt verhelfen. Für niedrigere Höhen wird dieser Vorgang schon früher abgeschlossen. 
+	Die gewählte Konfigurationen kann Satelliten mit einem Gewicht von \SI{375}{\kilogram} (Starlink) und einer Erdumlaufbahn von \SI{1400}{\kilo\metre} innerhalb von \num{2} Jahren  aktiv zum Wiedereintritt verhelfen. Für niedrigere Höhen wird dieser Vorgang schon früher abgeschlossen. 
 
 	Bei großen Höhen ist die maximale Masse limitiert, jedoch ist der Aerodynamische Widerstand in geringen Höhen so stark, dass Trümmerteile bis zu zwei Tonnen innerhalb eines Jahres aus ihrer Umlaufbahn entfernt werden können. 
 
 \subsection{Mission 2}
 
-	Die Abbildungen \ref{fig:GMAT_ecc_a}, \ref{fig:GMAT_ecc_b} und \ref{fig:GMAT_ecc_c} repräsentieren die Ergebnisse für die ausgewählten Massen 50, 375 und 550 $kg$. Die benötigte Missionszeit wird hier in Abhängigkeit von Exzentrizität und Starthöhe des Perigäums dargestellt. Die Zeitskala ist wieder logarithmisch von 0 bis 10 Jahre an der Seite aufgeführt.
+	Die Abbildungen \ref{fig:GMAT_ecc_a}, \ref{fig:GMAT_ecc_b} und \ref{fig:GMAT_ecc_c} repräsentieren die Ergebnisse für die ausgewählten Massen \num{50}, \num{375} und \num{550}\si{\kilogram}. Die benötigte Missionszeit wird hier in Abhängigkeit von Exzentrizität und Starthöhe des Perigäums dargestellt. Die Zeitskala ist wieder logarithmisch von \num{0} bis \num{10} Jahre an der Seite aufgeführt.
 
 
 \begin{figure}[h]
@@ -137,7 +137,7 @@ Es ist klar zu erkennen, dass niedrigere die Massen auch aus vergleichsweise gro
 	\label{fig:GMAT_ecc_a}
 \end{figure}
 
-	Auffallend ist die Tatsache, dass eine höhere Exzentrizität eine geringere Missionszeit zur Folge hat. Der Grund hierfür ist unter Anderem, dass bei hohen Exzentrizitäten der CubeSat länger innerhalb der 58° um das Apogäum ist und das Triebwerk somit länger brennt. Im Fall von 550 $kg$ zeigt \abb{fig:GMAT_ecc_c}, dass obwohl es über alle Höhenstufen zu einer Verkürzung der Mission kommt, dies für 1400 $km$ trotzdem über 10 Jahre dauert. 
+	Auffallend ist die Tatsache, dass eine höhere Exzentrizität eine geringere Missionszeit zur Folge hat. Der Grund hierfür ist unter Anderem, dass bei hohen Exzentrizitäten der CubeSat länger innerhalb der \num{58}° um das Apogäum ist und das Triebwerk somit länger brennt. Im Fall von \SI{550}{\kilogram} zeigt \abb{fig:GMAT_ecc_c}, dass obwohl es über alle Höhenstufen zu einer Verkürzung der Mission kommt, dies für \SI{1400}{\kilo\metre} trotzdem über \num{10} Jahre dauert. 
 	
 	\begin{figure}[h]
 	\centering
