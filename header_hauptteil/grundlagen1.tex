@@ -1,74 +1,71 @@
-\chapter{Theoretische Grundlagen}
+\chapter{Theoretische Grundlagen}\label{theorie}
 %---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \section{Der Cubesat Designstandard}%-------------------------------------------------------------------------------------------------------------------------------------------
 	\subsection{Historische Entwicklung}
-	
-	Die Fortschritte in der modernen Technologie unterstützen die Entwicklung der miniaturisierten Satelliten. Durch den Fokus der wissenschaftlichen Gemeinschaft auf Nano- und Picosatelliten sind die CubeSats zu einem wichtigen Teil der Kategorie geworden. Mit der Einführung des CubeSat-Konzepts 1998, mit der die Standardisierung von Masse und Größe von Satelliten einher ging, stieg die Zugänglichkeit des Weltraumes. Des Weiteren zeichnen sie sich durch ihre Modularität, leistungsstarken und kommerziell erhältlichen Satellitenkomponenten (commercial off-the-shelf) und ihren schnellen Entwicklungszyklen aus. Infolge der Standardisierung des CubeSats wurde das Startsystem Poly-Picosatellit Orbit Deployer (P-POD) entwickelt um eine kostengünstige Lösung für die Entwicklung und den sicheren Start bereitzustellen. \cite[S. 1 - 4]{RahmatSamii.2017} \\ 
-2003 wurde die erste CubeSat Mission durchgeführt. Seitdem werden sie mit stark zunehmender Häufigkeit eingesetzt. Dies wird in \abb{fig:NanosatsTypes} veranschaulicht. \cite[S. 1]{firstone}
-			\begin{figure}[h]
+	\hfill\emph{(Valentina Dietrich)}\\
+				\begin{figure}[h]
 				\centering
 					\includegraphics[width=0.80\textwidth]{Nanosats_years_types_2019-01-19_01}
 				\caption{Überblick über Nanosatelliten Missionen von 1998 bis 2023 \cite{ErikKulu.2019}}
 				\label{fig:NanosatsTypes}
 			\end{figure}
-
-	\newpage
-	%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	\subsection{Gestaltungsrichtlinien}%-------------------------------------------------------------------------------------------------------------------------------------------
+	Die Fortschritte in der modernen Technologie unterstützen die Entwicklung der miniaturisierten Satelliten. Durch den Fokus der wissenschaftlichen Gemeinschaft auf Nano- und Picosatelliten sind die CubeSats zu einem wichtigen Teil der Kategorie geworden. Mit der Einführung des CubeSat-Konzepts 1998, mit der die Standardisierung von Masse und Größe von Satelliten einher ging, stieg die Zugänglichkeit des Weltraumes. Des Weiteren zeichnen sie sich durch ihre Modularität, leistungsstarken und kommerziell erhältlichen Satellitenkomponenten (commercial off-the-shelf) und ihren schnellen Entwicklungszyklen aus. Infolge der Standardisierung des CubeSats wurde das Startsystem Poly-Picosatellit Orbit Deployer (P-POD) entwickelt um eine kostengünstige Lösung für die Entwicklung und den sicheren Start bereitzustellen \cite[S. 1 - 4]{RahmatSamii.2017}. 2003 wurde die erste CubeSat Mission durchgeführt. Seitdem werden sie mit stark zunehmender Häufigkeit eingesetzt. Dies wird in \abb{fig:NanosatsTypes} veranschaulicht \cite[S. 1]{firstone}.  Hier werden die durchgeführten, geplanten und vorhergesagten Nanosatelliten Missionen von 1998 bis 2023 in einem Säulendiagramm dargestellt. Aus dem Schaubild geht ab 2013 ein stetige Zunahme an CubeSat Missionen hervor. Auffallend ist der Zuwachs in dem Zeitraum 2018 bis 2019 mit einem Anstieg von  236 Missionen auf 538 bei einer Vorhersage von 431 Missionen. Aus dem Diagramm lässt sich die Tendenz eines kontinuierliche Zunahme von CubeSat Missionen ab der ersten Mission erkennen. Dies liegt vorallem daran, dass eine große Zahl neuer Gruppen in die Weltraum-Erforschung eingestiegen ist, die Entwicklungszeit und Kosten einer Satelliten-Mission haben sich durch CubeSats enorm gesenkt \cite[S. 1 - 4]{RahmatSamii.2017}.
 	
-	Für die Gestaltung von CubeSats gelten eine Reihe von Richtlinien. Als kleinste Einheit (1U) wird ein Würfel mit einer Kantenlänge von 10 $cm$ und einer zulässigen Masse von maximal 1,33 $kg$ vorgegeben. Für größere Volumen und Massen können mehrere Einheiten von CubeSats verbunden werden. Satelliten mit 1U, 1.5U, 2U, oder 3U können von dem einheitlichen Startmechanismus (P-Pod) in die Erdumlaufbahn ausgelassen werden. Die Kosten von CubeSat Missionen können gering gehalten werden, indem diese als sekundäre Nutzlast bei Raketenstarts mitfliegen. Für größere Satelliten (6U, 12U, 27U) werden andere Startmechanismen benötigt. Die zugelassene Masse wird auf 2 $kg/U$ angehoben. Weitere Vorschriften gelten für die Folgenden Kriterien:
+	%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	\subsection[Gestaltungsrichtlinien]{Gestaltungsrichtlinien}
+	\hfill\emph{(Frederik Schäfer)}\\	
+	
+	Für die Gestaltung von CubeSats gelten eine Reihe von Richtlinien. Als kleinste Einheit (\SI{1}{\unit}) wird ein Würfel mit einer Kantenlänge von \SI{10}{\centi\metre} und einer zulässigen Masse von maximal \SI{1,33}{\kilogram} vorgegeben. Für größere Volumen und Massen können mehrere Einheiten von CubeSats verbunden werden. Satelliten mit \SI{1}{\unit}, \SI{1,5}{\unit}, \SI{2}{\unit}, oder \SI{3}{\unit} können von dem einheitlichen Startmechanismus (P-Pod) in die Erdumlaufbahn ausgelassen werden. Die Kosten von CubeSat Missionen können gering gehalten werden, indem diese als sekundäre Nutzlast bei Raketenstarts mitfliegen. Für größere Satelliten (\SI{6}{\unit}, \SI{12}{\unit}, \SI{27}{\unit}) werden andere Startmechanismen benötigt \cite{Hevner.2011}. Die zugelassene Masse wird auf \SI[per-mode=symbol]{2}{\kilogram\per\unit} angehoben. Weitere Vorschriften gelten für die Folgenden Kriterien:
 		\begin{itemize}
-			\item \textit{Materialien:} 	\\ Alle bei der Konstruktion verwendeten Materialien müssen den Richtlinien der Air Force Space Command Manual entsprechen. Außerdem darf der Masseverlust des Satelliten durch verflüchtigende Materialien maximal 1\% betragen.\cite{.c, CaliforniaPolytechnicStateUniversity.2014}
-			\item \textit{Energiespeicher:} \\ Der chemische Energiespeicher darf eine Größe von 100 $Wh$ nicht überschreiten.\cite{CaliforniaPolytechnicStateUniversity.2014} 
-			\item \textit{Aktivierungszeitpunkt:} \\ Während der CubeSat im P-POD verstaut ist müssen alle Systeme ausgeschaltet bleiben. Beim Verlassen der Trägerrakete wird der Satellit aktiviert. Erst 30 Minuten später dürfen Bauteile (z.B. Solarpanele, Antennen, etc...) ausgefahren werden. Bevor die ersten Signale generiert oder gesendet werden müssen mindestens 45 Minuten vergangen sein.\cite{Hevner.2011} 
+			\item \textit{Materialien:} 	\\ Alle bei der Konstruktion verwendeten Materialien müssen den Richtlinien der Air Force Space Command Manual entsprechen. Außerdem darf der Masseverlust des Satelliten durch verflüchtigende Materialien maximal \num{1}\% betragen.\cite{.c, CaliforniaPolytechnicStateUniversity.2014}
+			\item \textit{Energiespeicher:} \\ Der chemische Energiespeicher darf eine Größe von \SI{100}{\watt\hour} nicht überschreiten.\cite{CaliforniaPolytechnicStateUniversity.2014} 
+			\item \textit{Aktivierungszeitpunkt:} \\ Während der CubeSat im P-POD verstaut ist müssen alle Systeme ausgeschaltet bleiben. Beim Verlassen der Trägerrakete wird der Satellit aktiviert. Erst \num{30} Minuten später dürfen Bauteile (z.B. Solarpanele, Antennen, etc...) ausgefahren werden. Bevor die ersten Signale generiert oder gesendet werden müssen mindestens \num{45} Minuten vergangen sein.\cite{Hevner.2011} 
 		\end{itemize}
 		
 		Falls ein Entwurf nicht den Vorschriften entspricht, kann bei dem Betreiber der Trägerrakete eine Sondergenehmigung angefragt werden. Nach einer Reihe von Tests entscheidet dieser ob er die Abweichungen akzeptiert, Änderungen vorgenommen werden müssen, oder ein anderer Anbieter gefunden werden muss. \cite{CaliforniaPolytechnicStateUniversity.2014} 
-\newpage
+
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	\section{Cubesat Subsysteme}%-------------------------------------------------------------------------------------------------------------------------------------------
 	%hier Hauptsächlich das Fazit von max kompakt darstellen und refernzieren
-		\subsection{Antrieb}%----------------------------------------------------------------------------------------------------------------------------------------------------
+		\subsection{Antrieb}
+\hfill\emph{(Florian Czorny)}\\		%----------------------------------------------------------------------------------------------------------------------------------------------------
 
 		Eines der wichtigsten Subsysteme für Active Debris Removal (ADR) Missionen mit einem CubeSat ist der Antrieb. Er wird für Lageregelung und das Deorbiting des Zielobjekts benötigt.
 Für CubeSats stehen nur wenige ausgereifte und erprobte Triebwerke zur Verfügung.  Die Miniaturisierung bestehender Technologien stellt eine große Herausforderung dar. Ein hoher TRL ist für die Auswahl besonders Entscheidend, da nur bereits erprobte Technologien für diese Mission genutzt werden sollten.
 Im Wesentlichen lassen sich die Antriebsarten in chemische und elektrische Antriebe unterteilen.  Chemische Antriebe generieren im allgemeinen einen höheren Schub und werden für impulsive Manöver verwendet. Für den Betrieb muss ein großer Gewichtsanteil an Treibstoff einkalkuliert werden. Der spezifische Impuls ist jedoch deutlich niedriger als bei elektrischen Antrieben. Diese bieten auch ein besseres Schub-Leistungs-Verhältnis. Elektrische Antriebe sind jedoch auf eine ausreichende externe Energiequelle angewiesen. Diese wird zwangsläufig benötigt, um die getankte Masse zu beschleunigen.
-Für genaue Untersuchung und den Vergleich der verschiedenen Triebwerkstypen wird auf die Literatur \cite{Lettau.} verwiesen. Miniaturisierte Versionen von erprobten Triebwerken werden stetig weiterentwickelt und getestet. Es wurden bereits mehrere Miniaturisierte Triebwerke in CubeSatmissionen erfolgreich eingesetzt. In Zukunft sollte es eine wachsende Auswahl an geeigneten Triebwerken für CubeSat-Missionen geben. 
-Eines der wichtigsten Subsysteme für Active Debris Removal (ADR) Missionen mit einem CubeSat ist der Antrieb. Er wird das Deorbiting des Zielobjekts benötigt.  Um Lageregelung und Rendezvous-Manöver durchführen zu können müssen sehr präzise Triebwerke gewählt werden. Für CubeSats stehen nur wenige ausgereifte und erprobte Triebwerke zur Verfügung unter anderem durch die Herausforderung der Miniaturisierung bestehender Technologien.  
-Ein hoher TRL ist für die Auswahl besonders Entscheidend, da nur bereits erprobte Technologien für diese Mission genutzt werden sollten.
-Im Wesentlichen lassen sich die Antriebsarten in chemische und elektrische Antriebe unterteilen.  Chemische Antriebe generieren allgemein einen höheren Schub und werden für impulsive Manöver verwendet. Für den Betrieb muss ein großer Gewichtsanteil an Treibstoff einkalkuliert werden. Der spezifische Impuls ist jedoch deutlich niedriger als bei elektrischen Antrieben. Diese bieten auch ein besseres Schub-Leistungs-Verhältnis. Elektrische Antriebe sind jedoch auf eine größere externe Energiequelle angewiesen. Diese wird zwangsläufig benötigt, um die getankte Masse zu beschleunigen. \cite{Lettau.}
-Miniaturisierte Versionen von erprobten Triebwerken werden stetig weiterentwickelt und getestet. Es wurden bereits mehrere Miniaturisierte Triebwerke in CubeSat Missionen erfolgreich eingesetzt. In Zukunft sollte es eine wachsende Auswahl an geeigneten Triebwerken für CubeSat Missionen geben.
-
+Für genaue Untersuchung und den Vergleich der verschiedenen Triebwerkstypen wird auf die Literatur \cite{Lettau.} verwiesen. Miniaturisierte Versionen von erprobten Triebwerken werden stetig weiterentwickelt und getestet. Es wurden bereits mehrere Miniaturisierte Triebwerke in CubeSat-Missionen erfolgreich eingesetzt. 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		\subsection{Stromversorgungssystem - Electrical Power System (EPS)}%----------------------------------------------------------------------------------------------------
-		
+		\subsection[Stromversorgungssystem]{Stromversorgungssystem - Electrical Power System (EPS)}%----------------------------------------------------------------------------------------------------
+\hfill\emph{(Frederik Schäfer)}\\	
 		Das EPS ist für die Erzeugung-, Speicherung- und Verteilung von elektrischer Energie verantwortlich. 
 Für die Stromerzeugung werden in der Raumfahrt hauptsächlich Solarpanele verwendet, welche auch für CubeSats die sinnvollste Lösung darstellen.
-Für die meisten Anwendungen können Produkte verschiedener Anbieter COTS erworben werden. CubeSats mit geringem Leistungsbedarf nutzen oft nur ihre eigene Oberfläche um mit Solarzellen Strom zu generieren. Wenn mehr Leistung benötigt wird werden faltbare Solarmodule genutzt. So kann die nutzbare Oberfläche zwei bis vier mal größer sein, als die benötigte Fläche auf dem Satelliten.\cite{Lettau.}
+Für die meisten Anwendungen können Produkte verschiedener COTS-Anbieter erworben werden. CubeSats mit geringem Leistungsbedarf nutzen oft nur ihre eigene Oberfläche um mit Solarzellen Strom zu generieren. Wenn mehr Leistung benötigt wird werden faltbare Solarmodule eingesetzt. So kann die nutzbare Oberfläche zwei bis vier mal größer sein, als die benötigte Fläche auf dem Satelliten.\cite{Lettau.}
 
-	Während der Satellit sich im Schatten der Erde befindet wird Energie aus einem internen Speicher genutzt. Dieser besteht in der Regel aus Lithium basierten Akkus, welche eine hohe Energiedichte von bis zu 240 Wh/kg aufweisen. Sie können sowohl als einzelne Zellen, als auch in vorgefertigten Paketen COTS erworben werden.\cite{Lettau., Abaker.2017}
+	Während der Satellit sich im Schatten der Erde befindet wird Energie aus einem internen Speicher genutzt. Dieser besteht in der Regel aus Lithium basierten Akkus, welche eine hohe Energiedichte von bis zu \SI[per-mode=symbol]{240}{\watt\hour\per\kilogram} aufweisen. Sie können sowohl als einzelne Zellen, als auch in vorgefertigten Paketen von COTS-Anbietern erworben werden.\cite{Lettau., Abaker.2017}
+	
 
-\begin{figure}[!h]
-	\centering
-		\includegraphics[width=0.50\textwidth]{./graphics/Struktur_EPS.PNG}
-	\caption{EPS Aufbau \cite{Pelgrift.2017}}
-\end{figure}
+%\begin{figure}[!h]                              \SI{}{\kilogram}
+	%\centering
+		%\includegraphics[width=0.50\textwidth]{./graphics/Struktur_EPS.PNG}
+	%\caption{EPS Aufbau \cite{Pelgrift.2017}}
+%\end{figure}
 
-	Für die Verteilung des Stroms an die Subsysteme gibt es zwei unterschiedliche Ansätze. Zum Einen sind es dezentralisierte Verteilungssysteme, die ein modulares und flexibles Design erlauben. Dieses kann für verschiedene Satelliten angepasst werden. Es arbeitet mit nur einer Ausgangsspannung, die dann für jedes angeschlossene Subsystem einzeln umgewandelt wird.\\
+	Für die Verteilung des Stroms an die Subsysteme gibt es zwei unterschiedliche Ansätze. Zum Einen sind es dezentralisierte Verteilungssysteme [Abb. \ref{d_eps}], die ein modulares und flexibles Design erlauben. Dieses kann für verschiedene Satelliten angepasst werden. Es arbeitet mit nur einer Ausgangsspannung, die dann für jedes angeschlossene Subsystem einzeln umgewandelt wird.%ggf mikrospannungswandler erklären nach Burt.2011
 \begin{figure}[!h]
 	\centering
 		\includegraphics[width=0.50\textwidth]{./graphics/Distributed_EPS.PNG}
-	\caption{Dezentralisiertes EPS \cite{Abaker.2017}}
+	\caption{Dezentralisiertes EPS \cite{Burt.2011}}
+	\label{d_eps}
 \end{figure}
 
- Die zweite Variante sind zentralisierte Verteilungssysteme. Diese werden häufiger verwendet, da sie den Vorteil eines geringen Volumens bieten und weniger Spannungsregler benötigen. Das wird erreicht, indem alle Subsysteme mit gleicher Spannung am selben Regler angeschlossen werden. Nachteilig ist, dass dieser Regler auf die maximale Gesamtlast aller Subsysteme ausgelegt werden muss. Das führt dazu, dass zentralisierte Systeme zwar im Aufbau einfacher ausfallen, jedoch aufgrund der Maximallastauslegung weniger effizient sind.\cite{Abaker.2017}
+ Die zweite Variante sind zentralisierte Verteilungssysteme [Abb. \ref{c_eps}]. Diese werden häufiger verwendet, da sie den Vorteil eines geringen Volumens bieten und weniger Spannungsregler benötigen. Das wird erreicht, indem alle Subsysteme mit gleicher Spannung am selben Regler angeschlossen werden. Nachteilig ist, dass dieser Regler auf die maximale Gesamtlast aller Subsysteme ausgelegt werden muss. Das führt dazu, dass zentralisierte Systeme zwar im Aufbau einfacher ausfallen, jedoch aufgrund der Maximallastauslegung weniger effizient sind.\cite{Abaker.2017}
 \begin{figure}[!h]
 	\centering
 		\includegraphics[width=0.50\textwidth]{./graphics/Centralized_EPS.PNG}
-	\caption{Zentralisiertes EPS \cite{Abaker.2017}}
+	\caption{Zentralisiertes EPS \cite{Burt.2011}}
+	\label{c_eps}
 \end{figure}
 
-\newpage
 
 
 		%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -92,12 +89,12 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 		
 		%---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Thermisches Management}%------------------------------------------------------------------------------------------------------------------------------------------------------
-		
+		\hfill\emph{(Valentina Dietrich)}\\
 		Wärme wird im Vakuum durch Strahlungen und Wärmeleitungen übertragen. Das Wärmemanagement regelt den Bereich der zulässigen Temperaturen für die Sicherstellung einer optimalen Funktionalität und das Überleben des Satelliten. Durch die Massen-, Volumen- und Leistungsbeschränkungen bei miniaturisierten Satelliten, wie dem CubeSat, liegt der Fokus auf den passiven Wärmereglungstechnologien, da die Fortschritte bei der Entwicklung von miniaturisierten aktiven Wärmeregelungsmethoden begrenzt sind. Passive Technologien sind mit geringen Kosten, Volumen, Gewicht und Risiko verbunden und erfordern keine interne Eingangsleistung für die Wärmeregulierung. Thermische Beschichtungen, Wärmerohre, Sonnenschirme, Wärmebänder und Multi-Layer Insulation (MLI) sind passive Methoden für die Regulierung des thermischen Gleichgewichtes. Die aktiven Methoden, wie elektrische Widerstandsheizungen, Kühler oder kryogene Materialien, sind mit höherer Präzision und interner Eigenleistung verbunden. Die Verwendung von aktiven Systemen ist bei temperaturempfindlichen Geräten und nicht ausreichender passiver Systeme für eine Aufrechterhaltung der Betriebstemperatur vielversprechender. \cite[S. 109 - 120]{NASA.Sota.2018} 
 
 %------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Struktur}%-------------------------------------------------------------------------------------------------------------------------------------------
-		
+		\hfill\emph{(Valentina Dietrich)}\\
 		Die Strukturen werden in Primär- und Sekundärstrukturen unterteilt. Die Primärstruktur ist thermischen und dynamischen Einflüssen ausgesetzt, denen sie standhalten muss. Des Weiteren dient sie der Lastübertragung während des Starts und des Einsatzes. Elektromagnetische Strahlung, Druck und innere Wärmeleitung sind weitere Faktoren, die einen großen Einfluss auf das Gehäuse haben und deshalb mit einbezogen werden müssen. Die Begrenzungen bei der Oberfläche und bei dem Volumen sorgen für Einschränkungen. Infolgedessen sollte sie effizient ausgelegt werden. Komponenten, die nur sich selbst tragen müssen, wie Sonnenkollektoren, zählen zu den Sekundärstrukturen auf die nicht näher eingegangen wird, da sie bei einem Ausfall die Integrität des Raumfahrzeugs nicht beeinträchtigt. Die Primärstrukturen werden als COTS-Strukturen und kundenspezifisch bearbeitet oder gedruckte Komponenten auf dem Markt angeboten. Generell besteht das Gehäuse aus metallischen und nichtmetallischen Materialien und wird von der Betriebsumgebung des Satelliten bestimmt. \cite[S. 96 - 108]{NASA.Sota.2018} 
 
 %------------------------------------------------------------------------------------------------------------------------------		
@@ -120,7 +117,7 @@ Das Telemetriesystem besteht aus einem oder mehreren Transmittern, welche die vo
 			
 	
 Es gibt einige Herausforderungen, welch unabhängig von der Removal Methode sind und für jede Mission individuell gelöst werden muss. Dazu gehört die Klassifizierung der zu entfernenden Objekte, sowie dessen genaue Positionsanalyse. Sollen während einer Mission mehrere Objekte entfernt werden, so muss zu beginn definiert werden in welcher Reihenfolge dies geschehen soll. 
-\newpage
+
 %---------------------------------------------------------------------------------------------------------------------
 	\subsubsection{Collective Method}
 %----------------------------------------------------------------------------------------------------------------------	
@@ -200,7 +197,7 @@ Wie in der Abbildung \ref{fig:Segel} zu erkenne, wird ein Sonnensegel verwendet 
 				\caption{Satellit mit Roboterarm \cite{Nishida.2011}}
 				\label{fig:Satellit}
 			\end{figure}
-			\newpage
+			
 	
 %-------------------------------------------------------------------------------------------------------------------------------------------
 \subsubsection{Unconventional	Method}
@@ -214,7 +211,7 @@ Wie in der Abbildung \ref{fig:Segel} zu erkenne, wird ein Sonnensegel verwendet 
 				\caption{Aufbau deorbiting mit dem Magnetfeld \cite{Chopra.05282018}}
 				\label{fig:Magnet}
 			\end{figure}
-			\newpage
+			
 
 					
 %------------------------------------------------------------------------------------------------------------------------------		
@@ -230,7 +227,7 @@ Wie in der Abbildung \ref{fig:Segel} zu erkenne, wird ein Sonnensegel verwendet 
 			
 	
 	Rendezvous ist ein kritischer Missionsabschnitt bei einer ADR Mission. Wie in der Abbildung \ref{fig:Rendezvous} zu erkennen, ist dieser Missonsabschnitt wiederum in verschiedene Phasen unterteilt. In der ersten Phase, dem Free Flight, wird wenn notwendig ein Orbittransfer durchgeführt. Dabei nähert sich der Chaser dem Zielorbit und synchronisiert sich mit dessen Inklination. Die Orbithöhe des Chasers ist unterhalb der Zielhöhe, um eine Annäherung zu gewährleisten, da Satelliten mit einer niedrigeren Orbithöhe eine höhere Geschwindigkeit haben. Bei der Orbit Phase wird die Höhendifferenz reduziert, bis der Chaser ca. 5 km hinter und 1 km unterhalb des Ziels ist. Ab diesem Punkt beginnt die Far Range Rendezvous Phase. In dieser Phase wird die relative Navigation verwendet, welche auf Sensoren und Aktuatoren zurückgreift die in Kapitel 2.2 beschrieben worden sind. Besonders LIDAR und Kamera-Systeme werden in dieser Phase benötigt, da die absolute Navigationssysteme nicht die nötige Genauigkeit liefert und eine Kollision dem Ziel der Mission widerspricht und zu einer Verschlimmerung der Problematik führt. Diese Phase endet bei ca. 100 m Entfernung zwischen Ziel und Chaser. Nun beginnt das Close Range Rendezvous, welches die Closing Phase und den Final Approach beinhaltet. Vor der Closing Phase wird das Objekt genau betrachtet, es werden alle relevanten Informationen Über das Ziel gesammelt und verglichen, dies beinhaltet auch die genaue Taumelbewegug und deren Beschreibung. Dabei wird darauf geachtet ob eine Rotationsachse vorhanden ist und wie die Beschaffenheit der Oberfläche ist. Sollte eine Taumelbewegung vorhanden sein, wird der Chaser mit dieser Synchronisiert. Nach der Synchronisierung findet das Closing und der Final Approach statt, in dem die Distanz weiter reduziert wird und schlussendlich das Docking durchgeführt wird \cite{Castronuovo.2011}. 
- \newpage
+ 
 %------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Docking Strategien}
 %------------------------------------------------------------------------------------------------------------------------------		
@@ -248,7 +245,7 @@ Wie in der Abbildung \ref{fig:Segel} zu erkenne, wird ein Sonnensegel verwendet 
 
 	Das adhäsive Docking beruht auf dem System einer Klebverbindung. Dafür unerlässlich ist der Kontakt zwischen zwei Flächen sowie ein Phänomen welches diese Verbindung aufrecht erhält. Eines dieser Phänomene wird im Kapitel Bionische Materialien beschrieben. Durch diese Verbindung wird die Regelung eines Solchen System nicht viel komplexer als zuvor, da nur eine Verschiebung des Messeschwerpunkt zu betrachten ist. Durch die Betrachtung als einheitliches System vereinfacht sich die Simulation dessen Bewegungen, sowie die Planung von Manövern.     
 						
-		\newpage
+		
 		
 	%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		\subsection{Bionische Materialien}%-------------------------------------------------------------------------------------------------------------------------------------------
@@ -294,7 +291,7 @@ Es existiert bereits ein Andockmechanismus (\abb{fig:Gecko3}) dessen Gecko-Mikro
 
 	Durch einen Versteifungsmodus und die aktive Lastverteilung wird eine möglichst gute Verteilung der herrschenden Kräfte erzielt \cite{ChristopherTrentlage.2018}.
 Für die folgende Abschätzung der maximal wirkenden Kräfte auf die Mirkohaftstruktur wurde der Aufbau des Prototypen (\abb{fig:Gecko_Rechnung1}) vorausgesetzt. Bei den Berechnungen wird von den ungünstigsten Lastfällen ausgegangen.
-In den Abbildungen \ref{fig:Gecko_Rechnung1}, \ref{fig:Gecko_Rechnung2} und \ref{fig:Gecko_Rechnung3} werden die der Berechnung zugrundeliegenden Annahmen gezeigt. Die belasteten Verbindungen der Mikrohaftstrukturen zum Zielobjekt werden als feste Lager A und B angenommen. Es wird davon ausgegangen, dass die Vorspannkraft beim Andocken ideal aufgebracht wurde. Außerdem bleibt die Kombination aus kritischen Normal- und Scherkräften unberücksichtigt. Der zusätzliche Anpressdruck des Haupttriebwerks wurde ebenfalls nicht berücksichtigt.\newpage
+In den Abbildungen \ref{fig:Gecko_Rechnung1}, \ref{fig:Gecko_Rechnung2} und \ref{fig:Gecko_Rechnung3} werden die der Berechnung zugrundeliegenden Annahmen gezeigt. Die belasteten Verbindungen der Mikrohaftstrukturen zum Zielobjekt werden als feste Lager A und B angenommen. Es wird davon ausgegangen, dass die Vorspannkraft beim Andocken ideal aufgebracht wurde. Außerdem bleibt die Kombination aus kritischen Normal- und Scherkräften unberücksichtigt. Der zusätzliche Anpressdruck des Haupttriebwerks wurde ebenfalls nicht berücksichtigt.
 
 \begin{figure}[!h]
 	\centering
