@@ -1,22 +1,22 @@
 \chapter{CubeSat Design}
-\hfill\emph{(Florian Czorny, Valentina Dietrich)}\\
+\hfill\emph{(Florian Czorny, Valentina Dietrich)}
 
 	Für die Realisierung einer ADR-Mission liegt der Fokus zunächst bei dem Entwurf eines geeigneten CubeSats. Infolgedessen wird in diesem Kapitel ein bestehendes Konzept \cite{Lettau.} anhand der Software QuSAD (SQL-Based CubeSat Analyse and Design Tool QuSAD) analysiert und gegebenenfalls optimiert. Zuvor wird ein Einblick in das Programm gegeben und durch eine anschließende Beschreibung des angenommenen Entwurfs erfolgt abschließend die Budgetplanung. Letztlich wird mittels der Budgets eine Auswertung des Designs bezüglich seiner Effizienz durchgeführt. Bei Bedarf werden Verbesserungen in Erwägung gezogen. Demnach kann ein zielführendes Missionsdesign bestimmt und bewertet werden.
 		
 		\section{QuSAD}
 			
 			\subsection{Einführung in die Software}
-	\hfill\emph{(Valentina Dietrich)}\\
+	\hfill\emph{(Valentina Dietrich)}
 	
 		Die Software QuSAD (SQL-Based CubeSat Analyse and Design Tool) besteht aus einem SQL-Segment und einem MatLab Segment. Die SQL-Datenbank ist die Haupteingabequelle für das Entwerfen eines CubeSats und kategorisiert die CubeSat-Komponenten. Durch die wissenschaftliche Version können die COTS-Komponenten mit vordefinierten Parametern eingepflegt werden. Zusätzlich können auch individuelle Komponenten mit veränderbaren Parametern mittels der praxis Version hinzugefügt werden. Für das Abrufen der Komponententabelle aus der SQL-Datenbank wird MatLab verwendet. Dies wird durch mehrere grafische Benutzeroberflächen (GUI) realisiert und ermöglicht dem Benutzer eigene Satellitenzusammenstellungen. Neben dem CubeSat Design können Budget-Analysen von Masse, Volumen, Energie, Preis und Verlinkung durch zur Verfügung stehenden Werkzeuge erstellt werden, um folglich eine Optimierung des Entwurfs zu ermöglichen. Für ein vertieftes Verständnis der Software wird auf das QuSAD-Handbuch \cite{Farahvashi.2016} verwiesen. Das Anwendungsspektrum von QuSAD umfasst das erstellen eines Satelliten, sowie eine Bereitstellung einer Datenbank von Subsystemen für wissenschaftliche und auch lehrende Aspekte. Lehrende Aspekte umfassen den Einsatz der praktischen Version an Universitäten zur Unterstützung und Visualisierung \cite{Farahvashi.2016b}. 
 			
 			\subsection{Datenbankerweiterung}
-			\hfill\emph{(Florian Czorny, Valentina Dietrich)}\\
+			\hfill\emph{(Florian Czorny, Valentina Dietrich)}
 			
 			Zur Erweiterung der Datenbank wird anfänglich die Auswahl der CubeSat-Komponenten einer ausgewählten Systemzusammenstellung verwendet (siehe \tab{qusadwerte}). Zu den besagten Komponenten werden alle bekannten Werte der Datenbank hinzugefügt. Zudem müssen Recherchen bezüglich weiterer Herstellerangaben durchgeführt werden. Im Fokus liegen dabei alle Parameter die für die Budgetplanungen benötigt werden. Nach der Budgetanalyse des zusammengestellten Satelliten wird gegebenenfalls eine Optimierung einiger Komponenten vorgenommen und infolgedessen wird die Datenbank um diese Systeme zusätzlich erweitert. Zur Unterstützung der Ergänzungen wird eine  Datenbank, die von Mitarbeitern des Institutes Raumfahrtsysteme der Technischen Universität Braunschweig erstellt worden ist, verwendet. Überwiegend sind die aufgelisteten Systeme mit einem TRL Wert hinterlegt. Da in vielen Fällen nur erprobte Systeme zum Einsatz kommen, werden Komponenten mit einem TRL Wert von \num{9} mit in die Datenbank hinzugefügt. Zusätzlich sind Internet-Quellenverweise (URL - Uniform Resource Locator) zu den meisten Einträgen vorhanden, über die man häufig direkt oder indirekt auf Datenblätter weitergeleitet wird und an weitere Informationen bezüglich des Subsystems gelangt.
 			
 			\subsection{Problematik}
-			\hfill\emph{(Florian Czorny, Valentina Dietrich)}\\
+			\hfill\emph{(Florian Czorny, Valentina Dietrich)}
 			
 			Die Datenbankerweiterung und Budgeterstellung führt zu einigen Schwierigkeiten. Bei dem Laden der Datenbank über den SQL Server sind Fehlermeldungen bei MatLab aufgetreten, die nicht direkt behoben werden können. Die Ursache könnte an der Inkompatibilität zwischen den neuen MatLab Versionen und MySQL liegen, da QuSAD mit der MatLab Version R2014 erstellt wurde. Im QuSAD Handbuch wird auf dieses Problem hingewiesen. Infolgedessen wird die Datenbank über MySQL importiert und Lokal darauf zugegriffen. Die Datenbank wird in Mat-File Dateien gespeichert und kann über MatLab aufgerufen werden. Anschließend können die Komponenten in die gespeicherte Datenbank eingepflegt und als Workspace gesichert werden. Durch das Exportieren der neuen Datenbank über MySQL wird der Zugriff künftig bereitgestellt. Besonders problematisch gestaltete sich das einpflegen der Komponenten in die Datenbank. Im Handbuch, sowie den weiteren Dokumenten zur Datenbank wird der Vorgang nicht hinreichend genau beschrieben. Des Weiteren gibt es viele, unbekannte Angaben über die hinzugefügten Komponenten. Diese müssen einzeln recherchiert und in seltenen Fällen abgeschätzt werden. Außerdem sind einige URLs nicht mehr Gültig. Bei der Erstellung des Leistungsbudgets muss die im EPS integrierte Batterie zusätzlich angegeben werden, um ein Leistungsbudget erstellen zu können. Die Kapazität der Batterie ist ein entscheidender Parameter für das Budget. 
 		
@@ -24,7 +24,7 @@
 				
 				\subsection{Angenommenes Design}
 				\label{cap:AngenommenesDesign}
-				\hfill\emph{(Valentina Dietrich)}\\
+				\hfill\emph{(Valentina Dietrich)}
 				
 				Diese CubeSat Konfiguration orientiert sich an einem entwickelten Design \cite{Lettau.}. Hier wird ein ausführlicher Vergleich und anschließend eine Auswertung der in betracht gezogenen Subsysteme durchgeführt. Durch den Schwerpunkt auf das GNC-Design erfolgt eine vertiefte Ausarbeitung der Subsysteme Antriebe, Leistung und relative Navigation. Die weiteren Systeme werden stark vereinfacht und nur in Bezug auf ihren Beitrag zum Gesamtbudget weitgehend abgedeckt \cite{Lettau.}. 
 				
@@ -97,7 +97,8 @@ Tracker und Sensor               & TY-Space PST3                                
 	
 						%Hier die Varainte von Max nehmen und kurz beschreiben
 				\subsection{Budgetplanung}
-				\hfill\emph{(Florian Czorny)}\\
+				\hfill\emph{(Florian Czorny)}
+				
 Im folgenden Kapitel wird auf die mittels QuSAD erstellten Budgets für Masse, Volumen und Leistung eingegangen. In QuSAD werden Komponenten in Kategorien eingeteilt. Die Budgets werden mit diesen Kategorien erstellt. Eine Tabelle mit allen Kategorien und den dazugehörigen Komponenten ist in der \tab{tab:cubesatdesign} zu finden. Die Batterie ist im EPS Board integriert und taucht deshalb im Massen- und Volumenbudget nicht auf. Da QuSAD in der Kategorie EPS keinen Eintrag über speicherbare Energie zulässt, wurde die Batterie nur für das Leistungsbudget hinzugefügt. Des weiteren ist zu beachten, dass die Komponenten in den unterschiedlichen Budgets keine einheitliche Farbgebung aufweisen. Einbauvorrichtungen wurden in QuSAD nicht berücksichtigt. Die Abweichungen in den Budgets durch das  zusätzliche Gewicht und Volumen sind davon abhängig, inwiefern die Herstellerangaben den Einbau berücksichtigen.
 
 						\subsubsection{Massenbudget}
@@ -128,12 +129,9 @@ Das Leistungsbudget \abb{fig:power} gibt einen Überblick über den Verbrauch de
 											\caption{Energiebudget für das angenommene Design}
 											\label{fig:power}
 										\end{figure}
-<<<<<<< HEAD
-Um das Leistungsbudget zu erstellen, muss die Höhe der Umlaufbahn und der Brennwinkel $\beta$ angegeben werden (\abb{fig:power}). Diese wurden mit \SI{1150}{\kilo\metre} und 0\textdegree{} angenommen (\tab{tab:cubesatdesign}).  Das Programm ermittelt für diese Parameter direkt die Zeit einer Orbitperiode und die dazugehörige Licht- und Schattenzeit. Mit den Angenommenen Parametern ergibt sich eine Umlaufdauer von \num{108,34} Minuten bei einer Sonnenzeit von \num{73,48} Minuten. Die im Designe enthaltenen Solarpanele müssen einer Position am CubeSat zugeordnet werden.
-=======
 Um das Leistungsbudget zu erstellen, muss die Höhe der Umlaufbahn und der Brennwinkel $\beta$ angegeben werden (\abb{fig:power}). Diese wurden mit \SI{1150}{\kilo\metre} und \num{0}° angenommen (\tab{tab:cubesatdesign}).  Das Programm ermittelt für diese Parameter direkt die Zeit einer Orbitperiode und die dazugehörige Licht- und Schattenzeit. Mit den Angenommenen Parametern ergibt sich eine Umlaufdauer von \num{108,34} Minuten bei einer Sonnenzeit von \num{73,48} Minuten. Die im Designe enthaltenen Solarpanele müssen einer Position am CubeSat zugeordnet werden.
->>>>>>> master
-Nachdem die maximale Missionsdauer angegeben wurde kann die Energieerzeugung während einer Erdumrundung berechnet werden (\abb{fig:power3} und \abb{fig:power4}). Dabei wird mit einer  Verschlechterung der Energieerzeugung von \num{3}\% pro Missionsjahr gerechnet. Diese spiegelt sich dann in der angepassten Leistung der Solarpanele wieder. Das Programm bezieht außerdem die verschiedenen Beläuchtungsfälle der Solarzellen bei verschiedenen Sonnenwinkeln $\alpha$ ein. Um eine Gesamtenergie berechnen zu können,  werden Wahrscheinlichkeiten für die verschiedenen Beläuchtungsfälle angenommen. Die endgültige Leistung der Konfiguration beläuft sich auf \SI{143,144}{\watt}. Bei einer Sonnenzeit von \num{73,48} Minuten ergeben sich \SI{175,27}{\watt\hour} pro Erdumrundung. 
+
+Nachdem die maximale Missionsdauer angegeben wurde kann die Energieerzeugung während einer Erdumrundung berechnet werden (\abb{fig:power3} und \abb{fig:power4}). Dabei wird mit einer  Verschlechterung der Energieerzeugung von \num{3}\% pro Missionsjahr gerechnet. Diese spiegelt sich dann in der angepassten Leistung der Solarpanele wieder. Das Programm bezieht außerdem die verschiedenen Beläuchtungsfälle der Solarzellen bei verschiedenen Sonnenwinkeln $\alpha$ ein. Um eine Gesamtenergie berechnen zu können,  werden Wahrscheinlichkeiten für die verschiedenen Beleuchtungsfälle angenommen. Die endgültige Leistung der Konfiguration beläuft sich auf \SI{143,144}{\watt}. Bei einer Sonnenzeit von \num{73,48} Minuten ergeben sich \SI{175,27}{\watt\hour} pro Erdumrundung. 
 			
 			\begin{figure}[H]
 				\centering
@@ -171,5 +169,6 @@ Zur Berechnung des Budgets wird eine Batterieeffizienz von \num{90}\% angenommen
 			
 			
 			\section{Auswertung und Optimierung des Designs}
-			\hfill\emph{(Florian Czorny, Valentina Dietrich)}\\
+			\hfill\emph{(Florian Czorny, Valentina Dietrich)}
+			
 Die Auswertung der Ergebnisse zeigt, dass bei der Masse eine Steigerung von \SI{21,5}{\kilogram} (\num{43}\%) und bei dem Volumen hingegen lediglich eine Steigerung von \SI{815}{\centi\metre\cubed} (\num{3}\%) gemäß QuSAD zulässig ist. Hier lässt sich feststellen, dass das Programm von dem Gesamtvolumen \SI{27000}{\centi\metre\cubed} ausgeht, wobei das maximal verfügbare Volumen bei einem \SI{34 x 35 x 36}{\centi\metre} großen Satelliten mit \SI{42840}{\centi\metre\cubed} festgelegt ist \cite{Lettau.}. Dies weist eine Differenz von \num{38,88}\% auf. Demzufolge muss bei der Konfiguration ein verfügbares Volumen von \num{41,88}\% vorhanden sein. Rückwirkend lässt sich feststellen, dass beim einpflegen der Daten ein zulässiges Gesamtvolumen manuell eingetragen werden muss, andernfalls orientiert sich das Programm an der Dimension, die in diesem Fall mit \SI{27}{\unit} ein Volumen von \SI{27000}{\centi\metre\cubed} aufweist. An dieser Stelle muss beachtet werden, dass bei vielen Komponenten keine genauen Angaben bezüglich der Masse und des Volumens gegeben waren und dementsprechend durch Vergleich mit näherungsweise ähnlichen Systemen oder Aufwärtsskalierung die Werte bestimmt wurden. Zusätzlich kommt bei dem Massen Budget hinzu, dass die Software keine Einbauvorrichtungen berrücksichtigt. Demnach würde sich die verfügbare Spanne für Masse als auch Volumen senken.  Bei dem Leistungsbudget muss beachtet werden, dass der erhöhte Verbrauch während des RDVDO nicht berücksichtigt wird. An dieser Stellen empfiehlt sich eine weitere Untersuchung. Den Ergebnissen zufolge lässt sich die betrachtete Mission mit dem aktuellen Stand des Designs durchführen und demzufolge ist bislang keine Optimierung erforderlich. Da in dem aktuellen Entwurf viele Unsicherheiten vorhanden sind und einige Aspekte durch das Leistungsbudget nicht beachtet worden sind, wie die Tankmasse, könnte eine Optimierung nach der Missionsanalyse notwendig sein. 
