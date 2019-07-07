@@ -6,7 +6,8 @@
 %-------------------------------------------------------------Missionsbeschreibung
 
 \section{Missionsbeschreibung}
-\hfill\emph{(Frederik Schäfer)}\\	
+\hfill\emph{(Frederik Schäfer)}
+	
 	Ziel der Mission ist es defekte, nicht kooperative Satelliten von Megakonstellationen (z.B. Starlink) abzubremsen, sodass sie in der Erdatmosphäre verglühen und das Kollisionsrisiko minimiert wird. Das Höhen- und Gewichtsintervall wurden auf \num{400}-\SI{1400}{\kilo\metre}, bzw. \num{50}-\SI{5000}{\kilogram} festgelegt, da alle Satelliten bisher geplanter Megakonstellationen innerhalb dieser Intervalle befinden.
 Es wird angenommen, dass sich der CubeSat und das Ziel zu Beginn in derselben Umlaufbahn befinden und nur wenige Kilometer voneinander entfernt sind. Das Haupttriebwerk wird für RDV und Docking nicht verwendet, sodass für den Wiedereintrittsvorgang die gesamte Kraftstoffmenge zur Verfügung steht. Sobald beide Satelliten miteinander Verbunden sind richten sie sich so aus, dass das Haupttriebwerk des CubeSats entgegen der Bewegungsrichtung wirkt. Als nächstes beginnt der eigentliche Deorbit Vorgang. Hier fängt auch die jeweilige Simulation an. Da die Solarzellen den Antrieb nicht dauerhaft versorgen können, wird ein Brennwinkel von \num{58}° um die wahre Anomalie von \num{180}° festgelegt.
 Jeder Brennvorgang verringert die Geschwindigkeit und senkt somit das Perigäum ab. Die Mission ist erfolgreich, wenn das Perigäum eine Höhe von \SI{180}{\kilo\metre} erreicht hat. Die Simulation wird nach zehn Jahren abgebrochen, wenn die Mission bis dahin nicht erfolgreich war. 
@@ -17,7 +18,8 @@ Mit der \textbf{zweiten Mission} wird betrachtet, wie sich die Deorbitzeit für 
 %-------------------------------------------------------------GMAT
 \section{GMAT}
 		\subsection{Beschreibung der Software}
-		\hfill\emph{(Marc Strempel)}\\		
+		\hfill\emph{(Marc Strempel)}
+				
 		Der GMAT Mission Planner ist ein Open Source Programm, welches von der NASA entwickelt wird \cite{Hughes.}. Das Programm ist dazu da um Trajektorien von Satelliten zu berechnen und optimieren. Der Missionsraum umfasst das gesamte Sonnensystem und erlaubt es die Gravitationseinflüsse von allen größeren Himmelskörpern in die Berechnungen mit einfließen zu lassen. 
 Die Eingabe der gewünschten Parameter erfolgt über ein GUI oder ein benutzerdefiniertes Skript. Die Skriptsprache von GMAT lehnt an der von MathWorks MATLAB\textregistered \space an.
 Das GUI beinhalted einen 3D Plot und einen 2D Plot. Der 3D Plot zeigt die Position und Trajektorie des Satellitens im dreidimensionalen Raum während der 2D Plot eine Projektion der Trajektorie auf die Oberfläche eines gewählten Himmelskörpers zeigt.
@@ -39,7 +41,8 @@ Im Output Reiter finden sich nach dem Missionsdurchlauf die Ausgaben die im Lauf
 %-------------------------------------------------------------Kreisorbitskript
 
 \subsection{Missionsskript 1}
-\hfill\emph{(Marc Strempel)}\\
+\hfill\emph{(Marc Strempel)}
+
 Im Folgenden ist das Skript für die erste Simulation beschrieben. Die Wahl viel auf eine while-Schleife. Der Grund dafür ist, dass for-Schleifen in GMAT nicht abbrechen, wenn der Laufwert innerhalb der Schleife verändert wird.
 Das ist für dieses Skript jedoch benötigt, da die beiden letzten if-Abfragen dafür sorgen, dass die benötigte Simulationszeit minimiert wird.
 Die erste if-Abfrage ist notwendig, da bei einigen Simulationen die Treibstoffmasse negative Werte angenommen hat. Der Wert \num{6558} ergibt sich aus dem Erdradius \SI{6378}{\km} und der Höhe \SI{180}{\km}. Die zweite und dritte if-Abfrage könnten in einer if - else if -Abfrage kombiniert werden, aber diese Logik ist in GMAT nicht enthalten.
@@ -154,7 +157,8 @@ Hierbei ist zu beachten, dass die Höhe des Perigäums beim Abbruch ein paar Kil
 %-------------------------------------------------------------Exzen.Skript
 
 \subsection{Missionsskript 2}
-\hfill\emph{(Marc Strempel)}\\
+\hfill\emph{(Marc Strempel)}
+
 	Für die zweite Untersuchung wurde das Skript so modifiziert, dass es die Exzentrizität von \num{0.025} bis \num{0.3} durchläuft.
 Zu Beginn das Perigäum auf die Starthöhe gesetzt und das Apogäum mit der Exzentrizität über folgende Formel berechntet:\\
 \begin{equation}
@@ -237,7 +241,8 @@ In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Ma
 
 
 \section{Ergebnisse}
-\hfill\emph{(Frederik Schäfer, Marc Strempel)}\\
+\hfill\emph{(Frederik Schäfer, Marc Strempel)}
+
 Die Endberichte aller GMAT Rechnungen wurden als Tabellen ausgegeben.  Anschließend erfolgte die Auswertung in MATLAB\textregistered.
 Um die Dauer der Missionen abbilden zu können wurden die Laufzeiten in Matrizen eingefügt. 
 Für die erste Mission gilt: Reihen und Spalten der Matrix bezeichnen die jeweiligen Startwerte der Masse - Höhe Kombination. In der zweiten Mission sind es die Startwerte der Exzentrizität und Höhe des Perigäums bei konstanter Masse
