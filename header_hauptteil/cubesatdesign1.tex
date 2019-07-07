@@ -103,29 +103,58 @@ Im folgenden Kapitel wird auf die mittels QuSAD erstellten Budgets für Masse, V
 
 						\subsubsection{Massenbudget}
 Das Massenbudget \abb{fig:masse} zeigt die aktuelle Massenverteilung des Designs an. Die maximal verfügbare Masse ist über eine Angabe in der Strukturkomponente begrenzt. Diese beinhaltet einen Wert für die maximale Gesamtmasse. Die maximale Gesamtmasse des CubeSats wurde mit \SI{50}{\kilogram} angenommen. Das aktuelle Design beansprucht circa \num{57}\% der möglichen Gesamtmasse (\SI{28,5}{\kilogram}). Den größten Teil macht dabei die Antriebsanlage aus. Es gilt zu beachten, dass dieses Budget die Startmasse des CubeSats widerspiegelt. Nach Beginn der Mission ändert sich die Massenverteilung aufgrund des Treibstoffverbrauchs.
-										\begin{figure}[H]
+										%\begin{figure}[H]
+											%\centering
+											%\scalebox{0.5}{
+												%\input{./tikz/masse.tex}
+												%}
+											%\caption{Massenbudget für das angenommene Design}
+											%\label{fig:masse}
+										%\end{figure}
+										
+										%\begin{figure}[H]
+											%\centering
+												%\includegraphics[width=1.50\textwidth]{./Budget/masse.eps}
+											%\caption{Massenbudget für das angenommene Design}
+											%\label{fig:masse}
+										%\end{figure}
+								
+											\begin{figure}[H]
 											\centering
-												\includegraphics[width=0.90\textwidth]{masse}
+												\includegraphics[width=0.90\textwidth]{./Budget/masse_neu}
 											\caption{Massenbudget für das angenommene Design}
 											\label{fig:masse}
 										\end{figure}
-								
+										
 						\subsubsection{Volumenbudget}
 Das Volumenbudget \abb{fig:volume} gibt einen strukturierten Überblick über die aktuelle Volumenverteilung der ausgewählten Konfiguration, beziehungsweise des Profils in QuSAD. Das maximale verfügbare Volumen bemisst sich an der im Profil befindlichen Strukturkomponente, die über eine Volumenangabe verfügt. Es wurde von einem \SI{27}{\unit} CubeSat mit den Kantenlängen\\ \SI{30 x 30 x 30}{\centi\metre} ausgegangen. Das verfügbare Gesamtvolumen ist bei dieser Annahme im Gegensatz zur Masse jedoch zu circa \num{97}\% ausgelastet. Es fällt auf, dass nahezu alle Kategorien einen größeren Volumenanteil als Massenanteil aufweisen. Das größte Volumen nimmt, ähnlich wie beim Massenbudget die Antriebsanlage ein. Sie macht jedoch der Treibstofftanks über die Hälfte des Gesamtvolumens aus. Es sollte beachtet werden, dass aufgrund des geringen Freiraums kaum Sicherheiten möglich sind.
-		
+										
+										%\begin{figure}[H]
+											%\centering
+												%\includegraphics[width=1.50\textwidth]{./Budget/volumen.eps}
+											%\caption{Volumenbudget für das angenommene Design}
+											%\label{fig:volume}
+										%\end{figure}
+										%
 										\begin{figure}[H]
 											\centering
-												\includegraphics[width=0.90\textwidth]{volume}
+												\includegraphics[width=0.90\textwidth]{./Budget/volumen_neu}
 											\caption{Volumenbudget für das angenommene Design}
 											\label{fig:volume}
 										\end{figure}
 								
 						\subsubsection{Leistungsbudget}
 Das Leistungsbudget \abb{fig:power} gibt einen Überblick über den Verbrauch der verschiedenen Komponenten. Es gibt die Entladung der Batterie auf der Schattenseite der Erde wieder (Req. Battery Power) und wie in den anderen Budgets die Spanne zur Systemuntauglichkeit (Margin). Der Antrieb nimmt mit \num{32}\% insgesamt den größten Anteil des Energieverbrauchs ein.
-				
+										%\begin{figure}[H]
+											%\centering
+												%\includegraphics[width=1.50\textwidth]{./Budget/power}
+											%\caption{Energiebudget für das angenommene Design}
+											%\label{fig:power}
+										%\end{figure}
+										
 										\begin{figure}[H]
 											\centering
-												\includegraphics[width=0.90\textwidth]{power}
+												\includegraphics[width=0.90\textwidth]{./Budget/power_neu}
 											\caption{Energiebudget für das angenommene Design}
 											\label{fig:power}
 										\end{figure}
