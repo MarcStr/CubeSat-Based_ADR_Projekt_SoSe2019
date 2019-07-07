@@ -17,7 +17,7 @@ Mit der \textbf{zweiten Mission} wird betrachtet, wie sich die Deorbitzeit für 
 %-------------------------------------------------------------GMAT
 \section{GMAT}
 		\subsection{Beschreibung der Software}
-		
+		\hfill\emph{(Marc Strempel)}\\		
 		Der GMAT Mission Planner ist ein Open Source Programm, welches von der NASA entwickelt wird \cite{Hughes.}. Das Programm ist dazu da um Trajektorien von Satelliten zu berechnen und optimieren. Der Missionsraum umfasst das gesamte Sonnensystem und erlaubt es die Gravitationseinflüsse von allen größeren Himmelskörpern in die Berechnungen mit einfließen zu lassen. 
 Die Eingabe der gewünschten Parameter erfolgt über ein GUI oder ein benutzerdefiniertes Skript. Die Skriptsprache von GMAT lehnt an der von MathWorks MATLAB\textregistered \space an.
 Das GUI beinhalted einen 3D Plot und einen 2D Plot. Der 3D Plot zeigt die Position und Trajektorie des Satellitens im dreidimensionalen Raum während der 2D Plot eine Projektion der Trajektorie auf die Oberfläche eines gewählten Himmelskörpers zeigt.
@@ -39,12 +39,11 @@ Im Output Reiter finden sich nach dem Missionsdurchlauf die Ausgaben die im Lauf
 %-------------------------------------------------------------Kreisorbitskript
 
 \subsection{Missionsskript 1}
-
-
-Im Folgenden ist das Skript für die erste Simulation beschrieben. Die Wahl viel auf eine Whileschleife, da Forschleifen in GMAT nicht abbrechen, wenn der Wert innerhalb der Schleife verändert wird.
+\hfill\emph{(Marc Strempel)}\\
+Im Folgenden ist das Skript für die erste Simulation beschrieben. Die Wahl viel auf eine while-Schleife. Der Grund dafür ist, dass for-Schleifen in GMAT nicht abbrechen, wenn der Laufwert innerhalb der Schleife verändert wird.
 Das ist für dieses Skript jedoch benötigt, da die beiden letzten if-Abfragen dafür sorgen, dass die benötigte Simulationszeit minimiert wird.
-Die erste if-Abfrage ist notwendig, da bei einigen Simulationen die Treibstoffmasse ins negative ging. Der Wert \num{6558} ergibt sich aus dem Erdradius \SI{6378}{\km} und der Höhe \SI{180}{\km}. Die zweite und dritte if-Abfrage könnten in einer if - else if -Abfrage kombiniert werden, aber diese Logik ist in GMAT nicht enthalten.
-Alle if-Abfragen, die den Abbruchwert verändern sind dazu da ermitteln zu können warum die innere Whileschleife beendet worden ist.\\
+Die erste if-Abfrage ist notwendig, da bei einigen Simulationen die Treibstoffmasse negative Werte angenommen hat. Der Wert \num{6558} ergibt sich aus dem Erdradius \SI{6378}{\km} und der Höhe \SI{180}{\km}. Die zweite und dritte if-Abfrage könnten in einer if - else if -Abfrage kombiniert werden, aber diese Logik ist in GMAT nicht enthalten.
+Alle if-Abfragen, die den Abbruchwert verändern sind dazu da ermitteln zu können warum die innere while-Schleife beendet worden ist.\\
 
 
 \newpage
@@ -111,12 +110,12 @@ Alle if-Abfragen, die den Abbruchwert verändern sind dazu da ermitteln zu könn
 
 \begin{center}
 \begin{table}
-\begin{tabular}{c| c{5cm}}
+\begin{tabular}{c|c{5cm}}
 Abbruchwert & Erklärung \\
 \hline \hline
-\num{1} &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn das Perigäum unter \SI{180}{\km} ist. Die Mission ist erfolgreich verlaufen}\\ \hline
-\num{2} &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn die Exzentrizität unter \num{0.0025} ist. Wird die Exzentrizität zu gering, gibt GMAT einen Fehler aus}\\  \hline
-\num{3} &  \multicolumn{2}{p{12cm}}{ Bricht die Whileschleife ab, wenn die vergangene Zeit \num{3700} Tage überschreitet. Die Mission ist nicht erfolgreich verlaufen}\\  
+\num{1} &  \multicolumn{2}{p{12cm}}{ Bricht die while-Schleife ab, wenn das Perigäum unter \SI{180}{\km} ist. Die Mission ist erfolgreich verlaufen}\\ \hline
+\num{2} &  \multicolumn{2}{p{12cm}}{ Bricht die while-Schleife ab, wenn die Exzentrizität unter \num{0.0025} ist. Wird die Exzentrizität zu gering, gibt GMAT einen Fehler aus}\\  \hline
+\num{3} &  \multicolumn{2}{p{12cm}}{ Bricht die while-Schleife ab, wenn die vergangene Zeit \num{3700} Tage überschreitet. Die Mission ist nicht erfolgreich verlaufen}\\  
 \end{tabular}
 \caption{Abbruchkriterien}
 \label{Abbruchkrit}
@@ -158,14 +157,24 @@ Hierbei ist zu beachten, dass die Höhe des Perigäums beim Abbruch ein paar Kil
 %-------------------------------------------------------------Exzen.Skript
 
 \subsection{Missionsskript 2}
+\hfill\emph{(Marc Strempel)}\\
+	Für die zweite Untersuchung wurde das Skript so modifiziert, dass es die Exzentrizität von \num{0.025} bis \num{0.3} durchläuft.
+Zu Beginn das Perigäum auf die Starthöhe gesetzt und das Apogäum mit der Exzentrizität über
+\begin{equation}
+r_A = \frac{1+e}{1-e}\cdot r_P
+\label{apoapsis}
+\end{equation}
+berechnet.\\
 
+	In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Massen, in unregelmäßigen Abständen, berechnet worden sind.\\
 \begin{algorithmic}
 
 \STATE Setze die aktuelle Kreisbahnhöhe auf die erwünschte Starthöhe
 \WHILE{Aktuelle Kreisbahnhöhe <= Gewählte Endhöhe}
 \STATE Setze aktuelle Zielmasse auf die erwünschte Startmasse
-\WHILE{Aktuelle Zielmasse <= Gewählte Endmasse}
+\WHILE{Aktuelle Exzentrizität <= Gewählte höchste Exzentrizität}
 \STATE Setze Abbruch auf 0
+\STATE Berechne Apogäum
 \STATE Setze Start Orbitparameter zurück
 \STATE Setze Tankmasse zurück
 \RETURN Report bei Start neuer Höhen- und Massekombination
@@ -206,10 +215,10 @@ Hierbei ist zu beachten, dass die Höhe des Perigäums beim Abbruch ein paar Kil
 \STATE Setze aktuelle Kreisbahnhöhe auf Wert größer als Endhöhe 
 \ENDIF
 
-\STATE Setze aktuelle Zielmasse auf Wert größer als Endmasse
+\STATE Setze aktuelle Exzentrizität auf Wert größer als höchste Exzentrizität
 \ENDIF
 
-\STATE Inkrementiere Masse um gewählten Wert
+\STATE Inkrementiere Exzentrizität um gewählten Wert
 \ENDWHILE
 
 \STATE Inkrementiere Höhe um gewählten Wert
@@ -217,21 +226,13 @@ Hierbei ist zu beachten, dass die Höhe des Perigäums beim Abbruch ein paar Kil
 
 \end{algorithmic}
 
-	Für die zweite Untersuchung wurde das Skript so modifiziert, dass es die Exzentrizitäten von \num{0.025} bis \num{0.3} durchläuft.
-Der Aufbau der Kernschleife ist gleich geblieben. Die erste Schleife um die Kernschleife ist eine Forschleife,, die die Exzentrizität in \num{0.025}er Schritten Inkrementiert. Innerhalb dieser Schleife wird zu Beginn das Perigäum auf die Starthöhe gesetzt und das Apogäum mit der Exzentrizität über
-\begin{equation}
-r_A = \frac{1+e}{1-e}\cdot r_P
-\label{apoapsis}
-\end{equation}
-berechnet.\\
 
-	In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Massen, in unregelmäßigen Abständen, berechnet worden sind. Die äußerste Forschleife ist für die Höhe zuständig und läuft mit einem Inkrement von \SI{100}{\kilo\metre} von \num{400} bis \SI{1400}{\kilo\metre} durch. 
-\begin{figure}[!h]
-	\centering
-		\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript_ECC.PNG}
-		\caption{Deorbitskript - Variation der Exzentrizität}
-			\label{fig:GMAT_Skript_ECC}
-\end{figure}
+%\begin{figure}[!h]
+%	\centering
+	%	\includegraphics[width=0.35\textwidth]{graphics/GMAT/GMAT_Skript_ECC.PNG}
+	%	\caption{Deorbitskript - Variation der Exzentrizität}
+		%	\label{fig:GMAT_Skript_ECC}
+%\end{figure}
 
 
 
@@ -239,6 +240,7 @@ berechnet.\\
 
 
 \section{Ergebnisse}
+\hfill\emph{(Marc Strempel)}\\
 
 	Im Folgenden werden die Ergebnisse der zwei durchgeführten Simulationsarten präsentiert.
 \begin{figure}[h]
