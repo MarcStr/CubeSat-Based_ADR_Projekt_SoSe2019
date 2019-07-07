@@ -237,38 +237,45 @@ In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Ma
 
 
 \section{Ergebnisse}
-\hfill\emph{(Marc Strempel)}\\
+\hfill\emph{(Frederik Schäfer, Marc Strempel)}\\
+Die Endberichte aller GMAT Rechnungen wurden als Tabellen ausgegeben.  Anschließend erfolgte die Auswertung in MATLAB\textregistered.
+Um die Dauer der Missionen abbilden zu können wurden die Laufzeiten in Matrizen eingefügt. 
+Für die erste Mission gilt: Reihen und Spalten der Matrix bezeichnen die jeweiligen Startwerte der Masse - Höhe Kombination. In der zweiten Mission sind es die Startwerte der Exzentrizität und Höhe des Perigäums bei konstanter Masse
+Die erstellten Matrizen wurden mit der $contourf$ -Funktion von MatLab zu Graphen umgewandelt. Um die Graphen übersichtlicher zu gestalten wurde für die Einfärbung der Zeitmatrix eine logarithmische Skala gewählt.\\
 
-	Im Folgenden werden die Ergebnisse der zwei durchgeführten Simulationsarten präsentiert.
-\begin{figure}[H]
+\subsection{Mission 1}
+
+	In Abb. \ref{fig:GMAT_Mass_over_Height} sind die zugehörigen Wiedereintrittszeiten farblich in Abhängigkeit von Masse und Starthöhe abgetragen. Die Zeitskala ist logarithmisch von \num{0} bis \num{10} Jahre an der Seite aufgeführt.  
+Es ist klar zu erkennen, dass niedrigere die Massen auch aus vergleichsweise großen Höhen entfernt werden können. Die maximale Höhe des Zielsatelliten nimmt jedoch mit zunehmender Masse stark ab, wenn die Zeitvorgabe von maximal \num{10} Jahren eingehalten werden soll.
+Eine detaillierte Ansicht der Massen von \num{50} bis \SI{550}{\kilogram} bietet \abb{fig:GMAT_Mass_over_Height_b}, da diese mit einer viermal höheren Auflösung (\SI{25}{\kilogram} Schritte) simuliert wurde. Hier wird es deutlicher, dass die Zielmasse bei \SI{1400}{\kilo\metre} maximal \SI{500}{\kilogram} betragen darf, um die Grenze von zehn Jahren nicht zu überschreiten.
+In beiden Graphen (Abb. \ref{fig:GMAT_Mass_over_Height}, \ref{fig:GMAT_Mass_over_Height_b}) ist anhand der Farbskala zu erkennen, dass im hellroten Bereich die benötigte Zeit stark ansteigt. 
+
+ Unterhalb dieses Bereichs nimmt die Missionsdauer nur deutlich langsamer zu, wenn Umlaufbahn oder Masse erhöht werden. Das ist darauf zurückzuführen, dass die angenommen \SI{10}{\kg} Treibstoff nach durchschnittlich etwa \num{2.5} Jahren aufgebraucht sind und das Wiedereintreten (danach) lediglich durch atmosphärische Reibung vorangebracht wird. Der dunkelrote Bereich stellt eine Missionsdauer von über \num{10} Jahren dar. Es ist keine Information enthalten wie viel länger, da dies nicht Gegenstand der Untersuchung war.
+\subsubsection{Ergebnis Mission 1}
+	
+
+Die gewählte Konfigurationen kann Satelliten mit einem Gewicht von \SI{375}{\kilogram} (Starlink) und einer Erdumlaufbahn von \SI{1400}{\kilo\metre} innerhalb von \num{2} Jahren aktiv zum Wiedereintritt führen. Für niedrigere Höhen wird dieser Vorgang schon früher abgeschlossen. 
+
+	Bei großen Höhen ist die maximale Masse limitiert, jedoch ist der Aerodynamische Widerstand in geringen Höhen so stark, dass Trümmerteile bis zu zwei Tonnen innerhalb eines Jahres aus ihrer Umlaufbahn entfernt werden können. 
+
+
+\begin{figure}[t]
 \centering
 \includegraphics[width=1.00\textwidth]{./graphics/GMAT/GMAT_Mass_over_Height.png}
 \caption{Simulationsergebnisse 50-5000kg, Kreisorbit}
 \label{fig:GMAT_Mass_over_Height}
 \end{figure}
 
-\subsection{Mission 1}
-
-	In Abb. \ref{fig:GMAT_Mass_over_Height} sind die zugehörigen Wiedereintrittszeiten farblich in Abhängigkeit von Masse und Starthöhe abgetragen. Die Zeitskala ist logarithmisch von \num{0} bis \num{10} Jahre an der Seite aufgeführt.  
-Es ist klar zu erkennen, dass niedrigere die Massen auch aus vergleichsweise großen Höhen entfernt werden können. Die maximale Höhe des Zielsatelliten nimmt jedoch mit zunehmender Masse stark ab, wenn die Zeitvorgabe von maximal \num{10} Jahren eingehalten werden soll.
-
-	Eine detaillierte Ansicht der Massen von \num{50} bis \SI{550}{\kilogram} bietet \abb{fig:GMAT_Mass_over_Height_550}, da diese mit einer viermal höheren Auflösung (\SI{25}{\kilogram} Schritte) simuliert worden ist. Hier wird es deutlicher, dass die Zielmasse bei \SI{1400}{\kilo\metre} maximal \SI{500}{\kilogram} betragen darf, um das Limit von zehn Jahren nicht zu überschreiten.
+	
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=1.00\textwidth]{./graphics/GMAT/GMAT_Mass_over_Height_550.png}
 		\caption{Simulationsergebnisse 50-550kg, Kreisorbit}
-	\label{fig:GMAT_Mass_over_Height_550}
+	\label{fig:GMAT_Mass_over_Height_b}
 \end{figure}
 
 %vllt eher trotz der logarithmischen skala
-	Trotz der logarithmischen Zeitskala ist klar erkennbar wie sehr die benötigte Zeit für die Mission ansteigt, nach dem der Treibstoff nach ca. \num{3} Jahren (hellroter Bereich) aufgebraucht worden ist. Unterhalb dieses Bereichs nimmt die Missionsdauer nur langsam zu, wenn Umlaufbahn oder Masse erhöht werden. Oberhalb ist ein deutlich schnellerer Übergang zum dunkelroten Bereich erkennbar, der eine Missionsdauer von über \num{10} Jahren bedeutet. Dies geschieht im Bereich um drei Jahre. Je höher die Starthöhe, desto länger brennt das Triebwerk pro Umlauf, da die \num{58}° Brennwinkel mehr Zeit benötigen um durchlaufen zu werden. 
-
-\subsubsection{Ergebnis Mission 1}
-
-	Die gewählte Konfigurationen kann Satelliten mit einem Gewicht von \SI{375}{\kilogram} (Starlink) und einer Erdumlaufbahn von \SI{1400}{\kilo\metre} innerhalb von \num{2} Jahren  aktiv zum Wiedereintritt verhelfen. Für niedrigere Höhen wird dieser Vorgang schon früher abgeschlossen. 
-
-	Bei großen Höhen ist die maximale Masse limitiert, jedoch ist der Aerodynamische Widerstand in geringen Höhen so stark, dass Trümmerteile bis zu zwei Tonnen innerhalb eines Jahres aus ihrer Umlaufbahn entfernt werden können. 
 
 \subsection{Mission 2}
 
@@ -283,16 +290,16 @@ Es ist klar zu erkennen, dass niedrigere die Massen auch aus vergleichsweise gro
 \end{figure}
 
 	Auffallend ist die Tatsache, dass eine höhere Exzentrizität eine geringere Missionszeit zur Folge hat. Der Grund hierfür ist unter Anderem, dass bei hohen Exzentrizitäten der CubeSat länger innerhalb der \num{58}° um das Apogäum ist und das Triebwerk somit länger brennt. Im Fall von \SI{550}{\kilogram} zeigt \abb{fig:GMAT_ecc_c}, dass obwohl es über alle Höhenstufen zu einer Verkürzung der Mission kommt, dies für \SI{1400}{\kilo\metre} trotzdem über \num{10} Jahre dauert. 
+\subsubsection{Ergebnis Mission 2}
+Das Ergebnis der zweiten Missionssimulation ist, dass die Exzentrizität keinen negativen Einfluss auf die Wiedereintrittzeit hat. Wurde über die erste Simulation festgestellt, dass die Mission erfolgreich war, so ist davon auszugehen, dass eine Mission mit der selben Starthöhe (Kreisbahnhöhe = Perigäumshöhe) auch erfolgreich ist.
+
 	
-	\begin{figure}[H]
+	\begin{figure}[t]
 	\centering
 		\includegraphics[width=0.80\textwidth]{./graphics/GMAT/ecc_perigee_375kg.png}
 		\caption{Simulationsergebnisse Variation der Exzentrizität, 375 kg}
 	\label{fig:GMAT_ecc_b}
 \end{figure}
-
-\subsubsection{Ergebnis Mission 2}
-Das Ergebnis der zweiten Missionssimulation ist, dass die Exzentrizität keinen negativen Einfluss auf die Wiedereintrittzeit hat. Wurde über die erste Simulation festgestellt, dass die Mission erfolgreich war, so ist davon auszugehen, dass eine Mission mit der selben Starthöhe (Kreisbahnhöhe = Perigäumshöhe) auch erfolgreich ist.
 
 \begin{figure}[H]
 	\centering
