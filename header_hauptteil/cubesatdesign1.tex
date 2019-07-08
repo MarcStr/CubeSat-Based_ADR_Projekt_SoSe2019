@@ -141,7 +141,7 @@ Das Volumenbudget \abb{fig:volume} gibt einen strukturierten Überblick über di
 								
 						\subsubsection{Leistungsbudget}
 						
-Das Leistungsbudget \abb{fig:power} gibt einen Überblick über den Verbrauch der verschiedenen Komponenten. Es gibt die Entladung der Batterie auf der Schattenseite der Erde wieder (Req. Battery Power) und wie in den anderen Budgets die Spanne zur Systemuntauglichkeit (Margin). Der Antrieb nimmt mit \num{32}\% insgesamt den größten Anteil des Energieverbrauchs ein.
+Das Leistungsbudget \abb{fig:power} gibt einen Überblick über den Verbrauch der verschiedenen Komponenten. Es gibt die Entladung der Batterie auf der Schattenseite der Erde wieder (Required Battery Power) und wie in den anderen Budgets die Spanne zur Systemuntauglichkeit (Margin). Der Antrieb nimmt mit \num{32}\% insgesamt den größten Anteil des Energieverbrauchs ein.
 										%\begin{figure}[H]
 											%\centering
 												%\includegraphics[width=1.50\textwidth]{./Budget/power}
@@ -155,9 +155,9 @@ Das Leistungsbudget \abb{fig:power} gibt einen Überblick über den Verbrauch de
 											\caption{Energiebudget für das angenommene Design}
 											\label{fig:power}
 										\end{figure}
-Um das Leistungsbudget zu erstellen, muss die Höhe der Umlaufbahn und der Brennwinkel $\beta$ angegeben werden (\abb{fig:power}). Diese wurden mit \SI{1150}{\kilo\metre} und \num{0}° angenommen (\tab{tab:cubesatdesign}).  Das Programm ermittelt für diese Parameter direkt die Zeit einer Orbitperiode und die dazugehörige Licht- und Schattenzeit. Mit den angenommenen Parametern ergibt sich eine Umlaufdauer von \num{108,34} Minuten bei einer Sonnenzeit von \num{73,48} Minuten. Die im Designe enthaltenen Solarpanele müssen einer Position am CubeSat zugeordnet werden.
+Um das Leistungsbudget zu erstellen, muss die Höhe der Umlaufbahn und der Winkel $\beta$ angegeben werden (\abb{fig:power}). Diese wurden mit \SI{1150}{\kilo\metre} und \num{0}° angenommen (\kap{cap:AngenommenesDesign}).  Das Programm ermittelt für diese Parameter direkt die Zeit einer Orbitperiode und die dazugehörige Licht- und Schattenzeit. Mit den angenommenen Parametern ergibt sich eine Umlaufdauer von \num{108,34} Minuten bei einer Sonnenzeit von \num{73,48} Minuten. Die im Designe enthaltenen Solarpanele müssen einer Position am CubeSat zugeordnet werden.
 
-Nachdem die maximale Missionsdauer angegeben wurde kann die Energieerzeugung während einer Erdumrundung berechnet werden (\abb{fig:power3} und \abb{fig:power4}). Dabei wird mit einer  Verschlechterung der Energieerzeugung von \num{3}\% pro Missionsjahr gerechnet. Diese spiegelt sich dann in der angepassten Leistung der Solarpanele wieder. Das Programm bezieht außerdem die verschiedenen Beleuchtungsfälle der Solarzellen bei verschiedenen Sonnenwinkeln $\alpha$ ein. Um eine Gesamtenergie berechnen zu können,  werden Wahrscheinlichkeiten für die verschiedenen Beleuchtungsfälle angenommen. Die endgültige Leistung der Konfiguration beläuft sich auf \SI{143,144}{\watt}. Bei einer Sonnenzeit von \num{73,48} Minuten ergeben sich \SI{175,27}{\watt\hour} pro Erdumrundung. 
+Nachdem die maximale Missionsdauer angegeben wurde kann die Energieerzeugung während einer Erdumrundung berechnet werden (\abb{fig:power3} und \abb{fig:power4}). Dabei wird mit einer  Verschlechterung der Energieerzeugung von \num{3}\% pro Missionsjahr gerechnet. Diese spiegelt sich dann in der angepassten Leistung der Solarpanele wieder. Das Programm bezieht außerdem die verschiedenen Beleuchtungsfälle der Solarzellen bei verschiedenen Sonnenwinkeln $\alpha$ (\num{0}° und \num{45}°)ein. Um eine Gesamtenergie berechnen zu können,  werden Wahrscheinlichkeiten für die verschiedenen Beleuchtungsfälle angenommen. Die endgültige Leistung der Konfiguration beläuft sich auf \SI{143,144}{\watt}. Bei einer Sonnenzeit von \num{73,48} Minuten ergeben sich \SI{175,27}{\watt\hour} pro Erdumrundung. 
 			
 			\begin{figure}[H]
 				\centering
@@ -172,7 +172,7 @@ Nachdem die maximale Missionsdauer angegeben wurde kann die Energieerzeugung wä
 				\caption{QuSAD: Energieerzeugung pro Orbit 2}
 				\label{fig:power4}
 			\end{figure}
-Da das Haupttriebwerk und das RCS-System nicht dauerhaft betrieben werden, muss für diese Komponenten eine prozentuale Brenndauer angegeben werden. Die mit den getroffenen Annahmen über die Brenndauer veränderten Werte  (\tab{tab:cubesatdesign}) können manuell in QuSAD geändert werden. Für das Haupttriebwerk wurden \num{16,1}\% und das RCS-System \num{0,001}\% Nutzungszeit angenommen. Bei den anderen Komponenten wird von einem dauerhaften Betrieb ausgegangen. Der Energieverbrauch jeder Komponente pro Orbit wird direkt angezeigt. (\abb{fig:power5})
+Da das Haupttriebwerk und das RCS-System nicht dauerhaft betrieben werden, muss für diese Komponenten eine prozentuale Brenndauer angegeben werden. Die mit den getroffenen Annahmen über die Brenndauer veränderten Werte  (\kap{cap:AngenommenesDesign}) können manuell in QuSAD geändert werden. Für das Haupttriebwerk wurden \num{16,1}\% und das RCS-System \num{0,001}\% Nutzungszeit angenommen. Bei den anderen Komponenten wird von einem dauerhaften Betrieb ausgegangen. Der Energieverbrauch jeder Komponente pro Orbit wird direkt angezeigt (\abb{fig:power5}).
 			
 			\begin{figure}[H]
 				\centering
@@ -180,7 +180,7 @@ Da das Haupttriebwerk und das RCS-System nicht dauerhaft betrieben werden, muss 
 				\caption{QuSAD: Energieverbrauch pro Orbit}
 				\label{fig:power5}
 			\end{figure}
-Die von QuSAD angenommenen Werte zur Bestimmung des Energieüberschusses sind in  \abb{fig:power6} zusammengefasst. Es kann genau bestimmt werden wie viel Energie die Konfiguration während der Sonnen- und Schattenperiode zur Verfügung hat und wie viel davon verbraucht wird. Aus dem Budget ist dann der Anteilige Verbrauch der 
+Die von QuSAD angenommenen Werte zur Bestimmung des Energieüberschusses sind in  \abb{fig:power6} zusammengefasst. Es kann genau bestimmt werden wie viel Energie die Konfiguration während der Sonnen- und Schattenperiode zur Verfügung hat und wie viel davon verbraucht wird. Aus dem Budget ist dann der anteilige Verbrauch der 
 einzelnen Komponenten ersichtlich.
 
 			
