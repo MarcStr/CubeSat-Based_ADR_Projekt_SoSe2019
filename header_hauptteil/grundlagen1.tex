@@ -13,14 +13,14 @@
 	%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	\subsection[Gestaltungsrichtlinien]{Gestaltungsrichtlinien}
 	\hfill\emph{(Frederik Schäfer)}\\
-	Für die Gestaltung von CubeSats gelten eine Reihe von Richtlinien. Als kleinste Einheit (\SI{1}{\unit}) wird ein Würfel mit einer Kantenlänge von \SI{10}{\centi\metre} und einer zulässigen Masse von maximal \SI{1,33}{\kilogram} vorgegeben. Für größere Volumen und Massen können mehrere Einheiten von CubeSats verbunden werden. Satelliten mit \SI{1}{\unit}, \SI{1,5}{\unit}, \SI{2}{\unit}, oder \SI{3}{\unit} können von dem einheitlichen Startmechanismus (P-POD) in die Erdumlaufbahn ausgelassen werden. Die Kosten von CubeSat Missionen können gering gehalten werden, indem diese als sekundäre Nutzlast bei Raketenstarts mitfliegen. Für größere Satelliten (\SI{6}{\unit}, \SI{12}{\unit}, \SI{27}{\unit}) werden andere Startmechanismen benötigt \cite{Hevner.2011}. Die zugelassene Masse wird auf \SI[per-mode=symbol]{2}{\kilogram\per\unit} angehoben. Weitere Vorschriften gelten für die Folgenden Kriterien:
+	Für die Gestaltung von CubeSats gelten eine Reihe von Richtlinien. Als kleinste Einheit (\SI{1}{\unit}) wird ein Würfel mit einer Kantenlänge von \SI{10}{\centi\metre} und einer zulässigen Masse von maximal \SI{1,33}{\kilogram} vorgegeben. Für größere Volumen und Massen können mehrere Einheiten von CubeSats verbunden werden. Satelliten mit \SI{1}{\unit}, \SI{1,5}{\unit}, \SI{2}{\unit}, oder \SI{3}{\unit} können von dem einheitlichen Startmechanismus (P-POD) in die Erdumlaufbahn ausgelassen werden. Die Kosten von CubeSat Missionen können gering gehalten werden, indem diese als sekundäre Nutzlast bei Raketenstarts mitfliegen. Für größere Satelliten (\SI{6}{\unit}, \SI{12}{\unit}, \SI{27}{\unit}) werden andere Startmechanismen benötigt. Die zugelassene Masse wird auf \SI[per-mode=symbol]{2}{\kilogram\per\unit} angehoben\cite{Hevner.2011}. Weitere Vorschriften gelten unter Anderem für die Folgenden Kriterien:
 		\begin{itemize}
 			\item \textit{Materialien:} 	\\ Alle bei der Konstruktion verwendeten Materialien müssen den Richtlinien der Air Force Space Command Manual entsprechen. Außerdem darf der Masseverlust des Satelliten durch verflüchtigende Materialien maximal \num{1}\% betragen.\cite{.c, CaliforniaPolytechnicStateUniversity.2014}
 			\item \textit{Energiespeicher:} \\ Der chemische Energiespeicher darf eine Größe von \SI{100}{\watt\hour} nicht überschreiten.\cite{CaliforniaPolytechnicStateUniversity.2014} 
 			\item \textit{Aktivierungszeitpunkt:} \\ Während der CubeSat im P-POD verstaut ist müssen alle Systeme ausgeschaltet bleiben. Beim Verlassen der Trägerrakete wird der Satellit aktiviert. Erst \num{30} Minuten später dürfen Bauteile (z.B. Solarpanele, Antennen, etc...) ausgefahren werden. Bevor die ersten Signale generiert oder gesendet werden müssen mindestens \num{45} Minuten vergangen sein.\cite{Hevner.2011} 
 		\end{itemize}
 		
-		Falls ein Entwurf nicht den Vorschriften entspricht, kann bei dem Betreiber der Trägerrakete eine Sondergenehmigung angefragt werden. Nach einer Reihe von Tests entscheidet dieser ob er die Abweichungen akzeptiert, Änderungen vorgenommen werden müssen, oder ein anderer Anbieter gefunden werden muss. \cite{CaliforniaPolytechnicStateUniversity.2014} 
+		Falls ein Entwurf nicht den Vorschriften entspricht, kann bei dem Betreiber der Trägerrakete eine Sondergenehmigung beantragt werden. Nach einer Reihe von Tests entscheidet dieser ob er die Abweichungen akzeptiert, Änderungen vorgenommen werden müssen, oder ein anderer Anbieter gefunden werden muss. \cite{CaliforniaPolytechnicStateUniversity.2014} 
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	\section{Cubesat Subsysteme}%-------------------------------------------------------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ Für genaue Untersuchung und den Vergleich der verschiedenen Triebwerkstypen wir
 \hfill\emph{(Frederik Schäfer)}\\
 Das EPS ist für die Erzeugung-, Speicherung- und Verteilung von elektrischer Energie verantwortlich. 
 Für die Stromerzeugung werden in der Raumfahrt hauptsächlich Solarpanele verwendet, welche auch für CubeSats die sinnvollste Lösung darstellen.
-Für die meisten Anwendungen können Produkte verschiedener COTS-Anbieter erworben werden. CubeSats mit geringem Leistungsbedarf nutzen oft nur ihre eigene Oberfläche um mit Solarzellen Strom zu generieren. Wenn mehr Leistung benötigt wird werden faltbare Solarmodule eingesetzt. So kann die nutzbare Oberfläche zwei bis vier mal größer sein, als die benötigte Fläche auf dem Satelliten.\cite{Lettau.}
+Für die meisten Anwendungen können Produkte verschiedener COTS-Anbieter erworben werden. CubeSats mit geringem Leistungsbedarf nutzen oft nur ihre eigene Oberfläche um mit Solarzellen Strom zu generieren. Wenn mehr Leistung benötigt wird, werden faltbare Solarmodule eingesetzt. So kann die nutzbare Oberfläche zwei bis vier mal größer sein, als die benötigte Fläche auf dem Satelliten.\cite{Lettau.}
 
 	Während der Satellit sich im Schatten der Erde befindet wird Energie aus einem internen Speicher genutzt. Dieser besteht in der Regel aus Lithium basierten Akkus, welche eine hohe Energiedichte von bis zu \SI[per-mode=symbol]{240}{\watt\hour\per\kilogram} aufweisen. Sie können sowohl als einzelne Zellen, als auch in vorgefertigten Paketen von COTS-Anbietern erworben werden.\cite{Lettau., Abaker.2017}
 	
@@ -47,7 +47,7 @@ Für die meisten Anwendungen können Produkte verschiedener COTS-Anbieter erworb
 	%\caption{EPS Aufbau \cite{Pelgrift.2017}}
 %\end{figure}
 
-	Für die Verteilung des Stroms an die Subsysteme gibt es zwei unterschiedliche Ansätze. Zum Einen sind es dezentralisierte Verteilungssysteme [Abb. \ref{d_eps}], die ein modulares und flexibles Design erlauben. Dieses kann für verschiedene Satelliten angepasst werden. Es arbeitet mit nur einer Ausgangsspannung, die dann für jedes angeschlossene Subsystem einzeln umgewandelt wird.%ggf mikrospannungswandler erklären nach Burt.2011
+	Für die Verteilung des Stroms an die Subsysteme gibt es zwei unterschiedliche Ansätze. Zum Einen sind es dezentralisierte Verteilungssysteme [Abb. \ref{d_eps}], die ein modulares und flexibles Design erlauben. Dieses kann für verschiedene Satelliten angepasst werden. Es arbeitet mit nur einer Ausgangsspannung, die dann für jedes angeschlossene Subsystem einzeln umgewandelt und zugeschaltet wird.%ggf mikrospannungswandler erklären nach Burt.2011
 \begin{figure}[t]
 	\centering
 		\includegraphics[width=0.50\textwidth]{./graphics/Distributed_EPS.PNG}
