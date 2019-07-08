@@ -7,8 +7,8 @@
 
 \section{Missionsbeschreibung}
 \hfill\emph{(Frederik Schäfer)}\\
-Ziel der Mission ist es defekte, nicht kooperative Satelliten von Megakonstellationen (z.B. Starlink) abzubremsen, sodass sie in der Erdatmosphäre verglühen und das Kollisionsrisiko minimiert wird. Das Höhen- und Gewichtsintervall wurden auf \num{400}-\SI{1400}{\kilo\metre}, bzw. \num{50}-\SI{5000}{\kilogram} festgelegt, da alle Satelliten bisher geplanter Megakonstellationen innerhalb dieser Intervalle befinden.
-Es wird angenommen, dass sich der CubeSat und das Ziel zu Beginn in derselben Umlaufbahn befinden und nur wenige Kilometer voneinander entfernt sind. Das Haupttriebwerk wird für RDV und Docking nicht verwendet, sodass für den Wiedereintrittsvorgang die gesamte Kraftstoffmenge zur Verfügung steht. Sobald beide Satelliten miteinander Verbunden sind richten sie sich so aus, dass das Haupttriebwerk des CubeSats entgegen der Bewegungsrichtung wirkt. Als nächstes beginnt der eigentliche Deorbit Vorgang. Hier fängt auch die jeweilige Simulation an. Da die Solarzellen den Antrieb nicht dauerhaft versorgen können, wird ein Brennwinkel von \num{58}° um die wahre Anomalie von \num{180}° festgelegt. Außerdem wurde ein Bahnneigungswinkel von \num{53}° angenommen.
+Ziel der Mission ist es defekte, nicht kooperative Satelliten von Megakonstellationen (z.B. Starlink) abzubremsen, sodass sie in der Erdatmosphäre verglühen und das Kollisionsrisiko minimiert wird. Das Höhen- und Gewichtsintervall wurden auf \num{400}-\SI{1400}{\kilo\metre}, bzw. \num{50}-\SI{5000}{\kilogram} festgelegt, da sich alle Satelliten bisher geplanter Megakonstellationen innerhalb dieser Intervalle befinden.
+Es wird angenommen, dass sich der CubeSat und das Ziel zu Beginn in derselben Umlaufbahn befinden und nur wenige Kilometer voneinander entfernt sind. Das Haupttriebwerk wird für RDV und Docking nicht verwendet, sodass für den Wiedereintrittsvorgang die gesamte Kraftstoffmenge zur Verfügung steht. Sobald beide Satelliten miteinander Verbunden sind richten sie sich so aus, dass das Haupttriebwerk des CubeSats entgegen der Bewegungsrichtung wirkt. Als nächstes beginnt der eigentliche Deorbitvorgang. Hier fängt auch die jeweilige Simulation an. Da die Solarzellen den Antrieb nicht dauerhaft mit Energie versorgen können, wird ein Brennwinkel von \num{58}° um die wahre Anomalie von \num{180}° festgelegt. Außerdem wurde ein Bahnneigungswinkel von \num{53}° angenommen.
 Jeder Brennvorgang verringert die Geschwindigkeit und senkt somit das Perigäum ab. Die Mission ist erfolgreich, wenn das Perigäum eine Höhe von \SI{180}{\kilo\metre} erreicht hat. Die Simulation wird nach zehn Jahren abgebrochen, wenn die Mission bis dahin nicht erfolgreich war. 
 Zuerst wird eine \textbf{erste Mission} simuliert, die eine kreisförmige Umlaufbahn annimmt und das Höhenintervall in \SI{50}{\kilo\metre} Schritten erhöht. Die Masse wird von \num{50} bis \SI{550}{\kilogram} in \SI{25}{\kilogram} und von \num{600} bis \SI{5000}{\kilogram} in \SI{100}{\kilogram} Schritten erhöht.
 Mit der \textbf{zweiten Mission} wird betrachtet, wie sich die Deorbitzeit für ausgewählte Massen verhält, wenn die Exzentrizität verändert wird. Das Höhenintervall beschreibt hierbei die Höhe des Perigäums und die Exzentrizität wird von \num{0.025} bis \num{0.3} betrachtet.
@@ -18,7 +18,7 @@ Mit der \textbf{zweiten Mission} wird betrachtet, wie sich die Deorbitzeit für 
 \section{GMAT}
 		\subsection{Beschreibung der Software}
 		\hfill\emph{(Marc Strempel)}\\
-Der GMAT Mission Planner ist ein Open Source Programm, welches von der NASA entwickelt wird \cite{Hughes.}. Das Programm ist dazu da um Trajektorien von Satelliten zu berechnen und optimieren. Der Missionsraum umfasst das gesamte Sonnensystem und erlaubt es die Gravitationseinflüsse von allen größeren Himmelskörpern in die Berechnungen mit einfließen zu lassen. 
+Der GMAT Mission Planner ist ein Open Source Programm, welches von der NASA entwickelt wird \cite{Hughes.}. Das Programm wird dazu verwendet Trajektorien von Satelliten zu berechnen und optimieren. Der Missionsraum umfasst das gesamte Sonnensystem und erlaubt es die Gravitationseinflüsse von allen größeren Himmelskörpern in die Berechnungen mit einfließen zu lassen. 
 Die Eingabe der gewünschten Parameter erfolgt über ein GUI oder ein benutzerdefiniertes Skript. Die Skriptsprache von GMAT lehnt an der von MathWorks MATLAB\textregistered \space an.
 Das GUI beinhalted einen 3D Plot und einen 2D Plot. Der 3D Plot zeigt die Position und Trajektorie des Satellitens im dreidimensionalen Raum während der 2D Plot eine Projektion der Trajektorie auf die Oberfläche eines gewählten Himmelskörpers zeigt.
 
@@ -32,8 +32,8 @@ Das GUI beinhalted einen 3D Plot und einen 2D Plot. Der 3D Plot zeigt die Positi
 
 	Im GUI finden sich drei Reiter: ’Resources’, ’Mission’ und ’Output’.\\
 In dem Resources Reiter werden alle Ressourcen die für die Mission benötigt werden eingestellt. Dazu gehören die Schubdüsen, Tanks, Startumlaufbahn des Satelliten und andere Dinge, die während der Mission im Hintergrund wichtig sind.\\
-Im Missions Reiter werden nacheinander die auszuführenden Befehle aufgelistet. Diese können auch mit Logikoperatoren wie While- oder Forschleifen wiederholt werden.\\
-Im Output Reiter finden sich nach dem Missionsdurchlauf die Ausgaben die im Laufe der Mission erfasst worden sind wieder. 
+Im Missions Reiter werden nacheinander die auszuführenden Befehle aufgelistet. Diese können auch mit Logikoperatoren wie while- oder for-schleifen wiederholt werden.\\
+Im Output Reiter finden sich nach dem Missionsdurchlauf die Ausgaben, die im Laufe der Mission erfasst worden sind wieder. 
 
 
 %-------------------------------------------------------------Kreisorbitskript
@@ -43,7 +43,7 @@ Im Output Reiter finden sich nach dem Missionsdurchlauf die Ausgaben die im Lauf
 Im Folgenden ist das Skript für die erste Simulation beschrieben. Die Wahl viel auf eine while-Schleife. Der Grund dafür ist, dass for-Schleifen in GMAT nicht abbrechen, wenn der Laufwert innerhalb der Schleife verändert wird.
 Das ist für dieses Skript jedoch benötigt, da die beiden letzten if-Abfragen dafür sorgen, dass die benötigte Simulationszeit minimiert wird.
 Die erste if-Abfrage ist notwendig, da bei einigen Simulationen die Treibstoffmasse negative Werte angenommen hat. Der Wert \num{6558} ergibt sich aus dem Erdradius \SI{6378}{\km} und der Höhe \SI{180}{\km}. Die zweite und dritte if-Abfrage könnten in einer if - else if -Abfrage kombiniert werden, aber diese Logik ist in GMAT nicht enthalten.
-Alle if-Abfragen, die den Abbruchwert verändern sind dazu da ermitteln zu können warum die innere while-Schleife beendet worden ist.\\
+Alle if-Abfragen, die den Abbruchwert verändern sind dazu da, ermitteln zu können warum die innere while-Schleife beendet worden ist.\\
 
 
 \newpage
@@ -119,7 +119,7 @@ Abbruchwert & Erklärung \\
 \label{Abbruchkrit}
 \end{table}
 \end{center}
-In Tabelle \eqref{Abbruchkrit} werden den jeweiligen Abbruchkriterien der inneren Whileschleife erklärt. Zu Abbruchkriterium 2 ist noch zu erwähnen, dass dies nur ein Workaround ist. 
+In Tabelle \eqref{Abbruchkrit} werden die jeweiligen Abbruchkriterien der inneren while-Schleife erklärt. Zu Abbruchkriterium 2 ist noch zu erwähnen, dass dies nur ein Workaround ist. 
 Der in Abbildung \eqref{ECC_Fehler} abgebildete Fehler erschien häufiger bei niedrigen Orbithöhen und Exzentrizitäten nahe 0. Um dies zu Umgehen wurde das Abbruchkriterium 2 in das Skript eingefügt.\\
 Hierbei ist zu beachten, dass die Höhe des Perigäums beim Abbruch ein paar Kilometer über der Zielhöhe ist und die Mission als nicht erfolgreich angesehen werden müsste. Jedoch ist der Satellit zu diesem Zeitpunkt bereits so weit in der Atmosphäre, dass ein passives Wiedereintreten nicht viel länger dauern würde. Außerdem ist bei keinem Fall, in dem das Abbruchkriterium 2 Anwendung gefunden hat, der Treibstoff leer und der Wiedereintritt ist weiterhin aktiv unterstützt.
 
@@ -156,7 +156,7 @@ Hierbei ist zu beachten, dass die Höhe des Perigäums beim Abbruch ein paar Kil
 \subsection{Missionsskript 2}
 \hfill\emph{(Marc Strempel)}\\
 Für die zweite Untersuchung wurde das Skript so modifiziert, dass es die Exzentrizität von \num{0.025} bis \num{0.3} durchläuft.
-Zu Beginn das Perigäum auf die Starthöhe gesetzt und das Apogäum mit der Exzentrizität über folgende Formel berechntet:\\
+Zu Beginn wird das Perigäum auf die Starthöhe gesetzt und das Apogäum mit der Exzentrizität über folgende Formel berechntet:\\
 \begin{equation}
 r_A = \frac{1+e}{1-e}\cdot r_P
 \label{apoapsis}
@@ -240,12 +240,12 @@ In diesem Skript erfolgt die Einstellung der Targetmasse manuell, da nur drei Ma
 \hfill\emph{(Frederik Schäfer, Marc Strempel)}\\
 Die Endberichte aller GMAT Rechnungen wurden als Tabellen ausgegeben.  Anschließend erfolgte die Auswertung in MATLAB\textregistered.
 Um die Dauer der Missionen abbilden zu können wurden die Laufzeiten in Matrizen eingefügt. 
-Für die erste Mission gilt: Reihen und Spalten der Matrix bezeichnen die jeweiligen Startwerte der Masse - Höhe Kombination. In der zweiten Mission sind es die Startwerte der Exzentrizität und Höhe des Perigäums bei konstanter Masse
-Die erstellten Matrizen wurden mit der $contourf$ -Funktion von MatLab zu Graphen umgewandelt. Um die Graphen übersichtlicher zu gestalten wurde für die Einfärbung der Zeitmatrix eine logarithmische Skala gewählt. Der unregelmäßige Farbverlauf, gut erkennbar bei der \num{10} Jahres Grenze in der \abb{fig:GMAT_Mass_over_Height}, ist auf die Auflösung der Daten zurückzuführen.\\
+Für die erste Mission gilt: Reihen und Spalten der Matrix bezeichnen die jeweiligen Startwerte der Masse-Höhe Kombination. In der zweiten Mission sind es die Startwerte der Exzentrizität und Höhe des Perigäums bei konstanter Masse.
+Die erstellten Matrizen wurden mit der $contourf$-Funktion von MATLAB\textregistered \space zu Graphen umgewandelt. Um die Graphen übersichtlicher zu gestalten wurde für die Einfärbung der Zeitmatrix eine logarithmische Skala gewählt. Der unregelmäßige Farbverlauf, gut erkennbar bei der \num{10} Jahres Grenze in der \abb{fig:GMAT_Mass_over_Height}, ist auf die Auflösung der Daten zurückzuführen.\\
 
 \subsection{Mission 1}\\
-In Abb. \ref{fig:GMAT_Mass_over_Height} sind die zugehörigen Wiedereintrittszeiten farblich in Abhängigkeit von Masse und Starthöhe abgetragen. Die Zeitskala ist logarithmisch von \num{0} bis \num{10} Jahre an der Seite aufgeführt.  
-Es ist klar zu erkennen, dass niedrigere die Massen auch aus vergleichsweise großen Höhen entfernt werden können. Die maximale Höhe des Zielsatelliten nimmt jedoch mit zunehmender Masse stark ab, wenn die Zeitvorgabe von maximal \num{10} Jahren eingehalten werden soll.
+In Abbildung \ref{fig:GMAT_Mass_over_Height} sind die zugehörigen Wiedereintrittszeiten farblich in Abhängigkeit von Masse und Starthöhe abgetragen. Die Zeitskala ist logarithmisch von \num{0} bis \num{10} Jahre an der Seite aufgeführt.  
+Es ist klar zu erkennen, dass niedrigere Massen auch aus vergleichsweise großen Höhen entfernt werden können. Die maximale Höhe des Zielsatelliten nimmt jedoch mit zunehmender Masse stark ab, wenn die Zeitvorgabe von maximal \num{10} Jahren eingehalten werden soll.
 Eine detaillierte Ansicht der Massen von \num{50} bis \SI{550}{\kilogram} bietet \abb{fig:GMAT_Mass_over_Height_b}, da diese mit einer viermal höheren Auflösung (\SI{25}{\kilogram} Schritte) simuliert wurde. Hier wird es deutlicher, dass die Zielmasse bei \SI{1400}{\kilo\metre} maximal \SI{500}{\kilogram} betragen darf, um die Grenze von zehn Jahren nicht zu überschreiten.
 In beiden Graphen (Abb. \ref{fig:GMAT_Mass_over_Height}, \ref{fig:GMAT_Mass_over_Height_b}) ist anhand der Farbskala zu erkennen, dass im hellroten Bereich die benötigte Zeit stark ansteigt. 
 
@@ -256,7 +256,7 @@ In beiden Graphen (Abb. \ref{fig:GMAT_Mass_over_Height}, \ref{fig:GMAT_Mass_over
 
 Die gewählte Konfigurationen kann Satelliten mit einem Gewicht von \SI{375}{\kilogram} (Starlink) und einer Erdumlaufbahn von \SI{1400}{\kilo\metre} innerhalb von \num{2} Jahren aktiv zum Wiedereintritt führen. Für niedrigere Höhen wird dieser Vorgang schon früher abgeschlossen. 
 
-	Bei großen Höhen ist die maximale Masse limitiert, jedoch ist der Aerodynamische Widerstand in geringen Höhen so stark, dass Trümmerteile bis zu zwei Tonnen innerhalb eines Jahres aus ihrer Umlaufbahn entfernt werden können. 
+	Bei großen Höhen ist die maximale Masse limitiert, jedoch ist der aerodynamische Widerstand in geringen Höhen so stark, dass Trümmerteile bis zu zwei Tonnen innerhalb eines Jahres aus ihrer Umlaufbahn entfernt werden können. 
 
 
 \begin{figure}[t]
